@@ -14,9 +14,11 @@ class Stop < ActiveRecord::Base
     now = Time.now.strftime "%H:%M:%S"
     stoppings = Stopping.all(
       :joins => "inner join trips on trips.id = stoppings.trip_id",
-      :conditions => ["trips.route_id in (?) and trips.service_id in (?) and trips.headsign = ? " +
-        "and trips.end_time > '#{now}'", route_ids, service_ids, headsign],
-      :order => "stoppings.arrival_time asc")
+      :conditions => ["stoppings.stop_id = ? and trips.route_id in (?) and " + 
+        "trips.service_id in (?) and trips.headsign = ? " +
+        "and trips.end_time > '#{now}'", self.id, route_ids, service_ids, headsign],
+      :order => "stoppings.arrival_time asc"
+    )
   end
 
 

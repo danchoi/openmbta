@@ -1958,11 +1958,16 @@ Test with:
 stop = Stop.find(1569)
 stop.arrivals(:route_short_name => "1", :headsign => "Dudley Station via Mass. Ave.")
 
-=> [#<Stopping id: 5247950, trip_id: 764, stop_id: 201, arrival_time: "2000-01-01 13:55:00", position: 1, departure_time: "2000-01-01 13:55:00">, #<Stopping id: 5247951, trip_id: 764, stop_id: 1569, arrival_time: "2000-01-01 13:56:00", position: 2, departure_time: "2000-01-01 13:56:00">, #<Stopping id: 5247952, trip_id: 764, stop_id: 1567, arrival_time: "2000-01-01 13:57:00", position: 3, departure_time: "2000-01-01 13:57:00">]
-
-Seems to be working!
+Seems to be working! See below.
 
 I should version this NOTES file so I can track changes along with the commits. 
+
+>> stop = Stop.find(1569)
+=> #<Stop id: 1569, mbta_id: "2168", name: "Massachusetts Ave @ Johnston Gate", lat: 42.3751, lng: -71.1185>
+>> stop.arrivals(:route_short_name => "1", :headsign => "Dudley Station via Mass. Ave.")
+=> [#<Stopping id: 5248021, trip_id: 766, stop_id: 1569, arrival_time: "2000-01-01 14:05:00", position: 2, departure_time: "2000-01-01 14:05:00">, #<Stopping id: 5248056, trip_id: 767, stop_id: 1569, arrival_time: "2000-01-01 14:14:00", position: 2, departure_time: "2000-01-01 14:14:00">, #<Stopping id: 5248091, trip_id: 768, stop_id: 1569, arrival_time: "2000-01-01 14:23:00", position: 2, departure_time: "2000-01-01 14:23:00">, #<Stopping id: 5248126, trip_id: 769, stop_id: 1569, arrival_time: "2000-01-01 14:32:00", position: 2, departure_time: "2000-01-01 14:32:00">, ... ]
+>> stop.arrivals(:route_short_name => "1", :headsign => "Dudley Station via Mass. Ave.").count
+=> 56
 
 
 
