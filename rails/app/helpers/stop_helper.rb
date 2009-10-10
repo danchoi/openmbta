@@ -1,2 +1,0 @@
-module StopHelper
-end
