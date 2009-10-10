@@ -1980,3 +1980,16 @@ Next is making a view controller for the stop arrivals. A subclass of
 UIViewController with a table on it.
 
 
+Sat Oct 10 15:25:11 EDT 2009
+
+Got the StopArrivalsViewController calling Rails to get the arrival data for a
+particular stop. The next step is to display this data on the table. 
+
+The next step is to fill out this view. Then finally, construct the next view,
+which shows all the stops remaining on a trip corresponding to an arrival.
+
+If I finish this much this late afternoon, I can take a nice break happy with
+the progress made.
+
+
+
