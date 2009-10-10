@@ -10,12 +10,11 @@ class TripsController < ApplicationController
     @route_ids = if params[:route_id]
                   params[:route_id].split(',')
                 else
+                  # Should move this into model layer, as for Stop#arrivals
                   Route.all(:conditions => {:short_name => params[:route_short_name]}).map(&:id)
                 end
 
     @result = Trip.for(:date => @date, :headsign => @headsign, :route_id => @route_ids)
-
-    #render :json => JsonPrinter.render(@result)
     render :json => @result.to_json
   end
 
