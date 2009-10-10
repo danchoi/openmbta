@@ -18,7 +18,7 @@ class Trip < ActiveRecord::Base
     now = Time.now.strftime "%H:%M:%S"
 
     trips = Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_id, headsign, service_ids], :order => "start_time asc", :limit => 10)
-    # TODO. If no more trips, show first ones from next day
+    
     if trips.empty?
       raise "TODO get trips from beginning of next day"
       trips = Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?)", route_id, headsign, service_ids], :order => "start_time desc", :limit => 10)
@@ -34,13 +34,6 @@ class Trip < ActiveRecord::Base
     end
 
     result = { 
-      :trips => trips.map {|trip| 
-        { 
-          :start_time => trip.start_time, :end_time => trip.end_time, 
-          :stoppings => trip.stoppings.all(:order => "position asc").
-            map {|stopping| {:stop_id => stopping.stop_id, 
-              :position => stopping.position, 
-              :arrival_time => stopping.arrival_time} } } }, 
       :stops => (stops.inject({}) do |memo, stop|
         memo[stop.id] = {:name => stop.name, 
           :lat => stop.lat, 
@@ -92,10 +85,12 @@ class Trip < ActiveRecord::Base
     # "%H:%M:%S" -> 12 hour clock with am or pm
     hour, min = time.split(":")[0,2]
     hour = hour.to_i
+    suffix = 'am'
     if hour > 12
-      hour = hour + 12
+      hour = hour - 12
+      suffix = 'pm'
     end
-    "#{hour}:#{min}#{hour > 11 ? 'pm' : 'am'}"
+    "#{hour}:#{min}#{suffix}"
   end
 
   def stops_with_times

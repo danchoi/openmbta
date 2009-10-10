@@ -13,7 +13,7 @@
 
 
 @implementation TripsMapViewController
-@synthesize trips, imminentStops;
+@synthesize imminentStops;
 @synthesize stops;
 @synthesize mapView;
 @synthesize regionInfo;
@@ -83,7 +83,6 @@
 
 - (void)dealloc {
     self.mapView = nil;
-    self.trips = nil;
     self.imminentStops = nil;
     self.stops = nil;
     self.regionInfo = nil;
@@ -132,7 +131,6 @@
     NSDictionary *data = [rawData JSONValue];
     self.stops = [data objectForKey:@"stops"];
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
-    self.trips = [data objectForKey:@"trips"];
     self.regionInfo = [data objectForKey:@"region"];
     NSLog(@"num stops loaded: %d", [stops count]);
     NSLog(@"loaded region: %@", regionInfo);    

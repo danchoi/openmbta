@@ -1973,6 +1973,6 @@ I should version this NOTES file so I can track changes along with the commits.
 
 Now making a controller to wrap this model layer method.
 
-
+I'm going to remove the trips data from the Trips index rails action because we don't use it.
 
 

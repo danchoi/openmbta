@@ -12,7 +12,6 @@
 
 @interface TripsMapViewController : UIViewController <MKMapViewDelegate> {
     NSDictionary *stops;
-    NSArray *trips;
     NSArray *imminentStops;    
     IBOutlet MKMapView *mapView;
     NSDictionary *regionInfo;
@@ -22,7 +21,6 @@
     NSString *route_shortname;
 }
 @property (nonatomic, retain) NSDictionary *stops;
-@property (nonatomic, retain) NSArray *trips;
 @property (nonatomic, retain) NSArray *imminentStops;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSDictionary *regionInfo;
