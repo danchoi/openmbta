@@ -18,7 +18,7 @@
 @synthesize mapView;
 @synthesize regionInfo;
 @synthesize headsign;
-@synthesize route_shortname;
+@synthesize route_short_name;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,7 +87,7 @@
     self.stops = nil;
     self.regionInfo = nil;
     self.headsign = nil;
-    self.route_shortname = nil;
+    self.route_short_name = nil;
     [operationQueue release];
     [super dealloc];
 }
@@ -100,19 +100,17 @@
     // instead of route id, pass route short name
     
     // Here is the structure of the API call:
-    // curl "http://localhost:3000/trips?date=20091008&route_short_name=1&headsign=Dudley%20Station%20via%20Mass.%20Ave."
+    // /trips?date=20091008&route_short_name=1&headsign=Dudley%20Station%20via%20Mass.%20Ave.
     // Need 
     // 1. the date in the right string format
     // Use a DateFormatter later, when I have access to the date formatting documentation
-    NSString *dateString = @"20091009";
+    NSString *dateString = @"20091010"; // This is a just a stub
     
-
     // We need to substitute a different character for the ampersand in the headsign because Rails splits parameters on ampersands,
     // even escaped ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
-    
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?date=%@&route_short_name=%@&headsign=%@", ServerURL, dateString, self.route_shortname, headsignAmpersandEscaped];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?date=%@&route_short_name=%@&headsign=%@", ServerURL, dateString, self.route_short_name, headsignAmpersandEscaped];
     NSLog(@"would call API with URL: %@", apiUrl);
     
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -159,8 +157,9 @@
 }
 
 - (void)mapView:(MKMapView *)aMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-
     NSLog(@"pin tapped for %@ : stop_id: %@", ((StopAnnotation *)view.annotation).title, ((StopAnnotation *)view.annotation).stop_id);
+    // the API call structure is /stops_arrivals?stop_id={x}&route_short_name={y}&headsign={z}
+    // self.headsign ; view.annotation.stop_id ; self.route_short_name
     
 }
 

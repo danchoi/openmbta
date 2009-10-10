@@ -18,12 +18,12 @@
     NSOperationQueue *operationQueue;    
     
     NSString *headsign;
-    NSString *route_shortname;
+    NSString *route_short_name;
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *imminentStops;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSDictionary *regionInfo;
 @property (nonatomic, copy) NSString *headsign;
-@property (nonatomic, retain) NSString *route_shortname;
+@property (nonatomic, retain) NSString *route_short_name;
 @end

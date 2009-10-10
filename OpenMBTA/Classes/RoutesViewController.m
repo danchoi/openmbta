@@ -117,7 +117,7 @@
     NSString *headsign = [headsigns objectAtIndex:indexPath.row];
     
     [self tripsMapViewController].headsign = headsign;
-    [self tripsMapViewController].route_shortname = routeShortName;
+    [self tripsMapViewController].route_short_name = routeShortName;
     [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
     
  // Navigation logic may go here -- for example, create and push another view controller.
