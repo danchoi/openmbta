@@ -1,0 +1,16 @@
+%h1 Bus Routes
+%ul
+  - @super_routes.each do |super_route|
+    %li
+      =link_to super_route.short_name, :controller => 'trips', :route_short_name => super_route.short_name
+      %ul
+        %li
+          subroutes
+          %ul
+            - super_route.subroutes.each do |subroute|
+              %li
+                = subroute.headsign
+                =# subroute.trips.map {|t| t.route_id}.uniq.inspect            
+                = "(#{subroute.trips.size} trips)"
+
+

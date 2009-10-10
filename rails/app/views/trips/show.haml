@@ -1,0 +1,16 @@
+%h1= @trip.headsign
+%p
+  = @trip.schedule_type
+  = @trip.service_start_date
+  = @trip.service_end_date
+%p
+  = @trip.stoppings.count 
+  stops
+
+%table
+  - @trip.stoppings.each do |stopping|
+    %tr
+      %td
+        = stopping.stop.name
+      %td
+        = stopping.arrival_time

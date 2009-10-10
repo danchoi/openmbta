@@ -1,0 +1,5 @@
+%h1 TransportTypes 
+
+%ul
+  - ['rail', 'bus', 'subway', 'boat'].each do |type|
+    %li= link_to(type, "/#{type}")

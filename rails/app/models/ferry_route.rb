@@ -1,0 +1,3 @@
+class FerryRoute
+
+end

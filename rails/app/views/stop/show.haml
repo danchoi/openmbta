@@ -1,0 +1,24 @@
+%h1= @stop.name
+
+%h2
+  Route
+  = @super_route.short_name
+
+%h2 
+  Arrivals
+  = @stoppings.size
+
+%ul
+  - @stoppings.each do |stopping|
+    %li
+      = link_to stopping.arrival_time, :controller => :trips, :action => :show, :id => stopping.trip_id
+      |
+      = stopping.trip.headsign 
+      | 
+      = stopping.trip.last_stop
+
+
+
+
+
+
