@@ -16,7 +16,7 @@ class Stop < ActiveRecord::Base
       :joins => "inner join trips on trips.id = stoppings.trip_id",
       :conditions => ["stoppings.stop_id = ? and trips.route_id in (?) and " + 
         "trips.service_id in (?) and trips.headsign = ? " +
-        "and trips.end_time > '#{now}'", self.id, route_ids, service_ids, headsign],
+        "and stoppings.arrival_time > '#{now}'", self.id, route_ids, service_ids, headsign],
       :order => "stoppings.arrival_time asc"
     )
   end

@@ -51,7 +51,7 @@
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
     self.data = [rawData JSONValue];
-    NSLog(@"loaded routes: %@", self.data);  
+    NSLog(@"loaded %d stoppings", [self.data count]);  
     [tableView reloadData];
 }
 
@@ -64,7 +64,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.data count];
 }
 
 
@@ -77,8 +77,13 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    NSDictionary *stopping = [self.data objectAtIndex:indexPath.row];
     
+    NSString *arrivalTime = [stopping objectForKey:@"arrival_time"];
+    //NSString *trip_id = [stopping objectForKey:@"stop_id"];
 	// Configure the cell.
+    NSLog(@"setting cell to %@", arrivalTime);
+    cell.textLabel.text = arrivalTime;
     
     return cell;
 }

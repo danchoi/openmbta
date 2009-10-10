@@ -1991,5 +1991,21 @@ which shows all the stops remaining on a trip corresponding to an arrival.
 If I finish this much this late afternoon, I can take a nice break happy with
 the progress made.
 
+2009-10-10 15:23:20.188 OpenMBTA[6689:20b] would call API with URL: http://localhost:3000/stop_arrivals?stop_id=6518&route_short_name=1&headsign=Dudley Station via Mass. Ave.
+2009-10-10 15:23:20.279 OpenMBTA[6689:20b] loaded routes: (
+        {
+        "arrival_time" = "15:01:00";
+        "trip_id" = 771;
+    },
+        {
+        "arrival_time" = "15:10:00";
+        "trip_id" = 688;
+    },
+        {
+        "arrival_time" = "15:20:00";
+        "trip_id" = 689;
+    },
+
+
 
 
