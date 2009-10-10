@@ -9,6 +9,7 @@ class Trip < ActiveRecord::Base
   def self.for(options) 
     route_id = options[:route_id] ? [options[:route_id]].flatten : nil
     headsign = options[:headsign]
+    # date is a string
     date = options[:date]
 
     service_ids = Service.active_on(date).map(&:id)
