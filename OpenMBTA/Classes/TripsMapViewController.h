@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-
+@class StopArrivalsViewController;
 
 @interface TripsMapViewController : UIViewController <MKMapViewDelegate> {
     NSDictionary *stops;
@@ -19,6 +19,8 @@
     
     NSString *headsign;
     NSString *route_short_name;
+    
+    StopArrivalsViewController *stopArrivalsViewController;
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *imminentStops;

@@ -1,11 +1,3 @@
-//
-//  RoutesViewController.m
-//  OpenMBTA
-//
-//  Created by Daniel Choi on 10/9/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
-
 #import "RoutesViewController.h"
 #import "JSON.h"
 #import "GetRemoteDataOperation.h"

@@ -1975,4 +1975,8 @@ Now making a controller to wrap this model layer method.
 
 I'm going to remove the trips data from the Trips index rails action because we don't use it.
 
+--------------------------------------------------------------------------------
+Next is making a view controller for the stop arrivals. A subclass of
+UIViewController with a table on it.
+
 

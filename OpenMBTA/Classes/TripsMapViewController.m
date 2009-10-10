@@ -3,6 +3,7 @@
 #import "StopAnnotation.h"
 #import "ServerUrl.h"
 #import "GetRemoteDataOperation.h"
+#import "StopArrivalsViewController.h"
 
 @interface TripsMapViewController (Private)
 - (void)startLoadingData;
@@ -62,14 +63,14 @@
         annotation.subtitle = [stopDict objectForKey:@"name"];
 
         NSString *nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
-        NSLog(@"annotating: %@", nextArrivals );
+        //NSLog(@"annotating: %@", nextArrivals );
         annotation.title = [NSString stringWithFormat:@"next: %@", nextArrivals];
         annotation.stop_id = stop_id;
-        NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
-        NSLog(@"class: %@", [[self.imminentStops objectAtIndex:0] class]);
-        NSLog(@"this STOP: %@", stop_id);                
+        //NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
+        //NSLog(@"class: %@", [[self.imminentStops objectAtIndex:0] class]);
+        //NSLog(@"this STOP: %@", stop_id);                
         if ([self.imminentStops containsObject:stop_id]) {
-            NSLog(@"THIS IS IMMINENT STOP: %@", stop_id);
+            //NSLog(@"THIS IS IMMINENT STOP: %@", stop_id);
             annotation.isNextStop = YES;
         }
 
@@ -89,16 +90,13 @@
     self.headsign = nil;
     self.route_short_name = nil;
     [operationQueue release];
+    [stopArrivalsViewController release];
     [super dealloc];
 }
 
 // This calls the server
 - (void)startLoadingData
 {
-    // CHANGE ME
-    
-    // instead of route id, pass route short name
-    
     // Here is the structure of the API call:
     // /trips?date=20091008&route_short_name=1&headsign=Dudley%20Station%20via%20Mass.%20Ave.
     // Need 
@@ -111,7 +109,7 @@
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
     NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?date=%@&route_short_name=%@&headsign=%@", ServerURL, dateString, self.route_short_name, headsignAmpersandEscaped];
-    NSLog(@"would call API with URL: %@", apiUrl);
+    //NSLog(@"would call API with URL: %@", apiUrl);
     
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
@@ -125,13 +123,13 @@
     if (rawData == nil)
         return;
     
-    NSLog(@"loaded data: %@", rawData);
+    //NSLog(@"loaded data: %@", rawData);
     NSDictionary *data = [rawData JSONValue];
     self.stops = [data objectForKey:@"stops"];
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
     self.regionInfo = [data objectForKey:@"region"];
-    NSLog(@"num stops loaded: %d", [stops count]);
-    NSLog(@"loaded region: %@", regionInfo);    
+    //NSLog(@"num stops loaded: %d", [stops count]);
+    //NSLog(@"loaded region: %@", regionInfo);    
     [self prepareMap];
     [self annotateStops];
 }
@@ -158,9 +156,13 @@
 
 - (void)mapView:(MKMapView *)aMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     NSLog(@"pin tapped for %@ : stop_id: %@", ((StopAnnotation *)view.annotation).title, ((StopAnnotation *)view.annotation).stop_id);
-    // the API call structure is /stops_arrivals?stop_id={x}&route_short_name={y}&headsign={z}
-    // self.headsign ; view.annotation.stop_id ; self.route_short_name
-    
+    if (stopArrivalsViewController == nil) {
+        stopArrivalsViewController = [[StopArrivalsViewController alloc] initWithNibName:@"StopArrivalsViewController" bundle:nil];
+    }
+    stopArrivalsViewController.headsign = self.headsign;
+    stopArrivalsViewController.stop_id = ((StopAnnotation *)view.annotation).stop_id;
+    stopArrivalsViewController.route_short_name = self.route_short_name;
+    [self.navigationController pushViewController:stopArrivalsViewController animated:YES];
 }
 
 
