@@ -2395,5 +2395,15 @@ mysql> select routes.mbta_id, trips.headsign, group_concat(trips.mbta_id) from r
 816 rows in set (0.31 sec)
 
 
+Commuter Rail routes now seem to work:
+
+curl 'http://localhost:3000/routes?transport_type=commuter_rail'
+
+[{"route_short_name":"Fairmount","headsigns":["Readville","South Station"]},{"route_short_name":"Fitchburg","headsigns":["Fitchburg","North Station","South Acton"]},{"route_short_name":"Franklin","headsigns":["Forge Park / 495","Norwood Central","South Station","Walpole"]},{"route_short_name":"Greenbush","headsigns":["Greenbush","South Station"]},{"route_short_name":"Haverhill","headsigns":["Andover","Haverhill","North Station","Reading"]},{"route_short_name":"Lowell","headsigns":["Anderson/ Woburn","Lowell","North Station"]},{"route_short_name":"Needham","headsigns":["Needham Heights","South Station"]},{"route_short_name":"Newburyport","headsigns":["Beverly","Hamilton/ Wenham","Newburyport","North Station","Rockport","Salem"]},{"route_short_name":"OldColony","headsigns":["Kingston","Middleboro/ Lakeville","Plymouth","South Station"]},{"route_short_name":"Providence","headsigns":["Attleboro","Canton Center","Mansfield","Providence","South Station","Stoughton"]},{"route_short_name":"Worcester","headsigns":["Framingham (Train P505)","Framingham (Train P507)","Framingham (Train P511)","Framingham (Train P515)","Framingham (Train P521)","Framingham (Train P525)","Framingham (Train P531)","Framingham (Train P539)","Framingham (Train P551)","Framingham (Train P555)","Framingham (Train P559)","Framingham (Train P565)","South Station (Train P500)","South Station (Train P502)","South Station (Train P504)","South Station (Train P506)","South Station (Train P508)","South Station (Train P510)","South Station (Train P512)","South Station (Train P514)","South Station (Train P516)","South Station (Train P518)","South Station (Train P520)","South Station (Train P522)","South Station (Train P524)","South Station (Train P526)","South Station (Train P528)","South Station (Train P530)","South Station (Train P532)","South Station (Train P534)","South Station (Train P536)","South Station (Train P538)","South Station (Train P540)","South Station (Train P550)","South Station (Train P552)","South Station (Train P554)","South Station (Train P556)","South Station (Train P
+
+Now try to make Trip.for work with both bus and commuter rail. The trick for CR is to search trip by headsigns that START with the string, using LIKE.
+
+
+
 
 

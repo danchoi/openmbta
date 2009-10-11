@@ -15,13 +15,17 @@
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-    self.tableView.sectionIndexMinimumDisplayRowCount = 20;
+    self.tableView.sectionIndexMinimumDisplayRowCount = 100;
     operationQueue = [[NSOperationQueue alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self startLoadingData];    
     [super viewWillAppear:animated];
+    if (self.data != nil && [self.data count] > 0) {
+        NSIndexPath *ip = [NSIndexPath indexPathForRow: 0 inSection:0];
+        [self.tableView selectRowAtIndexPath:ip animated:NO scrollPosition:UITableViewScrollPositionTop];
+    }
 }
 
 
