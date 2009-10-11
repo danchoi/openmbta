@@ -36,58 +36,6 @@
     [super viewWillAppear:animated];
 }
 
-- (void)prepareMap 
-{
-
-    MKCoordinateRegion region;    
-    region.center.latitude = [[self.regionInfo objectForKey:@"center_lat"] floatValue];
-    region.center.longitude = [[self.regionInfo objectForKey:@"center_lng"] floatValue];
-    region.span.latitudeDelta = [[self.regionInfo objectForKey:@"lat_span"] floatValue];
-    region.span.longitudeDelta = [[self.regionInfo objectForKey:@"lng_span"] floatValue];
-    
-    [mapView setRegion:region animated:NO];
-    [mapView regionThatFits:region];
-}
-
-- (void)annotateStops 
-{
-    NSArray *stop_ids = [self.stops allKeys];
-    for (NSString *stop_id in stop_ids) {
-        //NSLog(@"stop: %@", stop);
-        StopAnnotation *annotation = [[StopAnnotation alloc] init];
-        NSDictionary *stopDict = [stops objectForKey:stop_id];
-        NSString *stopName =  [stopDict objectForKey:@"name"];
-        annotation.subtitle = stopName;
-        
-        NSString *nextArrivals;
-        if ([[stopDict objectForKey:@"next_arrivals"] count] > 0) {
-            nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
-        } else {
-            nextArrivals = @"No more arrivals today";
-        }
-        
-        //NSLog(@"annotating: %@", nextArrivals );
-        annotation.title = nextArrivals;
-        annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
-        annotation.stop_id = stop_id;
-        //NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
-        //NSLog(@"class: %@", [[self.imminentStops objectAtIndex:0] class]);
-        //NSLog(@"this STOP: %@", stop_id);                
-        if ([self.imminentStops containsObject:stop_id]) {
-            //NSLog(@"THIS IS IMMINENT STOP: %@", stop_id);
-            annotation.isNextStop = YES;
-        }
-        if ([self.firstStops containsObject:stopName]) {
-            annotation.isFirstStop = YES;
-        }
-
-        CLLocationCoordinate2D coordinate;
-        coordinate.latitude = [[stopDict objectForKey:@"lat"] doubleValue];
-        coordinate.longitude = [[stopDict objectForKey:@"lng"] doubleValue];
-        annotation.coordinate = coordinate;
-        [mapView addAnnotation:annotation];
-    }
-}
 
 - (void)dealloc {
     self.mapView = nil;
@@ -136,6 +84,60 @@
     [self prepareMap];
     [self annotateStops];
 }
+
+- (void)prepareMap 
+{
+    
+    MKCoordinateRegion region;    
+    region.center.latitude = [[self.regionInfo objectForKey:@"center_lat"] floatValue];
+    region.center.longitude = [[self.regionInfo objectForKey:@"center_lng"] floatValue];
+    region.span.latitudeDelta = [[self.regionInfo objectForKey:@"lat_span"] floatValue];
+    region.span.longitudeDelta = [[self.regionInfo objectForKey:@"lng_span"] floatValue];
+    
+    [mapView setRegion:region animated:NO];
+    [mapView regionThatFits:region];
+}
+
+- (void)annotateStops 
+{
+    NSArray *stop_ids = [self.stops allKeys];
+    for (NSString *stop_id in stop_ids) {
+        //NSLog(@"stop: %@", stop);
+        StopAnnotation *annotation = [[StopAnnotation alloc] init];
+        NSDictionary *stopDict = [stops objectForKey:stop_id];
+        NSString *stopName =  [stopDict objectForKey:@"name"];
+        annotation.subtitle = stopName;
+        
+        NSString *nextArrivals;
+        if ([[stopDict objectForKey:@"next_arrivals"] count] > 0) {
+            nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
+        } else {
+            nextArrivals = @"No more arrivals today";
+        }
+        
+        //NSLog(@"annotating: %@", nextArrivals );
+        annotation.title = nextArrivals;
+        annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
+        annotation.stop_id = stop_id;
+        //NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
+        //NSLog(@"class: %@", [[self.imminentStops objectAtIndex:0] class]);
+        //NSLog(@"this STOP: %@", stop_id);                
+        if ([self.imminentStops containsObject:stop_id]) {
+            //NSLog(@"THIS IS IMMINENT STOP: %@", stop_id);
+            annotation.isNextStop = YES;
+        }
+        if ([self.firstStops containsObject:stopName]) {
+            annotation.isFirstStop = YES;
+        }
+        
+        CLLocationCoordinate2D coordinate;
+        coordinate.latitude = [[stopDict objectForKey:@"lat"] doubleValue];
+        coordinate.longitude = [[stopDict objectForKey:@"lng"] doubleValue];
+        annotation.coordinate = coordinate;
+        [mapView addAnnotation:annotation];
+    }
+}
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>) annotation {
     static NSString *pinID = @"mbtaPin";
