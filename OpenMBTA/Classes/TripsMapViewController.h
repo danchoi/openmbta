@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "JSON.h"
+#import "StopAnnotation.h"
+#import "ServerUrl.h"
+#import "GetRemoteDataOperation.h"
+#import "StopArrivalsViewController.h"
 @class StopArrivalsViewController;
 
 @interface TripsMapViewController : UIViewController <MKMapViewDelegate> {

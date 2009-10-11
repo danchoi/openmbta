@@ -105,7 +105,7 @@
     NSString *trip_id = [stopping objectForKey:@"trip_id"];    
     
     if (tripViewController == nil) {
-        tripViewController = [[TripViewController alloc] initWithNibName:@"TripViewController" bundle:nil];
+        tripViewController = [[TripViewController alloc] initWithNibName:@"TripsMapViewController" bundle:nil];
     }
     tripViewController.trip_id = trip_id;
     tripViewController.position = position;

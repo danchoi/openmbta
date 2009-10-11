@@ -12,15 +12,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = Trip.find(params[:id])
-    from_position = params[:from_position]
-    result = @trip.stoppings.all(:conditions => ["position >= ?", from_position.to_i]).
-      map {|stopping|
-        { 
-          :stop_name => stopping.stop.name,
-          :arrival_time => format_time(stopping.arrival_time)
-        }
-    }
-    render :json => result.to_json
+    @result = Trip.for(:trip_id => params[:id], :from_position => params[:from_position].to_i)
+    render :json => @result.to_json
   end
 end

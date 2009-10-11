@@ -139,7 +139,7 @@
 
 - (TripsMapViewController *)tripsMapViewController {
     if (tripsMapViewController == nil) {
-        tripsMapViewController = [[TripsMapViewController alloc] initWithNibName:@"TripMapsViewController" bundle:nil];
+        tripsMapViewController = [[TripsMapViewController alloc] initWithNibName:@"TripsMapViewController" bundle:nil];
     }
     return tripsMapViewController;
 }

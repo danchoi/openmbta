@@ -7,36 +7,21 @@
 //
 
 #import "TripViewController.h"
-#import "ServerUrl.h"
-#import "GetRemoteDataOperation.h"
-#import "JSON.h"
-
-@interface TripViewController (Private)
-- (void)startLoadingData;
-- (void)didFinishLoadingData:(NSString *)rawData;
-@end 
 
 @implementation TripViewController
-@synthesize trip_id, position, data;
+@synthesize trip_id, position;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    operationQueue = [[NSOperationQueue alloc] init];    
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self startLoadingData];
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
 - (void)dealloc {
     self.trip_id = nil;
     self.position = nil;
-    self.data = nil;
-    [tableView release];
-    [operationQueue release];
-    
     [super dealloc];
 }
 
@@ -51,44 +36,5 @@
     [operationQueue addOperation:operation];
     [operation release];
 }
-
-- (void)didFinishLoadingData:(NSString *)rawData 
-{
-    self.data = [rawData JSONValue];
-    NSLog(@"loaded %d stoppings", [self.data count]);  
-    [tableView reloadData];
-}
-
-#pragma mark Table view methods
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.data count];
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.accessoryType =  UITableViewCellAccessoryNone;
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
-    }
-    NSDictionary *stopping = [self.data objectAtIndex:indexPath.row];
-    
-    NSString *arrival_time = [stopping objectForKey:@"arrival_time"];
-    NSString *stop_name = [stopping objectForKey:@"stop_name"];
-
-	// Configure the cell.
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", arrival_time, stop_name];
-    return cell;
-}
-
 
 @end

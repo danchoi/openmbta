@@ -12,7 +12,12 @@ class Trip < ActiveRecord::Base
   }
 
   def self.for(options) 
-    trips = TRIP_FINDERS[options[:transport_type]].trips(options)
+
+    trips = if options[:trip_id]
+      [Trip.find options[:trip_id]] # for the /trip/show action
+    else
+      TRIP_FINDERS[options[:transport_type]].trips(options)
+    end
 
     if trips.empty?
       # send back a message 
@@ -20,7 +25,13 @@ class Trip < ActiveRecord::Base
     end
     trip_ids = trips.map(&:id)
 
-    stops = Stop.all(:select => "stops.*, count(*) as num_stoppings", :joins => :stoppings, :conditions => ["stoppings.trip_id in (?)", trip_ids], :group => "stoppings.stop_id")
+    stops = if options[:trip_id]
+              trips.first.stops[(options[:from_position] - 1)..-1]
+            else
+              Stop.all(:select => "stops.*, count(*) as num_stoppings", 
+                   :joins => :stoppings, 
+                   :conditions => ["stoppings.trip_id in (?)", trip_ids], :group => "stoppings.stop_id")
+            end
     if stops.empty?
       raise "No stops for params: #{options.inspect}"
     end
@@ -30,12 +41,12 @@ class Trip < ActiveRecord::Base
         memo[stop.id] = {:name => stop.name, 
           :lat => stop.lat, 
           :lng => stop.lng, 
-          :num_stoppings => stop.num_stoppings, 
+          :num_stoppings => stop.respond_to?(:num_stoppings) ? stop.num_stoppings : 1, 
           :next_arrivals => next_arrivals_for_stop(stop.id, trips).map {|time| format_time(time)}}
         memo
       end),
       :imminent_stop_ids => imminent_stop_ids(trips),
-      :first_stop => trips.map {|t| t.first_stop}.uniq
+      :first_stop => options[:trip_id] ? [stops.first.name] : trips.map {|t| t.first_stop}.uniq
     }
     # add center coordinates and span, for the iPhone MKMapView
     # TODO make adjustments

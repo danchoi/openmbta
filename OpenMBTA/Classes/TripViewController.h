@@ -7,17 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TripsMapViewController.h"
 
-
-@interface TripViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-    IBOutlet UITableView *tableView;
+@interface TripViewController : TripsMapViewController {
     NSString *trip_id;
     NSString *position;
-    NSArray *data;
-    NSOperationQueue *operationQueue;
 
 }
 @property (nonatomic, copy) NSString *trip_id;
 @property (nonatomic, copy) NSString *position;
-@property (nonatomic,retain) NSArray *data;
 @end
