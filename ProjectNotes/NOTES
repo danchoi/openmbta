@@ -2007,5 +2007,14 @@ the progress made.
     },
 
 
+Got times to show up in the table. The next stop is to format the time, and
+then to arm the cell so that selecting it pushes in a new view with all the
+trip stops.
+
+This will complete the scaffolding of the iPhone app. The rest is refinement.
+
+I may need to buy a new server account from Linode. But maybe not.
+
+
 
 

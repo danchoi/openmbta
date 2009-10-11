@@ -1,4 +1,5 @@
 class StopArrivalsController < ApplicationController
+  include TimeFormatting
 
   def index
     stop = Stop.find params[:stop_id]
@@ -7,7 +8,7 @@ class StopArrivalsController < ApplicationController
 
     result = stoppings.map {|stopping|
       {
-        :arrival_time => stopping.arrival_time,
+        :arrival_time => format_time(stopping.arrival_time),
         :trip_id => stopping.trip_id
       }
     }

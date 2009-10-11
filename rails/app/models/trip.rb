@@ -1,5 +1,6 @@
 class Trip < ActiveRecord::Base
   include Comparable
+  extend TimeFormatting
   belongs_to :route
   belongs_to :service
   has_many :stoppings
@@ -79,18 +80,6 @@ class Trip < ActiveRecord::Base
         memo
       end
     end.uniq.map {|x| x.to_s} # strings because it's easier to handle this way on iPhone side
-  end
-
-  def self.format_time(time)
-    # "%H:%M:%S" -> 12 hour clock with am or pm
-    hour, min = time.split(":")[0,2]
-    hour = hour.to_i
-    suffix = 'am'
-    if hour > 12
-      hour = hour - 12
-      suffix = 'pm'
-    end
-    "#{hour}:#{min}#{suffix}"
   end
 
   def stops_with_times
