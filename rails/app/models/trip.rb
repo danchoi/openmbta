@@ -21,6 +21,7 @@ class Trip < ActiveRecord::Base
     trips = Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_id, headsign, service_ids], :order => "start_time asc", :limit => 10)
     
     if trips.empty?
+      # TODO
       raise "TODO get trips from beginning of next day"
       trips = Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?)", route_id, headsign, service_ids], :order => "start_time desc", :limit => 10)
     end

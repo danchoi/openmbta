@@ -75,16 +75,18 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     }
     NSDictionary *stopping = [self.data objectAtIndex:indexPath.row];
     
-    NSString *arrivalTime = [stopping objectForKey:@"arrival_time"];
+    NSString *arrival_time = [stopping objectForKey:@"arrival_time"];
+    NSString *more_stops = [stopping objectForKey:@"more_stops"];
+    NSString *last_stop = [stopping objectForKey:@"last_stop"];    
     //NSString *trip_id = [stopping objectForKey:@"stop_id"];
 	// Configure the cell.
-    NSLog(@"setting cell to %@", arrivalTime);
-    cell.textLabel.text = arrivalTime;
-    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ more stops", arrival_time, more_stops];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Last stop: %@", last_stop];
     return cell;
 }
 
