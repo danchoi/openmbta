@@ -101,6 +101,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
     }
     
 	// Configure the cell.
@@ -111,7 +112,8 @@
     NSString *headsign = [headsignArray objectAtIndex:0];
     NSNumber *trips_remaining = [headsignArray objectAtIndex:1];
     cell.textLabel.text = headsign;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ trips remaining", trips_remaining];
+    NSString *pluralized = [trips_remaining intValue] > 1 ? @"trips" : @"trip";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ remaining", trips_remaining, pluralized];
     return cell;
 }
 

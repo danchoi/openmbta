@@ -10,7 +10,7 @@
 
 
 @implementation StopAnnotation
-@synthesize coordinate, title, subtitle, stop_id, next_arrivals, isNextStop, isFirstStop;
+@synthesize coordinate, title, subtitle, stop_id, next_arrivals, numNextArrivals, isNextStop, isFirstStop;
 
 - (id) init {
     if (self = [super init]) {
@@ -25,6 +25,7 @@
     [subtitle release];
     [stop_id release];
     [next_arrivals release];
+    [numNextArrivals release];    
     [super dealloc];
 }
 @end

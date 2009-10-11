@@ -31,7 +31,7 @@ class Trip < ActiveRecord::Base
           :lat => stop.lat, 
           :lng => stop.lng, 
           :num_stoppings => stop.num_stoppings, 
-          :next_arrivals => next_arrival_for_stop(stop.id, trips).map {|time| format_time(time)}}
+          :next_arrivals => next_arrivals_for_stop(stop.id, trips).map {|time| format_time(time)}}
         memo
       end),
       :imminent_stop_ids => imminent_stop_ids(trips),
@@ -55,7 +55,7 @@ class Trip < ActiveRecord::Base
     result.merge(region_info)
   end
 
-  def self.next_arrival_for_stop(stop_id, trips)
+  def self.next_arrivals_for_stop(stop_id, trips)
     now = Time.now.strftime "%H:%M:%S"
     ActiveRecord::Base.connection.select_all("select arrival_time from stoppings  " +
       "where stoppings.trip_id in (#{trips.map(&:id).join(',')}) and stoppings.stop_id = #{stop_id} and stoppings.arrival_time > '#{now}' " +

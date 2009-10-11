@@ -2418,6 +2418,35 @@ select routes.mbta_id, trips.headsign, count(trips.id) as trips_remaining from r
 
 TODO Deal with "no more trips for today" message with pop up or something.
 
+New MBTA file has Red Line, Green Line, etc. plus Silver Line 
+
+"741_-1056","1","","Silver Line SL1",,3,,"555555","FFFFFF"
+"741_-1058","1","","Silver Line SL1",,3,,"555555","FFFFFF"
+"742_-1056","1","","Silver Line SL2",,3,,"555555","FFFFFF"
+"742_-1058","1","","Silver Line SL2",,3,,"555555","FFFFFF"
+"7421-1056","1","","Silver Line SL2",,3,,"555555","FFFFFF"
+"7421-1058","1","","Silver Line SL2",,3,,"555555","FFFFFF"
+"7423-1056","1","","Silver Line SL2",,3,,"555555","FFFFFF"
+"7423-1058","1","","Silver Line SL2",,3,,"555555","FFFFFF"
+"746_-1056","1","","Silver Line",,3,,"555555","FFFFFF"
+"746_-1058","1","","Silver Line",,3,,"555555","FFFFFF"
+"747_-1056","1","CT2",,,3,,"FFFF7C","000000"
+"747_-1058","1","CT2",,,3,,"FFFF7C","000000"
+"748_-1056","1","CT2",,,3,,"FFFF7C","000000"
+"748_-1058","1","CT2",,,3,,"FFFF7C","000000"
+"749_-1056","1","","Silver Line SL5",,3,,"555555","FFFFFF"
+"749_-1058","1","","Silver Line SL5",,3,,"555555","FFFFFF"
+
+
+These exist, but the long names have been added. Write a script that writes the long nmaes.
+
+This is not a major change, and will help organize the bus table sections better
+
+
+Even with the GTFS data change, we can adapt it on the Rails side.
+
+
+So continue from where I left off. trying to merge trips from the same CR line.
 
 
 

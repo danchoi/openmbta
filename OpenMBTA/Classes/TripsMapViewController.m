@@ -62,10 +62,17 @@
         NSDictionary *stopDict = [stops objectForKey:stop_id];
         NSString *stopName =  [stopDict objectForKey:@"name"];
         annotation.subtitle = stopName;
-
-        NSString *nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
+        
+        NSString *nextArrivals;
+        if ([[stopDict objectForKey:@"next_arrivals"] count] > 0) {
+            nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
+        } else {
+            nextArrivals = @"No more arrivals today";
+        }
+        
         //NSLog(@"annotating: %@", nextArrivals );
         annotation.title = nextArrivals;
+        annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
         annotation.stop_id = stop_id;
         //NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
         //NSLog(@"class: %@", [[self.imminentStops objectAtIndex:0] class]);
@@ -143,8 +150,8 @@
         pinView.canShowCallout = YES;
         //pinView.animatesDrop = YES; // this causes a callout bug where the callout get obscured by some pins
         
-        UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        pinView.rightCalloutAccessoryView = detailButton;        
+
+
     }
     if ([annotation respondsToSelector:@selector(isFirstStop)] && ((StopAnnotation *)annotation).isFirstStop) {
         pinView.pinColor = MKPinAnnotationColorGreen;
@@ -153,11 +160,24 @@
     } else {
         pinView.pinColor = MKPinAnnotationColorRed;   
     }
+    
+    if ([annotation respondsToSelector:@selector(numNextArrivals)] && [((StopAnnotation *)annotation).numNextArrivals intValue] > 1) {
+        UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];        
+        pinView.rightCalloutAccessoryView = detailButton;          
+    } else {
+        pinView.rightCalloutAccessoryView = nil;             
+    }
 	return pinView;
 }
 
 - (void)mapView:(MKMapView *)aMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     NSLog(@"pin tapped for %@ : stop_id: %@", ((StopAnnotation *)view.annotation).title, ((StopAnnotation *)view.annotation).stop_id);
+    
+    if ([view.annotation respondsToSelector:@selector(numNextArrivals)] && 
+        [((StopAnnotation *)view.annotation).numNextArrivals intValue] < 2) {
+        return;
+    } 
+        
     if (stopArrivalsViewController == nil) {
         stopArrivalsViewController = [[StopArrivalsViewController alloc] initWithNibName:@"StopArrivalsViewController" bundle:nil];
     }

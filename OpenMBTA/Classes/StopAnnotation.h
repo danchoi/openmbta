@@ -16,13 +16,14 @@
     NSString *next_arrivals;
     BOOL isNextStop;
     BOOL isFirstStop;
+    NSNumber *numNextArrivals;
 }
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *stop_id;
 @property (nonatomic, copy) NSString *next_arrivals;
-
+@property (nonatomic, copy) NSNumber *numNextArrivals;
 @property(nonatomic, getter=isNextStop) BOOL isNextStop;
 @property(nonatomic, getter=isFirstStop) BOOL isFirstStop;
 
