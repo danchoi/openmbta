@@ -6,37 +6,18 @@ class Trip < ActiveRecord::Base
   has_many :stoppings, :order => "position asc"
   has_many :stops, :through => :stoppings
 
-  # date is a string YYYYMMDD or Date
+  TRIP_FINDERS = {
+    :bus => BusTrips,
+    :commuter_rail => CommuterRailTrips
+  }
+
   def self.for(options) 
-    route_id = options[:route_id] ? [options[:route_id]].flatten : nil
-    route_type = options[:route_type]
-    headsign = options[:headsign]
-    # date is a string
-    date = options[:date]
+    trips = TRIP_FINDERS[options[:transport_type]].trips(options)
 
-    service_ids = Service.active_on(date).map(&:id)
-
-    # Just get the next 10 or so trips that have not finished yet
-    now = Time.now.strftime "%H:%M:%S"
-
-    # THIS PART NEEDS TO DIFFER PER TRANSPORT TYPE
-    trips = if route_id 
-              Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_id, headsign, service_ids], :order => "start_time asc", :limit => 10)
-            else # commuter rail
-              Trip.all(:joins => :route,
-                       :conditions => ["trips.route_type = ? and routes.mbta_id  = ? and service_id in (?) and end_time > '#{now}'", route_type, headsign, service_ids], :order => "start_time asc", :limit => 10)
-            end
-    
     if trips.empty?
-      # TODO
-      raise "TODO get trips from beginning of next day"
-      trips = Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?)", route_id, headsign, service_ids], :order => "start_time desc", :limit => 10)
+      # send back a message 
+      return {:message => "No more trips for the day"}
     end
-    if trips.empty?
-      raise "No trips for params: #{options.inspect}"
-    end
-    # END OF PART
-
     trip_ids = trips.map(&:id)
 
     stops = Stop.all(:select => "stops.*, count(*) as num_stoppings", :joins => :stoppings, :conditions => ["stoppings.trip_id in (?)", trip_ids], :group => "stoppings.stop_id")
@@ -71,8 +52,7 @@ class Trip < ActiveRecord::Base
       :region => {:center_lat => center_lat, :center_lng => center_lng, :lat_span => lat_span, :lng_span => lng_span} 
     }
 
-    result.merge!(region_info)
-    result
+    result.merge(region_info)
   end
 
   def self.next_arrival_for_stop(stop_id, trips)
