@@ -77,7 +77,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType =  UITableViewCellAccessoryNone;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
     }
     NSDictionary *stopping = [self.data objectAtIndex:indexPath.row];
     
@@ -85,7 +86,7 @@
     NSString *stop_name = [stopping objectForKey:@"stop_name"];
 
 	// Configure the cell.
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ more stops", arrival_time, stop_name];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", arrival_time, stop_name];
     return cell;
 }
 

@@ -2021,10 +2021,14 @@ shows the remaining stops on a particular trip.
 Tomorrow I can work on custom table cells. And exploring how the Commuter Rail and
 Subway sections work.
 
+--------------------------------------------------------------------------------
+21:06 Saturday night
 
+Finished wiring up TripViewController. Now the rest seems to be refining the
+look. And then making sure that subway and commuter rail work. Tomorrow will be
+devoted to this.
 
-
-
+Monday I can start working on my RubyCocoa app!
 
 
 
