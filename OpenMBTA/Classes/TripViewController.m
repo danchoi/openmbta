@@ -18,6 +18,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // show the callouts for first stop    
+    for (id annotation in mapView.annotations) {
+        if (((StopAnnotation *)annotation).isFirstStop) {
+            
+            [mapView selectAnnotation:annotation animated:YES];
+            break;
+        }
+    }
+}
 
 - (void)dealloc {
     self.trip_id = nil;
@@ -36,5 +47,7 @@
     [operationQueue addOperation:operation];
     [operation release];
 }
+
+
 
 @end

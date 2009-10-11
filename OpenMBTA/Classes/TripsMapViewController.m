@@ -2,10 +2,6 @@
 
 
 @interface TripsMapViewController (Private)
-- (void)startLoadingData;
-- (void)prepareMap;
-- (void)annotateStops;
-- (void)didFinishLoadingData:(NSString *)rawData;
 @end
 
 
@@ -107,16 +103,8 @@
         NSDictionary *stopDict = [stops objectForKey:stop_id];
         NSString *stopName =  [stopDict objectForKey:@"name"];
         annotation.subtitle = stopName;
-        
-        NSString *nextArrivals;
-        if ([[stopDict objectForKey:@"next_arrivals"] count] > 0) {
-            nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
-        } else {
-            nextArrivals = @"No more arrivals today";
-        }
-        
-        //NSLog(@"annotating: %@", nextArrivals );
-        annotation.title = nextArrivals;
+    
+        annotation.title = [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
         annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
         annotation.stop_id = stop_id;
         //NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
@@ -136,6 +124,12 @@
         annotation.coordinate = coordinate;
         [mapView addAnnotation:annotation];
     }
+}
+
+
+- (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {
+    //NSLog(@"annotating: %@", nextArrivals );
+    return [nextArrivals count] > 0 ? [nextArrivals componentsJoinedByString:@" "] : @"No more arrivals today";
 }
 
 

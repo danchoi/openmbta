@@ -55,7 +55,7 @@ class Trip < ActiveRecord::Base
     center_lat = (lats.max + lats.min) / 2 
     center_lng = (lngs.max + lngs.min) / 2
     lat_span = (lats.max - lats.min) * 1.15
-    lng_span = (lngs.max - lngs.min) * 1.1
+    lng_span = (lngs.max - lngs.min) * 1.35
     # Shift center lat up a little to compensate for height of pin
     center_lat = center_lat + (lat_span * 0.05)
 

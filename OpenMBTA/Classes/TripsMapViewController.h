@@ -37,4 +37,12 @@
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;
 @property (nonatomic, retain) NSString *transportType;
+
+- (void)startLoadingData;
+- (void)prepareMap;
+- (void)annotateStops;
+- (void)didFinishLoadingData:(NSString *)rawData;
+- (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals;
+
+
 @end
