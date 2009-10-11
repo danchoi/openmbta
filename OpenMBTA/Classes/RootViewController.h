@@ -10,8 +10,9 @@
 @class RoutesViewController;
 
 @interface RootViewController : UITableViewController {
-    TripsMapViewController *tripsMapViewController;
     RoutesViewController *routesViewController;
     NSOperationQueue *operationQueue;
+    NSArray *menu;
 }
+@property (nonatomic,retain) NSArray *menu;
 @end

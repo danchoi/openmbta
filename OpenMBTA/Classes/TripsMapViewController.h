@@ -20,6 +20,7 @@
     
     NSString *headsign;
     NSString *route_short_name;
+    NSString *transportType;
     
     StopArrivalsViewController *stopArrivalsViewController;
 }
@@ -30,4 +31,5 @@
 @property (nonatomic, retain) NSDictionary *regionInfo;
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;
+@property (nonatomic, retain) NSString *transportType;
 @end

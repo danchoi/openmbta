@@ -1,19 +1,19 @@
 #import "RootViewController.h"
 #import "JSON.h"
-#import "TripsMapViewController.h"
 #import "RoutesViewController.h"
 #import "GetRemoteDataOperation.h"
 #import "ServerUrl.h"
 
 @interface RootViewController (Private)
-- (TripsMapViewController *)tripsMapViewController;
-- (RoutesViewController *)routesViewController;
+
 @end
 
 @implementation RootViewController
+@synthesize menu;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -23,24 +23,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //[self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
-    [self.navigationController pushViewController:[self routesViewController] animated:YES];
+    //[self.navigationController pushViewController:[self routesViewController] animated:YES];
 }
 
-
-- (TripsMapViewController *)tripsMapViewController {
-    if (tripsMapViewController == nil) {
-        tripsMapViewController = [[TripsMapViewController alloc] initWithNibName:@"TripMapsViewController" bundle:nil];
-    }
-    return tripsMapViewController;
-}
-
-- (RoutesViewController *)routesViewController 
-{
-    if (routesViewController == nil) {
-        routesViewController = [[RoutesViewController alloc] initWithStyle:UITableViewStylePlain];
-    }
-    return routesViewController;
-    
+- (void)dealloc {
+    self.menu = nil;
+    [super dealloc];
 }
 
 #pragma mark Table view methods
@@ -52,7 +40,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.menu count];
 }
 
 
@@ -68,26 +56,21 @@
     
 	// Configure the cell.
 
+    NSString *menuChoice = [self.menu objectAtIndex:indexPath.row];
+    cell.textLabel.text = menuChoice;
     return cell;
 }
 
-
-
-/*
-// Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
+    if (routesViewController == nil) {
+        routesViewController = [[RoutesViewController alloc] initWithStyle:UITableViewStylePlain];
+    }
+    
+    NSString *menuChoice = [self.menu objectAtIndex:indexPath.row];
+    routesViewController.transportType = menuChoice;
+  	[self.navigationController pushViewController:routesViewController animated:YES];
 }
-*/
 
-
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

@@ -19,7 +19,7 @@
 @synthesize mapView;
 @synthesize regionInfo;
 @synthesize headsign;
-@synthesize route_short_name;
+@synthesize route_short_name, transportType;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,7 +107,7 @@
     // even escaped ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@", ServerURL, self.route_short_name, headsignAmpersandEscaped];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@&transport_type=%@", ServerURL, self.route_short_name, headsignAmpersandEscaped, self.transportType];
     //NSLog(@"would call API with URL: %@", apiUrl);
     
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

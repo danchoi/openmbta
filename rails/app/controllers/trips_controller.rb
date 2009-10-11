@@ -8,14 +8,35 @@ class TripsController < ApplicationController
     # splits params on ampersands, even escaped ones.
     @headsign = params[:headsign].gsub(/\^/, "&") 
 
-    @route_ids = if params[:route_id]
-                  params[:route_id].split(',')
-                else
-                  # Should move this into model layer, as for Stop#arrivals
-                  Route.all(:conditions => {:short_name => params[:route_short_name]}).map(&:id)
-                end
+    transport_type = params[:transport_type].downcase
 
-    @result = Trip.for(:date => @date, :headsign => @headsign, :route_id => @route_ids)
+    @route_ids = if transport_type == "bus"
+      @route_ids = if params[:route_id]
+                    params[:route_id].split(',')
+                  else
+                    # Should move this into model layer, as for Stop#arrivals
+                    Route.all(:conditions => {:short_name => params[:route_short_name]}).map(&:id)
+                  end
+    else 
+      nil
+    end
+    route_type = case transport_type
+                 when "bus"
+                   3
+                 when "subway"
+                   [0,1]
+                 when "commuter rail"
+                   2
+                 else
+                   4
+                 end
+    if route_type == 2
+      @headsign = "CR-#{@headsign}"
+    end
+    @result = Trip.for(:date => @date, 
+                       :headsign => @headsign, 
+                       :route_id => @route_ids,
+                      :route_type => route_type)
     render :json => @result.to_json
   end
 

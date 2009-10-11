@@ -2128,10 +2128,153 @@ Added this to the response of /trips:
 
   "first_stop":["Massachusetts Ave @ Holyoke St - Holyoke Gate"]}
 
+Now coloring the first stop green.
+
+Next: 
+
+Don't need to say "x more stops" on StopArrivals
+
+Just let the disclosure tap bring up the Map view with the times for that trip
+
+Need to show number of remaining trips per headsign on the Routes table view, 
+because some headsigns only serve 3 trips. And some headsigns are not available
+for certain days, like weekend days.
+
+On views, put the information box on the bottom, to balance out the nav header
+bar.
+
+Trying to get subway trips, but this is bringing up no trips:
+
+SELECT * FROM `trips` WHERE (route_id in (NULL) and headsign = 'Mattapan' and service_id in (17,23,29,54,60,66,72,89,96,101,108,116,134,142,150,157,161,168,172) and end_time > '12:48:30') ORDER BY start_time asc LIMIT 10
+
+Try this:
+
+select * from trips where headsign = 'Mattapan';
+
+The problem is that there is a route id but no route_short_name.
+
+Example:
+
+mysql> select * from trips where headsign = 'Mattapan' limit 2\G
+*************************** 1. row ***************************
+                id: 97639
+           mbta_id: 11687656-LRV409-hlm49011-Weekday-03
+          route_id: 1007
+        service_id: 114
+          headsign: Mattapan
+        start_time: 05:16:00
+          end_time: 05:25:00
+        first_stop: Ashmont Station - Westbound
+         last_stop: Mattapan Station - Westbound
+         num_stops: 8
+        route_type: 0
+service_start_date: 2009-09-08
+  service_end_date: 2009-12-24
+  route_short_name:
+     schedule_type: weekday
+
+These trips all have the same route_id:
+
+mysql> select headsign, num_stops, first_stop, route_id last_stop from trips where headsign = 'Mattapan' limit 200;
++----------+-----------+-----------------------------+-----------+
+| headsign | num_stops | first_stop                  | last_stop |
++----------+-----------+-----------------------------+-----------+
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+| Mattapan |         8 | Ashmont Station - Westbound |      1007 |
+|
+
+But NOT the same service id.
+114 and 115 for Mattapan
 
 
+I think I need to change the way the routes data is structured so that route_ids are passed:
+
+hellenic ~/MBTA/rails: curl "http://localhost:3000/routes?transport_type=Subway"
+[{"route_short_name":"Other","headsigns":["Alewife","Ashmont","B - Boston College","Bowdoin","Braintree","C - Cleveland Circle","D - Riverside","E - Heath Street","Forest Hills","Government Center","Lechmere","Mattapan","North Station","Oak Grove","Wonderland"]}]
+
+OR I can treat subway and commuter rail differently from bus.
+
+Now subway and commuter rails return these data structures:
+
+curl 'http://localhost:3000/routes?transport_type=Commuter%20Rail'
+[{"route_short_name":"Commuter Rail Lines","headsigns":["Fairmount","Fitchburg","Franklin","Greenbush","Haverhill","Lowell","Needham","Newburyport","OldColony","Providence","Worcester"]}]hellenic ~/MBTA/rails:
+
+Boat doesn't quite work with this structure.
 
 
+Boats:
+
++--------------------------------+
+| mbta_id                        |
++--------------------------------+
+| Boat-F1-IB-600AM-FallWeekday   |
+| Boat-F1-IB-630AM-FallWeekday   |
+| Boat-F1-IB-650AM-FallWeekday   |
+| Boat-F1-IB-715AM-FallWeekday   |
+| Boat-F1-IB-745AM-FallWeekday   |
+| Boat-F1-IB-800AM-FallWeekday   |
+| Boat-F1-IB-820AM-FallWeekday   |
+| Boat-F1-IB-845AM-FallWeekday   |
+| Boat-F1-IB-915AM-FallWeekday   |
+| Boat-F1-IB-1100AM-FallWeekday  |
+| Boat-F1-IB-230PM-FallWeekday   |
+| Boat-F1-IB-410PM-FallWeekday   |
+| Boat-F1-IB-445PM-FallWeekday   |
+| Boat-F1-IB-500PM-FallWeekday   |
+| Boat-F1-IB-540PM-FallWeekday   |
+| Boat-F1-IB-610PM-FallWeekday   |
+| Boat-F1-IB-640PM-FallWeekday   |
+| Boat-F1-IB-740PM-FallWeekday   |
+| Boat-F1-OB-650AM-FallWeekday   |
+| Boat-F1-OB-710AM-FallWeekday   |
+|
+
+It goes from F1 to F4.
+
+
+mysql> select headsign, mbta_id, service_id, route_id from trips where route_type in (0,1) group by route_id, headsign;
++----------------------+--------------------------------------------+------------+----------+
+| headsign             | mbta_id                                    | service_id | route_id |
++----------------------+--------------------------------------------+------------+----------+
+| B - Boston College   | 11671870-LRV409-hlb49016-Saturday-03       |         88 |      957 |
+| Lechmere             | 11671869-LRV409-hlb49016-Saturday-03       |         88 |      957 |
+| B - Boston College   | 11669134-LRV409-hlb49011-Weekday-03        |         87 |      959 |
+| North Station        | 11669178-LRV409-hlb49011-Weekday-03        |         87 |      959 |
+| B - Boston College   | 11669099-LRV409-hlb49011-Weekday-03        |         87 |      961 |
+| Government Center    | 11669098-LRV409-hlb49011-Weekday-03        |         87 |      961 |
+| Government Center    | 11669116-LRV409-hlb49011-Weekday-03        |         87 |      963 |
+| C - Cleveland Circle | 11669454-LRV409-hlb49011-Weekday-03        |         87 |      965 |
+| Lechmere             | 11669390-LRV409-hlb49011-Weekday-03        |         87 |      965 |
+| C - Cleveland Circle | 11669456-LRV409-hlb49011-Weekday-03        |         87 |      967 |
+| North Station        | 11669391-LRV409-hlb49011-Weekday-03        |         87 |      967 |
+| D - Riverside        | 11669436-LRV409-hlb49011-Weekday-03        |         87 |      978 |
+| Government Center    | 11669001-LRV409-hlb49011-Weekday-03        |         87 |      978 |
+| E - Heath Street     | 11669416-LRV409-hlb49011-Weekday-03        |         87 |      992 |
+| Lechmere             | 11669417-LRV409-hlb49011-Weekday-03        |         87 |      992 |
+| E - Heath Street     | 11669593-LRV409-hlb49011-Weekday-03        |         87 |      994 |
+| North Station        | 11669803-LRV409-hlb49011-Weekday-03        |         87 |      994 |
+| Ashmont              | 11687655-LRV409-hlm49011-Weekday-03        |        114 |     1007 |
+| Mattapan             | 11687656-LRV409-hlm49011-Weekday-03        |        114 |     1007 |
+| Forest Hills         | 11714206-RTL409-hmo49011-Weekday-03        |        140 |     1011 |
+| Oak Grove            | 11714207-RTL409-hmo49011-Weekday-03        |        140 |     1011 |
+| Forest Hills         | 11714228-RTL409-hmo49011-Weekday-03        |        140 |     1017 |
+| Alewife              | 11718069-RTL409-hms49011-Weekday-03        |        148 |     1027 |
+| Ashmont              | 11718071-RTL409-hms49011-Weekday-03        |        148 |     1027 |
+| Alewife              | 11722021-RTL409-hms49011-Weekday-03        |        148 |     1033 |
+| Braintree            | 11722022-RTL409-hms49011-Weekday-03        |        148 |     1033 |
+| Bowdoin              | 11695196-RTL409-hmb49011-Weekday-03        |        132 |     1039 |
+| Wonderland           | 11695197-RTL409-hmb49011-Weekday-03        |        132 |     1039 |
+| Bowdoin              | 11711837-RTL409-hmb49011-Weekday-03        |        132 |     1041 |
+| Bowdoin              | BlueGC-11384088-RTL309-hmb39011-Weekday-03 |        170 |     1083 |
+| Wonderland           | BlueGC-11384102-RTL309-hmb39011-Weekday-03 |        170 |     1083 |
++----------------------+--------------------------------------------+------------+----------+
+31 rows in set (0.14 sec)
 
 
 

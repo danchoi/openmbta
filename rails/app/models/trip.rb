@@ -9,6 +9,7 @@ class Trip < ActiveRecord::Base
   # date is a string YYYYMMDD or Date
   def self.for(options) 
     route_id = options[:route_id] ? [options[:route_id]].flatten : nil
+    route_type = options[:route_type]
     headsign = options[:headsign]
     # date is a string
     date = options[:date]
@@ -18,7 +19,13 @@ class Trip < ActiveRecord::Base
     # Just get the next 10 or so trips that have not finished yet
     now = Time.now.strftime "%H:%M:%S"
 
-    trips = Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_id, headsign, service_ids], :order => "start_time asc", :limit => 10)
+
+    trips = if route_id 
+              Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_id, headsign, service_ids], :order => "start_time asc", :limit => 10)
+            else # commuter rail
+              Trip.all(:joins => :route,
+                       :conditions => ["trips.route_type = ? and routes.mbta_id  = ? and service_id in (?) and end_time > '#{now}'", route_type, headsign, service_ids], :order => "start_time asc", :limit => 10)
+            end
     
     if trips.empty?
       # TODO

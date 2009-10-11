@@ -10,17 +10,24 @@
 @end
 
 @implementation RoutesViewController
-@synthesize data;
+@synthesize data, transportType;
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+    self.tableView.sectionIndexMinimumDisplayRowCount = 20;
     operationQueue = [[NSOperationQueue alloc] init];
-    [self startLoadingData];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self startLoadingData];    
+    [super viewWillAppear:animated];
+}
+
 
 - (void)dealloc {
     self.data = nil;
+    self.transportType = nil;
     [operationQueue release];
     [super dealloc];
 }
@@ -33,10 +40,12 @@
     // curl "http://localhost:3000/routes?transport_type=bus
     // change this route later so it is page cacheable
 
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/routes?transport_type=bus", ServerURL];
-    NSLog(@"would call API with URL: %@", apiUrl);
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/routes?transport_type=%@", ServerURL, self.transportType];
+    NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    NSLog(@"would call API with URL: %@", apiUrlEscaped);
     
-    GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrl target:self action:@selector(didFinishLoadingData:)];
+    GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrlEscaped target:self action:@selector(didFinishLoadingData:)];
     
     [operationQueue addOperation:operation];
     [operation release];
@@ -110,6 +119,7 @@
     
     [self tripsMapViewController].headsign = headsign;
     [self tripsMapViewController].route_short_name = routeShortName;
+    [self tripsMapViewController].transportType = self.transportType;
     [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
     
  // Navigation logic may go here -- for example, create and push another view controller.
