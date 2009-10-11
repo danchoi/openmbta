@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class TripViewController;
 
 @interface StopArrivalsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
@@ -16,6 +17,7 @@
     NSString *route_short_name;
     NSArray *data;
     NSOperationQueue *operationQueue;
+    TripViewController *tripViewController;
 }
 @property (nonatomic,copy) NSString *headsign;
 @property (nonatomic,copy) NSString *stop_id;

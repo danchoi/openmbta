@@ -2015,6 +2015,16 @@ This will complete the scaffolding of the iPhone app. The rest is refinement.
 
 I may need to buy a new server account from Linode. But maybe not.
 
+Next step is to build the TripViewController. Another table view controller that
+shows the remaining stops on a particular trip.
+
+Tomorrow I can work on custom table cells. And exploring how the Commuter Rail and
+Subway sections work.
+
+
+
+
+
 
 
 

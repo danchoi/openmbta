@@ -13,7 +13,8 @@ class StopArrivalsController < ApplicationController
         :arrival_time => format_time(stopping.arrival_time),
         :trip_id => stopping.trip_id,
         :more_stops => trip.num_stops - stopping.position,
-        :last_stop => trip.last_stop
+        :last_stop => trip.last_stop,
+        :position => stopping.position
       }
     }
     render :json => result.to_json

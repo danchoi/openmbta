@@ -1,17 +1,23 @@
-#import "StopArrivalsViewController.h"
+//
+//  TripViewController.m
+//  OpenMBTA
+//
+//  Created by Daniel Choi on 10/10/09.
+//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//
+
+#import "TripViewController.h"
 #import "ServerUrl.h"
 #import "GetRemoteDataOperation.h"
 #import "JSON.h"
-#import "TripViewController.h"
 
-@interface StopArrivalsViewController (Private)
+@interface TripViewController (Private)
 - (void)startLoadingData;
 - (void)didFinishLoadingData:(NSString *)rawData;
-@end
+@end 
 
-
-@implementation StopArrivalsViewController
-@synthesize headsign, stop_id, route_short_name, data;
+@implementation TripViewController
+@synthesize trip_id, position, data;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,28 +31,23 @@
 }
 
 - (void)dealloc {
-    self.headsign = nil;
-    self.stop_id = nil;
-    self.route_short_name = nil;
+    self.trip_id = nil;
+    self.position = nil;
     self.data = nil;
+    [tableView release];
     [operationQueue release];
-    [tripViewController release];
+    
     [super dealloc];
 }
+
 
 // This calls the server
 - (void)startLoadingData
 {
-    // the API call structure is /stops_arrivals?stop_id={x}&route_short_name={y}&headsign={z}
-
-    NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
-
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/stop_arrivals?stop_id=%@&route_short_name=%@&headsign=%@", 
-                            ServerURL, self.stop_id, self.route_short_name, headsignAmpersandEscaped];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips/%@?from_position=%@", ServerURL, self.trip_id, self.position];
     NSLog(@"would call API with URL: %@", apiUrl);
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrlEscaped target:self action:@selector(didFinishLoadingData:)];
-    
     [operationQueue addOperation:operation];
     [operation release];
 }
@@ -64,7 +65,6 @@
     return 1;
 }
 
-
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.data count];
@@ -73,42 +73,21 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *CellIdentifier = @"Cell";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     }
     NSDictionary *stopping = [self.data objectAtIndex:indexPath.row];
     
     NSString *arrival_time = [stopping objectForKey:@"arrival_time"];
-    NSString *more_stops = [stopping objectForKey:@"more_stops"];
-    NSString *last_stop = [stopping objectForKey:@"last_stop"];    
-    //NSString *trip_id = [stopping objectForKey:@"stop_id"];
+    NSString *stop_name = [stopping objectForKey:@"stop_name"];
+
 	// Configure the cell.
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ more stops", arrival_time, more_stops];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Last stop: %@", last_stop];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ more stops", arrival_time, stop_name];
     return cell;
 }
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-
-    NSDictionary *stopping = [self.data objectAtIndex:indexPath.row];
-    NSString *position = [stopping objectForKey:@"position"];    
-    NSString *trip_id = [stopping objectForKey:@"trip_id"];    
-    
-    if (tripViewController == nil) {
-        tripViewController = [[TripViewController alloc] initWithNibName:@"TripViewController" bundle:nil];
-    }
-    tripViewController.trip_id = trip_id;
-    tripViewController.position = position;
-
-    [self.navigationController pushViewController:tripViewController animated:YES];
-    
-}
 
 @end

@@ -1,6 +1,7 @@
 require 'json_printer'
 
 class TripsController < ApplicationController
+  include TimeFormatting
   def index
     @date = params[:date] || Date.today.to_s
     # This is a hack because we sometime need to include an ampersand in the headsign and Rails
@@ -20,5 +21,14 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    from_position = params[:from_position]
+    result = @trip.stoppings.all(:conditions => ["position >= ?", from_position.to_i]).
+      map {|stopping|
+        { 
+          :stop_name => stopping.stop.name,
+          :arrival_time => format_time(stopping.arrival_time)
+        }
+    }
+    render :json => result.to_json
   end
 end

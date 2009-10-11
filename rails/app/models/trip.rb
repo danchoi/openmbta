@@ -3,7 +3,7 @@ class Trip < ActiveRecord::Base
   extend TimeFormatting
   belongs_to :route
   belongs_to :service
-  has_many :stoppings
+  has_many :stoppings, :order => "position asc"
   has_many :stops, :through => :stoppings
 
   # date is a string YYYYMMDD or Date
