@@ -36,6 +36,14 @@ class Service < ActiveRecord::Base
     (presumably_active_on(date) + added_for(date)).uniq - removed_for(date)
   end
 
+  def self.active_today
+    self.active_on(Now.date)
+  end
+
+  def self.ids_active_today
+    self.active_on(Now.date).map(&:id)
+  end
+
 
   def self.populate
     Generator.generate('calendar.txt') do |row|

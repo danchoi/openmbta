@@ -11,7 +11,7 @@
 
 
 @implementation StopArrivalsViewController
-@synthesize headsign, stop_id, route_short_name, stop_name, data;
+@synthesize headsign, stop_id, route_short_name, stop_name, data, transportType;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,8 +44,8 @@
 
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/stop_arrivals?stop_id=%@&route_short_name=%@&headsign=%@", 
-                            ServerURL, self.stop_id, self.route_short_name, headsignAmpersandEscaped];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/stop_arrivals?stop_id=%@&route_short_name=%@&headsign=%@&transport_type=%@", 
+                            ServerURL, self.stop_id, self.route_short_name, headsignAmpersandEscaped, self.transportType];
     NSLog(@"would call API with URL: %@", apiUrl);
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrlEscaped target:self action:@selector(didFinishLoadingData:)];

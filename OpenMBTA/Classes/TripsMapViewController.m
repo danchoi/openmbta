@@ -185,6 +185,7 @@
     stopArrivalsViewController.stop_id = ((StopAnnotation *)view.annotation).stop_id;
     stopArrivalsViewController.stop_name = ((StopAnnotation *)view.annotation).subtitle;
     stopArrivalsViewController.route_short_name = self.route_short_name;
+    stopArrivalsViewController.transportType = self.transportType;
     [self.navigationController pushViewController:stopArrivalsViewController animated:YES];
 }
 

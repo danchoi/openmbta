@@ -3,24 +3,32 @@ class Stop < ActiveRecord::Base
   has_many :trips, :through => :stoppings
   validates_uniqueness_of :mbta_id
 
-  # returns stoppings representing the upcoming arrivals at this stop
+  include TimeFormatting
+
+  STOP_ARRIVAL_FINDERS = {
+    :bus => BusStopArrivals,
+    :commuter_rail => CommuterRailStopArrivals
+  }
+
+  # returns a representation of the upcoming arrivals at this stop
   def arrivals(options)
-    route_short_name = options[:route_short_name]
-    headsign = options[:headsign]
-    date = options[:date] || Date.today.to_s
-    service_ids = Service.active_on(date).map(&:id)
-    route_ids = Route.all(:conditions => {:short_name => options[:route_short_name]}).map(&:id)
-
-    now = Time.now.strftime "%H:%M:%S"
-    stoppings = Stopping.all(
-      :joins => "inner join trips on trips.id = stoppings.trip_id",
-      :conditions => ["stoppings.stop_id = ? and trips.route_id in (?) and " + 
-        "trips.service_id in (?) and trips.headsign = ? " +
-        "and stoppings.arrival_time > '#{now}'", self.id, route_ids, service_ids, headsign],
-      :order => "stoppings.arrival_time asc"
-    )
+    stoppings = STOP_ARRIVAL_FINDERS[options[:transport_type]].arrivals(self.id, options)
+    stoppings.map {|stopping|
+      # Discovered the the position field of trips is not reliable. So we must
+      # calculate.
+      # Would be better if we fixed all the data in the database in one shot.
+      trip = stopping.trip
+      trip_num_stops = trip.stoppings.count
+      position = trip.stoppings.index(stopping) + 1
+      {
+        :arrival_time => format_time(stopping.arrival_time),
+        :trip_id => stopping.trip_id,
+        :more_stops => trip_num_stops - position, # trip.num_stops - stopping.position,
+        :last_stop => trip.last_stop,
+        :position => position # stopping.position
+      }
+    }
   end
-
 
   def self.populate
     Generator.generate('stops.txt') do |row|
