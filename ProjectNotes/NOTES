@@ -2416,6 +2416,8 @@ select routes.mbta_id, trips.headsign, count(trips.id) as trips_remaining from r
 
 
 
+TODO Deal with "no more trips for today" message with pop up or something.
+
 
 
 
