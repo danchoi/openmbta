@@ -7,7 +7,8 @@ module TimeFormatting
     suffix = 'am'
     if hour > 24
       hour = hour - 24
-      suffix = 'am'
+    elsif hour == 12
+      suffix = 'pm'
     elsif hour == 24
       hour = 12
       suffix = 'am'

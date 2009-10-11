@@ -50,13 +50,18 @@ class Trip < ActiveRecord::Base
     # TODO make adjustments
     lats  = stops.map {|stop| stop.lat}
     lngs  = stops.map {|stop| stop.lng}
-    # shift center lat down a little because of height of pin
-    center_lat = (lats.max + lats.min) / 2
+    center_lat = (lats.max + lats.min) / 2 
     center_lng = (lngs.max + lngs.min) / 2
-    lat_span = (lats.max - center_lat) * 2.2
-    lng_span = (lngs.max - center_lng) * 2.2
+    lat_span = (lats.max - center_lat) * 1.9
+    lng_span = (lngs.max - center_lng) * 1.8
+    # Shift center lat up a little to compensate for height of pin
+    center_lat = center_lat + (lat_span * 0.05)
 
-    result.merge!(:region => {:center_lat => center_lat, :center_lng => center_lng, :lat_span => lat_span, :lng_span => lng_span})
+    region_info = {
+      :region => {:center_lat => center_lat, :center_lng => center_lng, :lat_span => lat_span, :lng_span => lng_span} 
+    }
+
+    result.merge!(region_info)
     result
   end
 

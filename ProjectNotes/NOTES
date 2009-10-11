@@ -2116,6 +2116,9 @@ Next do favorites.
 
 Then start polishing the app.
 
+The TripViewController should not be a table but a map.
+
+
 
 
 
