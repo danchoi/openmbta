@@ -11,7 +11,7 @@
 
 
 @implementation StopArrivalsViewController
-@synthesize headsign, stop_id, route_short_name, data;
+@synthesize headsign, stop_id, route_short_name, stop_name, data;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,6 +21,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self startLoadingData];
+    headsignLabel.text = self.headsign;
+    stopNameLabel.text = self.stop_name;
     [super viewWillAppear:animated];
 }
 
@@ -29,6 +31,7 @@
     self.stop_id = nil;
     self.route_short_name = nil;
     self.data = nil;
+    self.stop_name = nil;
     [operationQueue release];
     [tripViewController release];
     [super dealloc];

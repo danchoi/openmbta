@@ -2030,5 +2030,93 @@ devoted to this.
 
 Monday I can start working on my RubyCocoa app!
 
+Need to implement bookmarks and T feed
+
+Maybe the best way is to proxy the T-alert through the API server so it can be 
+formatted as JSON and so that it is future-proofed against T-alert feed 
+spec changes.
+
+I might also put in a hook to show a pop up alert if there's a T-alert for a
+particular line.
+
+
+
+Repeated from above:
+
+--------------------------------------------------------------------------------
+T alert RSS feed IDS
+
+Hi, folks,
+We know there is still work to be done on our end to make the T-Alerts
+RSS feed as helpful as possible to developers and other users.  We are
+working to improve the consistency of the information and to
+streamline the XML feed to make it machine-readable.
+
+In the meantime, we have developed two ID files that describe the
+piece of infrastructure affected by each Alert (Green Line, #1 Bus,
+Ashmont Elevator on Eastbound Platform, etc.).  The ID files will be
+posted later today in a ZIP on the Developers Page, immediately below
+the "T Alerts" link.  (I've provided the rapid-transit and commuter-
+rail IDs below, for those who can't wait!)
+
+You can access Alerts for each individual piece of infrastructure by
+attaching "?(###)" at the end of the full feed string (http://
+talerts.com/rssfeed/alertsrss.aspx).
+
+For example,
+
+http://talerts.com/rssfeed/alertsrss.aspx?17 will feed Green Line
+Alerts.
+http://talerts.com/rssfeed/alertsrss.aspx?58 will feed #1 Bus Alerts.
+http://talerts.com/rssfeed/alertsrss.aspx?HP46 will feed Ashmont
+Elevator EB Platform Alerts.
+
+Is this information helpful to those working on integrating T-Alerts
+into applications?
+
+Best,
+Chris from EOT
+
+Fairmount       1
+Fitchburg/South Acton   2
+Framingham/Worcester    4
+Franklin/Forge Park     5
+Haverhill       7
+Lowell  8
+Middleborough/Lakeville 9
+Needham 10
+Newburyport/Rockport    11
+Kingston/Plymouth       12
+Providence/Stoughton    14
+Red Line        15
+Orange Line     16
+Green Line      17
+Blue Line       18
+Washington Street       19
+SL1: Airport Terminal - South Station   20
+SL2: Boston Marine Industrial Park - South Station      28
+SL3: City Point - South Station via Boston Marine Industrial Park       29
+All Lines/Routes        99
+Silver Line Washington St.    Dudley Station - Downtown via Washington
+Street  53
+Mattapan Trolley Shuttle Bus    Mattapan Sta. - Ashmont Sta.    57
+Greenbush        232
+Red Line - Mattapan Line        233 
+
+--------------------------------------------------------------------------------
+Sun Oct 11 10:40:59 EDT 2009
+
+Got a copy of the RSS 2 feed for the T-Alerts. Ready to write Ruby code to
+analyze this. Then I'll write the iPhone UITableView to show the recent alerts.
+
+The question is how to cache this T-Alert data. Maybe the same way I cache it at
+kindlefeeder.com
+
+Next do favorites.
+
+Then start polishing the app.
+
+
+
 
 

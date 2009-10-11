@@ -64,7 +64,7 @@
 
         NSString *nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
         //NSLog(@"annotating: %@", nextArrivals );
-        annotation.title = [NSString stringWithFormat:@"next: %@", nextArrivals];
+        annotation.title = nextArrivals;
         annotation.stop_id = stop_id;
         //NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
         //NSLog(@"class: %@", [[self.imminentStops objectAtIndex:0] class]);
@@ -96,19 +96,12 @@
 
 // This calls the server
 - (void)startLoadingData
-{
-    // Here is the structure of the API call:
-    // /trips?date=20091008&route_short_name=1&headsign=Dudley%20Station%20via%20Mass.%20Ave.
-    // Need 
-    // 1. the date in the right string format
-    // Use a DateFormatter later, when I have access to the date formatting documentation
-    NSString *dateString = @"20091010"; // This is a just a stub
-    
+{    
     // We need to substitute a different character for the ampersand in the headsign because Rails splits parameters on ampersands,
     // even escaped ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?date=%@&route_short_name=%@&headsign=%@", ServerURL, dateString, self.route_short_name, headsignAmpersandEscaped];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@", ServerURL, self.route_short_name, headsignAmpersandEscaped];
     //NSLog(@"would call API with URL: %@", apiUrl);
     
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -161,6 +154,7 @@
     }
     stopArrivalsViewController.headsign = self.headsign;
     stopArrivalsViewController.stop_id = ((StopAnnotation *)view.annotation).stop_id;
+    stopArrivalsViewController.stop_name = ((StopAnnotation *)view.annotation).subtitle;
     stopArrivalsViewController.route_short_name = self.route_short_name;
     [self.navigationController pushViewController:stopArrivalsViewController animated:YES];
 }
