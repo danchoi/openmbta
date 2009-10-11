@@ -44,7 +44,8 @@ class Trip < ActiveRecord::Base
           :next_arrivals => next_arrival_for_stop(stop.id, trips).map {|time| format_time(time)}}
         memo
       end),
-      :imminent_stop_ids => imminent_stop_ids(trips)
+      :imminent_stop_ids => imminent_stop_ids(trips),
+      :first_stop => trips.map {|t| t.first_stop}.uniq
     }
     # add center coordinates and span, for the iPhone MKMapView
     # TODO make adjustments
@@ -52,8 +53,8 @@ class Trip < ActiveRecord::Base
     lngs  = stops.map {|stop| stop.lng}
     center_lat = (lats.max + lats.min) / 2 
     center_lng = (lngs.max + lngs.min) / 2
-    lat_span = (lats.max - center_lat) * 1.9
-    lng_span = (lngs.max - center_lng) * 1.8
+    lat_span = (lats.max - lats.min) * 1.15
+    lng_span = (lngs.max - lngs.min) * 1.1
     # Shift center lat up a little to compensate for height of pin
     center_lat = center_lat + (lat_span * 0.05)
 

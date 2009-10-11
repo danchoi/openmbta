@@ -2116,7 +2116,19 @@ Next do favorites.
 
 Then start polishing the app.
 
-The TripViewController should not be a table but a map.
+The TripViewController should not be a table but a map. Maybe make the
+TripsMapView controller a subclass of a more generic Map pin displaying
+controller.
+
+Need modal help screens on each view.
+
+Mark the last stop(s) with a green pin?
+
+Added this to the response of /trips:
+
+  "first_stop":["Massachusetts Ave @ Holyoke St - Holyoke Gate"]}
+
+
 
 
 

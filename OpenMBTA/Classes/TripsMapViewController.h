@@ -12,7 +12,8 @@
 
 @interface TripsMapViewController : UIViewController <MKMapViewDelegate> {
     NSDictionary *stops;
-    NSArray *imminentStops;    
+    NSArray *imminentStops;  
+    NSArray *firstStops;
     IBOutlet MKMapView *mapView;
     NSDictionary *regionInfo;
     NSOperationQueue *operationQueue;    
@@ -24,6 +25,7 @@
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *imminentStops;
+@property (nonatomic, retain) NSArray *firstStops;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSDictionary *regionInfo;
 @property (nonatomic, copy) NSString *headsign;

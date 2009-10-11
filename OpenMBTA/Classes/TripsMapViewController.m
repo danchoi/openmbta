@@ -14,7 +14,7 @@
 
 
 @implementation TripsMapViewController
-@synthesize imminentStops;
+@synthesize imminentStops, firstStops;
 @synthesize stops;
 @synthesize mapView;
 @synthesize regionInfo;
@@ -60,7 +60,8 @@
         //NSLog(@"stop: %@", stop);
         StopAnnotation *annotation = [[StopAnnotation alloc] init];
         NSDictionary *stopDict = [stops objectForKey:stop_id];
-        annotation.subtitle = [stopDict objectForKey:@"name"];
+        NSString *stopName =  [stopDict objectForKey:@"name"];
+        annotation.subtitle = stopName;
 
         NSString *nextArrivals = [[stopDict objectForKey:@"next_arrivals"] componentsJoinedByString:@" "];
         //NSLog(@"annotating: %@", nextArrivals );
@@ -72,6 +73,9 @@
         if ([self.imminentStops containsObject:stop_id]) {
             //NSLog(@"THIS IS IMMINENT STOP: %@", stop_id);
             annotation.isNextStop = YES;
+        }
+        if ([self.firstStops containsObject:stopName]) {
+            annotation.isFirstStop = YES;
         }
 
         CLLocationCoordinate2D coordinate;
@@ -85,12 +89,14 @@
 - (void)dealloc {
     self.mapView = nil;
     self.imminentStops = nil;
+    self.firstStops = nil;    
     self.stops = nil;
     self.regionInfo = nil;
     self.headsign = nil;
     self.route_short_name = nil;
     [operationQueue release];
     [stopArrivalsViewController release];
+
     [super dealloc];
 }
 
@@ -120,6 +126,7 @@
     NSDictionary *data = [rawData JSONValue];
     self.stops = [data objectForKey:@"stops"];
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
+    self.firstStops = [data objectForKey:@"first_stop"]; // an array of stop names
     self.regionInfo = [data objectForKey:@"region"];
     //NSLog(@"num stops loaded: %d", [stops count]);
     //NSLog(@"loaded region: %@", regionInfo);    
@@ -139,7 +146,9 @@
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         pinView.rightCalloutAccessoryView = detailButton;        
     }
-    if ([annotation respondsToSelector:@selector(isNextStop)] && ((StopAnnotation *)annotation).isNextStop) {
+    if ([annotation respondsToSelector:@selector(isFirstStop)] && ((StopAnnotation *)annotation).isFirstStop) {
+        pinView.pinColor = MKPinAnnotationColorGreen;
+    } else if ([annotation respondsToSelector:@selector(isNextStop)] && ((StopAnnotation *)annotation).isNextStop) {
         pinView.pinColor = MKPinAnnotationColorPurple;
     } else {
         pinView.pinColor = MKPinAnnotationColorRed;   

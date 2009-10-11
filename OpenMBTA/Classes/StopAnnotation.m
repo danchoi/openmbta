@@ -10,11 +10,12 @@
 
 
 @implementation StopAnnotation
-@synthesize coordinate, title, subtitle, stop_id, next_arrivals, isNextStop;
+@synthesize coordinate, title, subtitle, stop_id, next_arrivals, isNextStop, isFirstStop;
 
 - (id) init {
     if (self = [super init]) {
         self.isNextStop = NO;
+        self.isFirstStop = NO;
     }
     return self;
 }
