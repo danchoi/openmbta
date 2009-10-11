@@ -99,17 +99,19 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
     }
     
 	// Configure the cell.
-    NSUInteger sectionIndex = indexPath.section;
-    NSUInteger rowIndex = indexPath.row;
-    NSDictionary *routeGroup = [self.data objectAtIndex:sectionIndex];
+
+    NSDictionary *routeGroup = [self.data objectAtIndex:indexPath.section];
     NSArray *headsigns = [routeGroup objectForKey:@"headsigns"];
-    NSString *headsign = [headsigns objectAtIndex:rowIndex];
+    NSArray *headsignArray = [headsigns objectAtIndex:indexPath.row];
+    NSString *headsign = [headsignArray objectAtIndex:0];
+    NSNumber *trips_remaining = [headsignArray objectAtIndex:1];
     cell.textLabel.text = headsign;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ trips remaining", trips_remaining];
     return cell;
 }
 
@@ -119,7 +121,8 @@
     NSDictionary *routeGroup = [self.data objectAtIndex:indexPath.section];
     NSString *routeShortName = [routeGroup objectForKey:@"route_short_name"];
     NSArray *headsigns = [routeGroup objectForKey:@"headsigns"];
-    NSString *headsign = [headsigns objectAtIndex:indexPath.row];
+    NSArray *headsignArray = [headsigns objectAtIndex:indexPath.row];
+    NSString *headsign = [headsignArray objectAtIndex:0];
     
     [self tripsMapViewController].headsign = headsign;
     [self tripsMapViewController].route_short_name = routeShortName;
