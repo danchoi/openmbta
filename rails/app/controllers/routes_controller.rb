@@ -2,17 +2,8 @@ class RoutesController < ApplicationController
 
   # This doesn't really return routes, but route short_names and headsigns
   def index
-    transport_types = case params[:transport_type].downcase
-                      when "bus"
-                        3
-                      when "subway"
-                        [0,1]
-                      when "commuter rail"
-                        2
-                      else
-                        4
-                      end
-    @result = Route.routes(*transport_types)
+    transport_type = params[:transport_type].downcase.gsub(' ', "_").to_sym
+    @result = Route.routes(transport_type)
     render :json => @result.to_json
   end
 end

@@ -2276,5 +2276,43 @@ mysql> select headsign, mbta_id, service_id, route_id from trips where route_typ
 +----------------------+--------------------------------------------+------------+----------+
 31 rows in set (0.14 sec)
 
+See that unique headsigns are a problem. See Lechmere is shared between the
+green lines.
+
+
+Need to distinguish between inbound and outbound trips on commuter rail.
+
+Need to redesign the architecture to be more reusable and modular.
+
+Need to formalize the parameters need to generate routes for each transport
+type. This is on the Rails side.
+
+Instead of having case statements and if else control branching in the classes
+and controller actions, I should treat each transport case as distinct.
+
+Use subclassing.
+
+The same applies for the iPhone controllers. Have a parent class, and then
+subclasses for each transport type?
+
+
+TripsMapVC can be shared. Maybe only RoutesViewController needs different
+subclasses for the route types.
+
+
+On the rails side, Trip.for() needs to be different for each transport type.
+We can hide the differences withing this method for a transport_type param
+that causes it to delegate.
+
+But the method must return a common data format.
+
+
+Focus 1st on the problem of generating the Routes menu for CR, Subway, and Boat.
+
+CR is the most important.
+
+select mbta_id from routes where route_type = 2 order by mbta_id asc
+
+select routes.mbta_id from routes inner join trips  where route_type = 2 order by mbta_id asc
 
 

@@ -14,37 +14,18 @@ class Route < ActiveRecord::Base
   named_scope :subway, :conditions => "routes.route_type in (0,1)"
   named_scope :boat, :conditions => "routes.route_type in (4)"
 
+  ROUTES_FINDER = {
+    :bus => BusRoutes,
+    :commuter_rail => CommuterRailRoutes,
+    :subway => SubwayRoutes,
+    :boat => BoatRoutes
+  }
 
   # date is a string YYYYMMDD 
-  def self.routes(*transport_types) 
-    logger.debug("Transport type: #{transport_types.inspect}")
+  def self.routes(transport_type) 
     date = Date.today.to_s
     service_ids = Service.active_on(date).map(&:id)
-
-    case transport_types 
-    when [3] # bus
-      ActiveRecord::Base.connection.select_all("select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign from routes inner join trips on trips.route_id = routes.id where routes.route_type in (#{transport_types.join(',')}) and trips.service_id in (#{service_ids.join(',')}) group by routes.short_name, trips.headsign").
-        group_by {|r| r["route_short_name"]}.
-        map {|short_name, values| {:route_short_name => short_name, 
-            :headsigns => values.map {|x| 
-              x["headsign"] 
-            } 
-          } 
-        }.
-        sort_by {|x| x[:route_short_name].to_i == 0 ? 10000 : x[:route_short_name].to_i }
-    when [4] # boat: has no headsigns, so construct one from mbta id
-    when [0,1] # subway
-      results = [{
-        :route_short_name => "Commuter Rail Lines",
-        :headsigns => ActiveRecord::Base.connection.select_all("select mbta_id from routes where route_type = 2 order by mbta_id asc").map {|x| x['mbta_id'].sub(/^CR-/, '')}
-      }]
-
-    else # commuter rail
-      results = [{
-        :route_short_name => "Commuter Rail Lines",
-        :headsigns => ActiveRecord::Base.connection.select_all("select mbta_id from routes where route_type = 2 order by mbta_id asc").map {|x| x['mbta_id'].sub(/^CR-/, '')}
-      }]
-    end
+    ROUTES_FINDER[transport_type].routes(service_ids)
   end
 
   def self.populate

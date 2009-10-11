@@ -31,7 +31,7 @@ class TripsController < ApplicationController
                    4
                  end
     if route_type == 2
-      @headsign = "CR-#{@headsign}"
+      @headsign = "CR-#{@headsign}" # push all this down to model
     end
     @result = Trip.for(:date => @date, 
                        :headsign => @headsign, 

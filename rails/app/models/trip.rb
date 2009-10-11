@@ -19,7 +19,7 @@ class Trip < ActiveRecord::Base
     # Just get the next 10 or so trips that have not finished yet
     now = Time.now.strftime "%H:%M:%S"
 
-
+    # THIS PART NEEDS TO DIFFER PER TRANSPORT TYPE
     trips = if route_id 
               Trip.all(:conditions => ["route_id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_id, headsign, service_ids], :order => "start_time asc", :limit => 10)
             else # commuter rail
@@ -35,6 +35,8 @@ class Trip < ActiveRecord::Base
     if trips.empty?
       raise "No trips for params: #{options.inspect}"
     end
+    # END OF PART
+
     trip_ids = trips.map(&:id)
 
     stops = Stop.all(:select => "stops.*, count(*) as num_stoppings", :joins => :stoppings, :conditions => ["stoppings.trip_id in (?)", trip_ids], :group => "stoppings.stop_id")
