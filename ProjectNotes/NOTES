@@ -2309,10 +2309,91 @@ But the method must return a common data format.
 
 Focus 1st on the problem of generating the Routes menu for CR, Subway, and Boat.
 
-CR is the most important.
+Commuter Rail is the most important. Group under the mbta_id, and show the trips under that.
 
 select mbta_id from routes where route_type = 2 order by mbta_id asc
 
-select routes.mbta_id from routes inner join trips  where route_type = 2 order by mbta_id asc
+mysql> select routes.mbta_id, trips.headsign from routes inner join trips on routes.id = trips.route_id where trips.route_type = 2 group by trips.headsign order by mbta_id asc;
++----------------+----------------------------------------+
+| mbta_id        | headsign                               |
++----------------+----------------------------------------+
+| CR-Fairmount   | Readville (Train 743)                  |
+| CR-Fairmount   | Readville (Train 745)                  |
+| CR-Fairmount   | Readville (Train 747)                  |
+| CR-Fairmount   | Readville (Train 749)                  |
+| CR-Fairmount   | Readville (Train 753)                  |
+| CR-Fairmount   | Readville (Train 755)                  |
+| CR-Fairmount   | Readville (Train 757)                  |
+| CR-Fairmount   | Readville (Train 759)                  |
+| CR-Fairmount   | Readville (Train 761)                  |
+| CR-Fairmount   | Readville (Train 763)                  |
+| CR-Fairmount   | Readville (Train 765)                  |
+| CR-Fairmount   | Readville (Train 767)                  |
+| CR-Fairmount   | Readville (Train 769)                  |
+| CR-Fairmount   | Readville (Train 771)                  |
+| CR-Fairmount   | South Station (Train 744)              |
+| CR-Fairmount   | South Station (Train 746)              |
+| CR-Fairmount   | South Station (Train 748)              |
+| CR-Fairmount   | South Station (Train 750)              |
+|
+
+select routes.mbta_id, trips.headsign, group_concat(trips.mbta_id) from routes inner join trips on routes.id = trips.route_id where trips.route_type = 2 group by trips.headsign order by mbta_id asc;
+
+
+mysql> select routes.mbta_id, trips.headsign, group_concat(trips.mbta_id) from routes inner join trips on routes.id = trips.route_id where trips.route_type = 2 group by trips.headsign order by mbta_id asc;
++----------------+----------------------------------------+-----------------------------------------------------------+
+| mbta_id        | headsign                               | group_concat(trips.mbta_id)                               |
++----------------+----------------------------------------+-----------------------------------------------------------+
+| CR-Fairmount   | Readville (Train 743)                  | CR-Fairmount-CR-Weekday-743                               |
+| CR-Fairmount   | Readville (Train 745)                  | CR-Fairmount-CR-Weekday-745                               |
+| CR-Fairmount   | Readville (Train 747)                  | CR-Fairmount-CR-Weekday-747                               |
+| CR-Fairmount   | Readville (Train 749)                  | CR-Fairmount-CR-Weekday-749                               |
+| CR-Fairmount   | Readville (Train 753)                  | CR-Fairmount-CR-Weekday-753                               |
+| CR-Fairmount   | Readville (Train 755)                  | CR-Fairmount-CR-Weekday-755                               |
+| CR-Fairmount   | Readville (Train 757)                  | CR-Fairmount-CR-Weekday-757                               |
+| CR-Fairmount   | Readville (Train 759)                  | CR-Fairmount-CR-Weekday-759                               |
+| CR-Fairmount   | Readville (Train 761)                  | CR-Fairmount-CR-Weekday-761                               |
+| CR-Fairmount   | Readville (Train 763)                  | CR-Fairmount-CR-Weekday-763                               |
+| CR-Fairmount   | Readville (Train 765)                  | CR-Fairmount-CR-Weekday-765                               |
+| CR-Fairmount   | Readville (Train 767)                  | CR-Fairmount-CR-Weekday-767                               |
+| CR-Fairmount   | Readville (Train 769)                  | CR-Fairmount-CR-Weekday-769                               |
+| CR-Fairmount   | Readville (Train 771)                  | CR-Fairmount-CR-Weekday-771                               |
+| CR-Fairmount   | South Station (Train 744)              | CR-Fairmount-CR-Weekday-744                               |
+| CR-Fairmount   | South Station (Train 746)              | CR-Fairmount-CR-Weekday-746                               |
+| CR-Fairmount   | South Station (Train 748)              | CR-Fairmount-CR-Weekday-748                               |
+|
+...
+
+| CR-Worcester   | South Station (Train P540)             | CR-Worcester-CR-Weekday-P540                              |
+| CR-Worcester   | South Station (Train P550)             | CR-Worcester-CR-Saturday-P550                             |
+| CR-Worcester   | South Station (Train P552)             | CR-Worcester-CR-Saturday-P552,CR-Worcester-CR-Sunday-P552 |
+| CR-Worcester   | South Station (Train P554)             | CR-Worcester-CR-Saturday-P554,CR-Worcester-CR-Sunday-P554 |
+| CR-Worcester   | South Station (Train P556)             | CR-Worcester-CR-Saturday-P556,CR-Worcester-CR-Sunday-P556 |
+| CR-Worcester   | South Station (Train P558)             | CR-Worcester-CR-Saturday-P558,CR-Worcester-CR-Sunday-P558 |
+| CR-Worcester   | South Station (Train P560)             | CR-Worcester-CR-Saturday-P560,CR-Worcester-CR-Sunday-P560 |
+| CR-Worcester   | South Station (Train P562)             | CR-Worcester-CR-Saturday-P562,CR-Worcester-CR-Sunday-P562 |
+| CR-Worcester   | South Station (Train P564)             | CR-Worcester-CR-Saturday-P564,CR-Worcester-CR-Sunday-P564 |
+| CR-Worcester   | South Station (Train P566)             | CR-Worcester-CR-Saturday-P566,CR-Worcester-CR-Sunday-P566 |
+| CR-Worcester   | Worcester / Union Station (Train P501) | CR-Worcester-CR-Weekday-P501                              |
+| CR-Worcester   | Worcester / Union Station (Train P503) | CR-Worcester-CR-Weekday-P503                              |
+| CR-Worcester   | Worcester / Union Station (Train P509) | CR-Worcester-CR-Weekday-P509                              |
+| CR-Worcester   | Worcester / Union Station (Train P513) | CR-Worcester-CR-Weekday-P513                              |
+| CR-Worcester   | Worcester / Union Station (Train P517) | CR-Worcester-CR-Weekday-P517                              |
+| CR-Worcester   | Worcester / Union Station (Train P519) | CR-Worcester-CR-Weekday-P519                              |
+| CR-Worcester   | Worcester / Union Station (Train P523) | CR-Worcester-CR-Weekday-P523                              |
+| CR-Worcester   | Worcester / Union Station (Train P527) | CR-Worcester-CR-Weekday-P527                              |
+| CR-Worcester   | Worcester / Union Station (Train P529) | CR-Worcester-CR-Weekday-P529                              |
+| CR-Worcester   | Worcester / Union Station (Train P533) | CR-Worcester-CR-Weekday-P533                              |
+| CR-Worcester   | Worcester / Union Station (Train P535) | CR-Worcester-CR-Weekday-P535                              |
+| CR-Worcester   | Worcester / Union Station (Train P537) | CR-Worcester-CR-Weekday-P537                              |
+| CR-Worcester   | Worcester / Union Station (Train P553) | CR-Worcester-CR-Saturday-P553,CR-Worcester-CR-Sunday-P553 |
+| CR-Worcester   | Worcester / Union Station (Train P557) | CR-Worcester-CR-Saturday-P557,CR-Worcester-CR-Sunday-P557 |
+| CR-Worcester   | Worcester / Union Station (Train P561) | CR-Worcester-CR-Saturday-P561,CR-Worcester-CR-Sunday-P561 |
+| CR-Worcester   | Worcester / Union Station (Train P563) | CR-Worcester-CR-Saturday-P563,CR-Worcester-CR-Sunday-P563 |
+| CR-Worcester   | Worcester / Union Station (Train P567) | CR-Worcester-CR-Sunday-P567,CR-Worcester-CR-Saturday-P567 |
++----------------+----------------------------------------+-----------------------------------------------------------+
+816 rows in set (0.31 sec)
+
+
 
 
