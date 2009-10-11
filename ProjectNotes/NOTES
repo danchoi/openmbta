@@ -2448,5 +2448,9 @@ Even with the GTFS data change, we can adapt it on the Rails side.
 
 So continue from where I left off. trying to merge trips from the same CR line.
 
+17:37 This is done. 
+
+Next: make tapping CR stop bring arrivals into view
+
 
 
