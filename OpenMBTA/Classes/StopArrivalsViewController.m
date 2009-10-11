@@ -83,6 +83,9 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+        
     }
     NSDictionary *stopping = [self.data objectAtIndex:indexPath.row];
     
@@ -91,8 +94,8 @@
     NSString *last_stop = [stopping objectForKey:@"last_stop"];    
     //NSString *trip_id = [stopping objectForKey:@"stop_id"];
 	// Configure the cell.
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ more stops", arrival_time, more_stops];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Last stop: %@", last_stop];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ to %@", arrival_time, last_stop];
+    cell.detailTextLabel.text = more_stops;
     return cell;
 }
 

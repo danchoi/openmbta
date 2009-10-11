@@ -39,7 +39,7 @@
 					<object class="IBUITableView" id="5867226">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, 66}, {320, 394}}</string>
+						<string key="NSFrameSize">{320, 380}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -53,13 +53,11 @@
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 						<float key="IBUIRowHeight">4.400000e+01</float>
-						<float key="IBUISectionHeaderHeight">2.200000e+01</float>
-						<float key="IBUISectionFooterHeight">2.200000e+01</float>
 					</object>
 					<object class="IBUILabel" id="490937256">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 8}, {288, 21}}</string>
+						<string key="NSFrame">{{20, 358}, {288, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -76,7 +74,7 @@
 					<object class="IBUILabel" id="797583570">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 37}, {288, 21}}</string>
+						<string key="NSFrame">{{20, 387}, {288, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -168,9 +166,9 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="5867226"/>
 							<reference ref="490937256"/>
 							<reference ref="797583570"/>
-							<reference ref="5867226"/>
 						</object>
 						<reference key="parent" ref="501960989"/>
 					</object>
@@ -221,7 +219,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>StopArrivalsViewController</string>
 					<string>UIResponder</string>
-					<string>{{445, 172}, {320, 480}}</string>
+					<string>{{153, 178}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

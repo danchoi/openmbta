@@ -20,10 +20,11 @@ class Stop < ActiveRecord::Base
       trip = stopping.trip
       trip_num_stops = trip.stoppings.count
       position = trip.stoppings.index(stopping) + 1
+      more_stops = trip_num_stops - position
       {
         :arrival_time => format_time(stopping.arrival_time),
         :trip_id => stopping.trip_id,
-        :more_stops => trip_num_stops - position, # trip.num_stops - stopping.position,
+        :more_stops => more_stops == 0 ? "last stop" : "#{more_stops} more #{more_stops == 1 ? 'stop' : 'stops'}", # trip.num_stops - stopping.position,
         :last_stop => trip.last_stop,
         :position => position # stopping.position
       }
