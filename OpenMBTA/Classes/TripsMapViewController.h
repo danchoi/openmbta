@@ -13,9 +13,10 @@
 #import "ServerUrl.h"
 #import "GetRemoteDataOperation.h"
 #import "StopArrivalsViewController.h"
+#import "BaseViewController.h"
 @class StopArrivalsViewController;
 
-@interface TripsMapViewController : UIViewController <MKMapViewDelegate> {
+@interface TripsMapViewController : BaseViewController <MKMapViewDelegate> {
     NSDictionary *stops;
     NSArray *imminentStops;  
     NSArray *firstStops;

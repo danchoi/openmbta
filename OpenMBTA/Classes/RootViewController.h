@@ -6,15 +6,19 @@
 //  Copyright __MyCompanyName__ 2009. All rights reserved.
 //
 
+#import "BaseViewController.h"
 @class TripsMapViewController;
 @class RoutesViewController;
 @class TAlertsViewController;
 
-@interface RootViewController : UITableViewController {
+
+@interface RootViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource> {
+    IBOutlet UITableView *tableView;
     RoutesViewController *routesViewController;
     TAlertsViewController *tAlertsViewController;
     NSOperationQueue *operationQueue;
     NSArray *menu;
 }
 @property (nonatomic,retain) NSArray *menu;
+@property (nonatomic,retain) UITableView *tableView;
 @end

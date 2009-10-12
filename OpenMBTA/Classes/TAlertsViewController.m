@@ -18,7 +18,7 @@
 @end
 
 @implementation TAlertsViewController
-@synthesize alerts, data;
+@synthesize alerts, data, tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +37,7 @@
 
 - (void)dealloc {
     self.alerts = nil;
+    self.tableView = nil;
     [operationQueue release];
     [super dealloc];
 }
@@ -45,6 +46,7 @@
 // This calls the server
 - (void)startLoadingData
 {    
+    [self showNetworkActivity];
     NSString *apiUrl = [NSString stringWithFormat:@"%@/alerts", ServerURL];
     GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrl target:self action:@selector(didFinishLoadingData:)];
     [operationQueue addOperation:operation];
@@ -53,6 +55,7 @@
 
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
+    [self hideNetworkActivity];
     self.data = [rawData JSONValue];
     NSLog(@"loaded alerts: %d", [self.data count]);  
     [self.tableView reloadData];
@@ -73,7 +76,7 @@
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     

@@ -40,6 +40,7 @@
 // This calls the server
 - (void)startLoadingData
 {
+    [self showNetworkActivity];
     NSString *apiUrl = [NSString stringWithFormat:@"%@/trips/%@?from_position=%@", ServerURL, self.trip_id, self.position];
     NSLog(@"would call API with URL: %@", apiUrl);
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -48,6 +49,6 @@
     [operation release];
 }
 
-
+// the rest of the methods are implemented by the superclass
 
 @end

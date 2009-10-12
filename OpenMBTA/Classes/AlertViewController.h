@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-
-@interface AlertViewController : UIViewController {
+@interface AlertViewController : BaseViewController {
     NSString *alertTitle;
     NSString *pubDate;
     NSString *description;    

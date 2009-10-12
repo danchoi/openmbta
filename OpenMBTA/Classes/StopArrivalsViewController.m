@@ -43,8 +43,9 @@
 // This calls the server
 - (void)startLoadingData
 {
+    [self showNetworkActivity];
     // the API call structure is /stops_arrivals?stop_id={x}&route_short_name={y}&headsign={z}
-
+    
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
     NSString *apiUrl = [NSString stringWithFormat:@"%@/stop_arrivals?stop_id=%@&route_short_name=%@&headsign=%@&transport_type=%@", 
@@ -59,6 +60,7 @@
 
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
+    [self hideNetworkActivity];
     self.data = [rawData JSONValue];
     NSLog(@"loaded %d stoppings", [self.data count]);  
     [tableView reloadData];

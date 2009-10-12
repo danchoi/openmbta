@@ -9,7 +9,7 @@
 @end
 
 @implementation RootViewController
-@synthesize menu;
+@synthesize menu, tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +32,7 @@
     [routesViewController release];
     [tAlertsViewController release];
     self.menu = nil;
+    self.tableView = nil;
     [super dealloc];
 }
 
@@ -43,13 +44,13 @@
 
 
 // Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
     return [self.menu count];
 }
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
@@ -65,11 +66,11 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 4) { 
         if (tAlertsViewController == nil) {
-            tAlertsViewController = [[TAlertsViewController alloc] initWithStyle:UITableViewStylePlain];
+            tAlertsViewController = [[TAlertsViewController alloc] initWithNibName:@"TAlertsViewController" bundle:nil];
         }
         [self.navigationController pushViewController:tAlertsViewController animated:YES];
         return;

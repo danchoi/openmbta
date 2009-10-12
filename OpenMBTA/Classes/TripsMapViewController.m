@@ -70,7 +70,7 @@
 // This calls the server
 - (void)startLoadingData
 {    
-
+    [self showNetworkActivity];
     
     // We need to substitute a different character for the ampersand in the headsign because Rails splits parameters on ampersands,
     // even escaped ones.
@@ -88,6 +88,7 @@
 
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
+    [self hideNetworkActivity];
     if (rawData == nil)
         return;
     

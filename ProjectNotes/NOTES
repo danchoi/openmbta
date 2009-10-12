@@ -2604,9 +2604,10 @@ things now.  I can change this in a future version.
 Added some indexes to service_exceptions that reduced response time from 1000ms
 second to 171ms.
 
-Next: make superclass view controller.
+Next: make superclass view controller. Make the UITableView controllers regular
+view controllers.
 
-
+Superclass can also deal with errors.
 
 
 

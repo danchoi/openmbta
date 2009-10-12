@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
 @class TripViewController;
 
-@interface StopArrivalsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface StopArrivalsViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
     NSString *headsign;
     NSString *stop_id;
