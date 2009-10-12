@@ -70,6 +70,7 @@
     
     NSString *menuChoice = [self.menu objectAtIndex:indexPath.row];
     routesViewController.transportType = menuChoice;
+    routesViewController.shouldReloadData = YES;
     [routesViewController reset];
   	[self.navigationController pushViewController:routesViewController animated:YES];
 }

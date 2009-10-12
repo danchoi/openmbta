@@ -10,7 +10,7 @@
 @end
 
 @implementation RoutesViewController
-@synthesize tableView, data, transportType;
+@synthesize tableView, data, transportType, shouldReloadData;
 
 - (void)viewDidLoad 
 {
@@ -18,12 +18,16 @@
     self.tableView.sectionIndexMinimumDisplayRowCount = 100;
     operationQueue = [[NSOperationQueue alloc] init];
     self.title = @"Routes";
+    shouldReloadData = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.data = nil;
-    [self.tableView reloadData];
-    [self startLoadingData];    
+    if (self.shouldReloadData) {
+        self.data = nil;
+        [self.tableView reloadData];
+        [self startLoadingData];    
+        self.shouldReloadData = NO;
+    }
     [super viewWillAppear:animated];
 }
 
