@@ -2609,6 +2609,12 @@ view controllers.
 
 Superclass can also deal with errors.
 
+15:20 made superclass and implemented network activity indicator.
+
+Next: the common help button
+
+
+
 
 
 

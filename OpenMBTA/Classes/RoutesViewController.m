@@ -60,7 +60,7 @@
     NSString *apiUrl = [NSString stringWithFormat:@"%@/routes/%@", ServerURL, self.transportType];
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-    NSLog(@"would call API with URL: %@", apiUrlEscaped);
+    //NSLog(@"would call API with URL: %@", apiUrlEscaped);
     
     GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrlEscaped target:self action:@selector(didFinishLoadingData:)];
     

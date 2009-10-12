@@ -88,7 +88,6 @@
 
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
-    [self hideNetworkActivity];
     if (rawData == nil)
         return;
     
@@ -153,7 +152,10 @@
         annotation.coordinate = coordinate;
         [mapView addAnnotation:annotation];
     }
+    [self hideNetworkActivity];
+
 }
+
 
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {

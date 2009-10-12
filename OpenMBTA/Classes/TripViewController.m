@@ -42,7 +42,7 @@
 {
     [self showNetworkActivity];
     NSString *apiUrl = [NSString stringWithFormat:@"%@/trips/%@?from_position=%@", ServerURL, self.trip_id, self.position];
-    NSLog(@"would call API with URL: %@", apiUrl);
+    //NSLog(@"would call API with URL: %@", apiUrl);
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrlEscaped target:self action:@selector(didFinishLoadingData:)];
     [operationQueue addOperation:operation];

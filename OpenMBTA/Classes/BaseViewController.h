@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HelpViewController.h"
 
 @interface BaseViewController : UIViewController {
-
+    HelpViewController *helpViewController;
 }
 
 - (void)showNetworkActivity;
 - (void)hideNetworkActivity;
+- (void)addHelpButton;
+- (void)showHelp:(id)sender;
+
 @end
