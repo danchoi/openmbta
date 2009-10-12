@@ -2562,4 +2562,19 @@ pins are good for intervals.
 
 hellenic ~/MBTA/rails: curl http://localhost:3000/alerts
 [{"alert":{"title":"F2 - Quincy-Boston_Logan","guid":"talerts609765997766035","id":1,"pub_date":"2009-10-12T15:41:09Z","link":"","description":"The Quincy Fore River Bridge is estimated to open on\u00a010/12/09 at 3:00PM. Please plan your travel arrangements accordingly. If you have any questions, call the MBTA Harbor Express Ticket Office at (617) 222-6999 for more information.\r "}},{"alert":{"title":"451  451/465/468    North Beverly - Salem Depot via Cabot St. or Tozer Rd.","guid":"talerts609715997266030","id":2,"pub_date":"2009-10-12T14:17:42Z","link":"","description":"Route 451 is being diverted due to road construction on Cabot Street. 3 stops missed on Cabot Street between Edward and Rantool Streets. 10/12/2009 10:06 AM\r "}},{"alert":{"title":"1    Harvard/Holyoke Gate - Dudley Staton via Mass. Ave. ","guid":"talerts607675976865646","id":3,"pub_date":"2009-10-09T20:40:49Z","link":"","description":"Diversion on the Routes 01 & 43 \n\r Tufts Women\u2019s 10K Road Race \n\r Monday October 12, 2009 \n\r Commencing at 12:00PM \n\r Race Routing: \n\r Beacon Street on Charles St.; over the Longfellow Bridge; to Memorial Drive Westbound; around the B.U. Rotary; continuing back along Memorial Drive eastbound; hairpin turn at MIT 
+12:14
+
+T Alerts done. (Remember to create a cron to update the T Alerts.)
+Also done the Network reachability.
+
+Next:
+
+1. clean up iPhone UI. activity indicator on all loading views
+2. add guide pages. 
+3. deploy to Linode.
+4. test for 1 day.
+5. submit to app store. add title page and icon and web page for support.
+
+
+
 
