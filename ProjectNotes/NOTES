@@ -2575,6 +2575,28 @@ Next:
 4. test for 1 day.
 5. submit to app store. add title page and icon and web page for support.
 
+The help page can be a modal with a web view that can be refined over time.
+
+The same controller can be used for all help pages, and send a request
+indicating where the modal was invoked from, so the appropriate help content
+can be returned.
+
+In the modal, receive a link and if it's MBTA.com, open in Safari.
+
+In a future version, cache some data for the rest of the day.
+
+A "Guide" button on all views. Superclass? Both the instantiation and the
+action and creation of the modal.
+
+Can put the activity indicator in these views as well.
+
+14:40 Starbucks Kendall Square. Ready to put in the modal guides.
+
+
+
+
+
+
 
 
 
