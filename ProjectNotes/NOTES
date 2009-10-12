@@ -2533,17 +2533,27 @@ Mon Oct 12 08:31:39 EDT 2009
 
 Boat schedule done this morning. 
 
-Today's agenda: trip alerts, error messages, favorites.
+Today's agenda: trip alerts, error messages
 
 Don't do favorites/bookmarks. It may be complicated because of service days,
 etc. Not essential for this version. Concentrate on trip alerts and error
 messages.
 
-Also need to start mapping the domain and setting up the website.
+Need to start mapping the domain and setting up the website and testing against
+it. Test with live copy on my iPhone and walk around with it.
 
+Exclude airport Shuttle bus. The schedule is useless.
 
+Don't tie alert feeds to routes now. Just put them all in one Table. This is
+enough to release.  Anyway I should start my RubyCocoa project today.
 
+After submitting app, I can refine the testing and checking functions on the
+Ruby side. I can refine the data return and ensure it's integrity, fix for
+mismatch between past midnight API calls and the date.
 
+Make sure the time zone on the Ruby server is EST!
 
+Remember to note that the Subway schedules are very approximate, but the purple
+pins are good for intervals.
 
 

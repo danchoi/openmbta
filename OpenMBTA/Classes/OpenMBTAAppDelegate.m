@@ -14,6 +14,7 @@
 
 @synthesize window;
 @synthesize navigationController;
+@synthesize reachabilityAlert;
 
 
 #pragma mark -
@@ -27,6 +28,7 @@
     [rootViewController release];
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
+    [self testReachability];
 }
 
 
@@ -44,6 +46,46 @@
 	[super dealloc];
 }
 
+- (void) testReachability {
+
+    // Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
+    // method "reachabilityChanged" will be called. 
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+
+	hostReach = [[Reachability reachabilityWithHostName: @"instantwatcher.com"] retain];
+	[hostReach startNotifer];
+	
+}
+
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	Reachability* curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    //NSLog(@"reachability changed: %@", curReach);
+
+    if(curReach == hostReach) {
+        NetworkStatus netStatus = [curReach currentReachabilityStatus];
+        // BOOL connectionRequired= [curReach connectionRequired];
+        if (netStatus == NotReachable) {
+            // NSLog(@"network not reachable!!!");
+            [self showReachabilityAlert];
+        }
+    }
+}
+
+- (void) showReachabilityAlert {
+    if (self.reachabilityAlert == nil) {
+        self.reachabilityAlert = [[UIAlertView alloc] 
+            initWithTitle:@"Network not reachable" 
+                  message:@"This application needs access to the Internet to fetch data. Please turn WiFi or cellular reception on before proceeding."
+                 delegate:nil 
+        cancelButtonTitle:@"OK" 
+        otherButtonTitles:nil]; 
+        [reachabilityAlert show]; 
+        self.reachabilityAlert = nil;
+    }
+}
 
 @end
 
