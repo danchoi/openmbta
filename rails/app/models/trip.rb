@@ -51,8 +51,8 @@ class Trip < ActiveRecord::Base
     lngs  = stops.map {|stop| stop.lng}
     center_lat = lats.size > 1 ? ((lats.max + lats.min) / 2) : lats[0]
     center_lng = lngs.size > 1 ? ((lngs.max + lngs.min) / 2) : lngs[0]
-    lat_span = lats.size > 1 ? ((lats.max - lats.min) * 1.15) : 0.0219
-    lng_span = lngs.size > 1 ? ((lngs.max - lngs.min) * 1.35) : 0.023
+    lat_span = lats.size > 1 ? ((lats.max - lats.min) * 1.05) : 0.0219
+    lng_span = lngs.size > 1 ? ((lngs.max - lngs.min) * 1.00) : 0.023
     # Shift center lat up a little to compensate for height of pin
     center_lat = center_lat + (lat_span * 0.05)
 

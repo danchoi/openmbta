@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", @"T Alerts", nil];
-
+    self.title = @"OpenMBTA";
 
 }
 

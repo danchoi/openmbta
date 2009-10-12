@@ -113,6 +113,9 @@
 {
     self.selected_stop_id = nil;
     
+    if ([self.regionInfo objectForKey:@"center_lat"] == nil) 
+        return;
+    
     MKCoordinateRegion region;    
     region.center.latitude = [[self.regionInfo objectForKey:@"center_lat"] floatValue];
     region.center.longitude = [[self.regionInfo objectForKey:@"center_lng"] floatValue];
