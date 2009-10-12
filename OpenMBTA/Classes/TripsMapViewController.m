@@ -22,7 +22,7 @@
     [mapView setScrollEnabled:YES];
     mapView.showsUserLocation = YES;
     mapView.mapType = MKMapTypeStandard;
-    
+    self.title = @"Map";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -30,6 +30,11 @@
     [mapView removeAnnotations: mapView.annotations];
     [self startLoadingData];
     [super viewWillAppear:animated];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 

@@ -16,6 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     operationQueue = [[NSOperationQueue alloc] init];    
+    self.title = @"Remaining Trips";
 }
 
 - (void)viewWillAppear:(BOOL)animated

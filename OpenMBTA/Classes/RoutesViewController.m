@@ -17,20 +17,11 @@
     [super viewDidLoad];
     self.tableView.sectionIndexMinimumDisplayRowCount = 100;
     operationQueue = [[NSOperationQueue alloc] init];
-    
-/*    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] init];
-    self.navigationItem.leftBarButtonItem = backButtonItem;
-    [backButtonItem release];
- NSLog(@"back bar button: %@", self.navigationItem.hidesBackButton);
- self.navigationItem.hidesBackButton = NO;
- self.navigationItem.backBarButtonItem.title = @"Back";
- 
- */  
+    self.title = @"Routes";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self startLoadingData];    
-    self.title = self.transportType;
     [super viewWillAppear:animated];
 }
 
