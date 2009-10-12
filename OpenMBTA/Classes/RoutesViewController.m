@@ -53,9 +53,6 @@
 // This calls the server
 - (void)startLoadingData
 {
-    // Here is the structure of the API call:
-    // curl "http://localhost:3000/routes?transport_type=bus
-    // change this route later so it is page cacheable
     [self showNetworkActivity];
     NSString *apiUrl = [NSString stringWithFormat:@"%@/routes/%@", ServerURL, self.transportType];
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -71,8 +68,9 @@
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
     [self hideNetworkActivity];
-    self.data = [rawData JSONValue];
-    //NSLog(@"loaded routes: %@", self.data);  
+    NSDictionary *rawDict = [rawData JSONValue];
+    self.data = [rawDict objectForKey:@"data"];
+    [self checkForMessage:rawDict];
     [self.tableView reloadData];
 }
 

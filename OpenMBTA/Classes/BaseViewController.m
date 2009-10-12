@@ -44,6 +44,26 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
+- (void)checkForMessage:(NSDictionary *)someData {
+    if ([someData objectForKey:@"message"] != nil) {
+        NSDictionary *message = [someData objectForKey:@"message"];
+        NSString *title = [message objectForKey:@"title"];
+        NSString *body = [message objectForKey:@"body"];        
+        [self alertMessageTitle:title message:body];
+    } 
+}
+
+- (void)alertMessageTitle:(NSString *)title message:(NSString *)message {
+        UIAlertView *alert = [[UIAlertView alloc] 
+            initWithTitle:title
+                  message:message
+                 delegate:nil 
+        cancelButtonTitle:@"OK" 
+        otherButtonTitles:nil]; 
+        [alert show]; 
+        [alert release];
+}
+
 - (void)dealloc {
     [super dealloc];
 }

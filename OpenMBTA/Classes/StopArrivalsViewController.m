@@ -61,8 +61,9 @@
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
     [self hideNetworkActivity];
-    self.data = [rawData JSONValue];
-    NSLog(@"loaded %d stoppings", [self.data count]);  
+    NSDictionary *rawDict = [rawData JSONValue];
+    self.data = [rawDict objectForKey:@"data"];
+    [self checkForMessage:rawDict];
     [tableView reloadData];
 }
 

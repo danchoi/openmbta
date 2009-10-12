@@ -93,6 +93,7 @@
     
     //NSLog(@"loaded data: %@", rawData);
     NSDictionary *data = [rawData JSONValue];
+    [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
     self.firstStops = [data objectForKey:@"first_stop"]; // an array of stop names

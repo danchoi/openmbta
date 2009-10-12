@@ -4,6 +4,6 @@ class RoutesController < ApplicationController
   def index
     transport_type = params[:transport_type].downcase.gsub(' ', "_").to_sym
     @result = Route.routes(transport_type)
-    render :json => @result.to_json
+    render :json => {:data => @result}.to_json
   end
 end

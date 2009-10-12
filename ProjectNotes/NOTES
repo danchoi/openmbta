@@ -2617,15 +2617,26 @@ Next: the common help button
 The next step here is to implement the Rails HTML that gets return for this 
 view.
 
+The Rails help controller get called like this:
+
+Processing HelpController#show (for 127.0.0.1 at 2009-10-12 16:00:50) [GET]
+  Parameters: {"target_controller"=>"RootViewController"}
+Rendering help/show
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://localhost/help/RootViewController]
+
 So to do:
 1. start help pages (Rails views)
 2. finish the last bit of UI. The boxes below the maps with route short_name and headsign.
 3. Make sure you can open Safari from a link within the help page instructions.
-4. test caching of the help pages, per target controller
+4. test showing error message alert
+5. test caching of the help pages, per target controller
+6. deploy
+7. remember that a lot of stuff can be left until after App store submission. The help
+pages at submission time can just be a single page shared by all, explaining
+what the pin colors are.
 
+a note about the subway.
 
-
-
-
+18:25 about to implement the error alert method in the superclass
 
 

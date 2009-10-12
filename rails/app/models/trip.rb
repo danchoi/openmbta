@@ -17,7 +17,8 @@ class Trip < ActiveRecord::Base
 
     if trips.empty?
       # send back a message 
-      return {:message => "No more trips for the day"}
+      # NOTE that sending any message with cause the app to show an alert
+      return {:message => {:title => "Alert", :body => "No more trips for the day"}}
     end
     trip_ids = trips.map(&:id)
 

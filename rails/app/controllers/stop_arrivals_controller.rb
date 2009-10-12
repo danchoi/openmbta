@@ -7,7 +7,7 @@ class StopArrivalsController < ApplicationController
                             :transport_type => params[:transport_type].downcase.gsub(' ', '_').to_sym)
 
 
-    render :json => result.to_json
+    render :json => {:data => result}.to_json
   end
 
 end
