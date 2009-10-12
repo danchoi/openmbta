@@ -9,9 +9,10 @@
 @synthesize imminentStops, firstStops;
 @synthesize stops;
 @synthesize mapView;
-@synthesize regionInfo;
+@synthesize regionInfo, shouldReloadRegion;
 @synthesize headsign;
 @synthesize route_short_name, transportType;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,15 +24,18 @@
     mapView.showsUserLocation = YES;
     mapView.mapType = MKMapTypeStandard;
     self.title = @"Map";
+    shouldReloadRegion = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [mapView removeAnnotations: mapView.annotations];
+
+    [mapView removeAnnotations: mapView.annotations];    
     [self startLoadingData];
     [super viewWillAppear:animated];
 
 }
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -82,7 +86,12 @@
     self.regionInfo = [data objectForKey:@"region"];
     //NSLog(@"num stops loaded: %d", [stops count]);
     //NSLog(@"loaded region: %@", regionInfo);    
-    [self prepareMap];
+    
+    if (shouldReloadRegion == YES) {
+        [self prepareMap];
+        shouldReloadRegion = NO;
+    }
+    
     [self annotateStops];
 }
 

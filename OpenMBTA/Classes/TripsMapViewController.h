@@ -21,6 +21,7 @@
     NSArray *firstStops;
     IBOutlet MKMapView *mapView;
     NSDictionary *regionInfo;
+    BOOL shouldReloadRegion;
     NSOperationQueue *operationQueue;    
     
     NSString *headsign;
@@ -37,6 +38,7 @@
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;
 @property (nonatomic, retain) NSString *transportType;
+@property (nonatomic, getter=shouldReloadRegion) BOOL shouldReloadRegion;
 
 - (void)startLoadingData;
 - (void)prepareMap;

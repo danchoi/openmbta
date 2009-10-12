@@ -136,6 +136,7 @@
     [self tripsMapViewController].headsign = headsign;
     [self tripsMapViewController].route_short_name = routeShortName;
     [self tripsMapViewController].transportType = self.transportType;
+    [self tripsMapViewController].shouldReloadRegion = YES;
     [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
     
  // Navigation logic may go here -- for example, create and push another view controller.

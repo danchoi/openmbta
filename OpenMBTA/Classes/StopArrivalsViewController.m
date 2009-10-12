@@ -113,6 +113,7 @@
     }
     tripViewController.trip_id = trip_id;
     tripViewController.position = position;
+    tripViewController.shouldReloadRegion = YES;
 
     [self.navigationController pushViewController:tripViewController animated:YES];
     
