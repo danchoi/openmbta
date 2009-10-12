@@ -30,4 +30,13 @@ class Alert < ActiveRecord::Base
       end
     end
   end
+
+  def pub_date
+    read_attribute(:pub_date).strftime('%x %I:%M %p')
+  end
+
+  def title
+    read_attribute(:title).gsub(/\s{2,}/, ' ')
+  end
+
 end
