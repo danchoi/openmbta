@@ -2496,6 +2496,15 @@ Can reuse a lot of the code in TripsMapViewController
 
 Can just make a less capable subclass stub out some of the parent methods.
 
+19:51. Did a lot to clean up the stop arrivals view and the trip view (map)
+
+Basically, the CR and Bus features are working well.
+
+Next: get subway and boat views
+
+instantwatcher.com CPU is fairly idle. Put OpenMBTA there until MBTA assumes 
+responsibility.
+
 
 
 
