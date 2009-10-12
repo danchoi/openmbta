@@ -2509,6 +2509,24 @@ responsibility.
 hellenic ~/MBTA/rails: curl 'http://localhost:3000/routes?transport_type=Subway'
 [{"route_short_name":"Red Line","headsigns":[["Alewife",10],["Braintree",5]]},{"route_short_name":"Blue Line","headsigns":[["Ashmont",11],["Bowdoin",4],["Mattapan",7],["Wonderland",6]]},{"route_short_name":"Green Line","headsigns":[["B - Boston College",11],["C - Cleveland Circle",10],["D - Riverside",9],["E - Heath Street",7],["Government Center",12],["Lechmere",9],["North Station",6]]},{"route_short_name":"Orange Line","headsigns":[["Forest Hills",6],["Oak Grove",5]]}]hellenic ~/MBTA/rails:
 
+23:50 
+
+Subway now works for trips map, stop arrivals, and trip view.  I also got the subway line names
+working without tinkering with the imported MySQL data.
+
+
+TODO:
+
+1. After 12 midnight, the DAY needs to be the previous day to deal with the Service data
+2. If there are no more trains, make sure the app still works.
+
+Next is Boat.
+
+Then tomorrow morning, 
+
+1. trip alerts feed. 
+2. favorites.
+3. Instructions, server messages
 
 
 
