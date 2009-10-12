@@ -10,26 +10,42 @@
 @end
 
 @implementation RoutesViewController
-@synthesize data, transportType;
+@synthesize tableView, data, transportType;
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
     self.tableView.sectionIndexMinimumDisplayRowCount = 100;
     operationQueue = [[NSOperationQueue alloc] init];
+    
+/*    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] init];
+    self.navigationItem.leftBarButtonItem = backButtonItem;
+    [backButtonItem release];
+ NSLog(@"back bar button: %@", self.navigationItem.hidesBackButton);
+ self.navigationItem.hidesBackButton = NO;
+ self.navigationItem.backBarButtonItem.title = @"Back";
+ 
+ */  
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self startLoadingData];    
+    self.title = self.transportType;
     [super viewWillAppear:animated];
-    if (self.data != nil && [self.data count] > 0) {
-        NSIndexPath *ip = [NSIndexPath indexPathForRow: 0 inSection:0];
-        [self.tableView selectRowAtIndexPath:ip animated:NO scrollPosition:UITableViewScrollPositionTop];
-    }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+}
+
+- (void)reset {
+    self.data = nil;
+    [self.tableView reloadData];
+}
 
 - (void)dealloc {
+    self.tableView = nil;
     self.data = nil;
     self.transportType = nil;
     [operationQueue release];
@@ -93,7 +109,7 @@
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     

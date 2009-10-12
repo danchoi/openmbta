@@ -14,6 +14,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", nil];
+
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,11 +65,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (routesViewController == nil) {
-        routesViewController = [[RoutesViewController alloc] initWithStyle:UITableViewStylePlain];
+        routesViewController = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
     }
     
     NSString *menuChoice = [self.menu objectAtIndex:indexPath.row];
     routesViewController.transportType = menuChoice;
+    [routesViewController reset];
   	[self.navigationController pushViewController:routesViewController animated:YES];
 }
 
