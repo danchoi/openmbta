@@ -28,6 +28,8 @@
     NSString *route_short_name;
     NSString *transportType;
     
+    NSString *selected_stop_id;
+    
     StopArrivalsViewController *stopArrivalsViewController;
 }
 @property (nonatomic, retain) NSDictionary *stops;
@@ -39,7 +41,7 @@
 @property (nonatomic, retain) NSString *route_short_name;
 @property (nonatomic, retain) NSString *transportType;
 @property (nonatomic, getter=shouldReloadRegion) BOOL shouldReloadRegion;
-
+@property (nonatomic,copy) NSString *selected_stop_id;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;

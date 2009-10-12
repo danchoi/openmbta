@@ -21,6 +21,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.data = nil;
+    [tableView reloadData]; 
     [self startLoadingData];
     headsignLabel.text = self.headsign;
     stopNameLabel.text = self.stop_name;

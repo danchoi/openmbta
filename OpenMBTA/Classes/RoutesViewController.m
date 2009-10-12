@@ -21,6 +21,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.data = nil;
+    [self.tableView reloadData];
     [self startLoadingData];    
     [super viewWillAppear:animated];
 }

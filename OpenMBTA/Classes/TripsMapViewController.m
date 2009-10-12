@@ -12,7 +12,7 @@
 @synthesize regionInfo, shouldReloadRegion;
 @synthesize headsign;
 @synthesize route_short_name, transportType;
-
+@synthesize selected_stop_id;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +39,16 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    // show the callout selected_stop_id (the last stop tapped) if not nil
+    NSLog(@"selected stop id: %@", self.selected_stop_id);
+    for (id annotation in mapView.annotations) {
+        if (self.selected_stop_id != nil && [annotation respondsToSelector:@selector(stop_id)] && [((StopAnnotation *)annotation).stop_id isEqualToString:self.selected_stop_id]) {
+            
+            [mapView selectAnnotation:annotation animated:YES];
+            break;
+        }
+    }
+    
 }
 
 
@@ -50,6 +60,7 @@
     self.regionInfo = nil;
     self.headsign = nil;
     self.route_short_name = nil;
+    [selected_stop_id release];
     [operationQueue release];
     [stopArrivalsViewController release];
 
@@ -59,6 +70,8 @@
 // This calls the server
 - (void)startLoadingData
 {    
+
+    
     // We need to substitute a different character for the ampersand in the headsign because Rails splits parameters on ampersands,
     // even escaped ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
@@ -97,6 +110,7 @@
 
 - (void)prepareMap 
 {
+    self.selected_stop_id = nil;
     
     MKCoordinateRegion region;    
     region.center.latitude = [[self.regionInfo objectForKey:@"center_lat"] floatValue];
@@ -189,6 +203,7 @@
     }
     stopArrivalsViewController.headsign = self.headsign;
     stopArrivalsViewController.stop_id = ((StopAnnotation *)view.annotation).stop_id;
+    self.selected_stop_id = ((StopAnnotation *)view.annotation).stop_id;
     stopArrivalsViewController.stop_name = ((StopAnnotation *)view.annotation).subtitle;
     stopArrivalsViewController.route_short_name = self.route_short_name;
     stopArrivalsViewController.transportType = self.transportType;
