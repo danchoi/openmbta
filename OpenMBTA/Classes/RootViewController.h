@@ -8,9 +8,11 @@
 
 @class TripsMapViewController;
 @class RoutesViewController;
+@class TAlertsViewController;
 
 @interface RootViewController : UITableViewController {
     RoutesViewController *routesViewController;
+    TAlertsViewController *tAlertsViewController;
     NSOperationQueue *operationQueue;
     NSArray *menu;
 }

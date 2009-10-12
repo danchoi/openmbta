@@ -1,6 +1,7 @@
 #import "RootViewController.h"
 #import "JSON.h"
 #import "RoutesViewController.h"
+#import "TAlertsViewController.h"
 #import "GetRemoteDataOperation.h"
 #import "ServerUrl.h"
 
@@ -13,7 +14,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", nil];
+    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", @"T Alerts", nil];
 
 
 }
@@ -29,6 +30,8 @@
 }
 
 - (void)dealloc {
+    [routesViewController release];
+    [tAlertsViewController release];
     self.menu = nil;
     [super dealloc];
 }
@@ -64,6 +67,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 4) { 
+        if (tAlertsViewController == nil) {
+            tAlertsViewController = [[TAlertsViewController alloc] initWithStyle:UITableViewStylePlain];
+        }
+        [self.navigationController pushViewController:tAlertsViewController animated:YES];
+        return;
+    }
+    
     if (routesViewController == nil) {
         routesViewController = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
     }

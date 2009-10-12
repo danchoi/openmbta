@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091007205534) do
+ActiveRecord::Schema.define(:version => 20091012152216) do
+
+  create_table "alerts", :force => true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.text     "description"
+    t.datetime "pub_date"
+    t.string   "guid"
+  end
+
+  add_index "alerts", ["guid"], :name => "index_alerts_on_guid"
 
   create_table "routes", :force => true do |t|
     t.string  "mbta_id"
