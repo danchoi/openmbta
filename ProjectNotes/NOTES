@@ -2569,8 +2569,7 @@ Also done the Network reachability.
 
 Next:
 
-1. clean up iPhone UI. activity indicator on all loading views
-2. add guide pages. 
+1. clean up iPhone UI. activity indicator on all loading views 2. add guide pages. 
 3. deploy to Linode.
 4. test for 1 day.
 5. submit to app store. add title page and icon and web page for support.
@@ -2613,6 +2612,16 @@ Superclass can also deal with errors.
 
 Next: the common help button
 
+16:01 implemented the common help button, controller, and modal view.
+
+The next step here is to implement the Rails HTML that gets return for this 
+view.
+
+So to do:
+1. start help pages (Rails views)
+2. finish the last bit of UI. The boxes below the maps with route short_name and headsign.
+3. Make sure you can open Safari from a link within the help page instructions.
+4. test caching of the help pages, per target controller
 
 
 
