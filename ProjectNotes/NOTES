@@ -2506,6 +2506,10 @@ instantwatcher.com CPU is fairly idle. Put OpenMBTA there until MBTA assumes
 responsibility.
 
 
+hellenic ~/MBTA/rails: curl 'http://localhost:3000/routes?transport_type=Subway'
+[{"route_short_name":"Red Line","headsigns":[["Alewife",10],["Braintree",5]]},{"route_short_name":"Blue Line","headsigns":[["Ashmont",11],["Bowdoin",4],["Mattapan",7],["Wonderland",6]]},{"route_short_name":"Green Line","headsigns":[["B - Boston College",11],["C - Cleveland Circle",10],["D - Riverside",9],["E - Heath Street",7],["Government Center",12],["Lechmere",9],["North Station",6]]},{"route_short_name":"Orange Line","headsigns":[["Forest Hills",6],["Oak Grove",5]]}]hellenic ~/MBTA/rails:
+
+
 
 
 

@@ -16,9 +16,7 @@ class Route < ActiveRecord::Base
 
   # date is a string YYYYMMDD 
   def self.routes(transport_type) 
-    date = Date.today.to_s
-    service_ids = Service.active_on(date).map(&:id)
-    transport_type.to_s.camelize.constantize.routes(service_ids)
+    transport_type.to_s.camelize.constantize.routes
   end
 
   def self.populate

@@ -1,5 +1,6 @@
 module Bus
-  def self.routes(service_ids)
+  def self.routes
+    service_ids = Service.active_on(Now.date).map(&:id)
     ActiveRecord::Base.connection.select_all("select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) and trips.end_time > '#{Now.time}' group by routes.short_name, trips.headsign").
       group_by {|r| r["route_short_name"]}.
       map {|short_name, values| {:route_short_name => short_name, 
