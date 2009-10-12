@@ -14,18 +14,11 @@ class Route < ActiveRecord::Base
   named_scope :subway, :conditions => "routes.route_type in (0,1)"
   named_scope :boat, :conditions => "routes.route_type in (4)"
 
-  ROUTES_FINDER = {
-    :bus => BusRoutes,
-    :commuter_rail => CommuterRailRoutes,
-    :subway => SubwayRoutes,
-    :boat => BoatRoutes
-  }
-
   # date is a string YYYYMMDD 
   def self.routes(transport_type) 
     date = Date.today.to_s
     service_ids = Service.active_on(date).map(&:id)
-    ROUTES_FINDER[transport_type].routes(service_ids)
+    transport_type.to_s.camelize.constantize.routes(service_ids)
   end
 
   def self.populate

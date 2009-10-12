@@ -5,14 +5,9 @@ class Stop < ActiveRecord::Base
 
   include TimeFormatting
 
-  STOP_ARRIVAL_FINDERS = {
-    :bus => BusStopArrivals,
-    :commuter_rail => CommuterRailStopArrivals
-  }
-
   # returns a representation of the upcoming arrivals at this stop
   def arrivals(options)
-    stoppings = STOP_ARRIVAL_FINDERS[options[:transport_type]].arrivals(self.id, options)
+    stoppings = options[:transport_type].to_s.camelize.constantize.arrivals(self.id, options)
     stoppings.map {|stopping|
       # Discovered the the position field of trips is not reliable. So we must
       # calculate.

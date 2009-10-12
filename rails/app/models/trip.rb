@@ -6,17 +6,13 @@ class Trip < ActiveRecord::Base
   has_many :stoppings, :order => "position asc"
   has_many :stops, :through => :stoppings
 
-  TRIP_FINDERS = {
-    :bus => BusTrips,
-    :commuter_rail => CommuterRailTrips
-  }
 
   def self.for(options) 
 
     trips = if options[:trip_id]
       [Trip.find options[:trip_id]] # for the /trip/show action
     else
-      TRIP_FINDERS[options[:transport_type]].trips(options)
+      options[:transport_type].to_s.camelize.constantize.trips(options)
     end
 
     if trips.empty?
