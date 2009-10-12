@@ -2592,6 +2592,19 @@ Can put the activity indicator in these views as well.
 
 14:40 Starbucks Kendall Square. Ready to put in the modal guides.
 
+Working on the routes. Making them cacheable. 
+
+Made the first level (transport_type routes) cacheable. Leaving the others
+alone because of tricky period character escaping issues. I can deal with
+caching this stuff later using memcached or something.
+
+The only other solution would be to make a table of headsigns. Don't change
+things now.  I can change this in a future version.
+
+Added some indexes to service_exceptions that reduced response time from 1000ms
+second to 171ms.
+
+Next: make superclass view controller.
 
 
 

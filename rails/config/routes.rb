@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.connect ':transport_type/route_headsigns', :controller => 'route_headsigns'
-  map.connect '/routes', :controller => 'routes'
+  map.connect '/routes/:transport_type', :controller => 'routes'
   map.connect '/trips', :controller => 'trips'
   map.connect '/trips/:id', :controller => 'trips', :action => :show
   map.connect '/stop_arrivals', :controller => 'stop_arrivals', :action => :index

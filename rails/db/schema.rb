@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091012152216) do
+ActiveRecord::Schema.define(:version => 20091012185846) do
 
   create_table "alerts", :force => true do |t|
     t.string   "title"
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(:version => 20091012152216) do
     t.date    "date"
     t.integer "exception_type"
   end
+
+  add_index "service_exceptions", ["date", "exception_type"], :name => "index_service_exceptions_on_date_and_exception_type"
+  add_index "service_exceptions", ["service_id", "exception_type"], :name => "index_service_exceptions_on_service_id_and_exception_type"
 
   create_table "services", :force => true do |t|
     t.string  "mbta_id"

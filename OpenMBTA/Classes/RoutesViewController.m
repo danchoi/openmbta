@@ -57,7 +57,7 @@
     // curl "http://localhost:3000/routes?transport_type=bus
     // change this route later so it is page cacheable
 
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/routes?transport_type=%@", ServerURL, self.transportType];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/routes/%@", ServerURL, self.transportType];
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
     NSLog(@"would call API with URL: %@", apiUrlEscaped);
