@@ -28,12 +28,8 @@ module Boat
   def self.trips(options)
     route_mbta_id = NAME_TO_MBTA_ID[options[:route_short_name]]
 
-    conditions = if options[:headsign]  == "Loop"
-      ["routes.mbta_id = ? and first_stop = last_stop and service_id in (?) and end_time > '#{Now.time}'", route_mbta_id, Service.ids_active_today]
-    else
-      first_stop, last_stop = headsign_to_stops(options[:headsign])
-      ["routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and end_time > '#{Now.time}'", route_mbta_id, first_stop, last_stop, Service.ids_active_today]
-    end
+    first_stop, last_stop = headsign_to_stops(options[:headsign])
+    conditions = ["routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and end_time > '#{Now.time}'", route_mbta_id, first_stop, last_stop, Service.ids_active_today]
     Trip.all(:joins => :route,
              :conditions => conditions,
              :order => "start_time asc", 
@@ -42,15 +38,9 @@ module Boat
 
   def self.arrivals(stopping_id, options)
     route_mbta_id = NAME_TO_MBTA_ID[options[:route_short_name]]
-
-    conditions = if options[:headsign]  == "Loop"
-      ["stoppings.stop_id = ? and routes.mbta_id = ? and first_stop = last_stop and service_id in (?) and trips.first_stop = trips.last_stop and stoppings.arrival_time > '#{Now.time}'", 
-        stopping_id, route_mbta_id, Service.ids_active_today]
-    else
-      first_stop, last_stop = headsign_to_stops(options[:headsign])
-      ["stoppings.stop_id = ? and routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and stoppings.arrival_time > '#{Now.time}'", 
+    first_stop, last_stop = headsign_to_stops(options[:headsign])
+    conditions = ["stoppings.stop_id = ? and routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and stoppings.arrival_time > '#{Now.time}'", 
         stopping_id, route_mbta_id, first_stop, last_stop, Service.ids_active_today]
-    end
     Stopping.all(
       :joins => "inner join trips on trips.id = stoppings.trip_id inner join routes on routes.id = trips.route_id",
       :conditions => conditions,
@@ -63,7 +53,7 @@ module Boat
   end
 
   def self.generate_headsign(first_stop, last_stop)
-    first_stop == last_stop ? "Loop" : "#{first_stop} to #{last_stop}"
+    "#{first_stop} to #{last_stop}"
   end
 
   def self.headsign_to_stops(headsign)
