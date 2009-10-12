@@ -22,7 +22,9 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
     // Override point for customization after app launch    
-	
+	RootViewController *rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+    [navigationController pushViewController:rootViewController animated:YES];
+    [rootViewController release];
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 }
