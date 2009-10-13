@@ -17,7 +17,7 @@
     [super viewDidLoad];
     self.tableView.sectionIndexMinimumDisplayRowCount = 100;
     operationQueue = [[NSOperationQueue alloc] init];
-    self.title = @"Routes";
+
     shouldReloadData = YES;
 }
 
@@ -28,6 +28,8 @@
         [self startLoadingData];    
         self.shouldReloadData = NO;
     }
+    
+    self.title = ([self.transportType isEqualToString:@"Commuter Rail"] ? @"CR Lines" : [NSString stringWithFormat:@"%@ Routes", self.transportType]);
     [super viewWillAppear:animated];
 }
 

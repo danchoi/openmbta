@@ -13,10 +13,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    timePicker.date = [NSDate date];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    timePicker.date = [NSDate date];
     [super viewWillAppear:animated];
 }
 
@@ -34,7 +35,13 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"BaseTimeChanged"
                                                             object:self
                                                           userInfo:[NSDictionary dictionaryWithObject:selected forKey:@"NewBaseTime"]];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BaseTimeChanged"
+                                                            object:self
+                                                          userInfo:nil];
     }
+        
+        
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 

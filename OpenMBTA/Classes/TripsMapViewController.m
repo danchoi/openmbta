@@ -251,7 +251,6 @@
         [mapView addAnnotation:annotation];
     }
     [self hideNetworkActivity];
-
 }
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {
@@ -326,11 +325,11 @@
     if ([self.firstStops containsObject:stopName]) {    
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.20 green:0.67 blue:0.094 alpha:1.0];
         cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:12.0];
-        cell.detailTextLabel.text =  [NSString stringWithFormat:@"Starting Point - %@", cell.detailTextLabel.text];
+        cell.detailTextLabel.text =  [NSString stringWithFormat:@"%@ : starting point", cell.detailTextLabel.text];
     } else if ([self.imminentStops containsObject:[stop_id stringValue]]) {
         cell.detailTextLabel.textColor = [UIColor purpleColor];
         cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:12.0];
-        cell.detailTextLabel.text =  [NSString stringWithFormat:@"Arriving Soon - %@", cell.detailTextLabel.text];        
+        cell.detailTextLabel.text =  [NSString stringWithFormat:@"%@ : arriving soon", cell.detailTextLabel.text];        
     } else {
         cell.detailTextLabel.textColor = [UIColor blackColor];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];        
