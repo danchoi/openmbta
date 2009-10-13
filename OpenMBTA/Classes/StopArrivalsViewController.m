@@ -119,7 +119,7 @@
     tripViewController.trip_id = trip_id;
     tripViewController.position = position;
     tripViewController.shouldReloadRegion = YES;
-
+    tripViewController.shouldReloadData = YES;
     [self.navigationController pushViewController:tripViewController animated:YES];
     
 }
