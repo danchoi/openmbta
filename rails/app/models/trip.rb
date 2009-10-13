@@ -45,7 +45,22 @@ class Trip < ActiveRecord::Base
       :imminent_stop_ids => imminent_stop_ids(trips),
       :first_stop => options[:trip_id] ? [stops.first.name] : trips.map {|t| t.first_stop}.uniq
     }
-    # add center coordinates and span, for the iPhone MKMapView
+
+    # Need to add an array of the stop ids in trip order. This is easy for the
+    # case of a single trip, but the algorithm for finding a common order for
+    # overlapping trips is elusive. Just use a hack for that case for now.
+    ordered_stop_ids = if trips.size == 1
+      stops.map {|stop| stop.id}
+    else
+      # a hack for now
+      initial_ordered_stop_ids = trips[0].stoppings.map {|x| x.stop_id} 
+      # just stick in the rest  into a union
+      initial_ordered_stop_ids | result[:stops].keys
+    end
+
+    result = result.merge(:ordered_stop_ids => ordered_stop_ids)
+
+    # Add center coordinates and span, for the iPhone MKMapView
     # TODO make adjustments
     lats  = stops.map {|stop| stop.lat}
     lngs  = stops.map {|stop| stop.lng}

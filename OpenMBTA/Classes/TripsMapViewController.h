@@ -16,14 +16,16 @@
 #import "BaseViewController.h"
 @class StopArrivalsViewController;
 
-@interface TripsMapViewController : BaseViewController <MKMapViewDelegate> {
+@interface TripsMapViewController : BaseViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource> {
     NSDictionary *stops;
+    NSArray *orderedStopIds;    
     NSArray *imminentStops;  
     NSArray *firstStops;
     IBOutlet MKMapView *mapView;
     NSDictionary *regionInfo;
     BOOL shouldReloadRegion;
-    NSOperationQueue *operationQueue;    
+    NSOperationQueue *operationQueue;
+    IBOutlet UITableView *tableView;
     
     NSString *headsign;
     NSString *route_short_name;
@@ -34,6 +36,7 @@
     StopArrivalsViewController *stopArrivalsViewController;
 }
 @property (nonatomic, retain) NSDictionary *stops;
+@property (nonatomic, retain) NSArray *orderedStopIds;
 @property (nonatomic, retain) NSArray *imminentStops;
 @property (nonatomic, retain) NSArray *firstStops;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
@@ -43,11 +46,12 @@
 @property (nonatomic, retain) NSString *transportType;
 @property (nonatomic, getter=shouldReloadRegion) BOOL shouldReloadRegion;
 @property (nonatomic,copy) NSString *selected_stop_id;
+@property (nonatomic, retain) UITableView *tableView;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;
 - (void)didFinishLoadingData:(NSString *)rawData;
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals;
-
-
+- (void)addSegmentedControl;
+- (void)toggleView:(id)sender;
 @end
