@@ -9,7 +9,6 @@
 #import "OpenMBTAAppDelegate.h"
 #import "RootViewController.h"
 
-
 @implementation OpenMBTAAppDelegate
 
 @synthesize window;
@@ -52,7 +51,7 @@
     // method "reachabilityChanged" will be called. 
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
 
-	hostReach = [[Reachability reachabilityWithHostName: @"mbta.com"] retain];
+	hostReach = [[Reachability reachabilityWithHostName: @"iphonembta.com"] retain];
 	[hostReach startNotifer];
 	
 }

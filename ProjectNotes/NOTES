@@ -2730,11 +2730,16 @@ two levels of navigation.
 
 NEXT: 
 - highlight closest stop <== cancel this. not necessary.
-- display base time 
-- fix up time picker spacing
-- about/gaq
 
-Don't forget to deploy Rails changes to Linode server
+NEXT:
+- display base time properly
+- fix up time picker spacing
+- about/faq - recycle HelpViewController with webview
+- highlight nearest stop to user location <- this will wow the judges, so do it
+
+Don't forget to deploy Rails changes to Linode server each time.
+
+
 
 
 
