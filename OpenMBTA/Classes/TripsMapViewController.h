@@ -58,4 +58,5 @@
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals;
 - (void)addSegmentedControl;
 - (void)toggleView:(id)sender;
+- (void)resetBaseTime;
 @end

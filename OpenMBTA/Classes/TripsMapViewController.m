@@ -5,6 +5,7 @@
 - (void)stopSelected:(NSString *)stopId;
 - (void)addChangeTimeButton;
 - (void)showTimePicker:(id)sender;
+
 @end
 
 
@@ -41,11 +42,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (self.baseTime == nil) {
-        self.baseTime = [NSDate date];
-    } else {
-        
-    }
     
     if (self.shouldReloadData) {
         self.stops = [NSArray array];
@@ -55,7 +51,6 @@
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
         routeNameLabel.text = self.route_short_name;
-
     }
     
     [super viewWillAppear:animated];
@@ -63,11 +58,23 @@
 }
 
 - (void)baseTimeDidChange:(NSNotification *)notification {
-    self.baseTime = [notification.userInfo objectForKey:@"NewBaseTime"];
+    if (notification.userInfo == nil) {
+        [self resetBaseTime];
+    } else {
+        self.baseTime = [notification.userInfo objectForKey:@"NewBaseTime"];
+        self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleDone;
+    }
     NSLog(@"set new base time on trips map to %@", self.baseTime);
     self.shouldReloadData = YES;
     [self viewWillAppear:NO];
     
+}
+
+// public method called by the parent controller to reset base time to current time whenever a
+// new route is selected for this view
+- (void)resetBaseTime { 
+    self.baseTime = nil;
+    self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleBordered;    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -128,7 +135,7 @@
 
 - (void)addChangeTimeButton; {
     UIBarButtonItem *changeTimeButton = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Change Time"
+                                            initWithTitle:@"Shift Time"
                                          style:UIBarButtonItemStyleBordered
                                          target:self 
                                          action:@selector(showTimePicker:)];
@@ -150,7 +157,13 @@
     // even escaped ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@", ServerURL, self.route_short_name, headsignAmpersandEscaped, self.transportType, [self.baseTime description]];
+        
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@",
+                        ServerURL, 
+                        self.route_short_name, 
+                        headsignAmpersandEscaped, 
+                        self.transportType, 
+                        self.baseTime == nil ? [NSDate date] : [self.baseTime description]];
     //NSLog(@"would call API with URL: %@", apiUrl);
     
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

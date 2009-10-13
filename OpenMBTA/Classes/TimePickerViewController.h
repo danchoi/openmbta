@@ -15,4 +15,5 @@
 @property (nonatomic, retain) UIDatePicker *timePicker;
 - (IBAction)doneButtonPressed:(id)sender;
 - (IBAction)cancelButtonPressed:(id)sender;
+- (IBAction)resetButtonPressed:(id)sender;
 @end

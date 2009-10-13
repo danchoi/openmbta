@@ -27,16 +27,27 @@
 
 - (IBAction)doneButtonPressed:(id)sender {
     NSDate *selected = [timePicker date];
-    //NSLog(@"selected time: %@", selected);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BaseTimeChanged"
-                                                        object:self
-                                                      userInfo:[NSDictionary dictionaryWithObject:selected forKey:@"NewBaseTime"]];
+    NSTimeInterval intervalFromNow = fabs([selected timeIntervalSinceDate:[NSDate date]]);
     
+    // If the done button is pressed and the user didn't change the time, don't shift the time
+    if (intervalFromNow > (2 * 60)) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BaseTimeChanged"
+                                                            object:self
+                                                          userInfo:[NSDictionary dictionaryWithObject:selected forKey:@"NewBaseTime"]];
+    }
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
+
+- (IBAction)resetButtonPressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BaseTimeChanged"
+                                                        object:self
+                                                      userInfo:nil];    
+    [self.parentViewController dismissModalViewControllerAnimated:YES];
+}
+
 
 @end

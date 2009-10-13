@@ -143,6 +143,7 @@
     [self tripsMapViewController].transportType = self.transportType;
     [self tripsMapViewController].shouldReloadRegion = YES;
     [self tripsMapViewController].shouldReloadData = YES;
+    [[self tripsMapViewController] resetBaseTime];
     [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
     
  // Navigation logic may go here -- for example, create and push another view controller.

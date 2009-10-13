@@ -2709,8 +2709,8 @@ this is overkill.
 If I go along with 1, I don't have to change the /routes view. Create a modal
 for the TripsMap.
 
-
-
-
+13:44 The time picker now works along with the backend. Now we just need to make
+the UI more informative about when a Time shift is active and what the base time
+is.
 
 
