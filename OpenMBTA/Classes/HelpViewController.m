@@ -24,14 +24,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (self.request == nil) {
-        NSString *urlString = [NSString stringWithFormat:@"%@/help/%@", ServerURL, self.targetControllerName];
-        NSURL *url = [[NSURL alloc] initWithString: urlString];
-        self.request = [[NSURLRequest alloc] initWithURL: url]; 
-        [self showLoadingIndicators];
-        [self.webView loadRequest:self.request];
 
-    }
+    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@", ServerURL, self.targetControllerName];
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
+    self.request = [[NSURLRequest alloc] initWithURL: url]; 
+    [self showLoadingIndicators];
+    [self.webView loadRequest:self.request];
+
+
     [super viewWillAppear:animated];
 }
 
@@ -49,8 +49,19 @@
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
+- (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType {
+    NSURL *url = [aRequest URL];
+    NSString *absoluteURL = [url absoluteString];
+    if ([absoluteURL rangeOfString:@"http://mbta.com"].location != NSNotFound) {   
+        if (![[UIApplication sharedApplication] openURL:url])
+            NSLog(@"%@%@",@"Failed to open url:",[url description]);
+        return NO;
+    }
+    return YES;
+}
 
-- (void)launchSafari:(id)sender {
+
+- (IBAction)launchSafari:(id)sender {
     NSURL *launchURL = [self.webView.request URL];
     if (![[UIApplication sharedApplication] openURL:launchURL])
         NSLog(@"%@%@",@"Failed to open url:",[launchURL description]);
