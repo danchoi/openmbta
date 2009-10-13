@@ -1,4 +1,5 @@
 module CommuterRail
+  extend TimeFormatting
 
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
@@ -6,6 +7,20 @@ module CommuterRail
       group_by {|r| r["mbta_id"]}.
       map { |route_mbta_id, values| { :route_short_name  =>  route_mbta_id.sub(/CR-/, ''), :headsigns => generate_headsigns(values) }}
   end
+
+  # Only one route_short_names , and the headsigns are the train numbers
+  def self.trains(line_name, line_headsign, now = Now.new)
+    service_ids = Service.active_on(now.date).map(&:id)
+    route = Route.first(:conditions => {:mbta_id => "CR-#{line_name}"})
+
+    results = Trip.all(:select => "trips.*, count(stoppings.id) as num_stops",
+      :joins => "inner join stoppings on trips.id = stoppings.trip_id ",
+      :conditions => ["route_id = ? and headsign like ? and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) ", route.id, "#{line_headsign}%"],
+      :group => "stoppings.trip_id"
+    ).map {|trip| [trip.headsign, "Starts at #{format_time(trip.start_time)}; #{trip.num_stops} #{trip.num_stops == 1 ? 'stop' : 'stops'}" ] }
+    result = [{:route_short_name => line_name, :headsigns => results}]
+  end
+
 
   def self.trips(options)
     now = options[:now] || Now.new

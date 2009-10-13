@@ -10,7 +10,7 @@
 @end
 
 @implementation RoutesViewController
-@synthesize tableView, data, transportType, shouldReloadData;
+@synthesize tableView, data, transportType, lineName, lineHeadsign, shouldReloadData;
 
 - (void)viewDidLoad 
 {
@@ -28,8 +28,11 @@
         [self startLoadingData];    
         self.shouldReloadData = NO;
     }
-    
-    self.title = ([self.transportType isEqualToString:@"Commuter Rail"] ? @"CR Lines" : [NSString stringWithFormat:@"%@ Routes", self.transportType]);
+    if (self.lineName) {
+        self.title = @"CR Trains";
+    } else {
+        self.title = ([self.transportType isEqualToString:@"Commuter Rail"] ? @"CR Lines" : [NSString stringWithFormat:@"%@ Routes", self.transportType]);
+    }
     [super viewWillAppear:animated];
 }
 
@@ -46,6 +49,8 @@
 - (void)dealloc {
     self.tableView = nil;
     self.data = nil;
+    self.lineName = nil;
+    self.lineHeadsign = nil;    
     self.transportType = nil;
     [operationQueue release];
     [super dealloc];
@@ -56,7 +61,13 @@
 - (void)startLoadingData
 {
     [self showNetworkActivity];
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/routes/%@", ServerURL, self.transportType];
+    NSString *apiUrl;
+    if (self.lineName == nil && self.lineHeadsign == nil) { // normal case
+        apiUrl = [NSString stringWithFormat:@"%@/routes/%@", ServerURL, self.transportType];
+    } else {
+        apiUrl = [NSString stringWithFormat:@"%@/trains?line_name=%@&line_headsign=%@", ServerURL, self.lineName, self.lineHeadsign];        
+    }
+        
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
     //NSLog(@"would call API with URL: %@", apiUrlEscaped);
@@ -124,10 +135,15 @@
     NSArray *headsigns = [routeGroup objectForKey:@"headsigns"];
     NSArray *headsignArray = [headsigns objectAtIndex:indexPath.row];
     NSString *headsign = [headsignArray objectAtIndex:0];
-    NSNumber *trips_remaining = [headsignArray objectAtIndex:1];
+
     cell.textLabel.text = headsign;
-    NSString *pluralized = [trips_remaining intValue] > 1 ? @"trips" : @"trip";
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ more %@ today", trips_remaining, pluralized];
+    if (self.lineName && self.lineHeadsign) {
+        cell.detailTextLabel.text = [headsignArray objectAtIndex:1];
+    } else {
+        NSNumber *trips_remaining = [headsignArray objectAtIndex:1];
+        NSString *pluralized = [trips_remaining intValue] > 1 ? @"trips" : @"trip";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ more %@ today", trips_remaining, pluralized];
+    }
     return cell;
 }
 
@@ -140,13 +156,26 @@
     NSArray *headsignArray = [headsigns objectAtIndex:indexPath.row];
     NSString *headsign = [headsignArray objectAtIndex:0];
     
-    [self tripsMapViewController].headsign = headsign;
-    [self tripsMapViewController].route_short_name = routeShortName;
-    [self tripsMapViewController].transportType = self.transportType;
-    [self tripsMapViewController].shouldReloadRegion = YES;
-    [self tripsMapViewController].shouldReloadData = YES;
-    [[self tripsMapViewController] resetBaseTime];
-    [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
+    if ([self.transportType isEqualToString:@"Commuter Rail"] && self.lineName == nil) {
+        RoutesViewController *routesViewController = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
+        
+        routesViewController.transportType = @"Commuter Rail";
+        routesViewController.lineName = routeShortName;
+        routesViewController.lineHeadsign = headsign;
+        routesViewController.shouldReloadData = YES;
+        [routesViewController reset];
+        
+        [self.navigationController pushViewController:routesViewController animated:YES];        
+        [routesViewController release];
+    } else { 
+        [self tripsMapViewController].headsign = headsign;
+        [self tripsMapViewController].route_short_name = routeShortName;
+        [self tripsMapViewController].transportType = self.transportType;
+        [self tripsMapViewController].shouldReloadRegion = YES;
+        [self tripsMapViewController].shouldReloadData = YES;
+        [[self tripsMapViewController] resetBaseTime];
+        [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
+    }
     
  // Navigation logic may go here -- for example, create and push another view controller.
  // AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
