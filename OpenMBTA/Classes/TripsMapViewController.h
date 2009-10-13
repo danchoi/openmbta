@@ -32,7 +32,7 @@
     NSString *transportType;
     
     NSString *selected_stop_id;
-    
+    BOOL shouldReloadData;
     StopArrivalsViewController *stopArrivalsViewController;
 }
 @property (nonatomic, retain) NSDictionary *stops;
@@ -47,6 +47,7 @@
 @property (nonatomic, getter=shouldReloadRegion) BOOL shouldReloadRegion;
 @property (nonatomic,copy) NSString *selected_stop_id;
 @property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;

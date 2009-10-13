@@ -10,7 +10,7 @@
 @synthesize imminentStops, firstStops, orderedStopIds;
 @synthesize stops;
 @synthesize mapView;
-@synthesize regionInfo, shouldReloadRegion;
+@synthesize regionInfo, shouldReloadRegion, shouldReloadData;
 @synthesize headsign;
 @synthesize route_short_name, transportType;
 @synthesize selected_stop_id;
@@ -29,13 +29,18 @@
     shouldReloadRegion = YES;
     self.tableView.hidden = YES;
     [self addSegmentedControl];
+    shouldReloadData = YES;    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-
-    [mapView removeAnnotations: mapView.annotations];    
-    [self startLoadingData];
+    if (self.shouldReloadData) {
+        self.stops = [NSArray array];
+        [self.tableView reloadData];
+        [mapView removeAnnotations: mapView.annotations];    
+        [self startLoadingData];
+        self.shouldReloadData = NO;        
+    }
     [super viewWillAppear:animated];
 
 }
@@ -285,8 +290,10 @@
     cell.detailTextLabel.text =  [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
     if ([[stopDict objectForKey:@"next_arrivals"] count] > 1) {
         cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;        
     } else {
         cell.accessoryType =  UITableViewCellAccessoryNone;        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if ([self.firstStops containsObject:stopName]) {    
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.20 green:0.67 blue:0.094 alpha:1.0];
