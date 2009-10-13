@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   def index
     base_time = Time.parse(params[:base_time])
 
-    if (3.minutes.ago..3.minutes.from_now) === base_time # wiggle room
+    if (2.minutes.ago..2.minutes.from_now) === base_time # wiggle room, not sure if we need this
       base_time = Time.now
     end
 
