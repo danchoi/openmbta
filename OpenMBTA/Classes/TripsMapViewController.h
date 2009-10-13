@@ -34,6 +34,7 @@
     BOOL shouldReloadData;
     IBOutlet UILabel *headsignLabel;
     IBOutlet UILabel *routeNameLabel;
+    NSDate *baseTime; // used when user picks a different base time for getting stop arrival times
     
 }
 @property (nonatomic, retain) NSDictionary *stops;
@@ -49,6 +50,7 @@
 @property (nonatomic,copy) NSString *selected_stop_id;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
+@property (nonatomic, retain) NSDate *baseTime;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;

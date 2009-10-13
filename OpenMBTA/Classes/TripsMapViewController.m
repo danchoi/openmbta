@@ -15,12 +15,12 @@
 @synthesize regionInfo, shouldReloadRegion, shouldReloadData;
 @synthesize headsign;
 @synthesize route_short_name, transportType;
-@synthesize selected_stop_id;
+@synthesize selected_stop_id, baseTime;
 @synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     operationQueue = [[NSOperationQueue alloc] init];    
     [mapView setMapType:MKMapTypeStandard];
     [mapView setZoomEnabled:YES];
@@ -33,10 +33,20 @@
     [self addSegmentedControl];
     shouldReloadData = YES;    
     [self addChangeTimeButton];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(baseTimeDidChange:)
+                                                name:@"BaseTimeChanged"
+                                               object: nil];
+    
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.baseTime == nil) {
+        self.baseTime = [NSDate date];
+    } else {
+        
+    }
+    
     if (self.shouldReloadData) {
         self.stops = [NSArray array];
         [self.tableView reloadData];
@@ -52,6 +62,13 @@
 
 }
 
+- (void)baseTimeDidChange:(NSNotification *)notification {
+    self.baseTime = [notification.userInfo objectForKey:@"NewBaseTime"];
+    NSLog(@"set new base time on trips map to %@", self.baseTime);
+    self.shouldReloadData = YES;
+    [self viewWillAppear:NO];
+    
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -133,7 +150,7 @@
     // even escaped ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@&transport_type=%@", ServerURL, self.route_short_name, headsignAmpersandEscaped, self.transportType];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@", ServerURL, self.route_short_name, headsignAmpersandEscaped, self.transportType, [self.baseTime description]];
     //NSLog(@"would call API with URL: %@", apiUrl);
     
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
