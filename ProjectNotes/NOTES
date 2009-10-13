@@ -2646,11 +2646,12 @@ Also do open in Safari.
 
 22:30 created an alternative table view for the map view.
 
-0:13. A link on a Help page now opens Safari if it's http://mbta.com. Otherwise
+00:13. A link on a Help page now opens Safari if it's http://mbta.com. Otherwise
 it stays in the view.
 
 It looks like the iPhone app part is done. Now it's all about deploying and
 tweaking. 
 
+00:27 implemented logic for dealing with early morning hours.
 
 
