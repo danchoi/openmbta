@@ -5,7 +5,8 @@ class Stop < ActiveRecord::Base
 
   include TimeFormatting
 
-  # returns a representation of the upcoming arrivals at this stop
+  # Returns a representation of the upcoming arrivals at this stop
+  # Deprecated
   def arrivals(options)
     stoppings = options[:transport_type].to_s.camelize.constantize.arrivals(self.id, options)
     stoppings.map {|stopping|

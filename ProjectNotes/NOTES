@@ -2663,4 +2663,28 @@ Next:
 3. Make icon, screen shots, a bit of help page
 4. Submit to store.
 
+7:41 Loading a copy of the mbta mysql dump into the linode database. It's taking
+a while. Good thing I'm doing it now, early in the morning, a low traffic
+period.
+
+The dump file load is taking a long time. But at least I've gotten this process
+started.
+
+8:22 OK I got the app working on the server. Time to install a dev release on my
+iphone.
+
+8:39 Got it working on my iPhone! A glitch was that Rails 2.2 doesn't route
+properly when the action name in config/routes.rb is a symbol rather than a
+string. Now I know.
+
+I can test this now.
+
+TODO:
+
+Eliminate the "Other" Buses and order the CT buses correctly.
+
+TODO: Need to put a section header on the table and map for the TripsMapView &
+TripMapView. Not enough cues about what the page is about. I think I need to 
+make the bottom box bigger, accommodating a third and possibly 4th line of text.
+
 

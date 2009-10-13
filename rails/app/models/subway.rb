@@ -35,9 +35,9 @@ module Subway
     memo
   end
 
-  def self.routes
-    service_ids = Service.active_on(Now.date).map(&:id)
-    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where trips.route_type in (0,1) and trips.end_time > '#{Now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign;").
+  def self.routes(now = Now.new)
+    service_ids = Service.active_on(now.date).map(&:id)
+    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where trips.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign;").
       group_by {|r| ROUTE_ID_TO_NAME[r["route_id"].to_i]}.
       map { |route_name, values| { :route_short_name  =>  route_name, :headsigns => generate_headsigns(values) }}
   end
@@ -52,12 +52,13 @@ module Subway
   # Line","headsigns":[["Forest Hills",6],["Oak Grove",5]]}]hellenic
   # ~/MBTA/rails:
   def self.trips(options)
-    date = Now.date
+    now = options[:now] || Now.new
+    date = now.date
     route_short_name = options[:route_short_name]
     route_ids = ROUTE_NAME_TO_ID[route_short_name]
     headsign = options[:headsign]
     service_ids = Service.active_on(date).map(&:id)
-    now = Now.time
+    now = now.time
 
     Trip.all(:joins => :route,
              :conditions => ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids], 
@@ -66,6 +67,7 @@ module Subway
   end
 
   def self.arrivals(stopping_id, options)
+    now = options[:now] || Now.new
     headsign = options[:headsign]
     route_ids = ROUTE_NAME_TO_ID[options[:route_short_name]]
 
@@ -73,7 +75,7 @@ module Subway
       :joins => "inner join trips on trips.id = stoppings.trip_id",
       :conditions => ["stoppings.stop_id = ? and trips.route_id in (?) and " + 
         "trips.service_id in (?) and trips.headsign = ? " +
-        "and stoppings.arrival_time > '#{Now.time}'", stopping_id, route_ids, Service.ids_active_today, headsign],
+        "and stoppings.arrival_time > '#{now.time}'", stopping_id, route_ids, Service.ids_active_today, headsign],
       :order => "stoppings.arrival_time asc"
     )
   end

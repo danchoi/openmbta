@@ -77,7 +77,6 @@
     self.tableView = nil;
     [selected_stop_id release];
     [operationQueue release];
-    [stopArrivalsViewController release];
     [super dealloc];
 }
 
@@ -227,36 +226,8 @@
         pinView.pinColor = MKPinAnnotationColorRed;   
     }
     
-    if ([annotation respondsToSelector:@selector(numNextArrivals)] && [((StopAnnotation *)annotation).numNextArrivals intValue] > 1) {
-        UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];    
-        
-        pinView.rightCalloutAccessoryView = detailButton;          
-    } else {
-        pinView.rightCalloutAccessoryView = nil;             
-    }
-    
     
 	return pinView;
-}
-
-- (void)mapView:(MKMapView *)aMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    NSLog(@"pin tapped for %@ : stop_id: %@", ((StopAnnotation *)view.annotation).title, ((StopAnnotation *)view.annotation).stop_id);
-    
-    if ([view.annotation respondsToSelector:@selector(numNextArrivals)] && 
-        [((StopAnnotation *)view.annotation).numNextArrivals intValue] < 2) {        
-        return;
-    } 
-        
-    if (stopArrivalsViewController == nil) {
-        stopArrivalsViewController = [[StopArrivalsViewController alloc] initWithNibName:@"StopArrivalsViewController" bundle:nil];
-    }
-    stopArrivalsViewController.headsign = self.headsign;
-    stopArrivalsViewController.stop_id = ((StopAnnotation *)view.annotation).stop_id;
-    [self stopSelected: ((StopAnnotation *)view.annotation).stop_id];
-    stopArrivalsViewController.stop_name = ((StopAnnotation *)view.annotation).subtitle;
-    stopArrivalsViewController.route_short_name = self.route_short_name;
-    stopArrivalsViewController.transportType = self.transportType;
-    [self.navigationController pushViewController:stopArrivalsViewController animated:YES];
 }
 
 - (void)stopSelected:(NSString *)stopId {
@@ -295,8 +266,8 @@
     cell.textLabel.text = stopName;
     cell.detailTextLabel.text =  [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
     if ([[stopDict objectForKey:@"next_arrivals"] count] > 1) {
-        cell.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;        
+        cell.accessoryType =  UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;        
     } else {
         cell.accessoryType =  UITableViewCellAccessoryNone;        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -317,42 +288,5 @@
     
     return cell;
 }
-
-/* doesn't quite work
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSNumber *stop_id = [self.orderedStopIds objectAtIndex:indexPath.row];
-    NSDictionary *stopDict = [self.stops objectForKey:[stop_id stringValue]];
-    NSString *stopName =  [stopDict objectForKey:@"name"];    
-    if ([self.firstStops containsObject:stopName]) {    
-        [cell setBackgroundColor: [UIColor colorWithRed: 0.2431372549 green:0.58823529412 blue:0.10196078431 alpha:0.5]];
-    } else if ([self.imminentStops containsObject:[stop_id stringValue]]) {
-        
-    } else {
-        [cell setBackgroundColor:[UIColor clearColor]];
-    }
-}
-
-*/
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    NSNumber *stop_id = [self.orderedStopIds objectAtIndex:indexPath.row];
-    NSDictionary *stopDict = [self.stops objectForKey:[stop_id stringValue]];        
-    if ([[stopDict objectForKey:@"next_arrivals"] count] < 2) {
-        return;
-    } 
-    if (stopArrivalsViewController == nil) {
-        stopArrivalsViewController = [[StopArrivalsViewController alloc] initWithNibName:@"StopArrivalsViewController" bundle:nil];
-    }
-    stopArrivalsViewController.headsign = self.headsign;
-    stopArrivalsViewController.stop_id = [stop_id stringValue];
-    [self stopSelected: [stopDict objectForKey:@"stop_id"]];
-    stopArrivalsViewController.stop_name = [stopDict objectForKey:@"name"];
-    stopArrivalsViewController.route_short_name = self.route_short_name;
-    stopArrivalsViewController.transportType = self.transportType;
-    [self.navigationController pushViewController:stopArrivalsViewController animated:YES];
-    
-    
-}
-
 
 @end

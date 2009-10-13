@@ -12,9 +12,8 @@
 #import "StopAnnotation.h"
 #import "ServerUrl.h"
 #import "GetRemoteDataOperation.h"
-#import "StopArrivalsViewController.h"
 #import "BaseViewController.h"
-@class StopArrivalsViewController;
+
 
 @interface TripsMapViewController : BaseViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource> {
     NSDictionary *stops;
@@ -33,7 +32,6 @@
     
     NSString *selected_stop_id;
     BOOL shouldReloadData;
-    StopArrivalsViewController *stopArrivalsViewController;
     IBOutlet UILabel *headsignLabel;
     IBOutlet UILabel *routeNameLabel;
     

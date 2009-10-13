@@ -18,18 +18,19 @@ module Boat
 
   NAME_TO_ROUTE_ID = ROUTE_ID_TO_NAME.invert
 
-  def self.routes
-    service_ids = Service.active_on(Now.date).map(&:id)
-    results = ActiveRecord::Base.connection.select_all("select route_id, trips.first_stop, trips.last_stop, count(trips.id) as trips_remaining from trips where trips.route_type = 4 and trips.end_time > '#{Now.time}' and trips.service_id in (#{service_ids.join(',')}) group by route_id, trips.first_stop;").
+  def self.routes(now = Now.new)
+    service_ids = Service.active_on(now.date).map(&:id)
+    results = ActiveRecord::Base.connection.select_all("select route_id, trips.first_stop, trips.last_stop, count(trips.id) as trips_remaining from trips where trips.route_type = 4 and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by route_id, trips.first_stop;").
       group_by {|x| ROUTE_ID_TO_NAME[x["route_id"].to_i] }.
       map { |route_name, values| { :route_short_name  =>  route_name, :headsigns => generate_headsigns(values) }}
   end
 
   def self.trips(options)
+    now = options[:now] || Now.new
     route_mbta_id = NAME_TO_MBTA_ID[options[:route_short_name]]
 
     first_stop, last_stop = headsign_to_stops(options[:headsign])
-    conditions = ["routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and end_time > '#{Now.time}'", route_mbta_id, first_stop, last_stop, Service.ids_active_today]
+    conditions = ["routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and end_time > '#{now.time}'", route_mbta_id, first_stop, last_stop, Service.ids_active_today]
     Trip.all(:joins => :route,
              :conditions => conditions,
              :order => "start_time asc", 
@@ -39,7 +40,7 @@ module Boat
   def self.arrivals(stopping_id, options)
     route_mbta_id = NAME_TO_MBTA_ID[options[:route_short_name]]
     first_stop, last_stop = headsign_to_stops(options[:headsign])
-    conditions = ["stoppings.stop_id = ? and routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and stoppings.arrival_time > '#{Now.time}'", 
+    conditions = ["stoppings.stop_id = ? and routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and stoppings.arrival_time > '#{now.time}'", 
         stopping_id, route_mbta_id, first_stop, last_stop, Service.ids_active_today]
     Stopping.all(
       :joins => "inner join trips on trips.id = stoppings.trip_id inner join routes on routes.id = trips.route_id",

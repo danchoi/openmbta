@@ -15,8 +15,8 @@ class Route < ActiveRecord::Base
   named_scope :boat, :conditions => "routes.route_type in (4)"
 
   # date is a string YYYYMMDD 
-  def self.routes(transport_type) 
-    transport_type.to_s.camelize.constantize.routes
+  def self.routes(transport_type, now = Now.new) 
+    transport_type.to_s.camelize.constantize.routes(now)
   end
 
   def self.populate
