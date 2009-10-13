@@ -16,7 +16,8 @@ module CommuterRail
     results = Trip.all(:select => "trips.*, count(stoppings.id) as num_stops",
       :joins => "inner join stoppings on trips.id = stoppings.trip_id ",
       :conditions => ["route_id = ? and headsign like ? and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) ", route.id, "#{line_headsign}%"],
-      :group => "stoppings.trip_id"
+      :group => "stoppings.trip_id",
+      :order => "trips.start_time asc"
     ).map {|trip| [trip.headsign, "Starts at #{format_time(trip.start_time)}; #{trip.num_stops} #{trip.num_stops == 1 ? 'stop' : 'stops'}" ] }
     result = [{:route_short_name => line_name, :headsigns => results}]
   end
