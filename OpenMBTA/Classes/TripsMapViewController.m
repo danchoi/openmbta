@@ -271,6 +271,9 @@
 
 
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>) annotation {
+    if (annotation == mapView.userLocation) 
+        return nil;
+    
     static NSString *pinID = @"mbtaPin";
 	MKPinAnnotationView *pinView =  (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pinID];
     if (pinView == nil) {

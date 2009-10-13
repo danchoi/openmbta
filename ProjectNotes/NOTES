@@ -2724,10 +2724,12 @@ is.
 - Another instance of the RoutesViewController.
 
 
-15:48 CR special case done. 
+15:48 CR special case done, including disabling time shifting for CR
+map/schedules because of the complex nature of the train schedules, requiring
+two levels of navigation.
 
 NEXT: 
-- highlight closest stop
+- highlight closest stop <== cancel this. not necessary.
 - display base time 
 - fix up time picker spacing
 - about/gaq
