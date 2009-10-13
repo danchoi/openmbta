@@ -24,6 +24,8 @@ class Trip < ActiveRecord::Base
 
     stops = if options[:trip_id]
               trips.first.stops[(options[:from_position] - 1)..-1]
+            elsif trips.size == 1
+              trips[0].stops
             else
               Stop.all(:select => "stops.*, count(*) as num_stoppings", 
                    :joins => :stoppings, 
