@@ -15,8 +15,6 @@
 
 - (void)showNetworkActivity;
 - (void)hideNetworkActivity;
-- (void)addHelpButton;
-- (void)showHelp:(id)sender;
 - (void)checkForMessage:(NSDictionary *)someData;
 - (void)alertMessageTitle:(NSString *)title message:(NSString *)message;
 
