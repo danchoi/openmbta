@@ -3,6 +3,7 @@
 #import "RoutesViewController.h"
 #import "TAlertsViewController.h"
 #import "GetRemoteDataOperation.h"
+#import "AboutViewController.h"
 
 @interface RootViewController (Private)
 
@@ -13,7 +14,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", @"T Alerts", nil];
+    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", @"T Alerts", @"About / FAQ", nil];
     self.title = @"OpenMBTA";
 
 }
@@ -75,6 +76,14 @@
         [self.navigationController pushViewController:tAlertsViewController animated:YES];
         return;
     }
+    
+    if (indexPath.row == 5) { 
+        AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+        [vc release];
+        return;
+    }
+    
     
     if (routesViewController == nil) {
         routesViewController = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];

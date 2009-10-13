@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HelpViewController : UIViewController {
+@interface HelpViewController : UIViewController <UIWebViewDelegate> {
     NSString *viewName;
     IBOutlet UIWebView *webView;
     NSURLRequest *request;    
@@ -24,5 +24,7 @@
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSURLRequest *request;
 - (IBAction)doneButtonPressed:(id)sender;
-
+- (void)showLoadingIndicators;
+- (void)hideLoadingIndicators;
+- (void)loadWebView;
 @end

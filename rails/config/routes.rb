@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/stop_arrivals', :controller => 'stop_arrivals', :action => 'index'
   map.connect '/alerts', :controller => 'alerts', :action => 'index'
   map.connect '/help/:target_controller', :controller => 'help', :action => 'show'
+  map.connect '/about/:action', :controller => 'about'
   map.root :controller => 'home'
 
   # The priority is based upon order of creation: first created -> highest priority.

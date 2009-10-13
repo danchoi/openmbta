@@ -10,8 +10,6 @@
 #import "ServerUrl.h"
 
 @interface HelpViewController (Private)
-- (void)showLoadingIndicators;
-- (void)hideLoadingIndicators;
 
 @end
 
@@ -24,14 +22,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
-    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@", ServerURL, self.viewName];
-    NSURL *url = [[NSURL alloc] initWithString: urlString];
-    self.request = [[NSURLRequest alloc] initWithURL: url]; 
-    [self showLoadingIndicators];
-    [self.webView loadRequest:self.request];
-
-
+    [self loadWebView];
     [super viewWillAppear:animated];
 }
 
@@ -44,6 +35,13 @@
     [super dealloc];
 }
 
+- (void)loadWebView {
+    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@", ServerURL, self.viewName];
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
+    self.request = [[NSURLRequest alloc] initWithURL: url]; 
+    [self showLoadingIndicators];
+    [self.webView loadRequest:self.request];
+}
 
 - (IBAction)doneButtonPressed:(id)sender {
     [self.parentViewController dismissModalViewControllerAnimated:YES];
