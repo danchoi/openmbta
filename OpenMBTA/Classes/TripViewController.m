@@ -9,7 +9,7 @@
 #import "TripViewController.h"
 
 @implementation TripViewController
-@synthesize trip_id, position;
+@synthesize trip_id, position, stop_name;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -17,10 +17,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    headsignLabel.text = [NSString stringWithFormat:@"From %@", self.stop_name];         
+    routeNameLabel.text = self.headsign;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
     // show the callouts for first stop    
     for (id annotation in mapView.annotations) {
         if (((StopAnnotation *)annotation).isFirstStop) {

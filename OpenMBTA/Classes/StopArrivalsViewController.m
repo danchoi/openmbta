@@ -25,7 +25,7 @@
     [tableView reloadData]; 
     [self startLoadingData];
     headsignLabel.text = self.headsign;
-    stopNameLabel.text = self.stop_name;
+    stopNameLabel.text = [NSString stringWithFormat:@"From %@", self.stop_name];
     [super viewWillAppear:animated];
 }
 
@@ -118,6 +118,9 @@
     }
     tripViewController.trip_id = trip_id;
     tripViewController.position = position;
+    tripViewController.headsign = self.headsign;
+    tripViewController.route_short_name = self.route_short_name;
+    tripViewController.stop_name = self.stop_name;
     tripViewController.shouldReloadRegion = YES;
     tripViewController.shouldReloadData = YES;
     [self.navigationController pushViewController:tripViewController animated:YES];

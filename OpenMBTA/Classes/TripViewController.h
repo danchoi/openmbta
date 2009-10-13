@@ -12,8 +12,11 @@
 @interface TripViewController : TripsMapViewController {
     NSString *trip_id;
     NSString *position;
+    NSString *stop_name;  
+    IBOutlet UILabel *fromStopNameLabel;
 
 }
 @property (nonatomic, copy) NSString *trip_id;
 @property (nonatomic, copy) NSString *position;
+@property (nonatomic,copy) NSString *stop_name;
 @end

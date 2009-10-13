@@ -40,7 +40,11 @@
         [mapView removeAnnotations: mapView.annotations];    
         [self startLoadingData];
         self.shouldReloadData = NO;        
+        headsignLabel.text = self.headsign;
+        routeNameLabel.text = self.route_short_name;
+
     }
+    
     [super viewWillAppear:animated];
 
 }
@@ -60,6 +64,8 @@
 }
 
 - (void)dealloc {
+    [headsignLabel release];
+    [routeNameLabel release];
     self.mapView = nil;
     self.imminentStops = nil;
     self.orderedStopIds = nil;

@@ -34,6 +34,9 @@
     NSString *selected_stop_id;
     BOOL shouldReloadData;
     StopArrivalsViewController *stopArrivalsViewController;
+    IBOutlet UILabel *headsignLabel;
+    IBOutlet UILabel *routeNameLabel;
+    
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *orderedStopIds;
