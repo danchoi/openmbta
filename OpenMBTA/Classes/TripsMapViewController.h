@@ -21,6 +21,7 @@
     NSArray *imminentStops;  
     NSArray *firstStops;
     IBOutlet MKMapView *mapView;
+    NSMutableArray *stopAnnotations;
     NSDictionary *regionInfo;
     BOOL shouldReloadRegion;
     NSOperationQueue *operationQueue;
@@ -42,6 +43,7 @@
 @property (nonatomic, retain) NSArray *imminentStops;
 @property (nonatomic, retain) NSArray *firstStops;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, retain) NSMutableArray *stopAnnotations;
 @property (nonatomic, retain) NSDictionary *regionInfo;
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;

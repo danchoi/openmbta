@@ -11,7 +11,7 @@
 
 
 @implementation TripsMapViewController
-@synthesize imminentStops, firstStops, orderedStopIds;
+@synthesize imminentStops, firstStops, orderedStopIds, stopAnnotations;
 @synthesize stops;
 @synthesize mapView;
 @synthesize regionInfo, shouldReloadRegion, shouldReloadData;
@@ -24,7 +24,7 @@
     [super viewDidLoad];
 
     operationQueue = [[NSOperationQueue alloc] init];    
-
+    self.stopAnnotations = [NSMutableArray array];
     mapView.hidden = YES;
     [mapView setMapType:MKMapTypeStandard];
     [mapView setZoomEnabled:YES];
@@ -50,7 +50,8 @@
     if (self.shouldReloadData) {
         self.stops = [NSArray array];
         [self.tableView reloadData];
-        [mapView removeAnnotations: mapView.annotations];    
+        [mapView removeAnnotations:self.stopAnnotations];
+        [self.stopAnnotations removeAllObjects];
         [self startLoadingData];
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
@@ -104,6 +105,7 @@
     [headsignLabel release];
     [routeNameLabel release];
     self.mapView = nil;
+    self.stopAnnotations = nil;
     self.imminentStops = nil;
     self.orderedStopIds = nil;
     self.firstStops = nil;    
@@ -259,8 +261,10 @@
         coordinate.latitude = [[stopDict objectForKey:@"lat"] doubleValue];
         coordinate.longitude = [[stopDict objectForKey:@"lng"] doubleValue];
         annotation.coordinate = coordinate;
-        [mapView addAnnotation:annotation];
+        [self.stopAnnotations addObject:annotation];
+
     }
+    [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
 }
 
