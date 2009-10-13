@@ -2719,8 +2719,18 @@ is.
 2. Show callout for the stop arrival nearest to the user's location.
 3. Fix up time picker spacing
 4. An About/FAQ/Help page , which is a web view internal to the iphonembta.org site
-
-5. CR now needs to be treated different. Need to split out the routes.
+5. CR now needs to be treated different. Need to split out the routes. <= DONE
 - need a new controller between the CR Routes and the Trips Map.
 - Another instance of the RoutesViewController.
+
+
+15:48 CR special case done. 
+
+NEXT: 
+- highlight closest stop
+- display base time 
+- fix up time picker spacing
+- about/gaq
+
+
 
