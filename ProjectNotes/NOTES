@@ -2687,4 +2687,30 @@ TODO: Need to put a section header on the table and map for the TripsMapView &
 TripMapView. Not enough cues about what the page is about. I think I need to 
 make the bottom box bigger, accommodating a third and possibly 4th line of text.
 
+11:37
+
+I've played with the real app on the device, walking around, and it predicts the
+number 1 bus great. However, the additional views are confusing. I'm going to
+simplify the app with a Time Machine that eliminates the StopArrivals and the
+TripView and just lets the user move forward and back through time with a simple
+interface.
+
+TODO IMPORTANT. Find stop closest to one's own location (use Haversine?) and
+show the callout. This is a great convenience.
+
+TIME PICKER
+
+The decision now is whether to 
+
+1. stay simple: Time machine only works for the current date.
+2. more powerful and complex: time machine goes far back and forward. I think
+this is overkill.
+
+If I go along with 1, I don't have to change the /routes view. Create a modal
+for the TripsMap.
+
+
+
+
+
 

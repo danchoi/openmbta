@@ -30,7 +30,7 @@ module Boat
     route_mbta_id = NAME_TO_MBTA_ID[options[:route_short_name]]
 
     first_stop, last_stop = headsign_to_stops(options[:headsign])
-    conditions = ["routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and end_time > '#{now.time}'", route_mbta_id, first_stop, last_stop, Service.ids_active_today]
+    conditions = ["routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and end_time > '#{now.time}'", route_mbta_id, first_stop, last_stop, Service.ids_active_on(now.date)]
     Trip.all(:joins => :route,
              :conditions => conditions,
              :order => "start_time asc", 
@@ -38,10 +38,11 @@ module Boat
   end
 
   def self.arrivals(stopping_id, options)
+    now = options[:now] || Now.new
     route_mbta_id = NAME_TO_MBTA_ID[options[:route_short_name]]
     first_stop, last_stop = headsign_to_stops(options[:headsign])
     conditions = ["stoppings.stop_id = ? and routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?) and stoppings.arrival_time > '#{now.time}'", 
-        stopping_id, route_mbta_id, first_stop, last_stop, Service.ids_active_today]
+        stopping_id, route_mbta_id, first_stop, last_stop, Service.ids_active_on(now.date)]
     Stopping.all(
       :joins => "inner join trips on trips.id = stoppings.trip_id inner join routes on routes.id = trips.route_id",
       :conditions => conditions,
