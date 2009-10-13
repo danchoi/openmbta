@@ -127,6 +127,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
 	// Configure the cell.
