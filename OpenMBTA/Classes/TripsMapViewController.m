@@ -23,11 +23,14 @@
     [super viewDidLoad];
 
     operationQueue = [[NSOperationQueue alloc] init];    
+
+    mapView.hidden = YES;
     [mapView setMapType:MKMapTypeStandard];
     [mapView setZoomEnabled:YES];
     [mapView setScrollEnabled:YES];
     mapView.showsUserLocation = YES;
     mapView.mapType = MKMapTypeStandard;
+
     self.title = @"Map";
     shouldReloadRegion = YES;
     self.tableView.hidden = YES;
@@ -214,6 +217,7 @@
     
     [mapView setRegion:region animated:NO];
     [mapView regionThatFits:region];
+    mapView.hidden = NO;
 }
 
 - (void)annotateStops 

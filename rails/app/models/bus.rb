@@ -3,12 +3,20 @@ module Bus
     service_ids = Service.active_on(now.date).map(&:id)
     ActiveRecord::Base.connection.select_all("select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) and trips.end_time > '#{now.time}' group by routes.short_name, trips.headsign").
       group_by {|r| r["route_short_name"]}.
-      select {|short_name, value|  short_name != "Shuttle"}.
+      select {|short_name, value|  short_name != "Shuttle" && short_name != "Other"}.
       map {|short_name, values| {:route_short_name => short_name, 
           :headsigns => values.map {|x| [x["headsign"], x["trips_remaining"].to_i] }
         } 
       }.
-      sort_by {|x| x[:route_short_name].to_i == 0 ? 10000 : x[:route_short_name].to_i }
+      sort_by {|x| 
+        if x[:route_short_name].to_i == 0 
+          # CT routes
+          digit = x[:route_short_name][/(\d)/, 1]
+          10000 + digit.to_i
+        else
+          x[:route_short_name].to_i
+        end
+      }
   end
 
   def self.trips(options)

@@ -125,7 +125,7 @@
     NSNumber *trips_remaining = [headsignArray objectAtIndex:1];
     cell.textLabel.text = headsign;
     NSString *pluralized = [trips_remaining intValue] > 1 ? @"trips" : @"trip";
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ remaining", trips_remaining, pluralized];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ more %@ today", trips_remaining, pluralized];
     return cell;
 }
 
