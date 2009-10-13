@@ -9,7 +9,7 @@ class Trip < ActiveRecord::Base
 
   def self.for(options) 
     now = options[:now] 
-    options.merge!(:limit => 6)
+    #options.merge!(:limit => 10)
 
     trips = if options[:trip_id]
       [Trip.find options[:trip_id]] # for the /trip/show action

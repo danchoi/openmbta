@@ -15,7 +15,7 @@ module CommuterRail
     Trip.all(:joins => :route,
              :conditions => ["routes.mbta_id = ? and headsign LIKE ? and service_id in (?) and end_time > '#{now.time}'", route_short_name, "#{headsign}%", Service.ids_active_on(now.date)], 
              :order => "start_time asc", 
-             :limit => options[:limit] || 10)
+             :limit => options[:limit])
   end
 
   # the data i have to work with:

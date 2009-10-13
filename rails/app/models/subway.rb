@@ -63,7 +63,7 @@ module Subway
     Trip.all(:joins => :route,
              :conditions => ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids], 
              :order => "start_time asc", 
-             :limit => options[:limit] || 10)
+             :limit => options[:limit])
   end
 
   def self.arrivals(stopping_id, options)

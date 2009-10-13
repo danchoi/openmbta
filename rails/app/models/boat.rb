@@ -34,7 +34,7 @@ module Boat
     Trip.all(:joins => :route,
              :conditions => conditions,
              :order => "start_time asc", 
-             :limit => options[:limit] || 10)
+             :limit => options[:limit])
   end
 
   def self.arrivals(stopping_id, options)

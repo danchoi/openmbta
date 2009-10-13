@@ -2713,4 +2713,10 @@ for the TripsMap.
 the UI more informative about when a Time shift is active and what the base time
 is.
 
+14:07 Time shifting is working. 
+
+1. Next, show the base time in the box at the bottom of the TripsMapView.
+2. Show callout for the stop arrival nearest to the user's location.
+
+
 
