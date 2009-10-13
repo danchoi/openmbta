@@ -32,7 +32,6 @@
     mapView.showsUserLocation = YES;
     mapView.mapType = MKMapTypeStandard;
 
-    self.title = @"Map";
     shouldReloadRegion = YES;
     self.tableView.hidden = YES;
     [self addSegmentedControl];
@@ -55,7 +54,13 @@
         [self startLoadingData];
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
-        routeNameLabel.text = self.route_short_name;
+        if (self.transportType == @"Bus") {
+            routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.route_short_name];
+        } else if (self.transportType == @"Commuter Rail") {
+            routeNameLabel.text = [NSString stringWithFormat:@"%@ Line", self.route_short_name];            
+        } else {
+            routeNameLabel.text = self.route_short_name;            
+        }
         if ([self.transportType isEqualToString:@"Commuter Rail"]) {
             [self removeChangeTimeButton];
         } else {
@@ -327,6 +332,7 @@
 
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
+        
     }
     NSNumber *stop_id = [self.orderedStopIds objectAtIndex:indexPath.row];
     NSDictionary *stopDict = [self.stops objectForKey:[stop_id stringValue]];
@@ -349,7 +355,7 @@
         cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:12.0];
         cell.detailTextLabel.text =  [NSString stringWithFormat:@"%@ : arriving soon", cell.detailTextLabel.text];        
     } else {
-        cell.detailTextLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor grayColor];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];        
 
     }

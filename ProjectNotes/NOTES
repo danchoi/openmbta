@@ -2739,6 +2739,24 @@ NEXT:
 
 Don't forget to deploy Rails changes to Linode server each time.
 
+18:18 Time picker is cleaned up.
+
+Next:
+- display base time
+- about/faq - recycle HelpViewController with webview
+- highlight nearest stop to user location <- this will wow the judges, so do it
+- wire information help button
+
+18:38 done the bottom display. Looks a lot better.
+
+Next:
+- info modal, wire button
+- about/faq view
+- callout nearest stop / highlight table row
+
+
+
+
 
 
 
