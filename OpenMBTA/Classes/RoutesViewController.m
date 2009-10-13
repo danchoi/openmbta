@@ -127,9 +127,13 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
     }
-    
+    if ([self.transportType isEqualToString:@"Bus"]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;       // because there's an index bar 
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;        
+    }
 	// Configure the cell.
 
     NSDictionary *routeGroup = [self.data objectAtIndex:indexPath.section];
