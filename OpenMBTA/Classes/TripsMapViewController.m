@@ -4,6 +4,7 @@
 @interface TripsMapViewController (Private)
 - (void)stopSelected:(NSString *)stopId;
 - (void)addChangeTimeButton;
+- (void)removeChangeTimeButton;
 - (void)showTimePicker:(id)sender;
 
 @end
@@ -54,6 +55,12 @@
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
         routeNameLabel.text = self.route_short_name;
+        if ([self.transportType isEqualToString:@"Commuter Rail"]) {
+            [self removeChangeTimeButton];
+        } else {
+            [self addChangeTimeButton];
+        }
+
     }
     
     [super viewWillAppear:animated];
@@ -69,7 +76,7 @@
     }
     NSLog(@"set new base time on trips map to %@", self.baseTime);
     self.shouldReloadData = YES;
-    [self viewWillAppear:NO];
+//    [self viewWillAppear:NO];
     
 }
 
@@ -143,6 +150,10 @@
                                          target:self 
                                          action:@selector(showTimePicker:)];
     self.navigationItem.rightBarButtonItem = changeTimeButton;
+}
+
+- (void)removeChangeTimeButton; {
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)showTimePicker:(id)sender {

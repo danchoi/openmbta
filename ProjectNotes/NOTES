@@ -2732,5 +2732,7 @@ NEXT:
 - fix up time picker spacing
 - about/gaq
 
+Don't forget to deploy Rails changes to Linode server
+
 
 
