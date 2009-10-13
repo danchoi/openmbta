@@ -1,5 +1,6 @@
 #import "TripsMapViewController.h"
 #import "TimePickerViewController.h"
+#import "HelpViewController.h"
 
 @interface TripsMapViewController (Private)
 - (void)stopSelected:(NSString *)stopId;
@@ -80,7 +81,7 @@
         self.baseTime = [notification.userInfo objectForKey:@"NewBaseTime"];
         self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleDone;
     }
-    NSLog(@"set new base time on trips map to %@", self.baseTime);
+    // NSLog(@"set new base time on trips map to %@", self.baseTime);
     self.shouldReloadData = YES;
 //    [self viewWillAppear:NO];
     
@@ -96,7 +97,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     // show the callout selected_stop_id (the last stop tapped) if not nil
-    NSLog(@"selected stop id: %@", self.selected_stop_id);
+    // NSLog(@"selected stop id: %@", self.selected_stop_id);
     for (id annotation in mapView.annotations) {
         if (self.selected_stop_id != nil && [annotation respondsToSelector:@selector(stop_id)] && [((StopAnnotation *)annotation).stop_id isEqualToString:self.selected_stop_id]) {
             
@@ -363,4 +364,12 @@
     return cell;
 }
 
+- (IBAction)infoButtonPressed:(id)sender {
+    NSLog(@"info button pressed");
+    HelpViewController *vc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
+    vc.viewName = self.mapView.hidden == YES ? @"tripsTable" : @"tripsMap";
+    [self presentModalViewController:vc animated:YES];
+    [vc release];
+    
+}
 @end

@@ -10,7 +10,7 @@
 
 
 @interface HelpViewController : UIViewController {
-    NSString *targetControllerName;
+    NSString *viewName;
     IBOutlet UIWebView *webView;
     NSURLRequest *request;    
     
@@ -20,7 +20,7 @@
     
     
 }
-@property (nonatomic, retain) NSString *targetControllerName;
+@property (nonatomic, retain) NSString *viewName;
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSURLRequest *request;
 - (IBAction)doneButtonPressed:(id)sender;

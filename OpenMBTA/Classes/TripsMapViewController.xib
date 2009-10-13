@@ -51,7 +51,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 370}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="990427931">
+						<object class="NSColor" key="IBUIBackgroundColor" id="416845285">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -108,7 +108,7 @@
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">1.000000e+01</float>
 					</object>
-					<object class="IBUIButton" id="743219672">
+					<object class="IBUIButton" id="366547395">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{292, 383}, {18, 19}}</string>
@@ -124,7 +124,7 @@
 						</object>
 						<int key="IBUIButtonType">3</int>
 						<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
-						<reference key="IBUIHighlightedTitleColor" ref="990427931"/>
+						<reference key="IBUIHighlightedTitleColor" ref="416845285"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
@@ -211,6 +211,15 @@
 					</object>
 					<int key="connectionID">18</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">infoButtonPressed:</string>
+						<reference key="source" ref="366547395"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">20</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -232,7 +241,7 @@
 							<reference ref="61950219"/>
 							<reference ref="677508215"/>
 							<reference ref="1012953838"/>
-							<reference ref="743219672"/>
+							<reference ref="366547395"/>
 						</object>
 						<reference key="parent" ref="605494458"/>
 					</object>
@@ -269,7 +278,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">19</int>
-						<reference key="object" ref="743219672"/>
+						<reference key="object" ref="366547395"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -321,7 +330,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">19</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -352,8 +361,17 @@
 					<string key="className">TripsMapViewController</string>
 					<string key="superclassName">BaseViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">toggleView:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>infoButtonPressed:</string>
+							<string>toggleView:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>

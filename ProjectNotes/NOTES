@@ -2754,9 +2754,13 @@ Next:
 - about/faq view
 - callout nearest stop / highlight table row
 
+19:05 wired up the info button and the Help webkit view
+- Need to start making this web view later
 
-
-
+Next:
+- About/FAQ controller
+- Info HTML
+- highlight nearest stop
 
 
 

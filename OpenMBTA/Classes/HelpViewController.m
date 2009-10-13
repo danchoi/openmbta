@@ -16,7 +16,7 @@
 @end
 
 @implementation HelpViewController
-@synthesize targetControllerName, webView, request;
+@synthesize viewName, webView, request;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +25,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 
-    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@", ServerURL, self.targetControllerName];
+    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@", ServerURL, self.viewName];
     NSURL *url = [[NSURL alloc] initWithString: urlString];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
     [self showLoadingIndicators];
@@ -36,7 +36,7 @@
 }
 
 - (void)dealloc {
-    self.targetControllerName = nil;
+    self.viewName = nil;
     self.webView = nil;
     self.request = nil;
     [spinner release];
