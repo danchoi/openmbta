@@ -1,8 +1,10 @@
 #import "TripsMapViewController.h"
-
+#import "TimePickerViewController.h"
 
 @interface TripsMapViewController (Private)
 - (void)stopSelected:(NSString *)stopId;
+- (void)addChangeTimeButton;
+- (void)showTimePicker:(id)sender;
 @end
 
 
@@ -30,6 +32,7 @@
     self.tableView.hidden = YES;
     [self addSegmentedControl];
     shouldReloadData = YES;    
+    [self addChangeTimeButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -106,6 +109,20 @@
     }
 }
 
+- (void)addChangeTimeButton; {
+    UIBarButtonItem *changeTimeButton = [[UIBarButtonItem alloc]
+                                            initWithTitle:@"Change Time"
+                                         style:UIBarButtonItemStyleBordered
+                                         target:self 
+                                         action:@selector(showTimePicker:)];
+    self.navigationItem.rightBarButtonItem = changeTimeButton;
+}
+
+- (void)showTimePicker:(id)sender {
+    TimePickerViewController *modalVC = [[TimePickerViewController alloc] initWithNibName:@"TimePickerViewController" bundle:nil];
+    [self presentModalViewController:modalVC animated:YES];
+    [modalVC release];
+}
 
 // This calls the server
 - (void)startLoadingData
