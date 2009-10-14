@@ -58,14 +58,15 @@
         headsignLabel.text = self.headsign;
         if (self.transportType == @"Bus") {
             routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.route_short_name];
+        } else if (self.transportType == @"Subway") {
+            routeNameLabel.text = [NSString stringWithFormat:@"%@ (times are only approximate)", self.route_short_name];        
         } else if (self.transportType == @"Commuter Rail") {
-            routeNameLabel.text = [NSString stringWithFormat:@"%@ Line", self.route_short_name];            
+            routeNameLabel.text = [NSString stringWithFormat:@"%@ Line", self.route_short_name];     
+            [self removeChangeTimeButton];            
         } else {
             routeNameLabel.text = self.route_short_name;            
         }
-        if ([self.transportType isEqualToString:@"Commuter Rail"]) {
-            [self removeChangeTimeButton];
-        } else {
+        if (self.transportType != @"Commuter Rail") {
             [self addChangeTimeButton];
         }
 
@@ -153,6 +154,9 @@
 }
 
 - (void)addChangeTimeButton; {
+    if (self.navigationItem.rightBarButtonItem != nil)
+        return;
+    
     UIBarButtonItem *changeTimeButton = [[UIBarButtonItem alloc]
                                             initWithTitle:@"Shift Time"
                                          style:UIBarButtonItemStyleBordered
