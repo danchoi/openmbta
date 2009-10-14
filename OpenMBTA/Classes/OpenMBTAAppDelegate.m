@@ -8,6 +8,7 @@
 
 #import "OpenMBTAAppDelegate.h"
 #import "RootViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation OpenMBTAAppDelegate
 
@@ -28,6 +29,12 @@
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
     [self testReachability];
+    /*
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    //locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    */
 }
 
 

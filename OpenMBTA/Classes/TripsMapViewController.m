@@ -274,12 +274,7 @@
     
     [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
-    // we put delay this a little to allow annotations to appear before calling out the closest one
-    [NSTimer scheduledTimerWithTimeInterval: 0.5  
-                                     target: self
-                                   selector: @selector(findNearestStop)
-                                   userInfo: nil
-                                    repeats: NO];
+    [self findNearestStop];
     
 }
 
@@ -314,7 +309,7 @@
 
 - (void)findNearestStop {
     
-    if (([self.stopAnnotations count] == 0) || (mapView.userLocationVisible == NO))  {
+    if (([self.mapView.annotations count] < 2) || (mapView.userLocationVisible == NO))  {
     	[NSTimer scheduledTimerWithTimeInterval: 1.4
                                         target: self
                                        selector: @selector(findNearestStop)
@@ -323,6 +318,8 @@
         
         return;
     }
+    self.nearestStopAnnotation = nil;
+    
     CLLocation *userLocation;
     userLocation = mapView.userLocation.location;
     float minDistance = -1;
@@ -336,15 +333,26 @@
         //NSLog(@"distance: %f", distance);
     }
     //NSLog(@"min distance: %f; closest stop: %@", minDistance, closestAnnotation.subtitle);
+
+    // show callout of nearest stop    
+    // We delay this to give map time to draw the pins for the stops
+    [NSTimer scheduledTimerWithTimeInterval: 0.7
+                                     target: self
+                                   selector: @selector(triggerCallout:)
+                                   userInfo: nil
+                                    repeats: NO];
     
-    [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; // show callout of nearest stop
+}
+
+- (void)triggerCallout:(StopAnnotation *)stopAnnotation {
+    [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; // show callout     
     self.nearest_stop_id = self.nearestStopAnnotation.stop_id;
-    
     int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:nearestStopRow inSection:0];
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
     [self.tableView reloadData];
+    
 }
 
 
