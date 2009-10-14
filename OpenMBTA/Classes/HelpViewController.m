@@ -7,7 +7,7 @@
 //
 
 #import "HelpViewController.h"
-#import "ServerUrl.h"
+
 
 @interface HelpViewController (Private)
 
@@ -52,7 +52,7 @@
 - (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)aRequest navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *url = [aRequest URL];
     NSString *absoluteURL = [url absoluteString];
-    if ([absoluteURL rangeOfString:@"http://mbta.com"].location != NSNotFound) {   
+    if ([absoluteURL rangeOfString:ServerURL].location == NSNotFound) {   
         if (![[UIApplication sharedApplication] openURL:url])
             NSLog(@"%@%@",@"Failed to open url:",[url description]);
         return NO;

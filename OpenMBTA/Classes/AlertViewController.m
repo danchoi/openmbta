@@ -10,25 +10,25 @@
 
 
 @implementation AlertViewController
-@synthesize alertTitle, pubDate, description;
+@synthesize alertGUID;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"T Alert";
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    titleLabel.text = alertTitle;
-    pubDateLabel.text = pubDate;
-    descriptionTextView.text = description;
-    [super viewWillAppear:animated];
+- (void)dealloc {
+    self.alertGUID = nil;
+    [super dealloc];
 }
 
-- (void)dealloc {
-    self.alertTitle = nil;
-    self.pubDate= nil;
-    self.description = nil;    
-    [super dealloc];
+- (void)loadWebView {
+    NSString *urlString = [NSString stringWithFormat:@"%@/alerts/%@", ServerURL, self.alertGUID];
+//    NSLog(@"calling %@", urlString);
+    NSURL *url = [[NSURL alloc] initWithString: urlString];
+    self.request = [[NSURLRequest alloc] initWithURL: url]; 
+    [self showLoadingIndicators];
+    [self.webView loadRequest:self.request];    
 }
 
 

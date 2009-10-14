@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/trips/:id', :controller => 'trips', :action => "show"
   map.connect '/stop_arrivals', :controller => 'stop_arrivals', :action => 'index'
   map.connect '/alerts', :controller => 'alerts', :action => 'index'
+  map.connect '/alerts/:guid', :controller => 'alerts', :action => 'show'
   map.connect '/help/:target_controller/:transport_type', :controller => 'help', :action => 'show'
   map.connect '/about/:action', :controller => 'about'
   map.root :controller => 'home'

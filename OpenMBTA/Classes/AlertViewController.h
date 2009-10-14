@@ -9,15 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface AlertViewController : BaseViewController {
-    NSString *alertTitle;
-    NSString *pubDate;
-    NSString *description;    
-    IBOutlet UITextView *titleLabel;
-    IBOutlet UILabel *pubDateLabel;
-    IBOutlet UITextView *descriptionTextView;
+@interface AlertViewController : HelpViewController {
+    NSString *alertGUID;
+    
 }
-@property (nonatomic, copy) NSString *alertTitle;
-@property (nonatomic, copy) NSString *pubDate;
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *alertGUID;
 @end

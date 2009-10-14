@@ -7,7 +7,7 @@
 //
 
 #import "AboutViewController.h"
-#import "ServerUrl.h"
+
 
 @implementation AboutViewController
 - (void)viewDidLoad {

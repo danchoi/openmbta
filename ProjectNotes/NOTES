@@ -2782,12 +2782,37 @@ when the transportType is subway
 
 13:58
 
+--------------------------------------------------------------------------------
 Help pages now know what view and what transport type the user is looking at:
 
 Processing HelpController#show (for 127.0.0.1 at 2009-10-14 13:58:27) [GET]
   Parameters: {"target_controller"=>"tripsMap", "transport_type"=>"Subway"}
 
-CommuterRail is the tranport_type returned for "Commuter Rails"
+Processing HelpController#show (for 127.0.0.1 at 2009-10-14 14:02:27) [GET]
+  Parameters: {"target_controller"=>"tripsMap", "transport_type"=>"Bus"}
+Rendering template within layouts/iphone_layout
+Rendering help/show
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/help/tripsMap/Bus]
+  SQL (0.1ms)   SET SQL_AUTO_IS_NULL=0
+
+
+Processing HelpController#show (for 127.0.0.1 at 2009-10-14 14:02:31) [GET]
+  Parameters: {"target_controller"=>"tripsTable", "transport_type"=>"Bus"}
+Rendering template within layouts/iphone_layout
+Rendering help/show
+Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/help/tripsTable/Bus]
+
+14:03 Next:
+- highlight the nearest stop
+- add some information to the About/FAQ and the Help pages. Doesn't have to be
+  the final version.
+- add icon and 512 size image. Submit to App store.
+
+
+
+
+
+
 
 
 

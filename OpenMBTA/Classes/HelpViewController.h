@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ServerUrl.h"
 
 @interface HelpViewController : UIViewController <UIWebViewDelegate> {
     NSString *viewName;

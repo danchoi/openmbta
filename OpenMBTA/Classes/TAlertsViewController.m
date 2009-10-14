@@ -101,11 +101,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *alert = [[self.data objectAtIndex:indexPath.row] objectForKey:@"alert"];
     NSLog(@"alert: %@", alert);
-    AlertViewController *alertViewController = [[AlertViewController alloc] initWithNibName:@"AlertViewController" bundle: nil];
+    AlertViewController *alertViewController = [[AlertViewController alloc] initWithNibName:@"AboutViewController" bundle: nil];
     
-    alertViewController.alertTitle = [alert objectForKey:@"title"];
-    alertViewController.pubDate = [alert objectForKey:@"pub_date"];    
-    alertViewController.description = [alert objectForKey:@"description"];
+    alertViewController.alertGUID = [alert objectForKey:@"guid"];
     [self.navigationController pushViewController:alertViewController animated:YES];
 	[alertViewController release];
 }

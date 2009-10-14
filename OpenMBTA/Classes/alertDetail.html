@@ -411,7 +411,6 @@ h4 {
 
 .row > p {
     margin: 12px 13px 12px 14px;
-    width: 270px;;
     line-height: 18px;
     font-size: 14px;
 }
@@ -435,12 +434,27 @@ h4 {
 
 </style>
 
-<%= yield :header %>
+
 
 </head>
   <body>
     <div class="panel">
-      <%= yield %>
+      <fieldset>
+      
+  <div class="row">
+    <h3>%@</h3>
+  </div>      
+  <div class="row">
+
+    <h3>%@</h3>
+
+    <div style="padding-left:14px;padding-right:14px;">
+    %@
+    </div>
+
+  </div>
+</fieldset>
+
     </div>
   </body>
 </html>
