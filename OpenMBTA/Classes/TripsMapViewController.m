@@ -1,6 +1,7 @@
 #import "TripsMapViewController.h"
 #import "TimePickerViewController.h"
 #import "HelpViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface TripsMapViewController (Private)
 - (void)stopSelected:(NSString *)stopId;
@@ -252,11 +253,7 @@
         annotation.title = [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
         annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
         annotation.stop_id = stop_id;
-        //NSLog(@"IMMINENT STOPs: %@", self.imminentStops);        
-        //NSLog(@"class: %@", [[self.imminentStops objectAtIndex:0] class]);
-        //NSLog(@"this STOP: %@", stop_id);                
         if ([self.imminentStops containsObject:stop_id]) {
-            //NSLog(@"THIS IS IMMINENT STOP: %@", stop_id);
             annotation.isNextStop = YES;
         }
         if ([self.firstStops containsObject:stopName]) {
@@ -268,8 +265,8 @@
         coordinate.longitude = [[stopDict objectForKey:@"lng"] doubleValue];
         annotation.coordinate = coordinate;
         [self.stopAnnotations addObject:annotation];
-
     }
+    
     [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
 }
@@ -281,8 +278,11 @@
 
 
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>) annotation {
-    if (annotation == mapView.userLocation) 
+    if (annotation == mapView.userLocation) {
+        [self highlightNearestStop];
+
         return nil;
+    }
     
     static NSString *pinID = @"mbtaPin";
 	MKPinAnnotationView *pinView =  (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pinID];
@@ -299,10 +299,24 @@
     } else {
         pinView.pinColor = MKPinAnnotationColorRed;   
     }
-    
-    
 	return pinView;
 }
+
+- (void)highlightNearestStop {
+    if (mapView.userLocationVisible == NO)
+        return;
+    
+    CLLocation *userLocation;
+    userLocation = mapView.userLocation.location;
+    for (id annotation in self.stopAnnotations) {
+        CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
+        CLLocationDistance distance = [stopLocation getDistanceFrom:userLocation];
+        NSLog(@"distance: %f", distance);
+    }
+
+}
+
+
 
 - (void)stopSelected:(NSString *)stopId {
     self.selected_stop_id = stopId;

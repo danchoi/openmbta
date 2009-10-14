@@ -62,4 +62,5 @@
 - (void)toggleView:(id)sender;
 - (void)resetBaseTime;
 - (IBAction)infoButtonPressed:(id)sender;
+- (void)highlightNearestStop;
 @end

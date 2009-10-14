@@ -10,7 +10,10 @@
 #import "ServerUrl.h"
 
 @implementation AboutViewController
-
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"About / FAQ";
+}
 - (void)loadWebView {
     NSString *urlString = [NSString stringWithFormat:@"%@/about", ServerURL];
     NSLog(@"calling %@", urlString);
