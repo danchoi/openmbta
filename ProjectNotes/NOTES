@@ -2769,5 +2769,19 @@ Next:
 - HTML views
 
 
+--------------------------------------------------------------------------------
+Wed Oct 14 13:05:07 EDT 2009
+
+13:05 At Starbucks Kendall Square. 
+
+Next:
+- add subway times inaccurate message right after line name of the Trips view 
+when the transportType is subway 
+- About/FAQ and Help HTML pages. Try sticking the HTML inside the style tag.
+- highlight nearest stop. 
+
+
+
+
 
 
