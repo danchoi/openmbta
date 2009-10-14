@@ -39,4 +39,7 @@ class Alert < ActiveRecord::Base
     read_attribute(:title).gsub(/\s{2,}/, ' ')
   end
 
+  def to_json(options={})
+    super(options.merge(:only => [:title, :pub_date, :guid]))
+  end
 end

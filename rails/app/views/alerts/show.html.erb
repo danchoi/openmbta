@@ -1,9 +1,10 @@
- <fieldset style="min-height: 390px;">
+<fieldset style="min-height: 390px;">
   <div class="row">
     <h3 style="margin-bottom:14px"><%= @alert.title %></h3>
 
   </div>
   <div class="row">
+    <p style="font-weight:bold;color:#666;"><%= @alert.pub_date %></p>
     <%= simple_format @alert.description %>
   </div>
 </fieldset>
