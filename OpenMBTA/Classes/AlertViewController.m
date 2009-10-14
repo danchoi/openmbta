@@ -24,7 +24,7 @@
 
 - (void)loadWebView {
     NSString *urlString = [NSString stringWithFormat:@"%@/alerts/%@", ServerURL, self.alertGUID];
-//    NSLog(@"calling %@", urlString);
+    // NSLog(@"calling %@", urlString);
     NSURL *url = [[NSURL alloc] initWithString: urlString];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
     [self showLoadingIndicators];

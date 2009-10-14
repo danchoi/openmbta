@@ -13,13 +13,13 @@
 
 
 @implementation TripsMapViewController
-@synthesize imminentStops, firstStops, orderedStopIds, stopAnnotations;
+@synthesize imminentStops, firstStops, orderedStopIds, stopAnnotations, nearestStopAnnotation;
 @synthesize stops;
 @synthesize mapView;
 @synthesize regionInfo, shouldReloadRegion, shouldReloadData;
 @synthesize headsign;
 @synthesize route_short_name, transportType;
-@synthesize selected_stop_id, baseTime;
+@synthesize selected_stop_id, nearest_stop_id, baseTime;
 @synthesize tableView;
 
 - (void)viewDidLoad {
@@ -85,7 +85,8 @@
     }
     // NSLog(@"set new base time on trips map to %@", self.baseTime);
     self.shouldReloadData = YES;
-//    [self viewWillAppear:NO];
+//    [self viewWillAppear:NO]; // this will be called automatically when the view appears
+    
     
 }
 
@@ -122,7 +123,7 @@
     self.headsign = nil;
     self.route_short_name = nil;
     self.tableView = nil;
-    [selected_stop_id release];
+    self.selected_stop_id = nil;
     [operationQueue release];
     [super dealloc];
 }
@@ -273,6 +274,13 @@
     
     [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
+    // we put delay this a little to allow annotations to appear before calling out the closest one
+    [NSTimer scheduledTimerWithTimeInterval: 0.5  
+                                     target: self
+                                   selector: @selector(findNearestStop)
+                                   userInfo: nil
+                                    repeats: NO];
+    
 }
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {
@@ -283,8 +291,6 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>) annotation {
     if (annotation == mapView.userLocation) {
-        [self highlightNearestStop];
-
         return nil;
     }
     
@@ -306,18 +312,39 @@
 	return pinView;
 }
 
-- (void)highlightNearestStop {
-    if (mapView.userLocationVisible == NO)
-        return;
+- (void)findNearestStop {
     
+    if (([self.stopAnnotations count] == 0) || (mapView.userLocationVisible == NO))  {
+    	[NSTimer scheduledTimerWithTimeInterval: 1.4
+                                        target: self
+                                       selector: @selector(findNearestStop)
+                                        userInfo: nil
+                                        repeats: NO];
+        
+        return;
+    }
     CLLocation *userLocation;
     userLocation = mapView.userLocation.location;
+    float minDistance = -1;
     for (id annotation in self.stopAnnotations) {
         CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
         CLLocationDistance distance = [stopLocation getDistanceFrom:userLocation];
-        NSLog(@"distance: %f", distance);
+        if ((minDistance == -1) || (distance < minDistance)) {
+            self.nearestStopAnnotation = (StopAnnotation *)annotation;
+            minDistance = distance;
+        } 
+        //NSLog(@"distance: %f", distance);
     }
-
+    //NSLog(@"min distance: %f; closest stop: %@", minDistance, closestAnnotation.subtitle);
+    
+    [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; // show callout of nearest stop
+    self.nearest_stop_id = self.nearestStopAnnotation.stop_id;
+    
+    int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:nearestStopRow inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    [self.tableView reloadData];
 }
 
 
@@ -356,7 +383,17 @@
     NSNumber *stop_id = [self.orderedStopIds objectAtIndex:indexPath.row];
     NSDictionary *stopDict = [self.stops objectForKey:[stop_id stringValue]];
     NSString *stopName =  [stopDict objectForKey:@"name"];
-    cell.textLabel.text = stopName;
+    
+    if ((self.nearest_stop_id != nil) && [[stop_id stringValue] isEqualToString:self.nearest_stop_id]) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ : nearest stop", stopName];        
+        cell.textLabel.textColor = [UIColor redColor];
+    } else {
+        cell.textLabel.text = stopName;
+        cell.textLabel.textColor = [UIColor blackColor];        
+    }
+    // highlight nearest stop
+    
+
     cell.detailTextLabel.text =  [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
     if ([[stopDict objectForKey:@"next_arrivals"] count] > 1) {
         cell.accessoryType =  UITableViewCellAccessoryNone;
@@ -376,7 +413,6 @@
     } else {
         cell.detailTextLabel.textColor = [UIColor grayColor];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];        
-
     }
     
     return cell;

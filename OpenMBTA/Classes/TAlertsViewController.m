@@ -100,7 +100,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *alert = [[self.data objectAtIndex:indexPath.row] objectForKey:@"alert"];
-    NSLog(@"alert: %@", alert);
+    //NSLog(@"alert: %@", alert);
     AlertViewController *alertViewController = [[AlertViewController alloc] initWithNibName:@"AboutViewController" bundle: nil];
     
     alertViewController.alertGUID = [alert objectForKey:@"guid"];

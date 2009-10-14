@@ -178,6 +178,7 @@
         [self tripsMapViewController].transportType = self.transportType;
         [self tripsMapViewController].shouldReloadRegion = YES;
         [self tripsMapViewController].shouldReloadData = YES;
+
         [[self tripsMapViewController] resetBaseTime];
         [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
     }

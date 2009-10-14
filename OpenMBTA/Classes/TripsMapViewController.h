@@ -32,6 +32,8 @@
     NSString *transportType;
     
     NSString *selected_stop_id;
+    NSString *nearest_stop_id;    
+    StopAnnotation *nearestStopAnnotation;
     BOOL shouldReloadData;
     IBOutlet UILabel *headsignLabel;
     IBOutlet UILabel *routeNameLabel;
@@ -50,6 +52,8 @@
 @property (nonatomic, retain) NSString *transportType;
 @property (nonatomic, getter=shouldReloadRegion) BOOL shouldReloadRegion;
 @property (nonatomic,copy) NSString *selected_stop_id;
+@property (nonatomic,copy) NSString *nearest_stop_id;
+@property (nonatomic, retain) StopAnnotation *nearestStopAnnotation;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
 @property (nonatomic, retain) NSDate *baseTime;
@@ -62,5 +66,5 @@
 - (void)toggleView:(id)sender;
 - (void)resetBaseTime;
 - (IBAction)infoButtonPressed:(id)sender;
-- (void)highlightNearestStop;
+- (void)findNearestStop;
 @end

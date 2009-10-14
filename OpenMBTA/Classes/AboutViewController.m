@@ -16,7 +16,7 @@
 }
 - (void)loadWebView {
     NSString *urlString = [NSString stringWithFormat:@"%@/about", ServerURL];
-    NSLog(@"calling %@", urlString);
+    //NSLog(@"calling %@", urlString);
     NSURL *url = [[NSURL alloc] initWithString: urlString];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
     [self showLoadingIndicators];
