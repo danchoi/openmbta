@@ -14,7 +14,7 @@
 @end
 
 @implementation HelpViewController
-@synthesize viewName, webView, request;
+@synthesize viewName, transportType, webView, request;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +28,7 @@
 
 - (void)dealloc {
     self.viewName = nil;
+    self.transportType = nil;
     self.webView = nil;
     self.request = nil;
     [spinner release];
@@ -36,8 +37,9 @@
 }
 
 - (void)loadWebView {
-    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@", ServerURL, self.viewName];
-    NSURL *url = [[NSURL alloc] initWithString: urlString];
+    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@/%@", ServerURL, self.viewName, self.transportType];
+    NSString *urlStringEscaped = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];    
+    NSURL *url = [[NSURL alloc] initWithString: urlStringEscaped];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
     [self showLoadingIndicators];
     [self.webView loadRequest:self.request];

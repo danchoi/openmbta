@@ -2780,7 +2780,14 @@ when the transportType is subway
 - About/FAQ and Help HTML pages. Try sticking the HTML inside the style tag.
 - highlight nearest stop. 
 
+13:58
 
+Help pages now know what view and what transport type the user is looking at:
+
+Processing HelpController#show (for 127.0.0.1 at 2009-10-14 13:58:27) [GET]
+  Parameters: {"target_controller"=>"tripsMap", "transport_type"=>"Subway"}
+
+CommuterRail is the tranport_type returned for "Commuter Rails"
 
 
 

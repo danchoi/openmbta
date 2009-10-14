@@ -386,6 +386,7 @@
     NSLog(@"info button pressed");
     HelpViewController *vc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
     vc.viewName = self.mapView.hidden == YES ? @"tripsTable" : @"tripsMap";
+    vc.transportType = self.transportType;
     [self presentModalViewController:vc animated:YES];
     [vc release];
     

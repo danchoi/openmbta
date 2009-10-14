@@ -13,6 +13,7 @@
     NSString *viewName;
     IBOutlet UIWebView *webView;
     NSURLRequest *request;    
+    NSString *transportType;
     
     UIActivityIndicatorView *spinner;
     UILabel *loadingLabel;
@@ -20,7 +21,8 @@
     
     
 }
-@property (nonatomic, retain) NSString *viewName;
+@property (nonatomic, copy) NSString *viewName;
+@property (nonatomic, copy) NSString *transportType;
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSURLRequest *request;
 - (IBAction)doneButtonPressed:(id)sender;
