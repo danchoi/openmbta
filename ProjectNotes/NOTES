@@ -2820,8 +2820,52 @@ Next:
 
 16:20 Tosci's battery about to die
 
+Awesome tip from dev discussion forum:
+
+https://devforums.apple.com/message/132733#132733
+
+Apple provides artwork for this purpose. It's Photoshop files that automatically
+have all the shadow and reflection and even an automatic layer to paste your 320
+x 460 screenshot in.
+
+iPhone Developer Forum on length of approval queue.
+https://devforums.apple.com/message/132727#132727
+
+22:42 OpenMBTA iPhone is submitted!
+
+Tomorrow, need to fix up the About and Help.
+
+Deadline reminder:
+                 
+Contestants must submit their applications to MassDOT by 5pm on 
+November 9, 2009. Submit applications by 
+emailing christopher.dempsey@state.ma.us with instructions on how to 
+access your application, names of your team members, contact 
+information (including cell phone), and other applicable information. 
+
+--------------------------------------------------------------------------------
+Automated Data Testing
+
+IDEA. Write an automated test harness that tests the OpenMBTA schedules against
+web-scraped data from the MBTA website.
 
 
+Thu Oct 15 06:27:47 EDT 2009
+
+To do today:
+1. iphonembta.org home page
+2. iphonembta.org support page
+3. in app about / faq page
+4. in app help pages
+
+Later:
+- SilverLine
+- Automated Testing against web site
+- Study MemCached in anticipation of the need for it
+
+
+Use Markdown for the copy and translate. Load the files in class constants on
+startup.
 
 
 
