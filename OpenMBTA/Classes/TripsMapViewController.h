@@ -38,7 +38,7 @@
     IBOutlet UILabel *headsignLabel;
     IBOutlet UILabel *routeNameLabel;
     NSDate *baseTime; // used when user picks a different base time for getting stop arrival times
-    
+    NSTimer *triggerCalloutTimer;
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *orderedStopIds;
@@ -57,6 +57,7 @@
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
 @property (nonatomic, retain) NSDate *baseTime;
+@property (nonatomic, retain) NSTimer *triggerCalloutTimer;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;

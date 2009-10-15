@@ -21,6 +21,7 @@
 @synthesize route_short_name, transportType;
 @synthesize selected_stop_id, nearest_stop_id, baseTime;
 @synthesize tableView;
+@synthesize triggerCalloutTimer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +48,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    if (self.triggerCalloutTimer != nil)
+        self.triggerCalloutTimer.invalidate;
+
     
     if (self.shouldReloadData) {
         self.stops = [NSArray array];
@@ -124,6 +128,7 @@
     self.route_short_name = nil;
     self.tableView = nil;
     self.selected_stop_id = nil;
+    self.triggerCalloutTimer = nil;
     [operationQueue release];
     [super dealloc];
 }
@@ -310,6 +315,9 @@
 - (void)findNearestStop {
     
     if (([self.mapView.annotations count] < 2) || (mapView.userLocationVisible == NO))  {
+        if (self.triggerCalloutTimer != nil)
+            self.triggerCalloutTimer.invalidate;
+        
     	[NSTimer scheduledTimerWithTimeInterval: 1.4
                                         target: self
                                        selector: @selector(findNearestStop)
@@ -336,6 +344,9 @@
 
     // show callout of nearest stop    
     // We delay this to give map time to draw the pins for the stops
+    if (self.triggerCalloutTimer != nil)
+        self.triggerCalloutTimer.invalidate;
+    
     [NSTimer scheduledTimerWithTimeInterval: 0.7
                                      target: self
                                    selector: @selector(triggerCallout:)
@@ -347,12 +358,13 @@
 - (void)triggerCallout:(StopAnnotation *)stopAnnotation {
     [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; // show callout     
     self.nearest_stop_id = self.nearestStopAnnotation.stop_id;
+    
     int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:nearestStopRow inSection:0];
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
-    [self.tableView reloadData];
-    
+    if (nearestStopRow != NSNotFound) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:nearestStopRow inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self.tableView reloadData];
+    }
 }
 
 
