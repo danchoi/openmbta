@@ -41,6 +41,7 @@
     NSString *urlStringEscaped = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];    
     NSURL *url = [[NSURL alloc] initWithString: urlStringEscaped];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
+    [url release];
     [self showLoadingIndicators];
     [self.webView loadRequest:self.request];
 }

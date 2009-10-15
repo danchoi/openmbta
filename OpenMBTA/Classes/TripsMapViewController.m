@@ -275,6 +275,7 @@
         coordinate.longitude = [[stopDict objectForKey:@"lng"] doubleValue];
         annotation.coordinate = coordinate;
         [self.stopAnnotations addObject:annotation];
+        [annotation release];
     }
     
     [mapView addAnnotations:self.stopAnnotations];    
@@ -334,6 +335,7 @@
     for (id annotation in self.stopAnnotations) {
         CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
         CLLocationDistance distance = [stopLocation getDistanceFrom:userLocation];
+        [stopLocation release];
         if ((minDistance == -1) || (distance < minDistance)) {
             self.nearestStopAnnotation = (StopAnnotation *)annotation;
             minDistance = distance;

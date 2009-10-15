@@ -100,7 +100,7 @@
     for (NSDictionary *section in self.data) {
         [sectionTitles addObject:[section objectForKey:@"route_short_name"]];
     }
-    return sectionTitles;
+    return [sectionTitles autorelease];
 }
 
 // Customize the number of rows in the table view.
