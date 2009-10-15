@@ -1,21 +1,65 @@
 <fieldset>
   <div class="row">
     <h3>
-      What is this information?
+     Overview
     </h3>
 
     <p>
-      Information here.
+    On this screen, OpenMBTA shows you up to the three next arrival times for
+    the Route or Line you selected. 
     </p>
 
     <p>
-      Second paragraph.
+
+    This screen has two views: a map view and a table view. Both views show the
+    same information. In the map view, a <span class='red'>red pin</span>
+    indicates a stop, the <span class='green'>green pin</span> shows you the
+    starting point, and the the <span class='purple'>purple pins</span> show the
+    stops where a <%= @transport_type.downcase %> is next due to make a stop.
+    In the table view, the same colors are used to highlight the corresponding
+    stops in the table.
+
     </p>
 
     <p>
-      A third paragraph.
-      <%= link_to "MBTA", "http://mbta.com" %>
+
+    On the map, a <span class='blue'>blue sphere</span> will drop onto the map
+    showing your current location if you're close to the route or the line
+    you're looking at.  Also, the nearest stop and its next arrival times
+    will get highlighted.
+
+    <p>
+    
+    Press the  <b>Shift Time</b> button in the upper right corner to bring up
+    the time picker. You can adjust the time to see the scheduled stops for a
+    particular time of the current day. Once you change the time setting and
+    return to the map or table you were just looking at, you should see the
+    arrival times change to reflect the new time you selected. 
+
     </p>
+
+    <h3>
+     Caveat 
+    </h3>
+
+    <p>
+
+    For subway lines, the arrival times shown are not scheduled arrival times.
+    Rather, the intervals between subway arrival times are indicators of the
+    frequency of arrivals at given time of the day.
+
+    </p>
+
+    <h3>
+     Tip
+    </h3>
+
+    <p> 
+    In the map view, you can quickly zoom into an area of interest by
+    double-tapping on a location in the map. You can also pan around the map by
+    dragging it, and zoom in or out by stretching and pinching the map with your fingers.
+    </p>
+
 
   </div>
 </fieldset>

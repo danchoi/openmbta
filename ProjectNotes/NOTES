@@ -2849,7 +2849,6 @@ Automated Data Testing
 IDEA. Write an automated test harness that tests the OpenMBTA schedules against
 web-scraped data from the MBTA website.
 
-
 Thu Oct 15 06:27:47 EDT 2009
 
 To do today:
@@ -2867,10 +2866,7 @@ Later:
 Use Markdown for the copy and translate. Load the files in class constants on
 startup.
 
-
-
-
-
-
+Is there a way to write the copy once for both the website pages and the
+in-iphone pages? So the help and about pages can be reused.
 
 
