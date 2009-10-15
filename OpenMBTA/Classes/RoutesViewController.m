@@ -31,7 +31,8 @@
     if (self.lineName) {
         self.title = @"CR Trains";
     } else {
-        self.title = ([self.transportType isEqualToString:@"Commuter Rail"] ? @"CR Lines" : [NSString stringWithFormat:@"%@ Routes", self.transportType]);
+        self.title = ([self.transportType isEqualToString:@"Commuter Rail"] ? @"Rail Lines" : 
+        ([self.transportType isEqualToString:@"Subway"] ? @"Subway Lines" : [NSString stringWithFormat:@"%@ Routes", self.transportType]));
     }
     [super viewWillAppear:animated];
 }
