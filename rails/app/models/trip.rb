@@ -12,7 +12,7 @@ class Trip < ActiveRecord::Base
     #options.merge!(:limit => 10)
 
     trips = if options[:trip_id]
-      [Trip.find options[:trip_id]] # for the /trip/show action
+      [Trip.find( options[:trip_id] )] # for the /trip/show action
     else
       options[:transport_type].to_s.camelize.constantize.trips(options)
     end
