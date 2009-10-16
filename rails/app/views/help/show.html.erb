@@ -14,7 +14,7 @@
     This screen has two views: a map view and a table view. Both views show the
     same information. In the map view, a <span class='red'>red pin</span>
     indicates a stop, the <span class='green'>green pin</span> shows you the
-    starting point, and the the <span class='purple'>purple pins</span> show the
+    starting point, and the <span class='purple'>purple pins</span> show the
     stops where a <%= @transport_type.downcase %> is next due to make a stop.
     In the table view, the same colors are used to highlight the corresponding
     stops in the table.
@@ -39,14 +39,16 @@
     </p>
 
     <h3>
-     Caveat 
+     Note
     </h3>
 
     <p>
 
-    For subway lines, the arrival times shown are not scheduled arrival times.
-    Rather, the intervals between subway arrival times are indicators of the
-    frequency of arrivals at given time of the day.
+    The arrival times shown are approximations rather than than guarantees.
+    Service delays due to traffic and other conditions can change the arrival times.
+    Please visit the <b>T Alerts</b> section of this app (from the Main Menu) 
+    to see if there are any serious service delays or changes on any of the routes or lines
+    you're waiting for.
 
     </p>
 
