@@ -3,12 +3,13 @@
 #import "HelpViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
+
 @interface TripsMapViewController (Private)
 - (void)stopSelected:(NSString *)stopId;
 - (void)addChangeTimeButton;
 - (void)removeChangeTimeButton;
 - (void)showTimePicker:(id)sender;
-
+- (void)annotateDemoLocation;
 @end
 
 
@@ -130,6 +131,7 @@
     self.selected_stop_id = nil;
     self.triggerCalloutTimer = nil;
     [operationQueue release];
+    [demoCurrentLocation release];
     [super dealloc];
 }
 
@@ -280,7 +282,19 @@
     
     [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
+    [self annotateDemoLocation];
     [self findNearestStop];
+    
+    
+}
+
+- (void)annotateDemoLocation {
+    demoCurrentLocation = [[DemoCurrentLocation alloc] init];    
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = 42.364248;
+    coordinate.longitude = -71.105506;
+    demoCurrentLocation.coordinate = coordinate;
+    [mapView addAnnotation:demoCurrentLocation];
     
 }
 
@@ -293,6 +307,11 @@
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>) annotation {
     if (annotation == mapView.userLocation) {
         return nil;
+    }
+    if ([annotation class] == [DemoCurrentLocation class]) { // for demo video purposes only
+        MKAnnotationView *demoLocationDot = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];        
+        demoLocationDot.image = [UIImage imageNamed:@"TrackingDot.png"];
+        return demoLocationDot;
     }
     
     static NSString *pinID = @"mbtaPin";
@@ -315,7 +334,7 @@
 
 - (void)findNearestStop {
     
-    if (([self.mapView.annotations count] < 2) || (mapView.userLocationVisible == NO))  {
+    if (([self.mapView.annotations count] < 2) ) { //|| (mapView.userLocationVisible == NO))  {
         if (self.triggerCalloutTimer != nil)
             self.triggerCalloutTimer.invalidate;
         
@@ -330,7 +349,12 @@
     self.nearestStopAnnotation = nil;
     
     CLLocation *userLocation;
-    userLocation = mapView.userLocation.location;
+//    userLocation = mapView.userLocation.location;
+/* Use only for demo
+
+*/
+    userLocation = [[CLLocation alloc] initWithLatitude:demoCurrentLocation.coordinate.latitude longitude:demoCurrentLocation.coordinate.longitude];
+    
     float minDistance = -1;
     for (id annotation in self.stopAnnotations) {
         CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
@@ -368,6 +392,7 @@
         [self.tableView reloadData];
     }
 }
+
 
 
 

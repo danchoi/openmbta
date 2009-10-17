@@ -13,7 +13,7 @@
 #import "ServerUrl.h"
 #import "GetRemoteDataOperation.h"
 #import "BaseViewController.h"
-
+#import "DemoCurrentLocation.h"
 
 @interface TripsMapViewController : BaseViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource> {
     NSDictionary *stops;
@@ -39,6 +39,9 @@
     IBOutlet UILabel *routeNameLabel;
     NSDate *baseTime; // used when user picks a different base time for getting stop arrival times
     NSTimer *triggerCalloutTimer;
+    
+    // used only for video and screenshot demo purposes
+    DemoCurrentLocation *demoCurrentLocation;
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *orderedStopIds;
