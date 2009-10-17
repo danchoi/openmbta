@@ -2870,3 +2870,22 @@ Is there a way to write the copy once for both the website pages and the
 in-iphone pages? So the help and about pages can be reused.
 
 
+
+For video, need tracking dot
+
+/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/System/Library
+
+/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/System/Library/Frameworks/MapKit.framework/TrackingDot.png
+
+./Frameworks/MapKit.framework/TrackingDot.png
+./Frameworks/MapKit.framework/TrackingDotBounce.png
+./Frameworks/MapKit.framework/TrackingDotGrey.png
+./Frameworks/MapKit.framework/TrackingDotGreyPressed.png
+./Frameworks/MapKit.framework/TrackingDotHalo.png
+./Frameworks/MapKit.framework/TrackingDotHaloMini.png
+./Frameworks/MapKit.framework/TrackingDotHaloSmall.png
+./Frameworks/MapKit.framework/TrackingDotPressed.png
+./Frameworks/MapKit.framework/TransitCalloutLeft.png
+./Frameworks/MapKit.framework/TransitCalloutRight.png
+
+
