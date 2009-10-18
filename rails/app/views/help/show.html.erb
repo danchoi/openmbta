@@ -5,28 +5,59 @@
     </h3>
 
     <p>
-    On this screen, OpenMBTA shows you up to the three next arrival times for
-    the Route or Line you selected. 
+    OpenMBTA shows you stop locations and the next three arrival times for
+    the Route or Line you selected. You can switch between a map view and a
+    table view of the same information.
     </p>
 
     <p>
-
-    This screen has two views: a map view and a table view. Both views show the
-    same information. In the map view, a <span class='red'>red pin</span>
-    indicates a stop, the <span class='green'>green pin</span> shows you the
-    starting point, and the <span class='purple'>purple pins</span> show the
-    stops where a <%= @transport_type.downcase %> is next due to make a stop.
-    In the table view, the same colors are used to highlight the corresponding
-    stops in the table.
+    Here is a guide to what the colored pins in the map view mean:
 
     </p>
 
-    <p>
 
-    On the map, a <span class='blue'>blue sphere</span> will drop onto the map
-    showing your current location if you're close to the route or the line
-    you're looking at.  Also, the nearest stop and its next arrival times
-    will get highlighted.
+    <table class='pin'>
+      <tr>
+        <td>
+          <%=image_tag 'map/PinDown1.png' %>
+        </td>
+        <td>
+            A red pin is a stop. You can tap on any pin to show the stop name and up to the next three arrival times. If there are no more arrivals for the day, you'll see a message saying so. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%=image_tag 'map/PinDown1Green.png' %>
+        </td>
+        <td>
+            A green pin is the starting point of a route or line. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%=image_tag 'map/PinDown1Purple.png' %>
+        </td>
+        <td>
+            A purple pin is a stop where a <%= @transport_type.downcase %> is
+            next due to make a stop.  
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%=image_tag 'map/TrackingDot.png' %>
+        </td>
+        <td>
+          A blue sphere will drop onto the map showing your current
+          location if you're close to the route or the line you're looking at.
+          The appearance of the blue sphere prompts the pin for the nearest stop
+          to show its callout with next arrival times.
+        </td>
+      </tr>
+    </table>
+
+    <p>
+    In the table view, the nearest stop is colored <span class='red'>red</span>, the starting point <span class='green'>green</span>, the next stops <span class='purple'>purple</span>.
+    </p>
 
     <p>
     

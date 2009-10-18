@@ -282,7 +282,8 @@
     
     [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
-    [self annotateDemoLocation];
+    [self annotateDemoLocation]; // comment out for production
+    
     [self findNearestStop];
     
     
