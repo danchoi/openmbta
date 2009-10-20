@@ -32,7 +32,7 @@ class Alert < ActiveRecord::Base
   end
 
   def pub_date
-    read_attribute(:pub_date).strftime('%x %I:%M %p')
+    read_attribute(:pub_date).in_time_zone.strftime('%x %I:%M %p')
   end
 
   def title
