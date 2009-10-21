@@ -46,9 +46,10 @@ class Trip < ActiveRecord::Base
           :next_arrivals => next_arrivals_for_stop(stop.id, trips, now).map {|time| format_time(time)}}
         memo
       end),
-      :imminent_stop_ids => imminent_stop_ids(trips),
       :first_stop => options[:trip_id] ? [stops.first.name] : trips.map {|t| t.first_stop}.uniq
     }
+
+    result = result.merge( :imminent_stop_ids => imminent_stop_ids(trips) )
 
     # Need to add an array of the stop ids in trip order. This is easy for the
     # case of a single trip, but the algorithm for finding a common order for
@@ -95,17 +96,15 @@ class Trip < ActiveRecord::Base
   def self.imminent_stop_ids(trips)
     now = Time.now.strftime "%H:%M:%S"
     trips.inject([]) do |memo, trip|
-      next_stopping = trip.stoppings.detect {|stopping| 
-        # can compare mysql time type as strings and it works
-        stopping.arrival_time.to_s > now
-      }
+      next_stopping = trip.stoppings.first(:conditions => ["arrival_time > '#{now}'"]) 
       if next_stopping 
         memo << next_stopping.stop_id
-      else
-        memo
       end
+      memo
     end.uniq.map {|x| x.to_s} # strings because it's easier to handle this way on iPhone side
+
   end
+
 
   def stops_with_times
     stoppings.map {|stopping| 

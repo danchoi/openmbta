@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091012185846) do
+ActiveRecord::Schema.define(:version => 20091021163040) do
 
   create_table "alerts", :force => true do |t|
     t.string   "title"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(:version => 20091012185846) do
     t.string  "long_name"
     t.integer "route_type"
   end
+
+  add_index "routes", ["route_type"], :name => "index_routes_on_route_type"
+  add_index "routes", ["short_name"], :name => "index_routes_on_short_name"
 
   create_table "service_exceptions", :force => true do |t|
     t.integer "service_id"
@@ -58,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20091012185846) do
     t.time    "departure_time"
   end
 
+  add_index "stoppings", ["arrival_time"], :name => "index_stoppings_on_arrival_time"
   add_index "stoppings", ["stop_id"], :name => "index_stoppings_on_stop_id"
   add_index "stoppings", ["trip_id"], :name => "index_stoppings_on_trip_id"
 
