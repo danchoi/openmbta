@@ -282,7 +282,7 @@
     
     [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
-    [self annotateDemoLocation]; // comment out for production
+//    [self annotateDemoLocation]; // comment out for production
     
     [self findNearestStop];
     
@@ -335,7 +335,7 @@
 
 - (void)findNearestStop {
     
-    if (([self.mapView.annotations count] < 2) ) { //|| (mapView.userLocationVisible == NO))  {
+    if (([self.mapView.annotations count] < 2)  || (mapView.userLocationVisible == NO))  {
         if (self.triggerCalloutTimer != nil)
             self.triggerCalloutTimer.invalidate;
         
@@ -350,11 +350,11 @@
     self.nearestStopAnnotation = nil;
     
     CLLocation *userLocation;
-//    userLocation = mapView.userLocation.location;
+    userLocation = mapView.userLocation.location;
 /* Use only for demo
 
 */
-    userLocation = [[CLLocation alloc] initWithLatitude:demoCurrentLocation.coordinate.latitude longitude:demoCurrentLocation.coordinate.longitude];
+   // userLocation = [[CLLocation alloc] initWithLatitude:demoCurrentLocation.coordinate.latitude longitude:demoCurrentLocation.coordinate.longitude];
     
     float minDistance = -1;
     for (id annotation in self.stopAnnotations) {

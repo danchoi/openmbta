@@ -9,11 +9,15 @@ module Boat
 
   NAME_TO_MBTA_ID = MBTA_ID_TO_NAME.invert
 
-  ROUTE_ID_TO_NAME = MBTA_ID_TO_NAME.inject({}) do |memo, pair|
-    mbta_id, name = pair
-    route_id = Route.find_by_mbta_id(mbta_id).id
-    memo[route_id] = name
-    memo
+  if RAILS_ENV != 'test'
+    ROUTE_ID_TO_NAME = MBTA_ID_TO_NAME.inject({}) do |memo, pair|
+      mbta_id, name = pair
+      route_id = Route.find_by_mbta_id(mbta_id).id
+      memo[route_id] = name
+      memo
+    end
+  else
+    ROUTE_ID_TO_NAME = {}
   end
 
   NAME_TO_ROUTE_ID = ROUTE_ID_TO_NAME.invert

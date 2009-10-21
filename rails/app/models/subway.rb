@@ -11,14 +11,18 @@ module Subway
   #
   # {"Green Line"=>[957, 959, 961, 963, 965, 967, 978, 992, 994], "Blue
   # Line"=>[1039, 1041], "Orange Line"=>[1011, 1017], "Red Line"=>[1027, 1033]}
-  ROUTE_NAME_TO_ID = ROUTE_NAME_TO_MBTA_ID.inject({}) do |memo, pair|
-    line_name, numbers = pair
-    ids = numbers.map {|number| 
-      route = Route.first(:conditions => ["route_type in (0,1) and mbta_id like ?", "#{number}%"])
-      route.id
-    }
-    memo[line_name] = ids
-    memo
+  ROUTE_NAME_TO_ID = if RAILS_ENV != 'test'
+    ROUTE_NAME_TO_MBTA_ID.inject({}) do |memo, pair|
+      line_name, numbers = pair
+      ids = numbers.map {|number| 
+        route = Route.first(:conditions => ["route_type in (0,1) and mbta_id like ?", "#{number}%"])
+        route.id
+      }
+      memo[line_name] = ids
+      memo
+    end
+  else
+    {}
   end
 
   # Looks like this after generation::
