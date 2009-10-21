@@ -56,10 +56,11 @@ class Trip < ActiveRecord::Base
     ordered_stop_ids = if trips.size == 1
       stops.map {|stop| stop.id}
     else
-      # a hack for now
-      initial_ordered_stop_ids = trips[0].stoppings.map {|x| x.stop_id} 
-      # just stick in the rest  into a union
-      initial_ordered_stop_ids | result[:stops].keys
+      prelim_ordered_stop_ids = trips[0].stoppings.map {|x| x.stop_id} 
+      trips.each do |trip|
+        prelim_ordered_stop_ids = StopOrdering.merge(prelim_ordered_stop_ids, trip.stoppings.map {|x| x.stop_id})
+      end
+      prelim_ordered_stop_ids
     end
 
     result = result.merge(:ordered_stop_ids => ordered_stop_ids)

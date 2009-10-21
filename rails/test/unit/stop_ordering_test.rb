@@ -5,7 +5,7 @@ require 'test_helper'
 
 class StopOrderingTest < ActiveSupport::TestCase
 
-  def test_overlap
+  def test_overlap1
     a = %w{ a b c d }
     b = %w{ c d e }
     assert_equal %w{ a b c d e }, StopOrdering.merge(a, b)
@@ -15,5 +15,17 @@ class StopOrderingTest < ActiveSupport::TestCase
     a = %w{ c d e }
     b = %w{ a b c d }
     assert_equal %w{ a b c d e }, StopOrdering.merge(a, b)
+  end
+
+  def test_overlapping_3
+    a = %w{ c d e }
+    b = %w{ a b c d }
+    assert_equal %w{ a b c d e }, StopOrdering.merge(a, b)
+  end
+
+  def test_overlap_4
+    a = %w{ a b c e f }
+    b = %w{ c d e f}
+    assert_equal %w{ a b c d e f}, StopOrdering.merge(a, b)
   end
 end
