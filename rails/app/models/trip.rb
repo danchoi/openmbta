@@ -97,10 +97,27 @@ class Trip < ActiveRecord::Base
   end
 
   def self.next_arrivals_for_stop(stop_id, trips, now)
-    ActiveRecord::Base.connection.select_all("select arrival_time from stoppings  " +
-      "where stoppings.trip_id in (#{trips.map(&:id).join(',')}) and stoppings.stop_id = #{stop_id} and stoppings.arrival_time > '#{now.time}' " +
-      "order by stoppings.arrival_time limit 3" ).map {|x| x["arrival_time"]}
+    @all_next_arrivals ||= all_next_arrivals_for_stops(trips, now)
+#    ActiveRecord::Base.connection.select_all("select arrival_time from stoppings  " +
+#      "where stoppings.trip_id in (#{trips.map(&:id).join(',')}) and stoppings.stop_id = #{stop_id} and stoppings.arrival_time > '#{now.time}' " +
+#      "order by stoppings.arrival_time limit 3" ).map {|x| x["arrival_time"]}
+    @all_next_arrivals[stop_id]
   end
+
+  def self.all_next_arrivals_for_stops(trips, now)
+    result = ActiveRecord::Base.connection.select_all("select stoppings.stop_id, group_concat(arrival_time) as arrival_times from stoppings " + 
+      "where stoppings.trip_id in (#{trips.map(&:id).join(',')}) and stoppings.arrival_time > '#{now.time}' " + 
+      "group by stoppings.stop_id")
+    data = result.inject({}) do |memo, hash|
+      stop_id = hash["stop_id"].to_i
+      arrival_times = hash["arrival_times"].split(',').select {|x| x > now.time.to_s}.sort[0,3] # next three
+      memo[stop_id] = arrival_times
+      memo
+    end
+    logger.debug "ALL NEXT ARRIVALS: #{data.inspect}"
+    data
+  end
+
 
   # Returns the stops that trips are about to arrive at
   def self.imminent_stop_ids(trips)
