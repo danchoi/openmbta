@@ -101,7 +101,7 @@ class Trip < ActiveRecord::Base
 #    ActiveRecord::Base.connection.select_all("select arrival_time from stoppings  " +
 #      "where stoppings.trip_id in (#{trips.map(&:id).join(',')}) and stoppings.stop_id = #{stop_id} and stoppings.arrival_time > '#{now.time}' " +
 #      "order by stoppings.arrival_time limit 3" ).map {|x| x["arrival_time"]}
-    @all_next_arrivals[stop_id]
+    @all_next_arrivals[stop_id] || []
   end
 
   def self.all_next_arrivals_for_stops(trips, now)
