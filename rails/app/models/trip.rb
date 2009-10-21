@@ -58,7 +58,17 @@ class Trip < ActiveRecord::Base
       stops.map {|stop| stop.id}
     else
       prelim_ordered_stop_ids = trips[0].stoppings.map {|x| x.stop_id} 
-      trips.select {|trip| trip.num_stops != trips[0].num_stops || trip.first_stop != trips[0].first_stop || trip.last_stop != trips[0].last_stop }.each do |trip|
+      # cache the signature of this trip
+      trip_profiles_seen = [[trips[0].num_stops, trips[0].first_stop, trips[0].last_stop]]
+      trips.select {|trip| 
+          profile = [trip.num_stops, trip.first_stop, trip.last_stop]
+          if trip_profiles_seen.include?(profile)
+            false
+          else
+            trip_profiles_seen << [trip.num_stops, trip.first_stop, trip.last_stop]
+            true
+          end
+        }.each do |trip|
         #logger.debug "MERGING"
         prelim_ordered_stop_ids = StopOrdering.merge(prelim_ordered_stop_ids, trip.stoppings.map {|x| x.stop_id})
       end
