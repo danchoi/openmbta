@@ -105,7 +105,9 @@ class Trip < ActiveRecord::Base
   # Returns the stops that trips are about to arrive at
   def self.imminent_stop_ids(trips)
     now = Time.now.strftime "%H:%M:%S"
-    trips.inject([]) do |memo, trip|
+    trips.select {|trip| 
+      (trip.start_time < now) && (trip.end_time > now)
+    }.inject([]) do |memo, trip|
       next_stopping = trip.stoppings.first(:conditions => ["arrival_time > '#{now}'"]) 
       if next_stopping 
         memo << next_stopping.stop_id
