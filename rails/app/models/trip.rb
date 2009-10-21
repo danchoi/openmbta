@@ -114,7 +114,7 @@ class Trip < ActiveRecord::Base
       memo[stop_id] = arrival_times
       memo
     end
-    logger.debug "ALL NEXT ARRIVALS: #{data.inspect}"
+    #logger.debug "ALL NEXT ARRIVALS: #{data.inspect}"
     data
   end
 
