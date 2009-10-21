@@ -41,7 +41,7 @@ module Subway
 
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
-    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where trips.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign;").
+    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where routes.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign;").
       group_by {|r| ROUTE_ID_TO_NAME[r["route_id"].to_i]}.
       map { |route_name, values| { :route_short_name  =>  route_name, :headsigns => generate_headsigns(values) }}
   end
