@@ -10,10 +10,10 @@ class TripsController < ApplicationController
     end
 
     # pass in options[:now] to set different base time
-    @result = Trip.for(:headsign => params[:headsign].gsub(/\^/, "&") , 
+    @result = TripSet.new(:headsign => params[:headsign].gsub(/\^/, "&") , 
                        :route_short_name => params[:route_short_name],
                        :transport_type => params[:transport_type].downcase.gsub(" ", "_").to_sym,
-                       :now => Now.new(base_time))
+                       :now => Now.new(base_time)).result
     render :json => @result.to_json
   end
 end

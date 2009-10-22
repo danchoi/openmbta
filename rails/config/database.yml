@@ -3,7 +3,7 @@
 
 development:
   adapter: mysql
-  database: mbta_development
+  database: mbta2_development
   username: root
   password:
 
