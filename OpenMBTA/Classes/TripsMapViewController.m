@@ -389,9 +389,8 @@
     int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
     if (nearestStopRow != NSNotFound) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:nearestStopRow inSection:0];
-        [self.tableView reloadData];      
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-
+        [self.tableView reloadData];      
     }
 }
 
