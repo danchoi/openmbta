@@ -1,0 +1,8 @@
+body {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  border-top:5px solid #000000;
+  padding:20px 0;
+}
+

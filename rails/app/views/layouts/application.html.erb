@@ -1,0 +1,19 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>OpenMBTA iPhone App</title>
+    <% %w{ reset text 960 site }.each do |stylesheet| %>
+      <%= stylesheet_link_tag "#{stylesheet}.css" %>
+    <% end %>
+  </head>
+  <body>
+    <div class="container_12">
+      <div class="grid_8">
+        <%= yield %>
+      </div>
+      <div class="grid_4">
+        <h4>Sidebar</h4>
+      </div>
+    </div>
+  </body>
+</html>
