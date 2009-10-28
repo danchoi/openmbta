@@ -56,7 +56,7 @@ class TripSet
     # case of a single trip, but the algorithm for finding a common order for
     # overlapping trips is elusive. Just use a hack for that case for now.
     ordered_stop_ids = if trips.size == 1
-      stops.map {|stop| stop.id}
+      stop_ids
     else
       prelim_ordered_stop_ids = trips[0].stoppings.map {|x| x.stop_id} 
       # cache the signature of this trip
@@ -69,9 +69,10 @@ class TripSet
             trip_profiles_seen << [trip.num_stops, trip.first_stop, trip.last_stop]
             true
           end
-        }.each do |trip|
+      }.each do |trip|
         prelim_ordered_stop_ids = StopOrdering.merge(prelim_ordered_stop_ids, trip.stoppings.map {|x| x.stop_id})
       end
+      prelim_ordered_stop_ids
     end
     #ActiveRecord::Base.logger.debug("prelim orderd STOP_IDS: \n#{ordered_stop_ids.inspect}")
 
