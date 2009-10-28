@@ -45,7 +45,10 @@ class TripSet
           :next_arrivals => next_arrivals_for_stop(stop.id, trips, now).map {|time| format_time(time)}}
         memo
       end),
-      :first_stop => @options[:trip_id] ? [stops.first.name] : trips.map {|t| t.first_stop}.uniq
+      :first_stop => @options[:trip_id] ? [stops.first.name] : trips.map {|t| 
+        #ActiveRecord::Base.logger.debug( t.inspect )
+        t.first_stop
+      }.uniq
     }
 
     result = result.merge( :imminent_stop_ids => imminent_stop_ids(trips) )

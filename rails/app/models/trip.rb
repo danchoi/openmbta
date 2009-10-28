@@ -94,4 +94,7 @@ class Trip < ActiveRecord::Base
     update_attributes params
   end
 
+  def inspect
+    "<Trip #{id}; #{headsign}; #{first_stop} #{start_time} => #{last_stop} #{end_time}>" 
+  end
 end

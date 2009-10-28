@@ -2901,7 +2901,13 @@ http://mbta.com/schedules_and_maps/bus/routes/?route=96&direction=O&timing=W&Red
 
 Route 96 in GTFS data.
 
+--------------------------------------------------------------------------------
+Wed Oct 28 16:12:21 EDT 2009
 
+Bus Route 73 has two endpoints and starting points, one of which seems out of
+place.
+
+http://localhost:3000/trips?&route_short_name=73&headsign=Harvard%20Station%20via%20Mt.%20Auburn&transport_type=Bus&base_time=2009-10-28%2016:11:57%20-0400
 
 
 
