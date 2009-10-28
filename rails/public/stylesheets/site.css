@@ -6,3 +6,12 @@ body {
   padding:20px 0;
 }
 
+p {
+  font-size: 13px;
+}
+
+.sidebar {
+  width: 100%;
+  background-color: #EFEFEF;
+  padding: 0 10px;
+}
