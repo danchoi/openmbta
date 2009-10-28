@@ -2888,4 +2888,20 @@ For video, need tracking dot
 ./Frameworks/MapKit.framework/TransitCalloutLeft.png
 ./Frameworks/MapKit.framework/TransitCalloutRight.png
 
+--------------------------------------------------------------------------------
+Mon Oct 26 17:59:48 EDT 2009
+
+GTFS vs website/paper-schedule discrepancy in stop for Bus Route 91  
+
+http://groups.google.com/group/massdotdevelopers/browse_thread/thread/3740390f16966271#
+
+Discrepancy
+
+http://mbta.com/schedules_and_maps/bus/routes/?route=96&direction=O&timing=W&RedisplayTime=Redisplay+Time
+
+Route 96 in GTFS data.
+
+
+
+
 

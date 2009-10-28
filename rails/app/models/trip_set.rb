@@ -49,6 +49,8 @@ class TripSet
     }
 
     result = result.merge( :imminent_stop_ids => imminent_stop_ids(trips) )
+    stop_ids = result[:stops].keys
+    #ActiveRecord::Base.logger.debug("STOP_IDS: #{stop_ids.inspect}")
 
     # Need to add an array of the stop ids in trip order. This is easy for the
     # case of a single trip, but the algorithm for finding a common order for
@@ -68,12 +70,14 @@ class TripSet
             true
           end
         }.each do |trip|
-        #logger.debug "MERGING"
         prelim_ordered_stop_ids = StopOrdering.merge(prelim_ordered_stop_ids, trip.stoppings.map {|x| x.stop_id})
       end
-      prelim_ordered_stop_ids
     end
+    #ActiveRecord::Base.logger.debug("prelim orderd STOP_IDS: #{ordered_stop_ids.inspect}")
 
+    ordered_stop_ids = ordered_stop_ids.select {|stop_id| stop_ids.include?(stop_id)}
+
+    #ActiveRecord::Base.logger.debug("orderd STOP_IDS: #{ordered_stop_ids.inspect}")
     result = result.merge(:ordered_stop_ids => ordered_stop_ids)
 
     # Add center coordinates and span, for the iPhone MKMapView
