@@ -2910,4 +2910,44 @@ place.
 http://localhost:3000/trips?&route_short_name=73&headsign=Harvard%20Station%20via%20Mt.%20Auburn&transport_type=Bus&base_time=2009-10-28%2016:11:57%20-0400
 
 
+--------------------------------------------------------------------------------
+Thu Oct 29 14:06:24 EDT 2009
+
+The iPhone app was approved, now getting ready to finish website and push the
+code out to github.
+
+Git project name: openmbta
+
+Instructions:
+
+Next steps:
+
+  mkdir openmbta
+  cd openmbta
+  git init
+  touch README
+  git add README
+  git commit -m 'first commit'
+  git remote add origin git@github.com:danchoi/openmbta.git
+  git push origin master
+      
+
+Existing Git Repo?
+
+  cd existing_git_repo
+  git remote add origin git@github.com:danchoi/openmbta.git
+  git push origin master
+      
+
+Importing a Subversion Repo?
+
+  Click here
+      
+
+When you're done:
+
+  Continue
+
+
+
 

@@ -15,7 +15,11 @@
         
         <div class="grid_3">
           <div class="sidebar">
-            <h4>Sidebar</h4>
+            <h4>Navigation</h4>
+            <ul>
+              <li><%= link_to_unless_current "Home", "/" %></li>
+              <li><%= link_to_unless_current "Support & Feedback", :controller => "support" %></li>
+            </ul>
           </div>
         </div>
       </div>
