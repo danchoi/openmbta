@@ -1,0 +1,51 @@
+
+
+    <p>
+    Here is a guide to what the colored pins in the map view mean:
+    </p>
+
+
+    <table class='pin'>
+      <tr>
+        <td>
+          <%=image_tag 'map/PinDown1.png' %>
+        </td>
+        <td>
+            A red pin is a stop. You can tap on any pin to show the stop name and up to the next three arrival times. If there are no more arrivals for the day, you'll see a message saying so. 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%=image_tag 'map/PinDown1Green.png' %>
+        </td>
+        <td>
+          A green pin is the starting point of a trip. A route might have more than one starting point if trips start from different places at different times of the day.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%=image_tag 'map/PinDown1Purple.png' %>
+        </td>
+        <td>
+            A purple pin is a stop where a <%= @transport_type.downcase %> is
+            just about to arrive according to the MBTA schedule. You can take this is a rough indicator of where a <%= @transport_type.downcase %> is, or at least should be, based on the schedule.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%=image_tag 'map/TrackingDot.png' %>
+        </td>
+        <td>
+          If you've allowed the app to use your iPhone's location, a blue dot
+          will drop onto the map showing your current location if it's close
+          to the route or the line you're looking at.
+          When the blue dot appears, <strong>the pin for the nearest stop</strong>
+          should automatically show its callout with next arrival times.
+        </td>
+      </tr>
+    </table>
+
+    <p>
+    In the table view, the nearest stop is colored <span class='red'>red</span>, the starting point(s) <span class='green'>green</span>, the imminent stops <span class='purple'>purple</span>.
+    </p>
+

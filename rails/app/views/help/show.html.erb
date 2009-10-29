@@ -3,96 +3,15 @@
     <h3>
      Guide
     </h3>
-
     <p>
-    OpenMBTA shows you stop locations and the next three arrival times for
+    OpenMBTA shows you stop locations and up to the next three arrival times for
     the Route or Line you selected. You can switch between a map view and a
     table view of the same information.
     </p>
+    <%= render :partial => 'guide' %>
 
-    <p>
-    Here is a guide to what the colored pins in the map view mean:
+    <%= render :partial => 'guide2' %> 
 
-    </p>
-
-
-    <table class='pin'>
-      <tr>
-        <td>
-          <%=image_tag 'map/PinDown1.png' %>
-        </td>
-        <td>
-            A red pin is a stop. You can tap on any pin to show the stop name and up to the next three arrival times. If there are no more arrivals for the day, you'll see a message saying so. 
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%=image_tag 'map/PinDown1Green.png' %>
-        </td>
-        <td>
-          A green pin is the starting point of a trip. 
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%=image_tag 'map/PinDown1Purple.png' %>
-        </td>
-        <td>
-            A purple pin is a stop where a <%= @transport_type.downcase %> is
-            next due to make a stop.  
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%=image_tag 'map/TrackingDot.png' %>
-        </td>
-        <td>
-          A blue sphere will drop onto the map showing your current
-          location if you're close to the route or the line you're looking at.
-          The appearance of the blue sphere prompts the pin for the nearest stop
-          to show its callout with next arrival times.
-        </td>
-      </tr>
-    </table>
-
-    <p>
-    In the table view, the nearest stop is colored <span class='red'>red</span>, the starting point <span class='green'>green</span>, the next stops <span class='purple'>purple</span>.
-    </p>
-
-    <p>
-    
-    Press the  <b>Shift Time</b> button in the upper right corner to bring up
-    the time picker. You can adjust the time to see the scheduled stops for a
-    particular time of the current day. Once you change the time setting and
-    return to the map or table you were just looking at, you should see the
-    arrival times change to reflect the new time you selected. 
-
-    </p>
-
-    <h3>
-     Note
-    </h3>
-
-    <p>
-
-    The arrival times shown are approximations rather than than guarantees.
-    Service delays due to traffic and other conditions can change the arrival times.
-    Please visit the <b>T Alerts</b> section of this app (from the Main Menu) 
-    to see if there are any serious service delays or changes on any of the routes or lines
-    you're waiting for.
-
-    </p>
-
-    <h3>
-     Tip
-    </h3>
-
-    <p> 
-    In the map view, you can quickly zoom into an area of interest by
-    double-tapping on a location in the map. You can also pan around the map by
-    dragging it, and zoom in or out by stretching and pinching the map with your fingers.
-    </p>
-
-
+    <%= render :partial => 'guide3' %> 
   </div>
 </fieldset>

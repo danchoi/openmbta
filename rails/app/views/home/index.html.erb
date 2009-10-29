@@ -1,6 +1,77 @@
-<h1>OpenMBTA iPhone App</h1>
+<h1>OpenMBTA for the iPhone</h1>
 
-<p>This is the homepage for the OpenMBTA iPhone app.</p>
+<p>This is the homepage for the OpenMBTA iPhone app.
+ You can get the app from the iTunes App Store for free <%= link_to "by
+clicking here", "itms://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=336082252&mt=8&s=143441" %>. </p>
 
-<%= image_tag "screens/IMG_0125.jpg" %>
+<p>OpenMBTA will show you today's remaining scheduled arrival times for MBTA
+buses, subway trains, commuter rail lines, and ferries. It also has a section that shows you the latest <b>T Alerts</b>, which are service delay announcements from the MBTA.</p>
 
+<%= image_tag "screens/IMG_0125.jpg", :class => 'screenshot' %>
+
+
+<p>Please note that the application is a <b>public beta</b>.  This means that it has not been fully tested and that the user interface could use a lot of refinement. If you find any bugs or have a good feature or user interface suggestion, please let us know on the <%= link_to "Support & Feedback Page", "/support" %>.  </p>
+
+<h2>How to use it</h2>
+
+
+<p>Let's just run through a basic use case. Say you're somewhere in
+Cambridgeport, and you want to know where the nearest stop for the Number 1 Bus
+to the Boston side of the Charles River is and when it's going to arrive next.</p>
+
+<p>Starting at the main menu, you want to press <b>Bus</b>.</p> 
+
+
+<%= image_tag "screens/main-annotated.png", :class => "screenshot" %>
+
+<p>The next screen will show you all the bus routes with trips still remaining
+today, ordered by number. If the bus you're interested in has a high number, you
+can navigate to it more quickly using the number index along the right. In this
+case, we don't need to do that because Bus 1 is at the top of the list. </p>
+
+<p>For every bus route, you'll see all the headsigns for that route. Usually this means that there is one headsign for each direction, but some routes are more complicated and have more than two headsigns. For each headsign, you'll also see the number of trips left for today.</p>
+
+<p>We've found Bus 1 going toward Boston, so let's tap that. </p>
+
+<%= image_tag "screens/bus-routes-annotated.jpg", :class => "screenshot" %>
+
+<p>The next screen is the heart of the application. It is actually two views. By default, you'll see the <b>map view</b>. But if you tap on the "Table" button on the top, you'll see a <b>table view</b> version of the same information.</p>
+
+<%= image_tag "screens/IMG_0125.jpg", :class => 'screenshot' %>
+<%= image_tag "screens/IMG_0126.jpg", :class => "screenshot" %>
+
+<%= render :partial => 'help/guide' %>
+
+<%= render :partial => 'help/guide2' %>
+
+<%= image_tag "screens/IMG_0127.jpg", :class => "screenshot" %>
+
+
+<p> The schedules and maps for Subway and Boat work mostly in the same fashion
+as for our Bus example. OpenMBTA handles Commuter Rail schedules a little
+differently however - and a bit awkwardly, I must confess  - because of the more complicated nature of commuter rail schedules. The interface for Commuter Rail
+schedules will definitely change in the next version of the app.  </p>
+
+<%= render :partial => 'help/guide3' %>
+
+<hr/>
+
+<a name='developers'></a>
+
+<h3>OpenMBTA will soon be an open source project</h3>
+
+<p>
+All the code that OpenMBTA runs on will be soon be open source. OpenMBTA will also be run as an open source project. Hopefully, a few civic-minded, Boston-based programmers and graphic designers will adopt the app as their own and help improve it.
+</p>
+
+<p> I'm in the process of getting the code and some developer documentation for OpenMBTA ready
+to publish on GitHub.  I'll try to get this done in a few days, and then I'll post an update
+about it here.</p>
+
+
+
+
+<hr/>
+
+<a name='credits'></a>
+<%= render :partial => 'credits' %>
