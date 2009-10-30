@@ -9,12 +9,7 @@ class TripSet
   def result
     now = @options[:now] 
     #@options.merge!(:limit => 10)
-
-    trips = if @options[:trip_id]
-      [Trip.find( @options[:trip_id] )] # for the /trip/show action
-    else
-      @options[:transport_type].to_s.camelize.constantize.trips(@options)
-    end
+    trips = @options[:transport_type].to_s.camelize.constantize.trips(@options)
 
     if trips.empty?
       # send back a message 
@@ -23,9 +18,7 @@ class TripSet
     end
     trip_ids = trips.map(&:id)
 
-    stops = if @options[:trip_id]
-              trips.first.stops[(@options[:from_position] - 1)..-1]
-            elsif trips.size == 1
+    stops = if trips.size == 1
               trips[0].stops
             else
               Stop.all(:select => "stops.*, count(*) as num_stoppings", 
@@ -59,7 +52,8 @@ class TripSet
     # case of a single trip, but the algorithm for finding a common order for
     # overlapping trips is elusive. Just use a hack for that case for now.
     ordered_stop_ids = if trips.size == 1
-      stop_ids
+      ActiveRecord::Base.logger.debug("Ordered stop ids: #{stop_ids.inspect}")
+      stops.map(&:id)
     else
       prelim_ordered_stop_ids = trips[0].stoppings.map {|x| x.stop_id} 
       # cache the signature of this trip
