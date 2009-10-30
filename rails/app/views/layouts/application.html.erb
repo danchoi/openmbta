@@ -19,8 +19,9 @@
             <h4>Navigation</h4>
             <ul>
               <li><%= link_to_unless_current "Home", "/" %></li>
+              <li><%= link_to_unless_current "How to use it", :controller => "home", :anchor => "how-to" %></li>
               <li><%= link_to_unless_current "Support & Feedback", :controller => "support" %></li>
-              <li><%= link_to "Contribute as a Developer", :controller => "home", :anchor => "developers" %></li>
+              <li><%= link_to "Join the OpenMBTA project", :controller => "home", :anchor => "developers" %></li>
               <li><%= link_to "Credits", :controller => "home", :anchor => "credits" %></li>
             </ul>
           </div>
