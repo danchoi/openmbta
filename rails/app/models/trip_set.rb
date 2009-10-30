@@ -119,16 +119,23 @@ class TripSet
 
   # Returns the stops that trips are about to arrive at
   def imminent_stop_ids(trips)
-    now = Time.now.strftime "%H:%M:%S"
-    trips.select {|trip| 
-      (trip.start_time < now) && (trip.end_time > now)
+    logger.debug("imminent stops for trips: #{trips.map(&:id).inspect}")
+    now = @options[:now] # Time.now.strftime "%H:%M:%S"
+    stops = trips.select {|trip| 
+      (trip.start_time <= now.time) && (trip.end_time >= now.time)
     }.inject([]) do |memo, trip|
-      next_stopping = trip.stoppings.first(:conditions => ["arrival_time > '#{now}'"]) 
+      logger.debug("trip")
+      next_stopping = trip.stoppings.first(:conditions => ["arrival_time > '#{now.time}'"]) 
       if next_stopping 
         memo << next_stopping.stop_id
       end
       memo
     end.uniq.map {|x| x.to_s} # strings because it's easier to handle this way on iPhone side
+    logger.debug("imminent stops: #{stops.inspect}")
+    stops
   end
 
+  def logger
+    ActiveRecord::Base.logger
+  end
 end
