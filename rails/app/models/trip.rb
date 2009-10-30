@@ -4,8 +4,7 @@ class Trip < ActiveRecord::Base
   belongs_to :route
   belongs_to :service
   has_many :stoppings, :order => "position asc"
-  has_many :stops, :through => :stoppings
-
+  has_many :stops, :through => :stoppings, :order => "stoppings.position asc"
 
   def stops_with_times
     stoppings.map {|stopping| 

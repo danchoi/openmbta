@@ -23,7 +23,9 @@ class TripSet
             else
               Stop.all(:select => "stops.*, count(*) as num_stoppings", 
                    :joins => :stoppings, 
-                   :conditions => ["stoppings.trip_id in (?)", trip_ids], :group => "stoppings.stop_id")
+                   :conditions => ["stoppings.trip_id in (?)", trip_ids], 
+                   :group => "stoppings.stop_id")
+                   
             end
     if stops.empty?
       raise "No stops for params: #{@options.inspect}"
@@ -38,21 +40,17 @@ class TripSet
           :next_arrivals => next_arrivals_for_stop(stop.id, trips, now).map {|time| format_time(time)}}
         memo
       end),
-      :first_stop => @options[:trip_id] ? [stops.first.name] : trips.map {|t| 
-        #ActiveRecord::Base.logger.debug( t.inspect )
-        t.first_stop
-      }.uniq
+      :first_stop => trips.map {|t| t.first_stop }.uniq
     }
 
     result = result.merge( :imminent_stop_ids => imminent_stop_ids(trips) )
-    stop_ids = result[:stops].keys
     #ActiveRecord::Base.logger.debug("STOP_IDS (#{stop_ids.size}):\n#{stop_ids.inspect}")
 
     # Need to add an array of the stop ids in trip order. This is easy for the
     # case of a single trip, but the algorithm for finding a common order for
     # overlapping trips is elusive. Just use a hack for that case for now.
     ordered_stop_ids = if trips.size == 1
-      ActiveRecord::Base.logger.debug("Ordered stop ids: #{stop_ids.inspect}")
+      ActiveRecord::Base.logger.debug("Ordered stops : #{stops.map(&:name).inspect}")
       stops.map(&:id)
     else
       prelim_ordered_stop_ids = trips[0].stoppings.map {|x| x.stop_id} 
@@ -75,7 +73,7 @@ class TripSet
 
     #ActiveRecord::Base.logger.debug("STOP_IDS (#{stop_ids.size}):\n#{stop_ids.inspect}")
 
-    ordered_stop_ids = ordered_stop_ids & stop_ids
+    ordered_stop_ids = ordered_stop_ids & stops.map(&:id)
 
     #ActiveRecord::Base.logger.debug("ORDERED STOP_IDS (#{ordered_stop_ids.size}): \n#{ordered_stop_ids.inspect}")
 
