@@ -2,8 +2,8 @@ module Subway
 
   ROUTE_NAME_TO_MBTA_ID = {
     "Green Line" => %w{810 811 812 822 830 831 852 880 881},
-    "Red Line" => %w{931 933},
-    "Blue Line" => %w{946 948 9462 899},
+    "Red Line" => %w{931 933 899},
+    "Blue Line" => %w{946 948 9462},
     "Orange Line" => %w{903 913} 
   }
 
