@@ -25,7 +25,7 @@ set :user, "zoe2"
 set :scm,         :none # "git"
 set :repository, "."
 set :deploy_via, :copy
-set :copy_exclude, ["coverage", "screenshots", ".git", "test", "doc", "tmp", "log", "*.swp", "*.swo", "*.sql", "*.csv", "db/sphinx/*", "backups", "config/development.sphinx.conf", "config/production.sphinx.conf", "netflix_index.xml", "public/iphone/"]
+set :copy_exclude, [ ".git", "test", "doc", "tmp", "log", "*.swp", "*.swo", "*.sql", "*.csv", "public/iphone/"]
 
 set :keep_releases, 4
 
