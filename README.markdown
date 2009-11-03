@@ -96,7 +96,7 @@ communicate with everyone else who will be working on this project.
 I'll also start adding stuff to the
 [wiki](http://wiki.github.com/danchoi/openmbta) as things move along.
 
-Another we need to do is to set up a collective entity through which to publish
+Another thing we'll need to do is to set up a collective entity through which to publish
 future versions of this application on the iTunes App Store and to set up a
 project team in the iPhone Dev Center. 
 
