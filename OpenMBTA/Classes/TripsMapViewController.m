@@ -2,7 +2,9 @@
 #import "TimePickerViewController.h"
 #import "HelpViewController.h"
 #import <CoreLocation/CoreLocation.h>
-
+// Set this to 1 to show a demo location in the simulator
+// Set to 0 in production
+#define USE_DEMO_LOCATION 1
 
 @interface TripsMapViewController (Private)
 - (void)stopSelected:(NSString *)stopId;
@@ -252,8 +254,7 @@
     mapView.hidden = NO;
 }
 
-- (void)annotateStops 
-{
+- (void)annotateStops {
     NSArray *stop_ids = [self.stops allKeys];
     for (NSString *stop_id in stop_ids) {
         //NSLog(@"stop: %@", stop);
@@ -282,13 +283,15 @@
     
     [mapView addAnnotations:self.stopAnnotations];    
     [self hideNetworkActivity];
-//    [self annotateDemoLocation]; // comment out for production
-    
+#if USE_DEMO_LOCATION    
+    [self annotateDemoLocation]; // used only to generate a demo location in the simulator
+#endif 
     [self findNearestStop];
     
     
 }
 
+// used only if USE_DEMO_LOCATION = 1
 - (void)annotateDemoLocation {
     demoCurrentLocation = [[DemoCurrentLocation alloc] init];    
     CLLocationCoordinate2D coordinate;
@@ -309,12 +312,13 @@
     if (annotation == mapView.userLocation) {
         return nil;
     }
+#if USE_DEMO_LOCATION
     if ([annotation class] == [DemoCurrentLocation class]) { // for demo video purposes only
         MKAnnotationView *demoLocationDot = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];        
         demoLocationDot.image = [UIImage imageNamed:@"TrackingDot.png"];
         return demoLocationDot;
     }
-    
+#endif 
     static NSString *pinID = @"mbtaPin";
 	MKPinAnnotationView *pinView =  (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pinID];
     if (pinView == nil) {
@@ -334,8 +338,11 @@
 }
 
 - (void)findNearestStop {
-    
+#if USE_DEMO_LOCATION
+    if ([self.mapView.annotations count] < 2) {
+#else
     if (([self.mapView.annotations count] < 2)  || (mapView.userLocationVisible == NO))  {
+#endif
         if (self.triggerCalloutTimer != nil)
             self.triggerCalloutTimer.invalidate;
         
@@ -350,11 +357,12 @@
     self.nearestStopAnnotation = nil;
     
     CLLocation *userLocation;
-    userLocation = mapView.userLocation.location;
-/* Use only for demo
 
-*/
-   // userLocation = [[CLLocation alloc] initWithLatitude:demoCurrentLocation.coordinate.latitude longitude:demoCurrentLocation.coordinate.longitude];
+#if USE_DEMO_LOCATION
+   userLocation = [[CLLocation alloc] initWithLatitude:demoCurrentLocation.coordinate.latitude longitude:demoCurrentLocation.coordinate.longitude];
+#else
+   userLocation = mapView.userLocation.location;
+#endif
     
     float minDistance = -1;
     for (id annotation in self.stopAnnotations) {

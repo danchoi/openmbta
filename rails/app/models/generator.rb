@@ -1,8 +1,7 @@
 module Generator
   def self.generate(datafile)
     require 'csv'
-    #path = File.join(Rails.root, 'data', datafile)
-    path = File.join(Rails.root, '..', 'ProjectNotes', '1011_data',  datafile)
+    path = File.join(Rails.root, 'data', datafile)
 
     reader = CSV.open(path, 'r') 
     header = reader.shift
