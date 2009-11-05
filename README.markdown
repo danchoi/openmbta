@@ -30,8 +30,8 @@ Page](http://www.eot.state.ma.us/developers/). Download the full MBTA GTFS zip
 file containing all the services. This file is currently linked from the middle
 of the page.
 
-Unzip the file. You should see a bunch of *.csv files. Transfer these csv files
-to the `rails/data` directory.
+Unzip the file. You should see a bunch of *.txt files. These are the GTFS files.
+Transfer these files to the `rails/data` directory.
 
 Now we're ready to populate the MySQL database with the GFTS data. There is a
 rake task for this. Run 
