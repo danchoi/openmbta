@@ -1,5 +1,4 @@
 module Bus
-  SILVER_LINE_ROUTE_IDS = ActiveRecord::Base.connection.select_all("select distinct(route_id) from trips where first_stop like 'So Station Silver Line%' or last_stop like 'So Station Silver Line%'").map {|hash| hash["route_id"].to_i}
 
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
@@ -49,12 +48,46 @@ module Bus
     )
   end
 
+  def self.silver_line_route_ids
+    ActiveRecord::Base.connection.select_all("select distinct(route_id) from trips where first_stop like 'So Station Silver Line%' or last_stop like 'So Station Silver Line%' or last_stop = 'Essex St @ Atlantic Ave' or last_stop like 'Silver Line Way%'").map {|hash| hash["route_id"].to_i}
+  end
 
   def self.populate_silver_lines
     # populates routes.short_names of SILVER_LINE routes
-    Bus::SILVER_LINE_ROUTE_IDS.each do |route_id|
+    silver_line_route_ids.each do |route_id|
       puts "adding short name to route #{route_id}"
       Route.find(route_id).update_attribute(:short_name, "SL")
+    end
+    # fix the headsigns
+    Trip.all(:conditions => "first_stop = 'Terminal A'").each do |trip|
+      trip.update_attribute :headsign, "SL1 - South Station"
+    end
+    Trip.all(:conditions => "last_stop = 'Terminal A'").each do |trip|
+      trip.update_attribute :headsign, "SL1 - Logan Airport"
+    end
+    Trip.all(:conditions => "last_stop = 'Dry Dock Ave @ Design Center Place'").each do |trip|
+      trip.update_attribute :headsign, "SL2 - Design Center"
+    end
+    Trip.all(:conditions => "first_stop = 'Dry Dock Ave @ Design Center Place'").each do |trip|
+      trip.update_attribute :headsign, "SL2 - South Station"
+    end
+    Trip.all(:conditions => "first_stop = 'Essex St @ Atlantic Ave'").each do |trip|
+      trip.update_attribute :headsign, "SL4 - South Station"
+    end
+    Trip.all(:conditions => "last_stop = 'Essex St @ Atlantic Ave'").each do |trip|
+      trip.update_attribute :headsign, "SL4 - Dudley Station"
+    end
+    Trip.all(:conditions => "first_stop = 'Temple Place @ Washington St'").each do |trip|
+      trip.update_attribute :headsign, "SL5 - Downtown"
+    end
+    Trip.all(:conditions => "last_stop = 'Temple Place @ Washington St'").each do |trip|
+      trip.update_attribute :headsign, "SL5 - Dudley Station"
+    end
+    Trip.all(:conditions => "first_stop like 'Silver Line Way before%'").each do |trip|
+      trip.update_attribute :headsign, "Silver Line Way (inbound)"
+    end
+    Trip.all(:conditions => "last_stop = 'Silver Line Way after Manulife Building'").each do |trip|
+      trip.update_attribute :headsign, "Silver Line Way (outbound)"
     end
   end
 end
