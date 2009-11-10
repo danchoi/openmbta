@@ -72,10 +72,10 @@ module Bus
       trip.update_attribute :headsign, "SL2 - South Station"
     end
     Trip.all(:conditions => "first_stop = 'Essex St @ Atlantic Ave'").each do |trip|
-      trip.update_attribute :headsign, "SL4 - South Station"
+      trip.update_attribute :headsign, "SL4 - Dudley Station"
     end
     Trip.all(:conditions => "last_stop = 'Essex St @ Atlantic Ave'").each do |trip|
-      trip.update_attribute :headsign, "SL4 - Dudley Station"
+      trip.update_attribute :headsign, "SL4 - South Station"
     end
     Trip.all(:conditions => "first_stop = 'Temple Place @ Washington St'").each do |trip|
       trip.update_attribute :headsign, "SL5 - Downtown"

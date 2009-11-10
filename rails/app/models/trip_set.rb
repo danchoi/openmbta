@@ -74,7 +74,8 @@ class TripSet
     #stop_ids = stops.map(&:id)
     #ActiveRecord::Base.logger.debug("STOP_IDS (#{stop_ids.size}):\n#{stop_ids.inspect}")
 
-    ordered_stop_ids = ordered_stop_ids | stops.map(&:id)  # take union; this makes sure the sets have the same members
+    ordered_stop_ids = ordered_stop_ids & stops.map(&:id)  #  this makes sure the sets have the same members
+    result[:stops].delete_if {|key, value| !ordered_stop_ids.include?(key)}
 
     #ActiveRecord::Base.logger.debug("ORDERED STOP_IDS (#{ordered_stop_ids.size}): \n#{ordered_stop_ids.inspect}")
 
