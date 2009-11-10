@@ -69,11 +69,12 @@ class TripSet
       end
       prelim_ordered_stop_ids
     end
-    #ActiveRecord::Base.logger.debug("prelim orderd STOP_IDS: \n#{ordered_stop_ids.inspect}")
 
+    #ActiveRecord::Base.logger.debug("prelim orderd STOP_IDS: \n#{ordered_stop_ids.inspect}")
+    #stop_ids = stops.map(&:id)
     #ActiveRecord::Base.logger.debug("STOP_IDS (#{stop_ids.size}):\n#{stop_ids.inspect}")
 
-    ordered_stop_ids = ordered_stop_ids & stops.map(&:id)
+    ordered_stop_ids = ordered_stop_ids | stops.map(&:id)  # take union; this makes sure the sets have the same members
 
     #ActiveRecord::Base.logger.debug("ORDERED STOP_IDS (#{ordered_stop_ids.size}): \n#{ordered_stop_ids.inspect}")
 
