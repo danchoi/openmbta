@@ -9,6 +9,8 @@ namespace :mbta do
     puts "\n\nDenormalizing trips..."
     Trip.denormalize
     #Route.cache_short_name_on_trips
+    puts "\n\nFixing short names for silver line buses"
+    Bus.populate_silver_lines
   end
 
   desc "denormalization only"

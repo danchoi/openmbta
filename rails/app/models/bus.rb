@@ -1,4 +1,6 @@
 module Bus
+  SILVER_LINE_ROUTE_IDS = ActiveRecord::Base.connection.select_all("select distinct(route_id) from trips where first_stop like 'So Station Silver Line%' or last_stop like 'So Station Silver Line%'").map {|hash| hash["route_id"].to_i}
+
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
     ActiveRecord::Base.connection.select_all("select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) and trips.end_time > '#{now.time}' group by routes.short_name, trips.headsign").
@@ -45,5 +47,14 @@ module Bus
         "and stoppings.arrival_time > '#{now.time}'", stopping_id, route_ids, Service.ids_active_on(now.date), headsign],
       :order => "stoppings.arrival_time asc"
     )
+  end
+
+
+  def self.populate_silver_lines
+    # populates routes.short_names of SILVER_LINE routes
+    Bus::SILVER_LINE_ROUTE_IDS.each do |route_id|
+      puts "adding short name to route #{route_id}"
+      Route.find(route_id).update_attribute(:short_name, "SL")
+    end
   end
 end
