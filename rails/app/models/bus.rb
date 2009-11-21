@@ -49,15 +49,11 @@ module Bus
   end
 
   def self.silver_line_route_ids
-    ActiveRecord::Base.connection.select_all("select distinct(route_id) from trips where first_stop like 'So Station Silver Line%' or last_stop like 'So Station Silver Line%' or last_stop = 'Essex St @ Atlantic Ave' or last_stop like 'Silver Line Way%'").map {|hash| hash["route_id"].to_i}
+    ActiveRecord::Base.connection.select_all("select distinct(route_id) from trips where first_stop like 'So Station Silver Line%' or last_stop like 'So Station Silver Line%' or last_stop = 'Essex St @ Atlantic Ave' or last_stop like 'Silver Line Way%' or first_stop = 'Temple Pl @ Washington St' or last_stop = 'Temple Pl @ Washington St'").map {|hash| hash["route_id"].to_i}
   end
 
   def self.populate_silver_lines
-    # populates routes.short_names of SILVER_LINE routes
-    silver_line_route_ids.each do |route_id|
-      puts "adding short name to route #{route_id}"
-      Route.find(route_id).update_attribute(:short_name, "SL")
-    end
+    self.short_name_SL_routes
     # fix the headsigns
     Trip.all(:conditions => "first_stop = 'Terminal A'").each do |trip|
       trip.update_attribute :headsign, "SL1 - South Station"
@@ -86,11 +82,19 @@ module Bus
     end
   end
 
+  def self.short_name_SL_routes
+    # populates routes.short_names of SILVER_LINE routes
+    silver_line_route_ids.each do |route_id|
+      puts "adding short name to route #{route_id}"
+      Route.find(route_id).update_attribute(:short_name, "SL")
+    end
+  end
+
   def self.populate_SL5
-    Trip.all(:conditions => "first_stop = 'Temple Pl @ Washington St'").each do |trip|
+    Trip.all(:conditions => "last_stop = 'Temple Pl @ Washington St'").each do |trip|
       trip.update_attribute :headsign, "SL5 - Downtown"
     end
-    Trip.all(:conditions => "last_stop = 'Temple Pl @ Washington St'").each do |trip|
+    Trip.all(:conditions => "first_stop = 'Temple Pl @ Washington St'").each do |trip|
       trip.update_attribute :headsign, "SL5 - Dudley Station"
     end
   end
