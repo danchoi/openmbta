@@ -77,17 +77,21 @@ module Bus
     Trip.all(:conditions => "last_stop = 'Essex St @ Atlantic Ave'").each do |trip|
       trip.update_attribute :headsign, "SL4 - South Station"
     end
-    Trip.all(:conditions => "first_stop = 'Temple Place @ Washington St'").each do |trip|
-      trip.update_attribute :headsign, "SL5 - Downtown"
-    end
-    Trip.all(:conditions => "last_stop = 'Temple Place @ Washington St'").each do |trip|
-      trip.update_attribute :headsign, "SL5 - Dudley Station"
-    end
+    self.populate_SL5
     Trip.all(:conditions => "first_stop like 'Silver Line Way before%'").each do |trip|
       trip.update_attribute :headsign, "Silver Line Way (inbound)"
     end
     Trip.all(:conditions => "last_stop = 'Silver Line Way after Manulife Building'").each do |trip|
       trip.update_attribute :headsign, "Silver Line Way (outbound)"
+    end
+  end
+
+  def self.populate_SL5
+    Trip.all(:conditions => "first_stop = 'Temple Pl @ Washington St'").each do |trip|
+      trip.update_attribute :headsign, "SL5 - Downtown"
+    end
+    Trip.all(:conditions => "last_stop = 'Temple Pl @ Washington St'").each do |trip|
+      trip.update_attribute :headsign, "SL5 - Dudley Station"
     end
   end
 end
