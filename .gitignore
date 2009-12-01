@@ -3,7 +3,6 @@
 *~.nib
 build/
 *.pbxuser
-*.pbxproj
 *.perspective
 *.perspectivev3
 *.mode1v3
