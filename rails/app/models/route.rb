@@ -52,5 +52,5 @@ class Route < ActiveRecord::Base
   def transport_type
     TransportType[route_type]
   end
-
 end
+
