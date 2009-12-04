@@ -86,7 +86,8 @@ actual iPhone or iPod touch device.
 
 Currently, there are no unit or integration tests for this codebase. This is
 definitely one area where volunteers can contribute. The first version of
-OpenMBTA was written quickly and not with the best code hygiene.
+OpenMBTA was written quickly and not with the best code hygiene.  We plan on improving this in 
+the near future.
 
 ## On collaborating and pushing out the next version
 
