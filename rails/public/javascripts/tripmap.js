@@ -11,6 +11,8 @@ function initialize() {
   var zoom_bounds = new google.maps.LatLngBounds(sw_latlng, ne_latlng);
   map.fitBounds(zoom_bounds)
 
+  var pin = '/images/map/PinDown1.png';
+
 	for (var i = 0;i < stops.length ;i++) {
 		var stop = stops[i];
 		
@@ -20,7 +22,8 @@ function initialize() {
 		var stopLatLng = new google.maps.LatLng(lat, lng);
 		var stopMarker = new google.maps.Marker({
 			position:stopLatLng,
-			map:map
+			map:map,
+      icon: pin
 		})
 	}
 }
