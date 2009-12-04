@@ -11,7 +11,7 @@ function initialize() {
   var zoom_bounds = new google.maps.LatLngBounds(sw_latlng, ne_latlng);
   map.fitBounds(zoom_bounds)
 
-	for (var i = 0;i < 2;i++) {
+	for (var i = 0;i < stops.length ;i++) {
 		var stop = stops[i];
 		
 		var lat = stop.lat;
