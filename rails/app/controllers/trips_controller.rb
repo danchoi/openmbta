@@ -19,7 +19,7 @@ class TripsController < ApplicationController
         render :json => @result.to_json
       }
       format.html { 
-        render :text => "test"
+        render :layout => false
       }
     end
   end
