@@ -22,8 +22,10 @@ class TripsController < ApplicationController
         @region = @result[:region]
         @center_lat = @region[:center_lat]
         @center_lng = @region[:center_lng]
-        @sw = [@region[:center_lat] - @region[:lat_span], @region[:center_lng] - @region[:lng_span]]
-        @ne = [@region[:center_lat] + @region[:lat_span], @region[:center_lng] + @region[:lng_span]]
+        lat_span = @region[:lat_span] * 0.3
+        lng_span = @region[:lng_span] * 0.3
+        @sw = [@region[:center_lat] - lat_span, @region[:center_lng] - lng_span]
+        @ne = [@region[:center_lat] + lat_span, @region[:center_lng] + lng_span]
         @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
 
         render :layout => false

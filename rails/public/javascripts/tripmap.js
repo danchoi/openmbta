@@ -3,6 +3,25 @@ var myLat;
 var myLng;
 var map;
 var pin = '/images/map/PinDown1.png';
+var currentSelectedStop;
+var stopMarkers = {};
+
+Number.prototype.toRad = function() {  // convert degrees to radians 
+  return this * Math.PI / 180; 
+}
+
+function haversineDistance(lat1, lon1, lat2, lon2)
+{
+	var R = 6371; // km 
+	var dLat = (lat2-lat1).toRad(); 
+	var dLon = (lon2-lon1).toRad(); 
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+	        Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+	        Math.sin(dLon/2) * Math.sin(dLon/2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
+	return d;
+}
 
 function foundLocation(position)
 {
@@ -15,6 +34,35 @@ function foundLocation(position)
 		map:map,
 		icon:"/images/map/TrackingDot.png"
 	})
+	
+	var closestStop;
+	var closestDistance;
+	var currentDistance;
+	for (var i = 0;i < stops.length;i++)
+	{
+		if (closestStop == null) {
+			closestStop = stops[i];
+			closestDistance = haversineDistance(myLat, myLng, stops[i].lat, stops[i].lng);
+		} else {
+			currentDistance = haversineDistance(myLat, myLng, stops[i].lat, stops[i].lng);
+			if (currentDistance < closestDistance)
+			{
+				closestStop = stops[i];
+				closestDistance = currentDistance;
+			}
+		}
+	}
+	
+	var message = closestStop.name + '<br/>' + closestStop.next_arrivals;
+	document.getElementById('stop_info').innerHTML = message;
+	//map.setCenter(stopLatLng);
+	if (currentSelectedStop)
+	{
+		currentSelectedStop.setIcon(pin)
+	}
+	var closestStopMarker = stopMarkers[closestStop.name];
+	closestStopMarker.setIcon("/images/map/PinDown1Green.png")
+	currentSelectedStop = closestStop;
 }
 function noLocation()
 {
@@ -32,11 +80,20 @@ function createMarker(stop, map) {
 		map:map,
     icon: pin
 	});
+	
+	stopMarkers[stop.name] = stopMarker;
 
   var message = stop.name + '<br/>' + stop.next_arrivals;
 	google.maps.event.addListener(stopMarker, 'click', function (){
 	  //alert('Found stop: ' + message);
 		document.getElementById('stop_info').innerHTML = message;
+		//map.setCenter(stopLatLng);
+		if (currentSelectedStop)
+		{
+			currentSelectedStop.setIcon(pin)
+		}
+		stopMarker.setIcon("/images/map/PinDown1Green.png")
+		currentSelectedStop = stopMarker;
 	});
 
   return stopMarker;
@@ -52,7 +109,14 @@ function initialize() {
     zoom: 8,
     center: latlng,
     mapTypeControl: false,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+		draggable: true,
+		navigationControl: true,
+		navigationControlOptions: {
+			position: google.maps.ControlPosition.TOP_LEFT,
+			style: google.maps.NavigationControlStyle.SMALL
+		},
+		disableDoubleClickZoom: true
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   map.fitBounds(zoom_bounds)
