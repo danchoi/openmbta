@@ -2,6 +2,7 @@
 var myLat;
 var myLng;
 var map;
+var pin = '/images/map/PinDown1.png';
 
 function foundLocation(position)
 {
@@ -18,6 +19,27 @@ function foundLocation(position)
 function noLocation()
 {
   alert('Could not find location');
+}
+
+function createMarker(stop, map) {
+
+	var lat = stop.lat;
+	var lng = stop.lng;
+	var stopLatLng = new google.maps.LatLng(lat, lng);
+
+	var stopMarker = new google.maps.Marker({
+		position:stopLatLng,
+		map:map,
+    icon: pin
+	});
+
+  var message = stop.name + '<br/>' + stop.next_arrivals;
+	google.maps.event.addListener(stopMarker, 'click', function (){
+	  //alert('Found stop: ' + message);
+		document.getElementById('stop_info').innerHTML = message;
+	});
+
+  return stopMarker;
 }
 
 function initialize() {
@@ -39,20 +61,8 @@ function initialize() {
 		navigator.geolocation.getCurrentPosition(foundLocation, noLocation);
 	}
 
-  var pin = '/images/map/PinDown1.png';
-
 	for (var i = 0;i < stops.length ;i++) {
 		var stop = stops[i];
-		
-		var lat = stop.lat;
-		var lng = stop.lng;
-		
-		var stopLatLng = new google.maps.LatLng(lat, lng);
-		var stopMarker = new google.maps.Marker({
-			position:stopLatLng,
-			map:map,
-      icon: pin
-		})
+		createMarker(stop, map);
 	}
 }
-

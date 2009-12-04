@@ -2,6 +2,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>OpenMBTA iPhone App</title>
+		<%= stylesheet_link_tag 'tripmap' %>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script type="text/javascript">
@@ -20,9 +21,11 @@
 
 	<%= @region.inspect %>
 
+		<div id="stop_info" style="">
+		</div>
+
     <div id="map_canvas" style="width:300px; height:356px">
     </div>
-
 
     <%= @result.inspect %> 
 
