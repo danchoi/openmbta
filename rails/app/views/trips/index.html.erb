@@ -2,17 +2,27 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>OpenMBTA iPhone App</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">
+			var sw = <%= @sw.to_json %>;
+			var ne = <%= @ne.to_json %>;
+			var stops = <%= @stops.to_json %>;
+		</script>
     <%= javascript_include_tag 'tripmap.js' %>
 
   </head>
-  <body>
+  <body onload="initialize()">
 
     <h3>Trips</h3>
 
-    <div id="map_canvas">
+	<%= @region.inspect %>
+
+    <div id="map_canvas" style="width:300px; height:356px">
     </div>
 
-    <%= @result.inspect %>
+
+    <%= @result.inspect %> 
 
   </body>
 
