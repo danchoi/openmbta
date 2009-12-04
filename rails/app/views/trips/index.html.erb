@@ -1,6 +1,21 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>OpenMBTA iPhone App</title>
+    <%= javascript_include_tag 'tripmap.js' %>
 
-<h3>Trips</h3>
+  </head>
+  <body>
 
-<%= @result.inspect %>
+    <h3>Trips</h3>
+
+    <div id="map_canvas">
+    </div>
+
+    <%= @result.inspect %>
+
+  </body>
+
+</html>
 
 
