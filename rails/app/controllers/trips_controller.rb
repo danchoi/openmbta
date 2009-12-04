@@ -14,6 +14,13 @@ class TripsController < ApplicationController
                        :route_short_name => params[:route_short_name],
                        :transport_type => params[:transport_type].downcase.gsub(" ", "_").to_sym,
                        :now => Now.new(base_time)).result
-    render :json => @result.to_json
+    respond_to do |format|
+      format.json { 
+        render :json => @result.to_json
+      }
+      format.html { 
+        render :text => "test"
+      }
+    end
   end
 end
