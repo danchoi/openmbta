@@ -19,6 +19,11 @@ class TripsController < ApplicationController
         render :json => @result.to_json
       }
       format.html { 
+        @region = @result[:region]
+        @sw = [@region[:center_lat] - @region[:lat_span], @region[:center_lng] - @region[:lng_span]]
+        @ne = [@region[:center_lat] + @region[:lat_span], @region[:center_lng] + @region[:lng_span]]
+        @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
+
         render :layout => false
       }
     end
