@@ -20,6 +20,8 @@ class TripsController < ApplicationController
       }
       format.html { 
         @region = @result[:region]
+        @center_lat = @region[:center_lat]
+        @center_lng = @region[:center_lng]
         @sw = [@region[:center_lat] - @region[:lat_span], @region[:center_lng] - @region[:lng_span]]
         @ne = [@region[:center_lat] + @region[:lat_span], @region[:center_lng] + @region[:lng_span]]
         @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
