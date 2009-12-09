@@ -422,13 +422,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01ED56EC-38A9-4C9A-8748-E1210918E3F3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Distribution;
 		};

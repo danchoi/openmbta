@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.connect '/routes/:transport_type', :controller => 'routes'
+  map.connect '/routes/:transport_type.:format', :controller => 'routes'
+
   map.connect '/trains/:line_name', :controller => 'trains', :action => 'index'
 
   map.connect '/trips', :controller => 'trips'
@@ -13,7 +15,12 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/help/:target_controller/:transport_type', :controller => 'help', :action => 'show'
   map.connect '/about/:action', :controller => 'about'
   map.connect '/support/:action', :controller => 'support'
+
+  # web kit version
+
+  map.resources :modes
   map.root :controller => 'home'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 
