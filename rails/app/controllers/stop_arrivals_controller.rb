@@ -19,7 +19,8 @@ class StopArrivalsController < ApplicationController
     @center_lng = @region[:center_lng]
     @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
 
-    @arrivals = @stop.arrivals(params)
+    # the merge handles the ^ and & conversion in the headsign
+    @arrivals = @stop.arrivals(params.merge(:headsign => @headsign, :transport_type => @transport_type))
   end
 
 end
