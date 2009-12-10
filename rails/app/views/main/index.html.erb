@@ -2,7 +2,7 @@
   main
 </div>
 
-<ul>
+<ul class="main-menu">
   <% @modes.each do |m| %>
     <li>
     <%= link_to m.split("_").map(&:capitalize).join(' '), "/routes/#{m}" %>
@@ -16,4 +16,5 @@
   </li>
 </ul>
 
+<%= image_tag '/images/Default.png', :width => 150 %>
 

@@ -4,6 +4,14 @@ body {
   font-family: Helvetica;
   padding: 2px;
 }
+.main-menu li {
+  line-height: 1.5em;
+}
+ul.main-menu {
+  margin-left: 0;
+  list-style-type: square;
+}
+
 #stop_info {
 	font-size: 18px;
 	font-weight: bold;
