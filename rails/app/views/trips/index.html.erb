@@ -1,3 +1,15 @@
+<% content_for :header do %>
+  <script type="text/javascript">
+
+    var stops = <%= @stops.to_json %>;
+
+
+  </script>
+  <%= javascript_include_tag "jquery-1.3.2.min.js"  %>
+  <%= javascript_include_tag "triptable"  %>
+<% end %>
+<% content_for :body_attr, 'onload="initialize()"' %>
+
 <div class="nav"
   <%= link_to "main", "/main" %> > <%= link_to "routes", url_for(:controller => "routes", :transport_type => params[:transport_type]) %> > trips
 </div>
@@ -10,11 +22,12 @@
 
 <table class='mbta'>
   <% @result[:ordered_stop_ids].each do |stop_id| %>
-    <tr class='row-header stop-name'>
-      <td colspan="3">
+    <tr  class='row-header stop-name'>
+      <td id="<%=stop_id%>" colspan="3">
         <span class="stop-detail"><a href="<%= url_for(params.merge(:stop_id => stop_id, :controller => 'stop_arrivals')) %>">detail</a></span>
-        <%= @result[:stops][stop_id][:name] %>
-
+        <span class="stop-name-span">
+          <%= @result[:stops][stop_id][:name] %>
+        </span>
       </td>
     </tr>
       <% 3.times do |i|  %>

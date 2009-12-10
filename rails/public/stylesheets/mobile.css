@@ -18,7 +18,7 @@ ul.main-menu {
 }
 .info {
   font-size: 13px;
-  background-color: #B0FF9C;
+  background-color:#B5FFC1;
   padding: 5px 2px;
   margin-top:5px;
 }
@@ -81,4 +81,7 @@ tr.row-header {
 }
 .alert .time {
   color: #FF1F5D;
+}
+.closestStop {
+  background-color: #ABDAFF;
 }
