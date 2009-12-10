@@ -2,4 +2,14 @@
 module ApplicationHelper
 
 
+  def route_s(string, transport_type)
+    case transport_type
+    when /Bus/i
+      "Bus #{string}"
+    else
+      string
+    end
+
+  end
+
 end

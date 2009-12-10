@@ -3,18 +3,37 @@
   &gt; routes
 </div>
 
-<h3>Routes</h3>
+
+<div class="info" style="font-weight:bold">
+  <%= @transport_type %> routes
+</div>
+
+<div class="note">
+Note: If a bus or train route is done all its trips for the day or isn't
+in service today, it won't show up at all on this list. Look for it on the list
+tomorrow (or Monday) morning, and chances are that you'll see it. If not, please report the bug.  
+</div>
 
 <% if @result.size > 30 %>
-  Jump to:
+<div class="normal-text">
+  Jump to:<br/>
   <% @result.each_with_index do |route,index| %>
     <% if index % 5 == 0 && index != 0 %>
-      <a href="#<%= index %>"><%= route[:route_short_name] %></a>
+      <a class="jump-link" href="#<%= index %>"><%= route[:route_short_name] %></a>
     <% end %>
   <% end %>
+</div>
+<br style="clear:left"/>
 <% end %>
 
-<table class='mbta'>
+<% if @result.size == 0 %>
+  <br/>
+
+  No more trips today
+
+<% end %>
+
+<table class='mbta' style="margin-top:10px">
   <% @result.each_with_index do |route, index| %>
     <tr class='row-header stop-name'>
       <td colspan="3">

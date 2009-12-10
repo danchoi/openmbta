@@ -1,15 +1,36 @@
 body {
   margin: 0;
-  width: 320px;
+  width: 316px;
   font-family: Helvetica;
+  padding: 2px;
 }
 #stop_info {
 	font-size: 18px;
 	font-weight: bold;
 }
-
+.info {
+  font-size: 13px;
+  background-color: #B0FF9C;
+  padding: 5px 2px;
+  margin-top:5px;
+}
+.normal-text {
+  font-size: 13px;
+  padding: 5px 2px;
+  margin-top:5px;
+}
+.jump-link {
+  float:left;
+  display: block;
+  width: 2.8em;
+  margin: 3px 0;
+}
+.note {
+  font-size: 10px;
+  margin-top: 5px;
+}
 table.mbta {
-  width: 320px;
+  width: 100%;
   font-size: 12px;
 }
 tr.row-header {
@@ -33,7 +54,7 @@ tr.row-header {
 .arrival-time-float {
   float: left;
   width: 4.5em;
-  margin: 4px;
+  margin: 4px 4px 4px 0;
   font-weight: bold;
   font-size: 12px;
 }
