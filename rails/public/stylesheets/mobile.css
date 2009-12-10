@@ -35,7 +35,7 @@ ul.main-menu {
   margin: 3px 0;
 }
 .note {
-  font-size: 10px;
+  font-size: 11px;
   margin-top: 5px;
 }
 table.mbta {
@@ -50,7 +50,7 @@ tr.row-header {
   background-color: #FFADF4;
 }
 .trips-left {
-  color: #CCC;
+  color: #333;
 }
 .arrival-time {
   width: 33%;

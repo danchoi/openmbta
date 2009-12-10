@@ -9,21 +9,24 @@
 </div>
 
 <div class="note">
-Note: If a bus or train route is done all its trips for the day or isn't
+Note: If a route is done all its trips for the day or isn't
 in service today, it won't show up at all on this list. Look for it on the list
 tomorrow (or Monday) morning, and chances are that you'll see it. If not, please report the bug.  
 </div>
 
 <% if @result.size > 30 %>
 <div class="normal-text">
-  Jump to:<br/>
+  Jump to number:
+  <br/>
   <% @result.each_with_index do |route,index| %>
     <% if index % 5 == 0 && index != 0 %>
       <a class="jump-link" href="#<%= index %>"><%= route[:route_short_name] %></a>
     <% end %>
   <% end %>
+  <div class="note" style="clear:left;padding-top:5px;">
+    NOTE: If you don't see your bus route above, jump to a number or letter close to it. You'll probably see the route close by.
+  </div>
 </div>
-<br style="clear:left"/>
 <% end %>
 
 <% if @result.size == 0 %>
