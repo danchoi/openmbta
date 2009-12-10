@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # web kit version
 
+  map.connect '/mobile', :controller => 'main'
   map.connect '/main', :controller => 'main'
 
   map.root :controller => 'home'
