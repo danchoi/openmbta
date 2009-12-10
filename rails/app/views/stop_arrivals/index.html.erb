@@ -1,7 +1,6 @@
 <% content_for :header do %>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script type="text/javascript">
-
     var current_stop_id = <%= @stop.id.to_json %>;
     var center_lat = <%= @stop.lat.to_json %>;
     var center_lng = <%= @stop.lng.to_json %>;
@@ -11,6 +10,37 @@
 
   </script>
   <%= javascript_include_tag "tripmap"  %>
+	<%= javascript_include_tag "jquery-1.3.2.min.js"  %>
+
+  <script type="text/javascript">
+
+	$(document).ready(function() {
+		$("a.anchorLink").anchorAnimate()
+	});
+
+	jQuery.fn.anchorAnimate = function(settings) {
+
+	 	settings = jQuery.extend({
+			speed : 1100
+		}, settings);	
+
+		return this.each(function(){
+			var caller = this
+			$(caller).click(function (event) {	
+				event.preventDefault()
+				var locationHref = window.location.href
+				var elementClick = $(caller).attr("href")
+
+				var destination = $(elementClick).offset().top;
+				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination}, settings.speed, function() {
+					window.location.hash = elementClick
+				});
+			  	return false;
+			})
+		})
+	}
+
+  </script>
 <% end %>
 <% content_for :body_attr, 'onload="initialize()"' %>
 
@@ -28,7 +58,7 @@ Bookmark this page if this is one of your regular stops.
 </div>
 
 <div class="info">
-  <%= @stop.name %><br/>
+  <%= @stop.name %> - <a href="#mapAnchor" rel="" id="anchor1" class="anchorLink">map</a><br/>
   <span style="font-weight:bold"><%= @headsign %></span><br/>
   <%= route_s @route, @transport_type.to_s %>
 </div>
@@ -47,5 +77,4 @@ Bookmark this page if this is one of your regular stops.
 <br style="clear:left"/>
 
 <div id="map_canvas" style="margin-top:10px;width:316px; height:300px"></div>
-
-
+<a name="mapAnchor" id="mapAnchor"></a>

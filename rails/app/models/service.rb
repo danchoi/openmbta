@@ -9,7 +9,7 @@ class Service < ActiveRecord::Base
   named_scope :presumably_active_on, lambda {|date|
     date = parse_date(date)
     {
-      :conditions => ["services.start_date <= ? and services.end_date >= ? and services.#{DAYS[date.wday]} = 1 ", date, date]
+      :conditions => ["services.start_date <= ? and services.end_date >= ? and services.#{DAYS[date.wday]} = ? ", date, date, true]
     }
   }
 
