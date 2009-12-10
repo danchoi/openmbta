@@ -40,8 +40,8 @@ function foundLocation(position)
 			}
 		}
 	}
-	
-    $("#" + closestStop.stop_id).addClass("closestStop");
+  $(".closestStop").removeClass("closestStop");
+	$("#" + closestStop.stop_id).addClass("closestStop");
 
 }
 function noLocation()
