@@ -5,7 +5,7 @@
 
 
 <div class="info" style="font-weight:bold">
-  <%= @transport_type %> routes
+  <%= @transport_type.to_s.split(/[ _]/).map(&:capitalize).join(" ") %> routes
 </div>
 
 <div class="note">
