@@ -1,0 +1,17 @@
+<h3>Main</h3>
+
+<ul>
+  <% @modes.each do |m| %>
+    <li>
+    <%= link_to m.split("_").map(&:capitalize).join(' '), "/routes/#{m}" %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to "T-Alerts", '/alerts.html' %> 
+  </li>
+  <li>
+    <%= link_to "About/FAQ", "/about" %> 
+  </li>
+</ul>
+
+

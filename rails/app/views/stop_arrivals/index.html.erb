@@ -13,6 +13,10 @@
 <% end %>
 <% content_for :body_attr, 'onload="initialize()"' %>
 
+
+<%= link_to "back to #{@headsign}", url_for(params.merge(:controller => "trips")) %>
+
+
 <h3><%= @stop.name %></h3>
 
 <h3>Route: <%= @route %></h3>
@@ -28,6 +32,7 @@
     </div>
   <% end %>
 </div>
+<br style="clear:left"/>
 
 
 <div id="stop_info" style=""></div>

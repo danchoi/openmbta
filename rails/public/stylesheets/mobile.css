@@ -37,3 +37,19 @@ tr.row-header {
   font-weight: bold;
   font-size: 12px;
 }
+.even {
+  background-color: #EDEDED;
+}
+.alert {
+  border-bottom: 1px solid #666;
+  padding: 5px 5px;
+  font-size: 12px;
+  
+}
+.alert h4 {
+  margin: 0;
+  margin-bottom: 4px;
+}
+.alert .time {
+  color: #FF1F5D;
+}

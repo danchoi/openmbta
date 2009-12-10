@@ -1,4 +1,4 @@
-class ModesController < ApplicationController
+class MainController < ApplicationController
   layout 'mobile'
 
   def index

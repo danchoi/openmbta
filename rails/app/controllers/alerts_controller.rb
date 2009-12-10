@@ -1,9 +1,17 @@
 class AlertsController < ApplicationController
+  layout 'mobile'
 
   def index
-    alerts = Alert.all(:limit => 40, :order => "pub_date  desc")
+    @alerts = Alert.all(:limit => 40, :order => "pub_date  desc")
 
-    render :json => {:data => alerts}
+    respond_to do |format|
+      format.html {
+
+      }
+      format.json {
+        render :json => {:data => @alerts}
+      }
+    end
   end
 
   def show
