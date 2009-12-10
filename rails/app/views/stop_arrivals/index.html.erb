@@ -15,7 +15,13 @@
 <% content_for :body_attr, 'onload="initialize()"' %>
 
 
-<%= link_to "back to #{@headsign}", url_for(params.merge(:controller => "trips")) %>
+<div class="nav">
+  <%= link_to "main", "/main" %> &gt; <%= link_to "route", url_for(:controller => "routes", :transport_type => params[:transport_type]) %>
+  &gt;
+  <%= link_to "trips", url_for(params.merge(:controller => "trips")) %>
+  &gt;
+  stop
+</div>
 
 
 <h3><%= @stop.name %></h3>

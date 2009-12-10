@@ -1,4 +1,6 @@
-<%= link_to "back to Route #{@route}", url_for(:controller => "routes", :transport_type => params[:transport_type]) %>
+<div class="nav"
+  <%= link_to "main", "/main" %> > <%= link_to "route", url_for(:controller => "routes", :transport_type => params[:transport_type]) %> > trips
+</div>
 
 <h3>Trips</h3>
 

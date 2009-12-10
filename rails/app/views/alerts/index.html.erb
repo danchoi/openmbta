@@ -1,4 +1,6 @@
-<%= link_to "Main", "/main" %>
+<div class="nav">
+  <%= link_to "main", "/main" %> &gt; trips
+</div>
 
 <% @alerts.each do |alert| %>
   <div class="alert <%= cycle('odd', 'even') %>">
