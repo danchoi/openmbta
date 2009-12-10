@@ -9,7 +9,7 @@ class TripsController < ApplicationController
     # pass in options[:now] to set different base time
     @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
                        :route_short_name => (@route = params[:route_short_name]),
-                       :transport_type => params[:transport_type].downcase.gsub(" ", "_").to_sym,
+                       :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym),
                        :now => Now.new(base_time)).result
     respond_to do |format|
       format.json { 

@@ -6,6 +6,8 @@ module ApplicationHelper
     case transport_type
     when /Bus/i
       "Bus #{string}"
+    when /Commuter/i
+      "#{string} line"
     else
       string
     end
