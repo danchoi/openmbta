@@ -43,7 +43,7 @@ module Bus
       :joins => "inner join trips on trips.id = stoppings.trip_id",
       :conditions => ["stoppings.stop_id = ? and trips.route_id in (?) and " + 
         "trips.service_id in (?) and trips.headsign = ? " +
-        "and stoppings.arrival_time > '#{now.time}'", stopping_id, route_ids, Service.ids_active_on(now.date), headsign],
+        "and stoppings.arrival_time >= '#{now.time}'", stopping_id, route_ids, Service.ids_active_on(now.date), headsign],
       :order => "stoppings.arrival_time asc"
     )
   end

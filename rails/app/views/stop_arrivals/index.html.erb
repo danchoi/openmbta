@@ -7,6 +7,7 @@
     var center_lng = <%= @stop.lng.to_json %>;
     var stops = <%= @stops.to_json %>;
     var imminent_stops = <%= @result[:imminent_stop_ids].to_json %>;
+    var zoomLevel = <%= @transport_type == :commuter_rail ? 10 : 13 %>;
 
   </script>
   <%= javascript_include_tag "tripmap"  %>
@@ -22,8 +23,7 @@
 <h3>Route: <%= @route %></h3>
 <h3><%= @headsign %></h3>
 
-<h4>Remaining Arrivals</h4>
-
+Arrivals left: <%= @arrivals.size %>
 
 <div>
   <% @arrivals.each do |arrival| %>
