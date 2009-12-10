@@ -4,6 +4,7 @@ body {
   font-family: Helvetica;
   padding: 10px 2px;
 }
+p { font-size: 13px; }
 .main-menu li {
   line-height: 1.5em;
 }
@@ -84,4 +85,8 @@ tr.row-header {
 }
 .closestStop {
   background-color: #ABDAFF;
+}
+.example-blue {
+  background-color: #ABDAFF;
+
 }
