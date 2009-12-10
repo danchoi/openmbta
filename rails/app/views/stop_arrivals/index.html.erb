@@ -7,7 +7,7 @@
     var center_lng = <%= @stop.lng.to_json %>;
     var stops = <%= @stops.to_json %>;
     var imminent_stops = <%= @result[:imminent_stop_ids].to_json %>;
-    var zoomLevel = <%= @transport_type == :commuter_rail ? 10 : 13 %>;
+    var zoomLevel = <%= [ :commuter_rail, :boat ].include?(@transport_type) ? 10 : 13 %>;
 
   </script>
   <%= javascript_include_tag "tripmap"  %>
