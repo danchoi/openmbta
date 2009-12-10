@@ -3,6 +3,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/routes/:transport_type', :controller => 'routes'
   map.connect '/routes/:transport_type.:format', :controller => 'routes'
 
+  map.connect '/routes/:transport_type/headsigns/*id', :controller => 'headsigns', :action => 'show'
+
+
   map.connect '/trains/:line_name', :controller => 'trains', :action => 'index'
 
   map.connect '/trips', :controller => 'trips'
@@ -10,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/trips/:id', :controller => 'trips', :action => "show"
 
   map.connect '/stop_arrivals', :controller => 'stop_arrivals', :action => 'index'
+
   map.connect '/alerts', :controller => 'alerts', :action => 'index'
   map.connect '/alerts/:guid', :controller => 'alerts', :action => 'show'
   map.connect '/help/:target_controller/:transport_type', :controller => 'help', :action => 'show'

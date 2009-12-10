@@ -1,0 +1,30 @@
+<h3>Routes</h3>
+
+
+<% if @result.size > 30 %>
+  Jump to:
+  <% @result.each_with_index do |route,index| %>
+    <% if index % 5 == 0 && index != 0 %>
+      <a href="#<%= index %>"><%= route[:route_short_name] %></a>
+    <% end %>
+  <% end %>
+<% end %>
+
+<table class='mbta'>
+  <% @result.each_with_index do |route, index| %>
+    <tr class='row-header stop-name'>
+      <td colspan="3">
+        <a name="<%=index%>"></a>
+        <%= route[:route_short_name] %>
+      </td>
+      <% route[:headsigns].each do |headsign, trips_left| %>
+        </tr>
+          <td colspan="3">
+            <%= link_to headsign, "/trips.html?transport_type=#{@transport_type}&route_short_name=#{route[:route_short_name]}&headsign=#{headsign.gsub("&", "^")}" %> 
+            <br/><span class="trips-left"><%=pluralize(trips_left, "trip")%> left</span>
+          </td>
+        </tr>
+      <% end %>
+  <% end %>
+</table>
+

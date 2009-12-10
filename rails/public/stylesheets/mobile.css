@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  width: 320px;
+  font-family: Helvetica;
+}
+#stop_info {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+table.mbta {
+  width: 320px;
+  font-size: 12px;
+}
+tr.row-header {
+  background-color: #EFEFEF;
+  font-weight:bold;
+}
+.imminent-stop {
+  background-color: #FFADF4;
+}
+.trips-left {
+  color: #CCC;
+}
+.arrival-time {
+  width: 33%;
+}
+.stop-detail {
+  float:right;
+  font-size: smaller;
+  font-weight: normal;
+}
+.arrival-time-float {
+  float: left;
+  width: 4.5em;
+  margin: 4px;
+  font-weight: bold;
+  font-size: 12px;
+}

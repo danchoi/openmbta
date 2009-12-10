@@ -1,13 +1,10 @@
 require 'json_printer'
 
 class TripsController < ApplicationController
+  layout 'mobile'
   include TimeFormatting
   def index
-    base_time = Time.parse(params[:base_time])
-
-    if (2.minutes.ago..2.minutes.from_now) === base_time # wiggle room, not sure if we need this
-      base_time = Time.now
-    end
+    base_time = params[:base_time] ? Time.parse(params[:base_time]) : Time.now
 
     # pass in options[:now] to set different base time
     @result = TripSet.new(:headsign => params[:headsign].gsub(/\^/, "&") , 
@@ -28,7 +25,6 @@ class TripsController < ApplicationController
         @ne = [@region[:center_lat] + lat_span, @region[:center_lng] + lng_span]
         @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
 
-        render :layout => false
       }
     end
   end

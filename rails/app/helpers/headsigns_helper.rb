@@ -1,0 +1,2 @@
+module HeadsignsHelper
+end

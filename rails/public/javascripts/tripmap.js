@@ -2,7 +2,9 @@
 var myLat;
 var myLng;
 var map;
-var pin = '/images/map/PinDown1.png';
+var red_pin = '/images/map/PinDown1.png';
+var green_pin = '/images/map/PinDown1Green.png';
+var purple_pin = '/images/map/PinDown1Purple.png';
 var currentSelectedStop;
 var stopMarkers = {};
 
@@ -32,9 +34,10 @@ function foundLocation(position)
 	var currentMarker = new google.maps.Marker({
 		position:currentLatLng,
 		map:map,
-		icon:"/images/map/TrackingDot.png"
+		icon: "/images/map/TrackingDot.png"
 	})
 	
+    /*
 	var closestStop;
 	var closestDistance;
 	var currentDistance;
@@ -63,6 +66,7 @@ function foundLocation(position)
 	var closestStopMarker = stopMarkers[closestStop.name];
 	closestStopMarker.setIcon("/images/map/PinDown1Green.png")
 	currentSelectedStop = closestStop;
+    */
 }
 function noLocation()
 {
@@ -75,38 +79,29 @@ function createMarker(stop, map) {
 	var lng = stop.lng;
 	var stopLatLng = new google.maps.LatLng(lat, lng);
 
-	var stopMarker = new google.maps.Marker({
-		position:stopLatLng,
-		map:map,
-    icon: pin
-	});
+    var icon;
+    if (parseInt(current_stop_id) === parseInt(stop.stop_id)) 
+      icon = green_pin;
+    else 
+      icon = red_pin;
+
+    var stopMarker = new google.maps.Marker({
+      position:stopLatLng,
+      map:map,
+      icon: icon
+    });
 	
 	stopMarkers[stop.name] = stopMarker;
 
-  var message = stop.name + '<br/>' + stop.next_arrivals;
-	google.maps.event.addListener(stopMarker, 'click', function (){
-	  //alert('Found stop: ' + message);
-		document.getElementById('stop_info').innerHTML = message;
-		//map.setCenter(stopLatLng);
-		if (currentSelectedStop)
-		{
-			currentSelectedStop.setIcon(pin)
-		}
-		stopMarker.setIcon("/images/map/PinDown1Green.png")
-		currentSelectedStop = stopMarker;
-	});
-
-  return stopMarker;
+    var message = stop.name + '<br/>' + stop.next_arrivals;
+    return stopMarker;
 }
 
 function initialize() {
   var latlng = new google.maps.LatLng(center_lat, center_lng);
-  var sw_latlng = new google.maps.LatLng(sw[0], sw[1]);
-  var ne_latlng = new google.maps.LatLng(ne[0], ne[1]);
-  var zoom_bounds = new google.maps.LatLngBounds(sw_latlng, ne_latlng);
  
- var myOptions = {
-    zoom: 8,
+  var myOptions = {
+    zoom: 13,
     center: latlng,
     mapTypeControl: false,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -119,7 +114,7 @@ function initialize() {
 		disableDoubleClickZoom: true
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-  map.fitBounds(zoom_bounds)
+
 	if (navigator && navigator.geolocation)
 	{	
 		navigator.geolocation.getCurrentPosition(foundLocation, noLocation);

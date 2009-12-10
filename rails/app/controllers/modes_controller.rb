@@ -1,5 +1,5 @@
 class ModesController < ApplicationController
-  layout false
+  layout 'mobile'
 
   def index
     @modes = %W[ bus commuter_rail subway boat ]

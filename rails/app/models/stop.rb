@@ -6,8 +6,8 @@ class Stop < ActiveRecord::Base
   include TimeFormatting
 
   # Returns a representation of the upcoming arrivals at this stop
-  # Deprecated
   def arrivals(options)
+    logger.debug "ARRIVALS with options: #{options.inspect}"
     stoppings = options[:transport_type].to_s.camelize.constantize.arrivals(self.id, options)
     stoppings.map {|stopping|
       # Discovered the the position field of trips is not reliable. So we must
