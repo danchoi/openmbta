@@ -4,4 +4,7 @@ class AboutController < ApplicationController
   def index
   end
 
+  def mobile_version
+    render :layout => 'mobile'
+  end
 end
