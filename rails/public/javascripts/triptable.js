@@ -42,9 +42,11 @@ function foundLocation(position)
 	}
   $(".closestStop").removeClass("closestStop");
 	$("#" + closestStop.stop_id).addClass("closestStop");
-  $("#closestStopFound").html("Jump to closest stop: <span style='font-weight:bold'>" +
-      "<a href='#" + closestStop.stop_id + "'>" + closestStop.name + "</span></a>");
+  if ($(".row-header").length > 6) {
+    $("#closestStopFound").html("Jump to closest stop: <span style='font-weight:bold'>" +
+        "<a href='#" + closestStop.stop_id + "'>" + closestStop.name + "</span></a>");
 
+  }
 }
 function noLocation()
 {
