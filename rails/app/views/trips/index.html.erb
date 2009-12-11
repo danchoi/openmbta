@@ -33,7 +33,7 @@ If your device allows geo-location, the closest stop will be <span class="exampl
   <% end %>
 </div>
 <div style='text-align:right;'>
-  <% if @all_trip_ids.size >=  @current_offset + 7 %>
+  <% if @all_trip_ids.size >  @current_offset + 7 %>
     <%= link_to "later &gt;&gt;", url_for(params.merge(:offset => @current_offset + 7)) %>
 
   <% end %>
