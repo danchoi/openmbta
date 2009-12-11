@@ -93,8 +93,13 @@ function createMarker(stop, map) {
 	
 	stopMarkers[stop.name] = stopMarker;
 
-    var message = stop.name + '<br/>' + stop.next_arrivals;
-    return stopMarker;
+  //var message = stop.name + '<br/>' + stop.next_arrivals;
+  google.maps.event.addListener(stopMarker, 'click', function () {
+      var newUrl = location.href.replace(/stop_id=(\d+)/, "stop_id=" + stop.stop_id);
+      location.href = newUrl; 
+  });
+
+  return stopMarker;
 }
 
 function initialize() {
