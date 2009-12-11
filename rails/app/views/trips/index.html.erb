@@ -24,6 +24,10 @@ Imminent stops are <span class="imminent-stop">highlighted purple</span>.
 If your device allows geo-location, the closest stop will be <span class="example-blue">highlighted in blue</span>.
 </p>
 
+<p id="closestStopFound">
+Closest stop:
+</p>
+
 <table class='mbta'>
   <% @result[:ordered_stop_ids].each do |stop_id| %>
     <tr  class='row-header stop-name'>
