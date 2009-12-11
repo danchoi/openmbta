@@ -16,6 +16,10 @@
 
 <div class="info">
   <span style="font-weight:bold"><%= @headsign %></span><br/>
+  <% if params[:first_stop] %>
+  <span style="font-weight:bold"><%= params[:first_stop] %></span><br/>
+
+  <% end %>
   <%= route_s @route, @transport_type.to_s %>
 </div>
 
@@ -56,12 +60,19 @@ If your device allows geo-location, the closest stop will be <span class="exampl
           <% if trip_id %>
             <% next_arrival = @result[:stops][stop_id][:next_arrivals].detect {|x| x[1] == trip_id }  %>
             <% if next_arrival.nil? %>
+
               &nbsp; 
+
             <% elsif next_arrival %>
+
               <%= next_arrival[0] %>
+
             <% end %>
+
           <% else %>
+
             &nbsp;
+
           <% end %>
         </td>
       <% end %>

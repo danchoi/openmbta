@@ -18,7 +18,11 @@ class RoutesController < ApplicationController
       }
 
       format.html {
-          @result = Route.routes(@transport_type, Now.new)
+          @result = if @transport_type == :subway 
+                      Route.new_routes(@transport_type, Now.new)
+                    else 
+                      Route.routes(@transport_type, Now.new)
+                    end
       }
 
     end

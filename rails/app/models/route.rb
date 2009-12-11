@@ -19,6 +19,11 @@ class Route < ActiveRecord::Base
     transport_type.to_s.camelize.constantize.routes(now)
   end
 
+  # for subway in mobile web version
+  def self.new_routes(transport_type, now = Now.new) 
+    transport_type.to_s.camelize.constantize.new_routes(now)
+  end
+
   def self.populate
     Generator.generate('routes.txt') do |row|
       Route.create :mbta_id => row[0],

@@ -19,6 +19,7 @@ class TripsController < ApplicationController
 
         @result = NewTripSet.new(:offset => params[:offset], 
                                  :headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
+                                 :first_stop => params[:first_stop],
                            :route_short_name => (@route = params[:route_short_name]),
                            :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
 

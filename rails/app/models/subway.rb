@@ -39,15 +39,28 @@ module Subway
     memo
   end
 
+  # subway headsigns are often too ambiguous; so we need to group by first_stop
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
-    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where routes.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign;").
+    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id,  trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where routes.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign").
       group_by {|r| 
         puts r.inspect
         puts ROUTE_ID_TO_NAME[r["route_id"].to_i]
         ROUTE_ID_TO_NAME[r["route_id"].to_i]}.
       map { |route_name, values| { :route_short_name  =>  route_name, :headsigns => generate_headsigns(values) }}
   end
+
+  # subway headsigns are often too ambiguous; so we need to group by first_stop
+  def self.new_routes(now = Now.new)
+    service_ids = Service.active_on(now.date).map(&:id)
+    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.first_stop, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where routes.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign, trips.first_stop").
+      group_by {|r| 
+        puts r.inspect
+        puts ROUTE_ID_TO_NAME[r["route_id"].to_i]
+        ROUTE_ID_TO_NAME[r["route_id"].to_i]}.
+      map { |route_name, values| { :route_short_name  =>  route_name, :headsigns => generate_new_headsigns(values) }}
+  end
+
 
 
 
@@ -65,11 +78,17 @@ module Subway
     route_short_name = options[:route_short_name]
     route_ids = ROUTE_NAME_TO_ID[route_short_name]
     headsign = options[:headsign]
+    first_stop = options[:first_stop]
     service_ids = Service.active_on(date).map(&:id)
     now = now.time
 
+    conditions = if first_stop 
+                   ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}' and first_stop = ? ", route_ids, headsign, service_ids, first_stop]
+                 else
+                   ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids]
+                 end
     Trip.all(:joins => :route,
-             :conditions => ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids], 
+             :conditions => conditions, 
              :order => "start_time asc", 
              :limit => options[:limit])
   end
@@ -90,6 +109,10 @@ module Subway
 
   def self.generate_headsigns(values)
     values.map {|x| [x["headsign"], x["trips_remaining"].to_i] }
+  end
+
+  def self.generate_new_headsigns(values)
+    values.map {|x| [x["headsign"],  x["trips_remaining"].to_i, x["first_stop"]] }
   end
 
 end

@@ -45,10 +45,13 @@ tomorrow (or Monday) morning, and chances are that you'll see it. If not, please
         <span class="stop-detail"><%= @result.size > 30 && index > 6 ? "<a style='float:right' href='#top'>top</a>" : nil %></span>
 
       </td>
-      <% route[:headsigns].each do |headsign, trips_left| %>
+      <% route[:headsigns].each do |headsign, trips_left, first_stop| %>
         </tr>
           <td colspan="3">
-            <%= link_to headsign, "/trips.html?transport_type=#{@transport_type}&route_short_name=#{route[:route_short_name]}&headsign=#{headsign.gsub("&", "^")}" %> 
+            <%= link_to headsign, "/trips.html?" + URI.escape("transport_type=#{@transport_type}&route_short_name=#{route[:route_short_name]}&headsign=#{headsign.gsub("&", "^")}&first_stop=#{first_stop}") %> 
+            <% if first_stop %>
+              <br/><span class="trips-left"><%=first_stop %></span>
+            <% end %>
             <br/><span class="trips-left"><%=pluralize(trips_left, "trip")%> left</span>
           </td>
         </tr>
