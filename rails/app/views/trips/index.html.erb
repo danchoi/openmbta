@@ -16,9 +16,8 @@
 
 <div class="info">
   <span style="font-weight:bold"><%= @headsign %></span><br/>
-  <% if params[:first_stop] %>
-  <span style="font-weight:bold"><%= params[:first_stop] %></span><br/>
-
+  <% if params[:first_stop] && !params[:first_stop].blank? %>
+    <span style="font-weight:bold"><%= params[:first_stop] %></span><br/>
   <% end %>
   <%= route_s @route, @transport_type.to_s %>
 </div>
