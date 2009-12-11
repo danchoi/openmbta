@@ -32,11 +32,9 @@ function foundLocation(position)
   myLat = position.coords.latitude;
   myLng = position.coords.longitude;
   //alert('Found location: ' + myLat + ', ' + myLng);
-  /*
   if (currentMarker) {
     map.removeOverlay(currentMarker);
   }
-  */
 	var currentLatLng = new google.maps.LatLng(myLat, myLng);
 	currentMarker = new google.maps.Marker({
 		position:currentLatLng,
