@@ -42,7 +42,7 @@ tomorrow (or Monday) morning, and chances are that you'll see it. If not, please
       <td colspan="3">
         <a name="<%=index%>"></a>
         <%= route[:route_short_name] %>
-        <span class="stop-detail"><%= @result.size > 30 && index > 6 ? "<a href='#top'>top</a>" : nil %></span>
+        <span class="stop-detail"><%= @result.size > 30 && index > 6 ? "<a style='float:right' href='#top'>top</a>" : nil %></span>
 
       </td>
       <% route[:headsigns].each do |headsign, trips_left| %>

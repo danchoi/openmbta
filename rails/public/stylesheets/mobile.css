@@ -4,7 +4,7 @@ body {
   font-family: Helvetica;
   padding: 10px 2px;
 }
-p { font-size: 13px; }
+p, div { font-size: 13px; }
 .main-menu li {
   line-height: 1.5em;
 }
@@ -39,8 +39,10 @@ ul.main-menu {
   margin-top: 5px;
 }
 table.mbta {
+  clear: left;
   width: 100%;
   font-size: 12px;
+  border-collapse: collapse;
 }
 tr.row-header {
   background-color: #EFEFEF;
@@ -52,11 +54,17 @@ tr.row-header {
 .trips-left {
   color: #333;
 }
-.arrival-time {
-  width: 33%;
+.mbta td {
+  border: 1px solid #ECECEC;
+
+}
+td.arrival-time {
+  width: 14.2%;
+  font-size: 10px;
+  padding: 3px 0 3px 3px;
+
 }
 .stop-detail {
-  float:right;
   font-size: smaller;
   font-weight: normal;
 }

@@ -20,28 +20,48 @@
 </div>
 
 <p>
-Imminent stops are <span class="imminent-stop">highlighted purple</span>.
 If your device allows geo-location, the closest stop will be <span class="example-blue">highlighted in blue</span>.
 </p>
 
 <p id="closestStopFound"></p>
 
+
+<div style='float:left;'>
+  <% if  @current_offset >= 7 %>
+    <%= link_to "&lt;&lt; previous", url_for(params.merge(:offset => @current_offset - 7)) %>
+
+  <% end %>
+</div>
+<div style='text-align:right;'>
+  <% if @all_trip_ids.size >=  @current_offset + 7 %>
+    <%= link_to "later &gt;&gt;", url_for(params.merge(:offset => @current_offset + 7)) %>
+
+  <% end %>
+</div>
+
 <table class='mbta'>
   <% @result[:ordered_stop_ids].each do |stop_id| %>
     <tr  class='row-header stop-name'>
-      <td id="<%=stop_id%>" colspan="3">
-        <span class="stop-detail"><a href="<%= url_for(params.merge(:stop_id => stop_id, :controller => 'stop_arrivals')) %>">detail</a></span>
+      <td id="<%=stop_id%>" colspan="7">
         <span class="stop-name-span">
           <%= @result[:stops][stop_id][:name] %>
         </span>
+        <span class="stop-detail"><a href="<%= url_for(params.merge(:stop_id => stop_id, :controller => 'stop_arrivals')) %>">detail</a></span>
+
       </td>
     </tr>
-      <% 3.times do |i|  %>
-        <% next_arrival = @result[:stops][stop_id][:next_arrivals][i]  %>
-        <td class="<%= @result[:imminent_stop_ids].map(&:to_i).include?(stop_id) && i == 0 ? 'imminent-stop' : nil %> arrival-time">
-          <%= next_arrival %>
-          <% if next_arrival.nil? and i == 0 %>
-            no more arrivals
+      <% 7.times do |i|  %>
+        <% trip_id = @trip_ids[i] %>
+        <td class="arrival-time ">
+          <% if trip_id %>
+            <% next_arrival = @result[:stops][stop_id][:next_arrivals].detect {|x| x[1] == trip_id }  %>
+            <% if next_arrival.nil? %>
+              &nbsp; 
+            <% elsif next_arrival %>
+              <%= next_arrival[0] %>
+            <% end %>
+          <% else %>
+            &nbsp;
           <% end %>
         </td>
       <% end %>
