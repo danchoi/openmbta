@@ -42,7 +42,11 @@ function foundLocation(position)
 	}
   $(".closestStop").removeClass("closestStop");
 	$("#" + closestStop.stop_id).addClass("closestStop");
-  if ($(".row-header").length > 6) {
+  // find row index of closesstStop 
+  var closestStopRow = $("#" + closestStop.stop_id).parent();
+  closestStopRowIndex = $(".row-header").index(closestStopRow);
+
+  if (closestStopRowIndex > 4) {
     $("#closestStopFound").html("Jump to closest stop: <span style='font-weight:bold'>" +
         "<a href='#" + closestStop.stop_id + "'>" + closestStop.name + "</span></a>");
 
