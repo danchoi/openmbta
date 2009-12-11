@@ -5,7 +5,7 @@
     var center_lat = <%= @stop.lat.to_json %>;
     var center_lng = <%= @stop.lng.to_json %>;
     var stops = <%= @stops.to_json %>;
-    var imminent_stops = <%= @result[:imminent_stop_ids].to_json %>;
+    var imminent_stops = <%= @result[:imminent_stop_ids].map(&:to_i).to_json %>;
     var zoomLevel = <%= [ :commuter_rail, :boat ].include?(@transport_type) ? 10 : 13 %>;
 
   </script>

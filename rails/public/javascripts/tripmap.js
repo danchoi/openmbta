@@ -25,13 +25,20 @@ function haversineDistance(lat1, lon1, lat2, lon2)
 	return d;
 }
 
+var currentMarker;
+
 function foundLocation(position)
 {
   myLat = position.coords.latitude;
   myLng = position.coords.longitude;
   //alert('Found location: ' + myLat + ', ' + myLng);
+  /*
+  if (currentMarker) {
+    map.removeOverlay(currentMarker);
+  }
+  */
 	var currentLatLng = new google.maps.LatLng(myLat, myLng);
-	var currentMarker = new google.maps.Marker({
+	currentMarker = new google.maps.Marker({
 		position:currentLatLng,
 		map:map,
 		icon: "/images/map/TrackingDot.png"
@@ -80,10 +87,13 @@ function createMarker(stop, map) {
 	var stopLatLng = new google.maps.LatLng(lat, lng);
 
     var icon;
-    if (parseInt(current_stop_id) === parseInt(stop.stop_id)) 
+    if (parseInt(current_stop_id) === parseInt(stop.stop_id)) {
       icon = green_pin;
-    else 
+    } else if (imminent_stops.indexOf(parseInt(stop.stop_id)) != -1) {
+      icon = purple_pin;
+    } else {
       icon = red_pin;
+    }
 
     var stopMarker = new google.maps.Marker({
       position:stopLatLng,
