@@ -1,13 +1,13 @@
 # OpenMBTA iPhone App
 
-[OpenMBTA](http://iphonembta.org) is a free, open source iPhone application that
-gives users current schedule information for MBTA buses, commuter rail lines,
-subway, and ferries.  MBTA the public transit system of the Boston metropolitan
-area.
+[OpenMBTA](http://iphonembta.org) gives users current schedule information for
+MBTA buses, commuter rail lines, subway, and ferries.  MBTA the public transit
+system of the Boston metropolitan area.
 
 This project has two components: an XCode project for the iPhone app and a Rails
-application for the data backend. The iPhone app relies on the backend to feed
-it schedule data and stop coordinates to display on its maps and schedule tables. 
+application for the data backend and the mobile web version of OpenMBTA. The
+iPhone app relies on the backend to feed it schedule data and stop coordinates
+to display on its maps and schedule tables. 
 
 The backend, in turn, uses the MBTA's Google Transit Feed Specification data to
 populate its database. The database must be reloaded with new GTFS schedule data
