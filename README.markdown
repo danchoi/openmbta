@@ -1,6 +1,6 @@
 # OpenMBTA 
 
-[OpenMBTA](http://iphonembta.org) gives users current schedule information for
+[OpenMBTA](http://openmbta.org) gives users current schedule information for
 MBTA buses, commuter rail lines, subway, and ferries.  MBTA is the public transit
 system of the Boston metropolitan area.
 
