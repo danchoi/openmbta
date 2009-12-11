@@ -47,7 +47,7 @@
 <div class="nav">
   <%= link_to "main", "/mobile" %> &gt; <%= link_to "routes", url_for(:controller => "routes", :transport_type => params[:transport_type]) %>
   &gt;
-  <%= link_to "trips", url_for(params.merge(:controller => "trips")) %>
+  <%= link_to "trips", url_for(params.merge(:controller => "trips").delete_if {|k,v,| k == 'stop_id'}) %>
   &gt;
   stop
 </div>
