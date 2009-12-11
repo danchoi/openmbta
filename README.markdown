@@ -1,7 +1,7 @@
 # OpenMBTA iPhone App
 
 [OpenMBTA](http://iphonembta.org) gives users current schedule information for
-MBTA buses, commuter rail lines, subway, and ferries.  MBTA the public transit
+MBTA buses, commuter rail lines, subway, and ferries.  MBTA is the public transit
 system of the Boston metropolitan area.
 
 This project has two components: an XCode project for the iPhone app and a Rails
