@@ -62,7 +62,7 @@ function noLocation()
 
 function pageRight() {
   if (currentTripSet < numTripSets - 1) {
-    $(".trip-set_" + (currentTripSet + 1)).show();
+    $(".trip-set_" + (currentTripSet + 1)).fadeIn();
     $(".trip-set_" + currentTripSet).hide();
     currentTripSet += 1;
     togglePageLinks();
@@ -70,7 +70,7 @@ function pageRight() {
 }
 function pageLeft() {
   if (currentTripSet > 0) {
-    $(".trip-set_" + (currentTripSet - 1)).show();
+    $(".trip-set_" + (currentTripSet - 1)).fadeIn();
     $(".trip-set_" + currentTripSet).hide();
     currentTripSet -= 1;
     togglePageLinks();
