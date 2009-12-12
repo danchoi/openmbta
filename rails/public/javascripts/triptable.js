@@ -62,17 +62,17 @@ function noLocation()
 
 function pageRight() {
   if (currentTripSet < numTripSets - 1) {
+    $(".trip-set_" + (currentTripSet + 1)).show();
     $(".trip-set_" + currentTripSet).hide();
     currentTripSet += 1;
-    $(".trip-set_" + currentTripSet).show();
     togglePageLinks();
   }
 }
 function pageLeft() {
   if (currentTripSet > 0) {
+    $(".trip-set_" + (currentTripSet - 1)).show();
     $(".trip-set_" + currentTripSet).hide();
     currentTripSet -= 1;
-    $(".trip-set_" + currentTripSet).show();
     togglePageLinks();
   }
 }
