@@ -1,3 +1,4 @@
+<% if @trip_sets.size > 1 %>
 <div class="pagerControls">
   <span class="pageLeftLink">
     <%= link_to_function "&lt;&lt; previous", "pageLeft()" %>
@@ -8,4 +9,4 @@
     <%= link_to_function "next  &gt;&gt;", "pageRight()" %>
   </span>
 </div>
-
+<% end %>
