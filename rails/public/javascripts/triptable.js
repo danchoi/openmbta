@@ -174,9 +174,9 @@ function initialize() {
 	}
   togglePageLinks();
   addSwipeListener(document.body, function(e) { 
-      if (e.direction == 'right') 
+      if (e.direction == 'left') 
         pageRight();
-      else if (e.direction == 'left') 
+      else if (e.direction == 'right') 
         pageLeft();
 
       //alert(e.direction); 

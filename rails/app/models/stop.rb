@@ -27,6 +27,29 @@ class Stop < ActiveRecord::Base
     }
   end
 
+  # experimental
+  def close_stops 
+    sql = "SELECT stops.*, ( 3959 * acos( cos( radians( #{self.lat}  ) ) * cos( radians( stops.lat ) ) * cos( radians( stops.lng ) - radians( #{self.lng} ) ) + sin( radians( #{self.lat} ) ) * sin( radians( stops.lat ) ) ) ) AS distance FROM stops " +
+      "where stops.id != #{self.id} " + 
+      "HAVING distance < 0.25 ORDER BY distance LIMIT 0 , 20; "
+
+    self.class.find_by_sql sql
+  end
+
+  def close_routes
+    results = []
+    close_stops.each do |stop|
+      stop.stoppings.each do |stopping|
+        trip = stopping.trip
+        data = [stop.name, trip.headsign, trip.route.short_name, trip.route_type]
+        unless results.include?(data)
+          results << data
+        end
+      end
+    end
+    results
+  end
+
   def self.populate
     Generator.generate('stops.txt') do |row|
       Stop.create :mbta_id => row[0],
