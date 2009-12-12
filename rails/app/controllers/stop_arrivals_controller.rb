@@ -10,6 +10,7 @@ class StopArrivalsController < ApplicationController
 
     # pass in options[:now] to set different base time
     @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
+                          :first_stop => params[:first_stop],
                        :route_short_name => (@route = params[:route_short_name]),
                        :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym),
                        :now => Now.new(base_time)).result
