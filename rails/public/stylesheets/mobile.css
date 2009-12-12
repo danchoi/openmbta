@@ -98,3 +98,11 @@ td.arrival-time {
   background-color: #ABDAFF;
 
 }
+.pagerControls {
+  padding: 6px 0;
+  text-align:center;
+}
+.disabled a {
+  color: #CCC;
+
+}

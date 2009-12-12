@@ -2,6 +2,8 @@
   <script type="text/javascript">
 
     var stops = <%= @stops.to_json %>;
+    var numTripSets = <%=@trip_sets.size %>;
+    var currentTripSet = 0;
 
 
   </script>
@@ -29,18 +31,8 @@ If your device allows geo-location, the closest stop will be <span class="exampl
 <p id="closestStopFound"></p>
 
 
-<div style='float:left;'>
-  <% if  @current_offset >= 7 %>
-    <%= link_to "&lt;&lt; previous", url_for(params.merge(:offset => @current_offset - 7)) %>
 
-  <% end %>
-</div>
-<div style='text-align:right;'>
-  <% if @all_trip_ids.size >  @current_offset + 7 %>
-    <%= link_to "later &gt;&gt;", url_for(params.merge(:offset => @current_offset + 7)) %>
-
-  <% end %>
-</div>
+<%= render :partial => 'pager_controls' %>
 
 <table class='mbta'>
   <% @result[:ordered_stop_ids].each do |stop_id| %>
@@ -53,33 +45,41 @@ If your device allows geo-location, the closest stop will be <span class="exampl
 
       </td>
     </tr>
-      <% 7.times do |i|  %>
-        <% trip_id = @trip_ids[i] %>
-        <td class="arrival-time ">
-          <% if trip_id %>
-            <% next_arrival = @result[:stops][stop_id][:next_arrivals].detect {|x| x[1] == trip_id }  %>
-            <% if next_arrival.nil? %>
 
-              &nbsp; 
+    <% @trip_sets.each_with_index do |trip_set, i| %>
+      <tr class="trip-set_<%= i %>" style="<%= i != 0 ? 'display:none;' : nil %>">
 
-            <% elsif next_arrival %>
+        <% 7.times do |i|  %>
 
-              <%= next_arrival[0] %>
+          <% trip_id = trip_set[i] %>
+          <td class="arrival-time ">
+            <% if trip_id %>
+              <% next_arrival = @result[:stops][stop_id][:next_arrivals].detect {|x| x[1] == trip_id }  %>
+              <% if next_arrival.nil? %>
+
+                &nbsp; 
+
+              <% elsif next_arrival %>
+
+                <%= next_arrival[0] %>
+
+              <% end %>
+
+            <% else %>
+
+              &nbsp;
 
             <% end %>
+          </td>
+        <% end %>
+      </tr>
 
-          <% else %>
+    <% end %>
 
-            &nbsp;
-
-          <% end %>
-        </td>
-      <% end %>
-    </tr>
   <% end %>
 </table>
 
-
+<%= render :partial => 'pager_controls' %>
 
 <%# @result.inspect %> 
 

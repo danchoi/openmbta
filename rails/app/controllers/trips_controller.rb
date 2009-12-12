@@ -1,5 +1,7 @@
 require 'json_printer'
 
+require 'enumerator'
+
 class TripsController < ApplicationController
   layout 'mobile'
   include TimeFormatting
@@ -15,6 +17,9 @@ class TripsController < ApplicationController
                              :now => Now.new(base_time)).result
         render :json => @result.to_json
       }
+
+      # FOR MOBILE WEB
+      #
       format.html { 
 
         @result = NewTripSet.new(:offset => params[:offset], 
@@ -24,8 +29,11 @@ class TripsController < ApplicationController
                            :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
 
         @current_offset = params[:offset] ? params[:offset].to_i : 0
-        @all_trip_ids = @result[:ordered_trip_ids]
-        @trip_ids = @all_trip_ids[@current_offset,7]
+        @trip_ids = @result[:ordered_trip_ids]
+        @trip_sets = [] 
+        @trip_ids.each_slice(7) do |trip_set|
+          @trip_sets << trip_set
+        end
 
         @region = @result[:region]
         @center_lat = @region[:center_lat]

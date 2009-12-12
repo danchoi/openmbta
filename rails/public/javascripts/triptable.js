@@ -62,4 +62,39 @@ function initialize() {
 	{	
 		navigator.geolocation.getCurrentPosition(foundLocation, noLocation);
 	}
+  togglePageLinks();
+}
+
+
+// * paging through trip sets
+
+function pageRight() {
+  if (currentTripSet < numTripSets - 1) {
+    $(".trip-set_" + currentTripSet).hide();
+    currentTripSet += 1;
+    $(".trip-set_" + currentTripSet).show();
+    togglePageLinks();
+  }
+}
+function pageLeft() {
+  if (currentTripSet > 0) {
+    $(".trip-set_" + currentTripSet).hide();
+    currentTripSet -= 1;
+    $(".trip-set_" + currentTripSet).show();
+    togglePageLinks();
+  }
+}
+function togglePageLinks() {
+    if (currentTripSet == 0) {
+      $(".pageLeftLink").addClass("disabled"); 
+    } else {
+      $(".pageLeftLink").removeClass("disabled");
+
+    }
+    if (currentTripSet == numTripSets -1) {
+      $(".pageRightLink").addClass("disabled");
+    } else {
+      $(".pageRightLink").removeClass("disabled");
+
+    }
 }

@@ -48,7 +48,6 @@ class NewTripSet
       :first_stop => trips.map {|t| t.first_stop }.uniq,
       :ordered_trip_ids => Trip.all(:conditions => ["id in (?)", @ordered_trip_ids.map(&:to_i)]).sort_by {|trip| trip.start_time}.map {|trip| trip.id}
     }
-
     #ActiveRecord::Base.logger.debug("STOP_IDS (#{stop_ids.size}):\n#{stop_ids.inspect}")
 
     # Need to add an array of the stop ids in trip order. This is easy for the
