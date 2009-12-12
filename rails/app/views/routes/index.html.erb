@@ -50,7 +50,7 @@ tomorrow (or Monday) morning, and chances are that you'll see it. If not, please
           <td colspan="3">
             <%= link_to headsign, "/trips.html?" + URI.escape("transport_type=#{@transport_type}&route_short_name=#{route[:route_short_name]}&headsign=#{headsign.gsub("&", "^")}&first_stop=#{first_stop}") %> 
             <% if first_stop %>
-              <br/><span class="trips-left"><%=first_stop %></span>
+              <br/>from <span class="trips-left"><%=first_stop %></span>
             <% end %>
             <br/><span class="trips-left"><%=pluralize(trips_left, "trip")%> left</span>
           </td>
