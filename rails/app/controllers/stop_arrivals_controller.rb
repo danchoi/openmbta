@@ -20,6 +20,7 @@ class StopArrivalsController < ApplicationController
     @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
 
     # the merge handles the ^ and & conversion in the headsign
+    # deprecated for now
     @arrivals = @stop.arrivals(params.merge(:headsign => @headsign, :transport_type => @transport_type))
   end
 

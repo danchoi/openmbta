@@ -52,28 +52,17 @@
   stop
 </div>
 
-<div class="note">
-Bookmark this page if this is one of your regular stops.
-</div>
 
 <div class="info">
-  <%= @stop.name %> - <a href="#mapAnchor" rel="" id="anchor1" class="anchorLink">map</a><br/>
+  <%= @stop.name %> 
   <span style="font-weight:bold"><%= @headsign %></span><br/>
   <%= route_s @route, @transport_type.to_s %>
 </div>
 
-<div class="info" style="background-color:white">
-  <%= pluralize @arrivals.size, "arrival" %> left
+<div class="note">
+  Note: This page of OpenMBTA is in flux. If you have a good suggestion for what kind of information to put here, please post your suggestion at <a href="/support">http://openmbta.org/support</a>.
 </div>
 
-<div>
-  <% @arrivals.each do |arrival| %>
-    <div class="arrival-time-float">
-        <%= arrival[:arrival_time] %>
-    </div>
-  <% end %>
-</div>
-<br style="clear:left"/>
 
 <div id="map_canvas" style="margin-top:10px;width:316px; height:300px"></div>
 <a name="mapAnchor" id="mapAnchor"></a>

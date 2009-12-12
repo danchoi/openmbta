@@ -16,6 +16,10 @@
   <%= link_to "main", "/mobile" %> &gt; <%= link_to "routes", url_for(:controller => "routes", :transport_type => params[:transport_type]) %> &gt; trips
 </div>
 
+<div class="note">
+  Bookmark this page if this is one of your regular routes.
+</div>
+
 <div class="info">
   <span style="font-weight:bold"><%= @headsign %></span><br/>
   <% if params[:first_stop] && !params[:first_stop].blank? %>
