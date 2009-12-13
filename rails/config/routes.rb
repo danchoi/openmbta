@@ -17,6 +17,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/alerts', :controller => 'alerts', :action => 'index'
   map.connect '/alerts.:format', :controller => 'alerts', :action => 'index'
 
+  map.resources :tweets
+
   map.connect '/alerts/:guid', :controller => 'alerts', :action => 'show'
   map.connect '/help/:target_controller/:transport_type', :controller => 'help', :action => 'show'
   map.connect '/about/:action', :controller => 'about'
