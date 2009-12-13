@@ -36,6 +36,14 @@ tomorrow (or Monday) morning, and chances are that you'll see it. If not, please
 
 <% end %>
 
+<% if @transport_type == :commuter_rail %>
+<div class='note'>
+  <strong>Tip:</strong> Use <a href="http://tleave.com/">T-Leave</a> to calculate schedules between any two stops.
+</div>
+
+<% end %>
+
+
 <table class='mbta' style="margin-top:10px">
   <% @result.each_with_index do |route, index| %>
     <tr class='row-header stop-name'>
