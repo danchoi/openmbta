@@ -23,6 +23,7 @@ class TweetsController < ApplicationController
         :content => entry.elements["content"].text
       }
     end
+    logger.debug @entries.inspect
 
   end
 
