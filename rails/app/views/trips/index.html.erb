@@ -41,7 +41,7 @@ If your device allows geo-location, the closest stop will be <span class="exampl
 <table class='mbta'>
   <% @result[:ordered_stop_ids].each do |stop_id| %>
     <tr  class='row-header stop-name'>
-      <td id="<%=stop_id%>" colspan="7" class="stop-name-header">
+      <td id="<%=stop_id%>" colspan="<%= @cols %>" class="stop-name-header">
         <span class="stop-detail" style='float:right'><a href="<%= url_for(params.merge(:stop_id => stop_id, :controller => 'stop_arrivals')) %>">detail</a></span>
         <span class="stop-name-span">
           <%= @result[:stops][stop_id][:name] %>
@@ -53,7 +53,7 @@ If your device allows geo-location, the closest stop will be <span class="exampl
     <% @trip_sets.each_with_index do |trip_set, i| %>
       <tr class="trip-set_<%= i %>" style="<%= i != 0 ? 'display:none;' : nil %>">
 
-        <% 7.times do |i|  %>
+        <% @cols.times do |i|  %>
 
           <% trip_id = trip_set[i] %>
           <% this_cell_value = cell_value(stop_id, trip_id) %>

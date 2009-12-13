@@ -76,6 +76,25 @@ function pageLeft() {
     togglePageLinks();
   }
 }
+function toStart() {
+  if (currentTripSet > 0) {
+    $(".trip-set_" + (0)).fadeIn();
+    $(".trip-set_" + currentTripSet).hide();
+    currentTripSet = 0;
+    togglePageLinks();
+  }
+}
+
+function toEnd() {
+  if (currentTripSet < numTripSets - 1) {
+    $(".trip-set_" + (numTripSets - 1)).fadeIn();
+    $(".trip-set_" + currentTripSet).hide();
+    currentTripSet = numTripSets - 1;
+    togglePageLinks();
+  }
+
+}
+
 function togglePageLinks() {
     if (currentTripSet == 0) {
       $(".pageLeftLink").addClass("disabled"); 

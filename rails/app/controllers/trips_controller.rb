@@ -31,7 +31,8 @@ class TripsController < ApplicationController
         @current_offset = params[:offset] ? params[:offset].to_i : 0
         @trip_ids = @result[:ordered_trip_ids]
         @trip_sets = [] 
-        @trip_ids.each_slice(7) do |trip_set|
+        @cols = 6
+        @trip_ids.each_slice(@cols) do |trip_set|
           @trip_sets << trip_set
         end
 
