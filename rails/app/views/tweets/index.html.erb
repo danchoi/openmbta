@@ -8,7 +8,7 @@
 
 
 <% @entries.each do |t| %>
-  <div class="alert <%= cycle('odd', 'even') %>">
+  <div class="alert <%= cycle('odd', 'even') %>" style="clear:left">
     <%= link_to(image_tag(t[:image], :style => "float:left; padding-right: 5px;", :border => 0), t[:uri])  %>
     <h4>
       <%= t[:name] %>
