@@ -1,7 +1,7 @@
 <% content_for :header do %>
   <script type="text/javascript">
 
-    var stops = <%= @stops.to_json %>;
+    var stops = <%= @stops.map {|stop| stop.dup.delete_if {|k,v| k == :next_arrivals}}.to_json %>;
     var numTripSets = <%=@trip_sets.size %>;
     var currentTripSet = 0;
 
