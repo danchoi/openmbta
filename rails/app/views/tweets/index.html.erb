@@ -9,7 +9,7 @@
 
 <% @entries.each do |t| %>
   <div class="alert <%= cycle('odd', 'even') %>" style="clear:left">
-    <%= link_to(image_tag(t[:image], :style => "float:left; padding-right: 5px;", :border => 0), t[:uri])  %>
+    <%= link_to(image_tag(t[:image], :style => "float:left; padding-right: 5px;width:48px", :border => 0), t[:uri])  %>
     <h4>
       <%= t[:name] %>
       <span class="time"><%= t[:published].in_time_zone.strftime("%b %d %I:%M%p ") %></span>
