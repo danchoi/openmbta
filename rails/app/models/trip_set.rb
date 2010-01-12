@@ -33,7 +33,7 @@ class TripSet
 
     result = { 
       :stops => (stops.inject({}) do |memo, stop|
-        memo[stop.id] = {:name => stop.name, 
+        memo[stop.id.to_s] = {:name => stop.name, 
           :lat => stop.lat, 
           :lng => stop.lng, 
           :num_stoppings => stop.respond_to?(:num_stoppings) ? stop.num_stoppings : 1, 
@@ -75,7 +75,7 @@ class TripSet
     #ActiveRecord::Base.logger.debug("STOP_IDS (#{stop_ids.size}):\n#{stop_ids.inspect}")
 
     ordered_stop_ids = ordered_stop_ids & stops.map(&:id)  #  this makes sure the sets have the same members
-    result[:stops].delete_if {|key, value| !ordered_stop_ids.include?(key)}
+    result[:stops].delete_if {|key, value| !ordered_stop_ids.include?(key.to_i)}
 
     #ActiveRecord::Base.logger.debug("ORDERED STOP_IDS (#{ordered_stop_ids.size}): \n#{ordered_stop_ids.inspect}")
 
