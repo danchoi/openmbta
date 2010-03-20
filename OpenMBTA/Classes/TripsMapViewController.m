@@ -215,7 +215,7 @@
     if (rawData == nil)
         return;
     
-    //NSLog(@"loaded data: %@", rawData);
+    NSLog(@"loaded data: %@", rawData);
     NSDictionary *data = [rawData JSONValue];
     [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];

@@ -42,6 +42,10 @@ class Trip < ActiveRecord::Base
     end
   end
 
+  def self.batch_create(route, service)
+
+  end
+
   named_scope :missing_stops_summary, :conditions => "start_time is null or end_time is null"
 
   def self.denormalize
