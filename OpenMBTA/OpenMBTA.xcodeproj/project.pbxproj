@@ -361,7 +361,7 @@
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "87A90CC5-F23F-4314-9C8B-44B867948AED";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03B729CC-3ECF-4B6F-8150-A404CA73684C";
 			};
 			name = Debug;
 		};
@@ -375,7 +375,7 @@
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "87A90CC5-F23F-4314-9C8B-44B867948AED";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03B729CC-3ECF-4B6F-8150-A404CA73684C";
 			};
 			name = Release;
 		};
@@ -422,13 +422,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03B729CC-3ECF-4B6F-8150-A404CA73684C";
 			};
 			name = Distribution;
 		};

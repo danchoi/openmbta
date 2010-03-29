@@ -5,11 +5,11 @@ class AlertsController < ApplicationController
     @alerts = Alert.all(:limit => 40, :order => "pub_date  desc")
 
     respond_to do |format|
-      format.html {
-
-      }
       format.json {
         render :json => {:data => @alerts}
+      }
+      format.html {
+
       }
     end
   end
