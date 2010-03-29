@@ -9,7 +9,7 @@
 <% @alerts.each do |alert| %>
   <div class="alert <%= cycle('odd', 'even') %>">
     <h4><%= alert.title %>
-      <span class="time"><%= DateTime.parse(alert.pub_date).strftime("%b %d %I:%M%p ") %></span>
+      <span class="time"><%= alert.pub_date %></span>
     </h4>
 
     <%= alert.description %>
