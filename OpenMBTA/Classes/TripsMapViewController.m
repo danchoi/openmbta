@@ -6,7 +6,7 @@
 
 // Set this to 1 to show a demo location in the simulator
 // Set to 0 in production
-#define USE_DEMO_LOCATION 1
+#define USE_DEMO_LOCATION 0
 
 @interface TripsMapViewController (Private)
 - (void)stopSelected:(NSString *)stopId;

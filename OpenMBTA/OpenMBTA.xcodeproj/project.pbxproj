@@ -363,7 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -371,7 +371,7 @@
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03B729CC-3ECF-4B6F-8150-A404CA73684C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C0CA117-50EA-4597-B6D8-BBA1B2A1CA5A";
 			};
 			name = Debug;
 		};
@@ -379,13 +379,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03B729CC-3ECF-4B6F-8150-A404CA73684C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C0CA117-50EA-4597-B6D8-BBA1B2A1CA5A";
 			};
 			name = Release;
 		};
@@ -432,13 +432,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03B729CC-3ECF-4B6F-8150-A404CA73684C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C0CA117-50EA-4597-B6D8-BBA1B2A1CA5A";
 			};
 			name = Distribution;
 		};
