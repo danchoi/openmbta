@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-@class TripsMapViewController;
+#import "TripsMapViewController.h"
 @class RoutesViewController;
 @class TAlertsViewController;
 
@@ -16,9 +16,13 @@
     IBOutlet UITableView *tableView;
     RoutesViewController *routesViewController;
     TAlertsViewController *tAlertsViewController;
+    TripsMapViewController *tripsMapViewController;
     NSOperationQueue *operationQueue;
     NSArray *menu;
+    NSArray *bookmarks;
 }
 @property (nonatomic,retain) NSArray *menu;
+@property (nonatomic,retain) NSArray *bookmarks;
 @property (nonatomic,retain) UITableView *tableView;
+
 @end

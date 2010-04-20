@@ -16,6 +16,8 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		DE8245621086A70D004ABB2F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8245611086A70D004ABB2F /* Default.png */; };
 		DE8245711086A8B8004ABB2F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8245701086A8B8004ABB2F /* icon.png */; };
+		DEAF726C117DDD5200A36ABD /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF726B117DDD5200A36ABD /* Preferences.m */; };
+		DEAF7336117DF0E900A36ABD /* action-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DEAF7335117DF0E900A36ABD /* action-pressed.png */; };
 		DEC0806E107EBC3900B22DE8 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC08063107EBC3900B22DE8 /* NSObject+SBJSON.m */; };
 		DEC0806F107EBC3900B22DE8 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC08065107EBC3900B22DE8 /* NSString+SBJSON.m */; };
 		DEC08070107EBC3900B22DE8 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC08067107EBC3900B22DE8 /* SBJSON.m */; };
@@ -63,6 +65,9 @@
 		8D1107310486CEB800E47090 /* OpenMBTA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OpenMBTA-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		DE8245611086A70D004ABB2F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DE8245701086A8B8004ABB2F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DEAF726A117DDD5200A36ABD /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		DEAF726B117DDD5200A36ABD /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		DEAF7335117DF0E900A36ABD /* action-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-pressed.png"; sourceTree = "<group>"; };
 		DEC08061107EBC3900B22DE8 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		DEC08062107EBC3900B22DE8 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		DEC08063107EBC3900B22DE8 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -172,6 +177,8 @@
 				DEE87A2810853FC50067992D /* AboutViewController.xib */,
 				DEEB1E9C108A3C540033C851 /* DemoCurrentLocation.h */,
 				DEEB1E9D108A3C540033C851 /* DemoCurrentLocation.m */,
+				DEAF726A117DDD5200A36ABD /* Preferences.h */,
+				DEAF726B117DDD5200A36ABD /* Preferences.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -210,6 +217,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEAF7335117DF0E900A36ABD /* action-pressed.png */,
 				DEEB1EC1108A3E1F0033C851 /* TrackingDot.png */,
 				DE8245701086A8B8004ABB2F /* icon.png */,
 				DE8245611086A70D004ABB2F /* Default.png */,
@@ -312,6 +320,7 @@
 				DE8245621086A70D004ABB2F /* Default.png in Resources */,
 				DE8245711086A8B8004ABB2F /* icon.png in Resources */,
 				DEEB1EC2108A3E1F0033C851 /* TrackingDot.png in Resources */,
+				DEAF7336117DF0E900A36ABD /* action-pressed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +352,7 @@
 				DEE878361084DFF40067992D /* TimePickerViewController.m in Sources */,
 				DEE87A2910853FC50067992D /* AboutViewController.m in Sources */,
 				DEEB1E9E108A3C540033C851 /* DemoCurrentLocation.m in Sources */,
+				DEAF726C117DDD5200A36ABD /* Preferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

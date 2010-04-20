@@ -25,8 +25,9 @@
     NSDictionary *regionInfo;
     BOOL shouldReloadRegion;
     NSOperationQueue *operationQueue;
-    IBOutlet UITableView *tableView;
-    
+
+    UIBarButtonItem *bookmarkButton; 
+    UIBarButtonItem *changeTimeButton;
     NSString *headsign;
     NSString *route_short_name;
     NSString *transportType;
@@ -37,6 +38,7 @@
     BOOL shouldReloadData;
     IBOutlet UILabel *headsignLabel;
     IBOutlet UILabel *routeNameLabel;
+
     NSDate *baseTime; // used when user picks a different base time for getting stop arrival times
     NSTimer *triggerCalloutTimer;
     
@@ -57,13 +59,16 @@
 @property (nonatomic,copy) NSString *selected_stop_id;
 @property (nonatomic,copy) NSString *nearest_stop_id;
 @property (nonatomic, retain) StopAnnotation *nearestStopAnnotation;
-@property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
 @property (nonatomic, retain) NSDate *baseTime;
 @property (nonatomic, retain) NSTimer *triggerCalloutTimer;
+
+@property (nonatomic, retain) UIBarButtonItem *bookmarkButton;
+@property (nonatomic, retain) UIBarButtonItem *changeTimeButton;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;
+- (IBAction)toggleBookmark;
 - (void)didFinishLoadingData:(NSString *)rawData;
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals;
 - (void)addSegmentedControl;

@@ -2,6 +2,8 @@
 #import "TimePickerViewController.h"
 #import "HelpViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Preferences.h"
+
 // Set this to 1 to show a demo location in the simulator
 // Set to 0 in production
 #define USE_DEMO_LOCATION 1
@@ -23,8 +25,8 @@
 @synthesize headsign;
 @synthesize route_short_name, transportType;
 @synthesize selected_stop_id, nearest_stop_id, baseTime;
-@synthesize tableView;
 @synthesize triggerCalloutTimer;
+@synthesize bookmarkButton, changeTimeButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,10 +41,9 @@
     mapView.mapType = MKMapTypeStandard;
 
     shouldReloadRegion = YES;
-    self.tableView.hidden = YES;
-    [self addSegmentedControl];
     shouldReloadData = YES;    
-    [self addChangeTimeButton];
+//    [self addChangeTimeButton];
+ //   [self addBookmarkButton];
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(baseTimeDidChange:)
                                                 name:@"BaseTimeChanged"
@@ -56,29 +57,38 @@
 
     
     if (self.shouldReloadData) {
+ 
         self.stops = [NSArray array];
-        [self.tableView reloadData];
         [mapView removeAnnotations:self.stopAnnotations];
         [self.stopAnnotations removeAllObjects];
         [self startLoadingData];
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
-        if (self.transportType == @"Bus") {
+        if ([self.transportType isEqualToString: @"Bus"]) {
             routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.route_short_name];
+
         } else if (self.transportType == @"Subway") {
             routeNameLabel.text = [NSString stringWithFormat:@"%@ (times are only approximate)", self.route_short_name];        
-        } else if (self.transportType == @"Commuter Rail") {
+
+        } else if ([self.transportType isEqualToString: @"Commuter Rail"]) {
             routeNameLabel.text = [NSString stringWithFormat:@"%@ Line", self.route_short_name];     
-            [self removeChangeTimeButton];            
+
         } else {
             routeNameLabel.text = self.route_short_name;            
-        }
-        if (self.transportType != @"Commuter Rail") {
-            [self addChangeTimeButton];
-        }
 
+        }
+        [self addButtons];
     }
-    
+    /*
+    if (bookmarkButton) {
+        if ([self isBookmarked]) {
+            [bookmarkButton setTitle:@"Bookmarked" forState:UIControlStateNormal];
+        } else {
+            [bookmarkButton setTitle:@"Bookmark" forState:UIControlStateNormal];
+        }
+    }
+    */
+ 
     [super viewWillAppear:animated];
 
 }
@@ -88,7 +98,8 @@
         [self resetBaseTime];
     } else {
         self.baseTime = [notification.userInfo objectForKey:@"NewBaseTime"];
-        self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleDone;
+        //self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleDone;
+        [self addButtons];
     }
     // NSLog(@"set new base time on trips map to %@", self.baseTime);
     self.shouldReloadData = YES;
@@ -129,7 +140,6 @@
     self.regionInfo = nil;
     self.headsign = nil;
     self.route_short_name = nil;
-    self.tableView = nil;
     self.selected_stop_id = nil;
     self.triggerCalloutTimer = nil;
     [operationQueue release];
@@ -137,30 +147,94 @@
     [super dealloc];
 }
 
-- (void)addSegmentedControl {
-    NSArray *segments = [[NSArray alloc] initWithObjects:@"Map", @"Table", nil];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:segments];
-    [segments release];
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    segmentedControl.selectedSegmentIndex = 0;
-    [segmentedControl addTarget:self
-                         action:@selector(toggleView:)
-               forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView = segmentedControl;
-    [segmentedControl release];
+-(void)toggleBookmark:(id)sender {
+    if ([self isBookmarked]) {
+        Preferences *prefs = [Preferences sharedInstance]; 
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
+        [prefs removeBookmark: bookmark];
+    } else {
+        Preferences *prefs = [Preferences sharedInstance]; 
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
+        [prefs addBookmark: bookmark];
+    }
+    [self addButtons];
 }
 
-- (void)toggleView:(id)sender {
-    NSUInteger selectedSegment = ((UISegmentedControl *)sender).selectedSegmentIndex;    
-    //NSLog(@"segment: %d", selectedSegment);
-    if (selectedSegment == 0) { // map
-        mapView.hidden = NO;
-        self.tableView.hidden = YES;        
-    } else { // table
-        mapView.hidden = YES;        
-        self.tableView.hidden = NO;        
-        [self.tableView reloadData];
+- (BOOL)isBookmarked {
+    Preferences *prefs = [Preferences sharedInstance]; 
+    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
+    return ([prefs isBookmarked:bookmark]);
+}
+
+
+- (void)addButtons {
+
+    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:3];
+    // create a toolbar where we can place some buttons
+    UIToolbar* toolbar;
+    if ([self isBookmarked]) {
+        toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 189, 45)];
+    } else {
+        toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 175, 45)];
+
     }
+
+    if ([self isBookmarked]) {
+        self.bookmarkButton = [[UIBarButtonItem alloc]
+                                              initWithTitle:@"Bookmarked"
+                                             style:UIBarButtonItemStyleDone
+                                             target:self 
+                                             action:@selector(toggleBookmark:)];
+    } else {
+        self.bookmarkButton = [[UIBarButtonItem alloc]
+                                              initWithTitle:@"Bookmark"
+                                             style:UIBarButtonItemStyleBordered
+                                             target:self 
+                                             action:@selector(toggleBookmark:)];
+    }
+    [buttons addObject:bookmarkButton];
+     
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
+        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+        target:nil
+        action:nil];
+    [buttons addObject:spacer];
+    [spacer release];
+    if (![self.transportType isEqualToString: @"Commuter Rail"]) {
+         
+        self.changeTimeButton = [[UIBarButtonItem alloc]
+                                                initWithTitle:@"Shift Time"
+                                                        style:(self.baseTime == nil ? UIBarButtonItemStyleBordered : UIBarButtonItemStyleDone)
+                                             target:self 
+                                             action:@selector(showTimePicker:)];
+        [buttons addObject:self.changeTimeButton];
+    }
+
+    [toolbar setItems:buttons animated:NO];
+    [buttons release];
+     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithCustomView:toolbar];
+    [toolbar release];
+}
+
+/*
+- (void)addBookmarkButton; {
+    if (self.navigationItem.titleView != nil)
+        return;
+    bookmarkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    bookmarkButton.frame = CGRectMake(0, 0, 30, 70);
+    bookmarkButton.font = [UIFont boldSystemFontOfSize:13];
+    if ([self isBookmarked]) {
+        [bookmarkButton setTitle:@"Bookmark" forState:UIControlStateNormal];
+    } else {
+        [bookmarkButton setTitle:@"Bookmarked" forState:UIControlStateNormal];
+    }
+    [bookmarkButton addTarget:self action:@selector(toggleBookmark:) forControlEvents:UIControlEventTouchUpInside]; 
+
+    bookmarkButton.frame = CGRectMake(0, 0, 300, 100);
+    self.navigationItem.titleView = bookmarkButton;
+
 }
 
 - (void)addChangeTimeButton; {
@@ -178,7 +252,7 @@
 - (void)removeChangeTimeButton; {
     self.navigationItem.rightBarButtonItem = nil;
 }
-
+*/
 - (void)showTimePicker:(id)sender {
     TimePickerViewController *modalVC = [[TimePickerViewController alloc] initWithNibName:@"TimePickerViewController" bundle:nil];
     [self presentModalViewController:modalVC animated:YES];
@@ -215,7 +289,7 @@
     if (rawData == nil)
         return;
     
-    NSLog(@"loaded data: %@", rawData);
+    //NSLog(@"loaded data: %@", rawData);
     NSDictionary *data = [rawData JSONValue];
     [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];
@@ -233,7 +307,6 @@
     }
     
     [self annotateStops];
-    [self.tableView reloadData];
 }
 
 - (void)prepareMap 
@@ -395,11 +468,6 @@
     self.nearest_stop_id = self.nearestStopAnnotation.stop_id;
     
     int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
-    if (nearestStopRow != NSNotFound) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:nearestStopRow inSection:0];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        [self.tableView reloadData];      
-    }
 }
 
 
@@ -410,69 +478,7 @@
 }
 
 
-#pragma mark Table view methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-    return [self.stops count];
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
-        
-    }
-    NSNumber *stop_id = [self.orderedStopIds objectAtIndex:indexPath.row];
-    NSDictionary *stopDict = [self.stops objectForKey:[stop_id stringValue]];
-    NSString *stopName =  [stopDict objectForKey:@"name"];
-    
-    if ((self.nearest_stop_id != nil) && [[stop_id stringValue] isEqualToString:self.nearest_stop_id]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ : nearest stop", stopName];        
-        cell.textLabel.textColor = [UIColor redColor];
-    } else {
-        cell.textLabel.text = stopName;
-        cell.textLabel.textColor = [UIColor blackColor];        
-    }
-    // highlight nearest stop
-    
-
-    cell.detailTextLabel.text =  [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
-    if ([[stopDict objectForKey:@"next_arrivals"] count] > 1) {
-        cell.accessoryType =  UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;        
-    } else {
-        cell.accessoryType =  UITableViewCellAccessoryNone;        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    if ([self.firstStops containsObject:stopName]) {    
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.20 green:0.67 blue:0.094 alpha:1.0];
-        cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:12.0];
-        cell.detailTextLabel.text =  [NSString stringWithFormat:@"%@ : starting point", cell.detailTextLabel.text];
-    } else if ([self.imminentStops containsObject:[stop_id stringValue]]) {
-        cell.detailTextLabel.textColor = [UIColor purpleColor];
-        cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:12.0];
-        cell.detailTextLabel.text =  [NSString stringWithFormat:@"%@ : arriving soon", cell.detailTextLabel.text];        
-    } else {
-        cell.detailTextLabel.textColor = [UIColor grayColor];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];        
-    }
-    
-    return cell;
-}
 
 - (IBAction)infoButtonPressed:(id)sender {
     NSLog(@"info button pressed");
