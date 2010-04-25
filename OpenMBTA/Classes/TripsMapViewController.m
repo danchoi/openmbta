@@ -108,7 +108,7 @@
     // HTML grid
     NSString *urlString = [[NSString stringWithFormat:@"%@/trips.html?transport_type=%@&route_short_name=%@&headsign=%@&base_time=%@&from_iphone_app=1", ServerURL, self.transportType, self.route_short_name,self.headsign, 
          self.baseTime == nil ? [NSDate date] : [self.baseTime description] ] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  NSLog(@"calling %@", urlString);
+  //NSLog(@"calling %@", urlString);
   NSURL *url = [[NSURL alloc] initWithString: urlString];
   self.request = [[NSURLRequest alloc] initWithURL: url]; 
   [url release];

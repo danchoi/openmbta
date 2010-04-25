@@ -12,13 +12,15 @@
 <% end %>
 <% content_for :body_attr, 'onload="initialize()"' %>
 
-<div class="nav"
-  <%= link_to "main", "/mobile" %> &gt; <%= link_to "routes", url_for(:controller => "routes", :transport_type => params[:transport_type]) %> &gt; trips
-</div>
+<% unless params[:from_iphone_app] %>
+  <div class="nav"
+    <%= link_to "main", "/mobile" %> &gt; <%= link_to "routes", url_for(:controller => "routes", :transport_type => params[:transport_type]) %> &gt; trips
+  </div>
 
-<div class="note">
-  Bookmark this page if this is one of your regular routes.
-</div>
+  <div class="note">
+    Bookmark this page if this is one of your regular routes.
+  </div>
+<% end %>
 
 <div class="info">
   <span style="font-weight:bold"><%= @headsign %></span><br/>
