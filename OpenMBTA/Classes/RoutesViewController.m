@@ -63,11 +63,11 @@
 {
     [self showNetworkActivity];
     NSString *apiUrl;
-    if (self.lineName == nil && self.lineHeadsign == nil) { // normal case
+    //if (self.lineName == nil && self.lineHeadsign == nil) { // normal case
         apiUrl = [NSString stringWithFormat:@"%@/routes/%@", ServerURL, self.transportType];
-    } else {
-        apiUrl = [NSString stringWithFormat:@"%@/trains?line_name=%@&line_headsign=%@", ServerURL, self.lineName, self.lineHeadsign];        
-    }
+    //} else {
+     //   apiUrl = [NSString stringWithFormat:@"%@/trains?line_name=%@&line_headsign=%@", ServerURL, self.lineName, self.lineHeadsign];        
+    //}
         
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
@@ -161,6 +161,7 @@
     NSArray *headsigns = [routeGroup objectForKey:@"headsigns"];
     NSArray *headsignArray = [headsigns objectAtIndex:indexPath.row];
     NSString *headsign = [headsignArray objectAtIndex:0];
+    /*
     
     if ([self.transportType isEqualToString:@"Commuter Rail"] && self.lineName == nil) {
         RoutesViewController *routesViewController = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
@@ -174,6 +175,8 @@
         [self.navigationController pushViewController:routesViewController animated:YES];        
         [routesViewController release];
     } else { 
+    */
+        
         [self tripsMapViewController].headsign = headsign;
         [self tripsMapViewController].route_short_name = routeShortName;
         [self tripsMapViewController].transportType = self.transportType;
@@ -182,7 +185,7 @@
 
         [[self tripsMapViewController] resetBaseTime];
         [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
-    }
+
     
  // Navigation logic may go here -- for example, create and push another view controller.
  // AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];

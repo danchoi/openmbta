@@ -11,7 +11,7 @@ class NewTripSet
   end
 
   def result
-    now = Now.new(Time.now) 
+    now = @options[:now] || Time.now
     #@options.merge!(:limit => 10)
     trips = @options[:transport_type].to_s.camelize.constantize.trips(@options)
 

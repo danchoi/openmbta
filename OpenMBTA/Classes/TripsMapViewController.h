@@ -15,7 +15,7 @@
 #import "BaseViewController.h"
 #import "DemoCurrentLocation.h"
 
-@interface TripsMapViewController : BaseViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface TripsMapViewController : BaseViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate> {
     NSDictionary *stops;
     NSArray *orderedStopIds;    
     NSArray *imminentStops;  
@@ -44,6 +44,9 @@
     
     // used only for video and screenshot demo purposes
     DemoCurrentLocation *demoCurrentLocation;
+  
+  IBOutlet UIWebView *webView;
+  NSURLRequest *request;
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *orderedStopIds;
@@ -65,6 +68,9 @@
 
 @property (nonatomic, retain) UIBarButtonItem *bookmarkButton;
 @property (nonatomic, retain) UIBarButtonItem *changeTimeButton;
+
+@property (nonatomic, retain) UIWebView *webView;
+@property (nonatomic, retain) NSURLRequest *request;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;

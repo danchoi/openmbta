@@ -99,11 +99,6 @@
         NSString *headsign  = [bookmark objectForKey:@"headsign"];
         NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
 
-        if ([transportType isEqualToString:@"Bus"]) {
-            cell.accessoryType = UITableViewCellAccessoryNone;       // because there's an index bar 
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;        
-        }
         // Configure the cell.
 
         cell.textLabel.text = headsign;

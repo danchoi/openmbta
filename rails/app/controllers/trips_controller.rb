@@ -26,6 +26,7 @@ class TripsController < ApplicationController
                                  :headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
                                  :first_stop => params[:first_stop],
                            :route_short_name => (@route = params[:route_short_name]),
+                           :now => Now.new(base_time),
                            :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
 
         @current_offset = params[:offset] ? params[:offset].to_i : 0

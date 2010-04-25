@@ -4,6 +4,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Preferences.h"
 
+
 // Set this to 1 to show a demo location in the simulator
 // Set to 0 in production
 #define USE_DEMO_LOCATION 0
@@ -14,6 +15,13 @@
 - (void)removeChangeTimeButton;
 - (void)showTimePicker:(id)sender;
 - (void)annotateDemoLocation;
+- (void)loadWebView;
+- (void)addButtons;
+- (void)showLoadingIndicators;
+- (void)hideLoadingIndicators;
+
+- (void)addSegmentedControl;
+- (void)toggleView:(id)sender;
 @end
 
 
@@ -27,6 +35,7 @@
 @synthesize selected_stop_id, nearest_stop_id, baseTime;
 @synthesize triggerCalloutTimer;
 @synthesize bookmarkButton, changeTimeButton;
+@synthesize webView, request;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,6 +58,7 @@
                                                 name:@"BaseTimeChanged"
                                                object: nil];
     
+    [self addSegmentedControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,7 +67,7 @@
 
     
     if (self.shouldReloadData) {
- 
+      [self loadWebView];
         self.stops = [NSArray array];
         [mapView removeAnnotations:self.stopAnnotations];
         [self.stopAnnotations removeAllObjects];
@@ -93,6 +103,19 @@
 
 }
 
+- (void)loadWebView {
+    // http://openmbta.org/trips.html?transport_type=bus&route_short_name=1&headsign=Dudley%20Station%20via%20Mass.%20Ave.&first_stop=
+    // HTML grid
+    NSString *urlString = [[NSString stringWithFormat:@"%@/trips.html?transport_type=%@&route_short_name=%@&headsign=%@&base_time=%@&from_iphone_app=1", ServerURL, self.transportType, self.route_short_name,self.headsign, 
+         self.baseTime == nil ? [NSDate date] : [self.baseTime description] ] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  NSLog(@"calling %@", urlString);
+  NSURL *url = [[NSURL alloc] initWithString: urlString];
+  self.request = [[NSURLRequest alloc] initWithURL: url]; 
+  [url release];
+  [self showLoadingIndicators];
+  [self.webView loadRequest:self.request];    
+}
+
 - (void)baseTimeDidChange:(NSNotification *)notification {
     if (notification.userInfo == nil) {
         [self resetBaseTime];
@@ -105,6 +128,8 @@
     self.shouldReloadData = YES;
 //    [self viewWillAppear:NO]; // this will be called automatically when the view appears
     
+    NSLog(@"reload webview");
+  [self loadWebView];
     
 }
 
@@ -172,25 +197,33 @@
     NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:3];
     // create a toolbar where we can place some buttons
     UIToolbar* toolbar;
-    if ([self isBookmarked]) {
-        toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 189, 45)];
-    } else {
-        toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 175, 45)];
-
-    }
+    toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 139, 45)];
 
     if ([self isBookmarked]) {
+        /*
         self.bookmarkButton = [[UIBarButtonItem alloc]
                                               initWithTitle:@"Bookmarked"
                                              style:UIBarButtonItemStyleDone
                                              target:self 
                                              action:@selector(toggleBookmark:)];
-    } else {
+
+                                             */
+
+        UIImage *button = [UIImage imageNamed:@"favoritesButton_clicked.png"];
         self.bookmarkButton = [[UIBarButtonItem alloc]
-                                              initWithTitle:@"Bookmark"
-                                             style:UIBarButtonItemStyleBordered
-                                             target:self 
-                                             action:@selector(toggleBookmark:)];
+            initWithImage:button
+                    style:UIBarButtonItemStyleDone
+                   target:self
+                   action:@selector(toggleBookmark:)];
+
+
+    } else {
+        UIImage *button = [UIImage imageNamed:@"favoritesButton.png"];
+        self.bookmarkButton = [[UIBarButtonItem alloc]
+            initWithImage:button
+                    style:UIBarButtonItemStyleBordered
+                   target:self
+                   action:@selector(toggleBookmark:)];
     }
     [buttons addObject:bookmarkButton];
      
@@ -200,15 +233,15 @@
         action:nil];
     [buttons addObject:spacer];
     [spacer release];
-    if (![self.transportType isEqualToString: @"Commuter Rail"]) {
+
          
-        self.changeTimeButton = [[UIBarButtonItem alloc]
-                                                initWithTitle:@"Shift Time"
-                                                        style:(self.baseTime == nil ? UIBarButtonItemStyleBordered : UIBarButtonItemStyleDone)
-                                             target:self 
-                                             action:@selector(showTimePicker:)];
-        [buttons addObject:self.changeTimeButton];
-    }
+    self.changeTimeButton = [[UIBarButtonItem alloc]
+                                            initWithTitle:@"Shift Time"
+                                                    style:(self.baseTime == nil ? UIBarButtonItemStyleBordered : UIBarButtonItemStyleDone)
+                                         target:self 
+                                         action:@selector(showTimePicker:)];
+    [buttons addObject:self.changeTimeButton];
+
 
     [toolbar setItems:buttons animated:NO];
     [buttons release];
@@ -217,6 +250,35 @@
                                               initWithCustomView:toolbar];
     [toolbar release];
 }
+
+
+
+- (void)addSegmentedControl {
+    NSArray *segments = [[NSArray alloc] initWithObjects:@"Map", @"Table", nil];
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:segments];
+    [segments release];
+    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControl.selectedSegmentIndex = 0;
+    [segmentedControl addTarget:self
+                         action:@selector(toggleView:)
+               forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = segmentedControl;
+    [segmentedControl release];
+}
+
+- (void)toggleView:(id)sender {
+    NSUInteger selectedSegment = ((UISegmentedControl *)sender).selectedSegmentIndex;
+    //NSLog(@"segment: %d", selectedSegment);
+    if (selectedSegment == 0) { // map
+        mapView.hidden = NO;
+        self.webView.hidden = YES;
+    } else { // table
+        mapView.hidden = YES;
+        self.webView.hidden = NO;
+    }
+}
+
+
 
 /*
 - (void)addBookmarkButton; {
@@ -489,4 +551,18 @@
     [vc release];
     
 }
+  
+  
+  
+- (void)showLoadingIndicators {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+  
+  - (void)hideLoadingIndicators
+{
+      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+  
+
+  
 @end
