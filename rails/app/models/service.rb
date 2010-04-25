@@ -1,3 +1,4 @@
+require 'date'
 class Service < ActiveRecord::Base
   has_many :trips, :dependent => :destroy
   has_many :service_exceptions
@@ -51,7 +52,7 @@ class Service < ActiveRecord::Base
 
   def self.populate
     Generator.generate('calendar.txt') do |row|
-      end_date = Date.new(*ParseDate::parsedate(row[9])[0,3])
+      end_date = Date.parse(row[9])
       if end_date < Date.today
         next
       end
@@ -59,7 +60,7 @@ class Service < ActiveRecord::Base
       %w{monday tuesday wednesday thursday friday saturday sunday}.each_with_index do |day, index|
         service.send("#{day}=", row[index+1] == '1')
       end
-      service.start_date = Date.new(*ParseDate::parsedate(row[8])[0,3])
+      service.start_date = Date.parse(row[8])
       service.end_date = end_date
       service.save
     end
@@ -68,7 +69,7 @@ class Service < ActiveRecord::Base
   # YYYYMMDD
   def self.parse_date(date)
     if date.is_a?(String)
-      Date.new(*ParseDate::parsedate(date)[0,3])
+      Date.parse(date)
     else
       date
     end

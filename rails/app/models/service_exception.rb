@@ -6,7 +6,7 @@ class ServiceException < ActiveRecord::Base
       service = Service.find_by_mbta_id row[0]
       next false unless service
       ServiceException.create :service => service,
-        :date => Date.new(*ParseDate::parsedate(row[1])[0,3]),
+        :date => Date.parse(row[1])
         :exception_type => row[2]
     end
   end
