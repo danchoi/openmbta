@@ -1,6 +1,8 @@
-<div class="nav">
-  <%= link_to "main", "/mobile" %> &gt; twitter
-</div>
+<% unless params[:from_iphone_app] %>
+  <div class="nav">
+    <%= link_to "main", "/mobile" %> &gt; twitter
+  </div>
+<% end %>
 
 <div class="info" style="font-weight:bold">
   Recent tweets to <strong>#mbta</strong>

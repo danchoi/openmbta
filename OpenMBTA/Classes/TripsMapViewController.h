@@ -15,7 +15,7 @@
 #import "BaseViewController.h"
 #import "DemoCurrentLocation.h"
 
-@interface TripsMapViewController : BaseViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate> {
+@interface TripsMapViewController : BaseViewController <MKMapViewDelegate, CLLocationManagerDelegate,UIWebViewDelegate> {
     NSDictionary *stops;
     NSArray *orderedStopIds;    
     NSArray *imminentStops;  
@@ -44,6 +44,9 @@
     
     // used only for video and screenshot demo purposes
     DemoCurrentLocation *demoCurrentLocation;
+
+    CLLocationManager *locationManager;
+    CLLocation *location;
   
   IBOutlet UIWebView *webView;
   NSURLRequest *request;
@@ -73,6 +76,7 @@
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSURLRequest *request;
 @property (nonatomic, retain) NSString *firstStop;
+@property (nonatomic, retain) CLLocation *location;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;

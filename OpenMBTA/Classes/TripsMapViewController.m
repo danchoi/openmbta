@@ -37,6 +37,7 @@
 @synthesize bookmarkButton, changeTimeButton;
 @synthesize webView, request;
 @synthesize firstStop;
+@synthesize location;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,6 +50,8 @@
     [mapView setScrollEnabled:YES];
     mapView.showsUserLocation = YES;
     mapView.mapType = MKMapTypeStandard;
+
+    self.location = nil;
 
     shouldReloadRegion = YES;
     shouldReloadData = YES;    
@@ -102,6 +105,15 @@
  
     [super viewWillAppear:animated];
 
+    // initialize location manager
+    /*
+    if (location == nil) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        [locationManager startUpdatingLocation];
+    }
+    */
 }
 
 - (void)loadWebView {
@@ -168,6 +180,8 @@
     self.route_short_name = nil;
     self.selected_stop_id = nil;
     self.triggerCalloutTimer = nil;
+    self.location = nil;
+    [locationManager release];
     [operationQueue release];
     [demoCurrentLocation release];
     [super dealloc];
@@ -480,35 +494,31 @@
 
 - (void)findNearestStop {
 #if USE_DEMO_LOCATION
-    if ([self.mapView.annotations count] < 2) {
+    if (location == nil) {
+       self.location = [[CLLocation alloc] initWithLatitude:demoCurrentLocation.coordinate.latitude longitude:demoCurrentLocation.coordinate.longitude];
+    }
 #else
-    if (([self.mapView.annotations count] < 2)  || (mapView.userLocationVisible == NO))  {
+    self.location = mapView.userLocation.location;
 #endif
+    if (!location || [self.mapView.annotations count] < 2) {
         if (self.triggerCalloutTimer != nil)
             self.triggerCalloutTimer.invalidate;
         
-    	[NSTimer scheduledTimerWithTimeInterval: 1.4
+       [NSTimer scheduledTimerWithTimeInterval: 1.4
                                         target: self
                                        selector: @selector(findNearestStop)
                                         userInfo: nil
                                         repeats: NO];
         
-        return;
+     
+       return;
     }
-    self.nearestStopAnnotation = nil;
-    
-    CLLocation *userLocation;
 
-#if USE_DEMO_LOCATION
-   userLocation = [[CLLocation alloc] initWithLatitude:demoCurrentLocation.coordinate.latitude longitude:demoCurrentLocation.coordinate.longitude];
-#else
-   userLocation = mapView.userLocation.location;
-#endif
-    
+    self.nearestStopAnnotation = nil;
     float minDistance = -1;
     for (id annotation in self.stopAnnotations) {
         CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
-        CLLocationDistance distance = [stopLocation getDistanceFrom:userLocation];
+        CLLocationDistance distance = [stopLocation getDistanceFrom:location];
         [stopLocation release];
         if ((minDistance == -1) || (distance < minDistance)) {
             self.nearestStopAnnotation = (StopAnnotation *)annotation;
@@ -516,14 +526,14 @@
         } 
         //NSLog(@"distance: %f", distance);
     }
-    //NSLog(@"min distance: %f; closest stop: %@", minDistance, closestAnnotation.subtitle);
+    //NSLog(@"min distance: %f; closest stop: %@", minDistance, self.nearestStopAnnotation.subtitle);
 
     // show callout of nearest stop    
     // We delay this to give map time to draw the pins for the stops
     if (self.triggerCalloutTimer != nil)
         self.triggerCalloutTimer.invalidate;
     
-    [NSTimer scheduledTimerWithTimeInterval: 0.7
+    [NSTimer scheduledTimerWithTimeInterval: 2.0
                                      target: self
                                    selector: @selector(triggerCallout:)
                                    userInfo: nil
@@ -532,13 +542,11 @@
 }
 
 - (void)triggerCallout:(StopAnnotation *)stopAnnotation {
+    //NSLog(@"triggerCallout on %@", self.nearestStopAnnotation.subtitle);
     [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; // show callout     
     self.nearest_stop_id = self.nearestStopAnnotation.stop_id;
-    
     int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
 }
-
-
 
 
 - (void)stopSelected:(NSString *)stopId {
@@ -558,8 +566,6 @@
     
 }
   
-  
-  
 - (void)showLoadingIndicators {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
@@ -570,5 +576,17 @@
 }
   
 
+// location stuff
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    return; // not active for now
+    if (location)
+        return;
+
+    NSLog(@"CLLocation location received");
+    location = newLocation;
+    [locationManager stopUpdatingLocation];
+    [self findNearestStop];
+}
   
 @end
