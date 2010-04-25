@@ -1,5 +1,4 @@
 require 'json_printer'
-
 require 'enumerator'
 
 class TripsController < ApplicationController

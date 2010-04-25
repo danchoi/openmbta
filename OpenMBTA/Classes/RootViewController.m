@@ -3,6 +3,7 @@
 #import "RoutesViewController.h"
 #import "TAlertsViewController.h"
 #import "GetRemoteDataOperation.h"
+#import "TweetsViewController.h"
 #import "AboutViewController.h"
 #import "Preferences.h"
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", @"T Alerts", @"About / FAQ", nil];
+    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", @"T Alerts", @"Tweets #mbta", @"About / FAQ", nil];
     self.title = @"Main";
 
 }
@@ -52,7 +53,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
+    if (section == 1) {
         return [self.menu count];
     } else {
         return [self.bookmarks count];
@@ -61,7 +62,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIndex {
-    if (sectionIndex == 0) {
+    if (sectionIndex == 1) {
         return @"Main Menu";
     } else {
         return @"Bookmarks";
@@ -71,7 +72,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         static NSString *CellIdentifier = @"Cell";
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -109,7 +110,7 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 1) {
         if (indexPath.row == 4) { 
             if (tAlertsViewController == nil) {
                 tAlertsViewController = [[TAlertsViewController alloc] initWithNibName:@"TAlertsViewController" bundle:nil];
@@ -117,8 +118,15 @@
             [self.navigationController pushViewController:tAlertsViewController animated:YES];
             return;
         }
-        
         if (indexPath.row == 5) { 
+            if (tweetsViewController == nil) {
+                tweetsViewController = [[TweetsViewController alloc] initWithNibName:@"TAlertsViewController" bundle:nil];
+            }
+            [self.navigationController pushViewController:tweetsViewController animated:YES];
+            return;
+        }
+        
+        if (indexPath.row == 6) { 
             AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
             [vc release];

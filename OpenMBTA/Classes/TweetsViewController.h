@@ -8,7 +8,7 @@
 
 #import "HelpViewController.h"
 
-@interface TAlertsViewController : HelpViewController {
+@interface TweetsViewController : HelpViewController {
 
 }
 - (void)reloadWebView:(id)sender;

@@ -16,6 +16,7 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		DE4212741183AA0E00757B6A /* favoritesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE4212731183AA0E00757B6A /* favoritesButton.png */; };
 		DE4212791183AA8E00757B6A /* favoritesButton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = DE4212781183AA8E00757B6A /* favoritesButton_clicked.png */; };
+		DE4213061184891300757B6A /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4213051184891300757B6A /* TweetsViewController.m */; };
 		DE8245621086A70D004ABB2F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8245611086A70D004ABB2F /* Default.png */; };
 		DE8245711086A8B8004ABB2F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8245701086A8B8004ABB2F /* icon.png */; };
 		DEAF726C117DDD5200A36ABD /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAF726B117DDD5200A36ABD /* Preferences.m */; };
@@ -67,6 +68,8 @@
 		8D1107310486CEB800E47090 /* OpenMBTA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OpenMBTA-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		DE4212731183AA0E00757B6A /* favoritesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoritesButton.png; sourceTree = "<group>"; };
 		DE4212781183AA8E00757B6A /* favoritesButton_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoritesButton_clicked.png; sourceTree = "<group>"; };
+		DE4213041184891300757B6A /* TweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewController.h; sourceTree = "<group>"; };
+		DE4213051184891300757B6A /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
 		DE8245611086A70D004ABB2F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DE8245701086A8B8004ABB2F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DEAF726A117DDD5200A36ABD /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
@@ -144,6 +147,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE4213041184891300757B6A /* TweetsViewController.h */,
+				DE4213051184891300757B6A /* TweetsViewController.m */,
 				DEE872A810837B440067992D /* Reachability.h */,
 				DEE872A910837B440067992D /* Reachability.m */,
 				DEC08060107EBC3900B22DE8 /* JSON */,
@@ -361,6 +366,7 @@
 				DEE87A2910853FC50067992D /* AboutViewController.m in Sources */,
 				DEEB1E9E108A3C540033C851 /* DemoCurrentLocation.m in Sources */,
 				DEAF726C117DDD5200A36ABD /* Preferences.m in Sources */,
+				DE4213061184891300757B6A /* TweetsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

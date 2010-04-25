@@ -6,14 +6,13 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "TAlertsViewController.h"
+#import "TweetsViewController.h"
 
-@implementation TAlertsViewController
+@implementation TweetsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"T-Alerts";
-
+    self.title = @"Tweets #mbta";
 
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc]
             initWithTitle:@"Reload"
@@ -24,7 +23,7 @@
 }
 
 - (void)loadWebView {
-    NSString *urlString = [NSString stringWithFormat:@"%@/alerts?from_iphone_app=1", ServerURL];
+    NSString *urlString = [NSString stringWithFormat:@"%@/tweets?from_iphone_app=1", ServerURL];
     //NSLog(@"calling %@", urlString);
     NSURL *url = [[NSURL alloc] initWithString: urlString];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 

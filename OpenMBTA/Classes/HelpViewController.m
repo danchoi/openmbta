@@ -61,7 +61,6 @@
     return YES;
 }
 
-
 - (IBAction)launchSafari:(id)sender {
     NSURL *launchURL = [self.webView.request URL];
     if (![[UIApplication sharedApplication] openURL:launchURL])

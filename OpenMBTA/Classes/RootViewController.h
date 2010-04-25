@@ -10,12 +10,14 @@
 #import "TripsMapViewController.h"
 @class RoutesViewController;
 @class TAlertsViewController;
+@class TweetsViewController;
 
 
 @interface RootViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
     RoutesViewController *routesViewController;
     TAlertsViewController *tAlertsViewController;
+    TweetsViewController *tweetsViewController;
     TripsMapViewController *tripsMapViewController;
     NSOperationQueue *operationQueue;
     NSArray *menu;
