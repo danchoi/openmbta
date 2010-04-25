@@ -128,7 +128,7 @@ class NewTripSet
           @ordered_trip_ids << x[1] unless @ordered_trip_ids.include?(x[1])
           [format_time(x[0]),x[1].to_i] }
       if !arrival_times.empty?
-        memo[stop_id] = arrival_times
+        memo[stop_id] = @options[:limit] ? arrival_times[0,@options[:limit]] :  arrival_times
       end
       memo
     end

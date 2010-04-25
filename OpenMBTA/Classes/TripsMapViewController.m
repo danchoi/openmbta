@@ -36,6 +36,7 @@
 @synthesize triggerCalloutTimer;
 @synthesize bookmarkButton, changeTimeButton;
 @synthesize webView, request;
+@synthesize firstStop;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,7 +107,7 @@
 - (void)loadWebView {
     // http://openmbta.org/trips.html?transport_type=bus&route_short_name=1&headsign=Dudley%20Station%20via%20Mass.%20Ave.&first_stop=
     // HTML grid
-    NSString *urlString = [[NSString stringWithFormat:@"%@/trips.html?transport_type=%@&route_short_name=%@&headsign=%@&base_time=%@&from_iphone_app=1", ServerURL, self.transportType, self.route_short_name,self.headsign, 
+    NSString *urlString = [[NSString stringWithFormat:@"%@/trips.html?transport_type=%@&route_short_name=%@&headsign=%@&first_stop=%@&base_time=%@&from_iphone_app=1", ServerURL, self.transportType, self.route_short_name,self.headsign, self.firstStop,
          self.baseTime == nil ? [NSDate date] : [self.baseTime description] ] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   //NSLog(@"calling %@", urlString);
   NSURL *url = [[NSURL alloc] initWithString: urlString];
@@ -175,11 +176,11 @@
 -(void)toggleBookmark:(id)sender {
     if ([self isBookmarked]) {
         Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
         [prefs removeBookmark: bookmark];
     } else {
         Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
         [prefs addBookmark: bookmark];
     }
     [self addButtons];
@@ -331,12 +332,12 @@
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
 
         
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@",
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?version=2&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@&first_stop=%@",
                         ServerURL, 
                         self.route_short_name, 
                         headsignAmpersandEscaped, 
                         self.transportType, 
-                        self.baseTime == nil ? [NSDate date] : [self.baseTime description]];
+                        self.baseTime == nil ? [NSDate date] : [self.baseTime description], self.firstStop];
     //NSLog(@"would call API with URL: %@", apiUrl);
     
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -397,7 +398,6 @@
         NSDictionary *stopDict = [stops objectForKey:stop_id];
         NSString *stopName =  [stopDict objectForKey:@"name"];
         annotation.subtitle = stopName;
-    
         annotation.title = [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
         annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
         annotation.stop_id = stop_id;
@@ -438,8 +438,14 @@
 }
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {
-    //NSLog(@"annotating: %@", nextArrivals );
-    return [nextArrivals count] > 0 ? [nextArrivals componentsJoinedByString:@" "] : @"No more arrivals today";
+    
+    NSMutableArray *times = [NSMutableArray array];
+    for (NSArray *pair in nextArrivals) {
+        [times addObject:[pair objectAtIndex:0]];
+    }
+    // NSLog(@"annotating: %@", times );
+
+    return [nextArrivals count] > 0 ? [times componentsJoinedByString:@" "] : @"No more arrivals today";
 }
 
 

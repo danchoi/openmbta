@@ -47,6 +47,7 @@
   
   IBOutlet UIWebView *webView;
   NSURLRequest *request;
+    NSString *firstStop; // used for Subway
 }
 @property (nonatomic, retain) NSDictionary *stops;
 @property (nonatomic, retain) NSArray *orderedStopIds;
@@ -71,6 +72,7 @@
 
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSURLRequest *request;
+@property (nonatomic, retain) NSString *firstStop;
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;

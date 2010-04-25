@@ -141,10 +141,12 @@
         NSString *transportType = [bookmark objectForKey:@"transportType"];
         NSString *headsign  = [bookmark objectForKey:@"headsign"];
         NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
+        NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
 
         [self tripsMapViewController].headsign = headsign;
         [self tripsMapViewController].route_short_name = routeShortName;
         [self tripsMapViewController].transportType = transportType;
+        [self tripsMapViewController].firstStop = firstStop;
         [self tripsMapViewController].shouldReloadRegion = YES;
         [self tripsMapViewController].shouldReloadData = YES;
 

@@ -143,8 +143,8 @@
     NSString *headsign = [headsignArray objectAtIndex:0];
 
     cell.textLabel.text = headsign;
-    if (self.lineName && self.lineHeadsign) {
-        cell.detailTextLabel.text = [headsignArray objectAtIndex:1];
+    if (self.transportType == @"Subway") {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"from %@", [headsignArray objectAtIndex:2]];
     } else {
         NSNumber *trips_remaining = [headsignArray objectAtIndex:1];
         NSString *pluralized = [trips_remaining intValue] > 1 ? @"trips" : @"trip";
@@ -180,6 +180,11 @@
         [self tripsMapViewController].headsign = headsign;
         [self tripsMapViewController].route_short_name = routeShortName;
         [self tripsMapViewController].transportType = self.transportType;
+        if (self.transportType == @"Subway") 
+            [self tripsMapViewController].firstStop = [headsignArray objectAtIndex:2];
+        else
+            [self tripsMapViewController].firstStop = nil;
+
         [self tripsMapViewController].shouldReloadRegion = YES;
         [self tripsMapViewController].shouldReloadData = YES;
 
