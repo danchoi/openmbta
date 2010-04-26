@@ -32,8 +32,16 @@ class TripsController < ApplicationController
       #
       format.html { 
 
+        chunks = CGI.unescape(request.query_string).gsub(/ & /, " ^ ").split("&")
+        headsign_param = chunks.detect {|x| x =~ /^headsign=/}
+        if headsign_param
+          @headsign = headsign_param.split(/=/)[1]
+          logger.debug("@headsign: #@headsign")
+        end
+
+
         @result = NewTripSet.new(:offset => params[:offset], 
-                                 :headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
+                                 :headsign => (@headsign ||= params[:headsign]).gsub(/\^/, "&"), 
                                  :first_stop => params[:first_stop],
                            :route_short_name => (@route = params[:route_short_name]),
                            :now => Now.new(base_time),
