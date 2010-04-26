@@ -39,7 +39,6 @@ class TripsController < ApplicationController
           logger.debug("@headsign: #@headsign")
         end
 
-
         @result = NewTripSet.new(:offset => params[:offset], 
                                  :headsign => (@headsign ||= params[:headsign]).gsub(/\^/, "&"), 
                                  :first_stop => params[:first_stop],
@@ -47,6 +46,10 @@ class TripsController < ApplicationController
                            :now => Now.new(base_time),
                            :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
 
+        if @result[:message]
+          render :text => @result[:message][:body]
+          return
+        end
         @current_offset = params[:offset] ? params[:offset].to_i : 0
         @trip_ids = @result[:ordered_trip_ids]
         @trip_sets = [] 
