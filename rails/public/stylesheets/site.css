@@ -42,3 +42,10 @@ table.pin td {
 .blue {color:blue; font-weight:bold}
 
 
+.flash {
+  background-color: #FFC9ED;
+  font-size: 15px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-style: italic;
+}

@@ -9,6 +9,12 @@
   <body>
     <div class="container_12">
       <div class="grid_7 prefix_1" id="main">
+        <% if flash[:notice] %>
+          <div class='flash'>
+            <%= flash[:notice] %>
+
+          </div>
+        <% end %>
         <%= yield %>
       </div>
       <div class="grid_3 suffix_1">
@@ -18,7 +24,8 @@
             <h4>Navigation</h4>
             <ul>
               <li><%= link_to "Home", "/" %></li>
-              <li><%= link_to "How to use it (iPhone app)", :controller => "home", :anchor => "how-to" %></li>
+              <li><%= link_to "How to use the iPhone app", :controller => "home", :anchor => "how-to" %></li>
+              <li><%= link_to "Mobile Web Version", :controller => "home", :anchor => "mobile-web" %></li>
               <li><%= link_to "FAQ", :controller => "support" %></li>
               <li><%= link_to "Support & Feedback", :controller => "support" %></li>
               <li><%= link_to "Join the OpenMBTA project", :controller => "home", :anchor => "developers" %></li>
@@ -26,6 +33,7 @@
               <li><%= link_to "Source Code on GitHub", "http://github.com/danchoi/openmbta" %></li>
               <li><%= link_to "Google Group for Developers", "http://groups.google.com/group/openmbta" %></li>
               <li><%= link_to "Credits", :controller => "home", :anchor => "credits" %></li>
+              <li><%= link_to "Donate", :anchor => "donate" %></li>
             </ul>
           </div>
         </div>
