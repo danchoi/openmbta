@@ -50,6 +50,8 @@ class NewTripSet
     }
     #ActiveRecord::Base.logger.debug("STOP_IDS (#{stop_ids.size}):\n#{stop_ids.inspect}")
 
+    result = result.merge( :imminent_stop_ids => imminent_stop_ids(trips) )
+
     # Need to add an array of the stop ids in trip order. This is easy for the
     # case of a single trip, but the algorithm for finding a common order for
     # overlapping trips is elusive. Just use a hack for that case for now.
@@ -134,6 +136,24 @@ class NewTripSet
     end
     #logger.debug "ALL NEXT ARRIVALS: #{data.inspect}"
     data
+  end
+
+  # Returns the stops that trips are about to arrive at
+  def imminent_stop_ids(trips)
+    logger.debug("imminent stops for trips: #{trips.map(&:id).inspect}")
+    now = @options[:now] # Time.now.strftime "%H:%M:%S"
+    stops = trips.select {|trip| 
+      (trip.start_time <= now.time) && (trip.end_time >= now.time)
+    }.inject([]) do |memo, trip|
+      logger.debug("trip")
+      next_stopping = trip.stoppings.first(:conditions => ["arrival_time > '#{now.time}'"]) 
+      if next_stopping 
+        memo << next_stopping.stop_id
+      end
+      memo
+    end.uniq.map {|x| x.to_s} # strings because it's easier to handle this way on iPhone side
+    logger.debug("imminent stops: #{stops.inspect}")
+    stops
   end
 
 
