@@ -13,9 +13,13 @@
 
     UIWebView *webView;
     NSURLRequest *request;    
+    NSString *nearestStopId;
+    
 }
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) NSURLRequest *request;
-- (void)loadWebViewWithTransportType:(NSString *)transportType routeShortName:(NSString *)routeShortName headsign:(NSString *)headsign firstStop:(NSString *)firstStop;
+@property (nonatomic, copy) NSString *nearestStopId;
 
+- (void)loadWebViewWithTransportType:(NSString *)transportType routeShortName:(NSString *)routeShortName headsign:(NSString *)headsign firstStop:(NSString *)firstStop;
+- (void)highlightNearestStop:(NSString *)stopId;
 @end

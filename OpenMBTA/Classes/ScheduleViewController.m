@@ -10,7 +10,7 @@
 #import "ServerUrl.h"
 
 @implementation ScheduleViewController
-@synthesize webView, request;
+@synthesize webView, request, nearestStopId;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -49,6 +49,7 @@
 - (void)dealloc {
     self.webView = nil;
     self.request = nil;
+    self.nearestStopId = nil;
     [super dealloc];
 }
 
@@ -60,8 +61,8 @@
 - (void)loadWebViewWithTransportType:(NSString *)transportType routeShortName:(NSString *)routeShortName headsign:(NSString *)headsign firstStop:(NSString *)firstStop {
     // http://openmbta.org/trips.html?transport_type=bus&route_short_name=1&headsign=Dudley%20Station%20via%20Mass.%20Ave.&first_stop=
     // HTML grid
-    NSString *urlString = [[NSString stringWithFormat:@"%@/trips.html?transport_type=%@&route_short_name=%@&headsign=%@&first_stop=%@&base_time=%@&from_iphone_app=1&version=3", ServerURL, 
-                            transportType, routeShortName,headsign, firstStop,
+    NSString *urlString = [[NSString stringWithFormat:@"%@/trips.html?transport_type=%@&route_short_name=%@&headsign=%@&first_stop=%@&nearest_stop_id=%@&base_time=%@&from_iphone_app=1&version=3", ServerURL, 
+                            transportType, routeShortName,headsign, firstStop, self.nearestStopId,
                             [NSDate date]] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     // NSLog(@"calling %@", urlString);
     NSURL *url = [[NSURL alloc] initWithString: urlString];
@@ -71,5 +72,9 @@
     [webView loadRequest:self.request];        
 }
 
+- (void)highlightNearestStop:(NSString *)stopId {
+    NSLog(@"highlight nearest stop id: %@", stopId);
+    self.nearestStopId = stopId;
+}
 
 @end

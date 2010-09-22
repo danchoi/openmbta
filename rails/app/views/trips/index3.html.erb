@@ -8,6 +8,7 @@
 
   </script>
   <%= javascript_include_tag "jquery-1.3.2.min.js"  %>
+  <%= javascript_include_tag "jquery.scrollTo-1.4.2.js"  %>
   <%= javascript_include_tag "triptable3"  %>
 <% end %>
 
@@ -18,7 +19,7 @@
 <table class='mbta'>
   <% @result[:ordered_stop_ids].each do |stop_id| %>
     <tr  class='row-header stop-name'>
-      <td id="<%=stop_id%>" colspan="<%= @cols %>" class="stop-name-header">
+      <td id="<%=stop_id%>" colspan="<%= @cols %>" class="stop-name-header <%= params[:nearest_stop_id] == stop_id.to_s ? ' closestStop' : '' -%>">
 
         <span class="stop-name-span">
           <%= @result[:stops][stop_id][:name] %>

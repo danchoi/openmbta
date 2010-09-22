@@ -56,9 +56,8 @@ function togglePageLinks() {
 
 
 
-
-
 function initialize() {
   togglePageLinks();
+  $.scrollTo($(".closestStop"));
 }
 
