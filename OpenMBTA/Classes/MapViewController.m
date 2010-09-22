@@ -11,7 +11,7 @@
 #import "StopAnnotation.h"
 
 @implementation MapViewController
-@synthesize tripsViewController, mapView, stopAnnotations, nearestStopAnnotation;
+@synthesize tripsViewController, mapView, stopAnnotations, nearestStopAnnotation, triggerCalloutTimer, location;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -36,23 +36,15 @@
 }
 */
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 - (void)viewDidUnload {
     [super viewDidUnload];
     [self.stopAnnotations removeAllObjects];
     self.stopAnnotations = nil; 
-    
 }
-
 
 - (void)dealloc {
     self.tripsViewController = nil;
+    self.triggerCalloutTimer = nil;
     [super dealloc];
 }
 
@@ -82,7 +74,9 @@
         annotation.title = [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
         annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
         annotation.stop_id = stop_id;
-        if ([imminentStops containsObject:stop_id]) annotation.isNextStop = YES;
+        if ([imminentStops containsObject:stop_id]) {
+            annotation.isNextStop = YES;
+        }
         if ([firstStops containsObject:stopName]) annotation.isFirstStop = YES;
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = [[stopDict objectForKey:@"lat"] doubleValue];
@@ -91,13 +85,55 @@
         [self.stopAnnotations addObject:annotation];
         [annotation release];
     }
-    
-    NSLog(@"stop annotations: %@", self.stopAnnotations);
     [mapView addAnnotations:self.stopAnnotations];    
-    //[self findNearestStop];
+    [self findNearestStop];
     
     
 }
+
+- (void)findNearestStop {
+    self.location = mapView.userLocation.location;
+    if (!location || [self.mapView.annotations count] < 2) {
+        if (self.triggerCalloutTimer != nil)
+            self.triggerCalloutTimer.invalidate;
+       [NSTimer scheduledTimerWithTimeInterval: 1.4
+                                        target: self
+                                       selector: @selector(findNearestStop)
+                                        userInfo: nil
+                                        repeats: NO];
+       return;
+    }
+
+    self.nearestStopAnnotation = nil;
+    float minDistance = -1;
+    for (id annotation in self.stopAnnotations) {
+        CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
+        CLLocationDistance distance = [stopLocation distanceFromLocation:location];
+        [stopLocation release];
+        if ((minDistance == -1) || (distance < minDistance)) {
+            self.nearestStopAnnotation = (StopAnnotation *)annotation;
+            minDistance = distance;
+        } 
+        //NSLog(@"distance: %f", distance);
+    }
+    //NSLog(@"min distance: %f; closest stop: %@", minDistance, self.nearestStopAnnotation.subtitle);
+
+    // Show callout of nearest stop.  We delay this to give the map time to
+    // draw the pins for the stops
+    if (self.triggerCalloutTimer != nil)
+        self.triggerCalloutTimer.invalidate;
+    [NSTimer scheduledTimerWithTimeInterval: 2.0
+                                     target: self
+                                   selector: @selector(triggerCallout:)
+                                   userInfo: nil
+                                    repeats: NO];
+    
+}
+
+- (void)triggerCallout:(StopAnnotation *)stopAnnotation {
+    [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; 
+}
+
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {
     NSMutableArray *times = [NSMutableArray array];
