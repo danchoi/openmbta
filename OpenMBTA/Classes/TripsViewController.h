@@ -10,6 +10,7 @@
 #import "BaseViewController.h"
 #import <CoreLocation/CoreLocation.h>
 @class MapViewController;
+@class ScheduleViewController;
 
 @interface TripsViewController : BaseViewController <CLLocationManagerDelegate> {
     NSString *headsign;
@@ -34,6 +35,10 @@
 
     MapViewController *mapViewController;
     UISegmentedControl *segmentedControl;
+    
+    ScheduleViewController *scheduleViewController;
+    UIView *currentContentView;
+
 }
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;
@@ -54,6 +59,8 @@
 @property (nonatomic,copy) NSString *nearest_stop_id;
 @property (nonatomic, retain) IBOutlet MapViewController *mapViewController;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) IBOutlet ScheduleViewController *scheduleViewController;
+@property (nonatomic, retain) UIView *currentContentView;
 - (void)toggleView:(id)sender;
 - (void)toggleBookmark:(id)sender;
 - (BOOL)isBookmarked;

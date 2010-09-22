@@ -13,13 +13,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import "JSON.h"
 #import "MapViewController.h"
+#import "ScheduleViewController.h"
 
 @implementation TripsViewController
 @synthesize contentView;
 @synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selected_stop_id, nearest_stop_id;
 @synthesize location;
-@synthesize mapViewController;
+@synthesize mapViewController, scheduleViewController;
 @synthesize segmentedControl;
+@synthesize currentContentView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,12 +81,16 @@
     self.location = nil;
     [locationManager release];
     [operationQueue release];
+    self.mapViewController = nil;
+    self.scheduleViewController = nil;
+
     [super dealloc];
 }
 
 // This calls the server
 - (void)startLoadingData {    
     [self showNetworkActivity];
+
     // We need to substitute a different character for the ampersand in the
     // headsign because Rails splits parameters on ampersands, even escaped
     // ones.
@@ -120,6 +126,7 @@
         shouldReloadRegion = NO;
     }
     [mapViewController annotateStops:self.stops imminentStops:self.imminentStops firstStops:self.firstStops];
+    
     [self hideNetworkActivity];
 }
 
@@ -127,10 +134,17 @@
 - (void)toggleView:(id)sender {
     NSUInteger selectedSegment = segmentedControl.selectedSegmentIndex;
     NSLog(@"segment: %d", selectedSegment);
+    [currentContentView removeFromSuperview];
     if (selectedSegment == 0) { 
         mapViewController.view.frame = CGRectMake(0, 0, 320, 372); 
+        self.currentContentView = mapViewController.view;
         [contentView addSubview:mapViewController.view];
     } else { 
+        scheduleViewController.view.frame = CGRectMake(0, 0, 320, 372); 
+        scheduleViewController.webView.frame = CGRectMake(0, 0, 320, 322); 
+        self.currentContentView = scheduleViewController.view;
+        [contentView addSubview:scheduleViewController.view];
+        [scheduleViewController loadWebViewWithTransportType:self.transportType routeShortName:self.route_short_name headsign:self.headsign firstStop:self.firstStop];
 
     }
 }

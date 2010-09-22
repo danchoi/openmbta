@@ -20,7 +20,7 @@
     NSTimer *triggerCalloutTimer;
     CLLocation *location;
 }
-@property (nonatomic, assign) TripsViewController *tripsViewController;
+@property (nonatomic, retain) TripsViewController *tripsViewController;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSMutableArray *stopAnnotations;
 @property (nonatomic, retain) StopAnnotation *nearestStopAnnotation;

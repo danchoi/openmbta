@@ -67,6 +67,10 @@ class TripsController < ApplicationController
         @ne = [@region[:center_lat] + lat_span, @region[:center_lng] + lng_span]
         @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
 
+        if params[:version] == "3"
+
+          render :action => "index3"
+        end
       }
     end
   end

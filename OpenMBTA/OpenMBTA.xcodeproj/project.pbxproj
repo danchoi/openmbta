@@ -13,6 +13,8 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		DE220F07124A477C00E87057 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE220F05124A477C00E87057 /* MapViewController.m */; };
 		DE220F08124A477C00E87057 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE220F06124A477C00E87057 /* MapViewController.xib */; };
+		DE220FC4124A6E9A00E87057 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE220FC2124A6E9A00E87057 /* ScheduleViewController.m */; };
+		DE220FC5124A6E9A00E87057 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE220FC3124A6E9A00E87057 /* ScheduleViewController.xib */; };
 		DE22A56D124951630081FEA3 /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22A56B124951630081FEA3 /* TripsViewController.m */; };
 		DE22A56E124951630081FEA3 /* TripsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE22A56C124951630081FEA3 /* TripsViewController.xib */; };
 		DE22A5A412495F210081FEA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE22A5A312495F210081FEA3 /* CoreLocation.framework */; };
@@ -71,6 +73,9 @@
 		DE220F04124A477C00E87057 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		DE220F05124A477C00E87057 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		DE220F06124A477C00E87057 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		DE220FC1124A6E9A00E87057 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		DE220FC2124A6E9A00E87057 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		DE220FC3124A6E9A00E87057 /* ScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
 		DE22A56A124951630081FEA3 /* TripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
 		DE22A56B124951630081FEA3 /* TripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsViewController.m; sourceTree = "<group>"; };
 		DE22A56C124951630081FEA3 /* TripsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsViewController.xib; sourceTree = "<group>"; };
@@ -207,6 +212,9 @@
 				DE220F04124A477C00E87057 /* MapViewController.h */,
 				DE220F05124A477C00E87057 /* MapViewController.m */,
 				DE220F06124A477C00E87057 /* MapViewController.xib */,
+				DE220FC1124A6E9A00E87057 /* ScheduleViewController.h */,
+				DE220FC2124A6E9A00E87057 /* ScheduleViewController.m */,
+				DE220FC3124A6E9A00E87057 /* ScheduleViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -357,6 +365,7 @@
 				DE4212791183AA8E00757B6A /* favoritesButton_clicked.png in Resources */,
 				DE22A56E124951630081FEA3 /* TripsViewController.xib in Resources */,
 				DE220F08124A477C00E87057 /* MapViewController.xib in Resources */,
+				DE220FC5124A6E9A00E87057 /* ScheduleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +401,7 @@
 				DE4213061184891300757B6A /* TweetsViewController.m in Sources */,
 				DE22A56D124951630081FEA3 /* TripsViewController.m in Sources */,
 				DE220F07124A477C00E87057 /* MapViewController.m in Sources */,
+				DE220FC4124A6E9A00E87057 /* ScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

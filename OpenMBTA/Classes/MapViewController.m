@@ -39,16 +39,24 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     [self.stopAnnotations removeAllObjects];
+    self.tripsViewController = nil;
     self.stopAnnotations = nil; 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self findNearestStop];
+}
+
 - (void)dealloc {
-    self.tripsViewController = nil;
     self.triggerCalloutTimer = nil;
     [super dealloc];
 }
 
 - (void)prepareMap:(NSDictionary *)regionInfo {
+    [mapView removeAnnotations:self.stopAnnotations];
+    [self.stopAnnotations removeAllObjects];
+
     tripsViewController.selected_stop_id = nil;
     
     if ([regionInfo objectForKey:@"center_lat"] == nil) 
