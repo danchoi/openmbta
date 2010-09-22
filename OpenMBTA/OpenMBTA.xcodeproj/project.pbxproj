@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		DE220F07124A477C00E87057 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE220F05124A477C00E87057 /* MapViewController.m */; };
+		DE220F08124A477C00E87057 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE220F06124A477C00E87057 /* MapViewController.xib */; };
 		DE22A56D124951630081FEA3 /* TripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22A56B124951630081FEA3 /* TripsViewController.m */; };
 		DE22A56E124951630081FEA3 /* TripsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE22A56C124951630081FEA3 /* TripsViewController.xib */; };
 		DE22A5A412495F210081FEA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE22A5A312495F210081FEA3 /* CoreLocation.framework */; };
@@ -66,6 +68,9 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OpenMBTA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OpenMBTA-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DE220F04124A477C00E87057 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		DE220F05124A477C00E87057 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		DE220F06124A477C00E87057 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		DE22A56A124951630081FEA3 /* TripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsViewController.h; sourceTree = "<group>"; };
 		DE22A56B124951630081FEA3 /* TripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsViewController.m; sourceTree = "<group>"; };
 		DE22A56C124951630081FEA3 /* TripsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsViewController.xib; sourceTree = "<group>"; };
@@ -199,6 +204,9 @@
 				DE22A56A124951630081FEA3 /* TripsViewController.h */,
 				DE22A56B124951630081FEA3 /* TripsViewController.m */,
 				DE22A56C124951630081FEA3 /* TripsViewController.xib */,
+				DE220F04124A477C00E87057 /* MapViewController.h */,
+				DE220F05124A477C00E87057 /* MapViewController.m */,
+				DE220F06124A477C00E87057 /* MapViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -348,6 +356,7 @@
 				DE4212741183AA0E00757B6A /* favoritesButton.png in Resources */,
 				DE4212791183AA8E00757B6A /* favoritesButton_clicked.png in Resources */,
 				DE22A56E124951630081FEA3 /* TripsViewController.xib in Resources */,
+				DE220F08124A477C00E87057 /* MapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +391,7 @@
 				DEAF726C117DDD5200A36ABD /* Preferences.m in Sources */,
 				DE4213061184891300757B6A /* TweetsViewController.m in Sources */,
 				DE22A56D124951630081FEA3 /* TripsViewController.m in Sources */,
+				DE220F07124A477C00E87057 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

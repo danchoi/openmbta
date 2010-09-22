@@ -12,11 +12,14 @@
 #import "ServerUrl.h"
 #import <CoreLocation/CoreLocation.h>
 #import "JSON.h"
+#import "MapViewController.h"
 
 @implementation TripsViewController
 @synthesize contentView;
 @synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selected_stop_id, nearest_stop_id;
 @synthesize location;
+@synthesize mapViewController;
+@synthesize segmentedControl;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +27,7 @@
     self.location = nil;
     shouldReloadRegion = YES;
     shouldReloadData = YES;    
+    mapViewController.tripsViewController = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,6 +50,7 @@
         }
     }
     [super viewWillAppear:animated];
+    [self toggleView:nil];
 }
 
 
@@ -61,7 +66,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
     self.imminentStops = nil;
@@ -104,7 +108,7 @@
     NSDictionary *data = [rawData JSONValue];
     [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];
-    NSLog(@"self stops: %@", self.stops);
+    //NSLog(@"self stops: %@", self.stops);
     self.orderedStopIds = [data objectForKey:@"ordered_stop_ids"]; // will use in the table
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
     self.firstStops = [data objectForKey:@"first_stop"]; // an array of stop names
@@ -112,20 +116,20 @@
     //NSLog(@"num stops loaded: %d", [stops count]);
     //NSLog(@"loaded region: %@", regionInfo);    
     if (shouldReloadRegion == YES) {
-        // [self prepareMap];
+        [mapViewController prepareMap:regionInfo];
         shouldReloadRegion = NO;
     }
-    // [self annotateStops];
+    [mapViewController annotateStops:self.stops imminentStops:self.imminentStops firstStops:self.firstStops];
+    [self hideNetworkActivity];
 }
 
 
-
 - (void)toggleView:(id)sender {
-    NSUInteger selectedSegment = ((UISegmentedControl *)sender).selectedSegmentIndex;
+    NSUInteger selectedSegment = segmentedControl.selectedSegmentIndex;
     NSLog(@"segment: %d", selectedSegment);
-    if (selectedSegment == 0) { // map
-
-    } else { // table
+    if (selectedSegment == 0) { 
+        [contentView addSubview:mapViewController.view];
+    } else { 
 
     }
 }
