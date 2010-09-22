@@ -139,9 +139,10 @@
         mapViewController.view.frame = CGRectMake(0, 0, 320, 372); 
         self.currentContentView = mapViewController.view;
         [contentView addSubview:mapViewController.view];
+
     } else { 
         scheduleViewController.view.frame = CGRectMake(0, 0, 320, 372); 
-        scheduleViewController.webView.frame = CGRectMake(0, 0, 320, 322); 
+        scheduleViewController.webView.frame = CGRectMake(0, 0, 320, 280); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
         [scheduleViewController loadWebViewWithTransportType:self.transportType routeShortName:self.route_short_name headsign:self.headsign firstStop:self.firstStop];
