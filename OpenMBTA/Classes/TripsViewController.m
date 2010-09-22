@@ -128,6 +128,7 @@
     NSUInteger selectedSegment = segmentedControl.selectedSegmentIndex;
     NSLog(@"segment: %d", selectedSegment);
     if (selectedSegment == 0) { 
+        mapViewController.view.frame = CGRectMake(0, 0, 320, 372); 
         [contentView addSubview:mapViewController.view];
     } else { 
 

@@ -14,7 +14,7 @@
 
 @interface MapViewController : UIViewController <MKMapViewDelegate> {
     TripsViewController *tripsViewController;
-    IBOutlet MKMapView *mapView;
+    MKMapView *mapView;
     NSMutableArray *stopAnnotations;
     StopAnnotation *nearestStopAnnotation;
     NSTimer *triggerCalloutTimer;
