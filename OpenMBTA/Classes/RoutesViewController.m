@@ -4,6 +4,7 @@
 #import "ServerUrl.h"
 
 @interface RoutesViewController (Private)
+- (TripsViewController *)tripsViewController;
 - (TripsMapViewController *)tripsMapViewController;
 - (void)startLoadingData;
 - (void)didFinishLoadingData:(NSString *)rawData;
@@ -177,19 +178,19 @@
     } else { 
     */
         
-        [self tripsMapViewController].headsign = headsign;
-        [self tripsMapViewController].route_short_name = routeShortName;
-        [self tripsMapViewController].transportType = self.transportType;
+        [self tripsViewController].headsign = headsign;
+        [self tripsViewController].route_short_name = routeShortName;
+        [self tripsViewController].transportType = self.transportType;
         if (self.transportType == @"Subway") 
-            [self tripsMapViewController].firstStop = [headsignArray objectAtIndex:2];
+            [self tripsViewController].firstStop = [headsignArray objectAtIndex:2];
         else
-            [self tripsMapViewController].firstStop = nil;
+            [self tripsViewController].firstStop = nil;
 
-        [self tripsMapViewController].shouldReloadRegion = YES;
-        [self tripsMapViewController].shouldReloadData = YES;
+        [self tripsViewController].shouldReloadRegion = YES;
+        [self tripsViewController].shouldReloadData = YES;
 
-        [[self tripsMapViewController] resetBaseTime];
-        [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
+        //[[self tripsMapViewController] resetBaseTime];
+        [self.navigationController pushViewController:[self tripsViewController] animated:YES];
 
     
  // Navigation logic may go here -- for example, create and push another view controller.
@@ -205,4 +206,10 @@
     return tripsMapViewController;
 }
 
+- (TripsViewController *)tripsViewController {
+    if (tripsViewController == nil) {
+        tripsViewController = [[TripsViewController alloc] initWithNibName:@"TripsViewController" bundle:nil];
+    }
+    return tripsViewController;
+}
 @end

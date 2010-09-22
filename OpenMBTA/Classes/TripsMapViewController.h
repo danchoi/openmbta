@@ -80,7 +80,7 @@
 - (void)startLoadingData;
 - (void)prepareMap;
 - (void)annotateStops;
-- (IBAction)toggleBookmark;
+- (IBAction)toggleBookmark:(id)sender;
 - (void)didFinishLoadingData:(NSString *)rawData;
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals;
 - (void)addSegmentedControl;

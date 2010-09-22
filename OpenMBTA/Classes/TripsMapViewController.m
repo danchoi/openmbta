@@ -22,6 +22,7 @@
 
 - (void)addSegmentedControl;
 - (void)toggleView:(id)sender;
+- (BOOL)isBookmarked;
 @end
 
 
@@ -518,7 +519,7 @@
     float minDistance = -1;
     for (id annotation in self.stopAnnotations) {
         CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
-        CLLocationDistance distance = [stopLocation getDistanceFrom:location];
+        CLLocationDistance distance = [stopLocation distanceFromLocation:location];
         [stopLocation release];
         if ((minDistance == -1) || (distance < minDistance)) {
             self.nearestStopAnnotation = (StopAnnotation *)annotation;
@@ -545,7 +546,7 @@
     //NSLog(@"triggerCallout on %@", self.nearestStopAnnotation.subtitle);
     [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; // show callout     
     self.nearest_stop_id = self.nearestStopAnnotation.stop_id;
-    int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
+    // int nearestStopRow = [self.orderedStopIds indexOfObject:[NSNumber numberWithInt:[self.nearest_stop_id intValue]]];
 }
 
 

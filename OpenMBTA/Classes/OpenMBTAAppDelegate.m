@@ -9,6 +9,7 @@
 #import "OpenMBTAAppDelegate.h"
 #import "RootViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <CoreFoundation/CoreFoundation.h>
 
 @implementation OpenMBTAAppDelegate
 

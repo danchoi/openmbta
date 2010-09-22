@@ -15,5 +15,7 @@
 + (id)sharedInstance;
 - (NSMutableDictionary *)preferences;
 - (NSString *)prefsFilePath;
-
+- (void)removeBookmark:(NSDictionary *)bookmark;
+- (void)addBookmark:(NSDictionary *)bookmark;
+- (BOOL)isBookmarked:(NSDictionary *)bookmark;
 @end
