@@ -38,6 +38,8 @@
 		DEC08073107EBC3900B22DE8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC0806D107EBC3900B22DE8 /* SBJsonWriter.m */; };
 		DEC08091107EBE0C00B22DE8 /* trips-bus-1.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC08090107EBE0C00B22DE8 /* trips-bus-1.json */; };
 		DEC080B2107EC1F300B22DE8 /* TripsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC080B1107EC1F300B22DE8 /* TripsMapViewController.m */; };
+		DECDFA54124BC1B8005064D6 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFA52124BC1B8005064D6 /* StopsViewController.m */; };
+		DECDFA55124BC1B8005064D6 /* StopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECDFA53124BC1B8005064D6 /* StopsViewController.xib */; };
 		DEE669A6107ED7B400A29725 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE669A5107ED7B400A29725 /* StopAnnotation.m */; };
 		DEE867F9107FC56C0067992D /* GetRemoteDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE867F8107FC56C0067992D /* GetRemoteDataOperation.m */; };
 		DEE8687F107FD09E0067992D /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8687E107FD09E0067992D /* RoutesViewController.m */; };
@@ -110,6 +112,9 @@
 		DEC08090107EBE0C00B22DE8 /* trips-bus-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "trips-bus-1.json"; path = "DummyData/trips-bus-1.json"; sourceTree = "<group>"; };
 		DEC080B0107EC1F300B22DE8 /* TripsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsMapViewController.h; sourceTree = "<group>"; };
 		DEC080B1107EC1F300B22DE8 /* TripsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsMapViewController.m; sourceTree = "<group>"; };
+		DECDFA51124BC1B8005064D6 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
+		DECDFA52124BC1B8005064D6 /* StopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewController.m; sourceTree = "<group>"; };
+		DECDFA53124BC1B8005064D6 /* StopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StopsViewController.xib; sourceTree = "<group>"; };
 		DEE669A4107ED7B400A29725 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		DEE669A5107ED7B400A29725 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 		DEE867F7107FC56C0067992D /* GetRemoteDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRemoteDataOperation.h; sourceTree = "<group>"; };
@@ -215,6 +220,9 @@
 				DE220FC1124A6E9A00E87057 /* ScheduleViewController.h */,
 				DE220FC2124A6E9A00E87057 /* ScheduleViewController.m */,
 				DE220FC3124A6E9A00E87057 /* ScheduleViewController.xib */,
+				DECDFA51124BC1B8005064D6 /* StopsViewController.h */,
+				DECDFA52124BC1B8005064D6 /* StopsViewController.m */,
+				DECDFA53124BC1B8005064D6 /* StopsViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -366,6 +374,7 @@
 				DE22A56E124951630081FEA3 /* TripsViewController.xib in Resources */,
 				DE220F08124A477C00E87057 /* MapViewController.xib in Resources */,
 				DE220FC5124A6E9A00E87057 /* ScheduleViewController.xib in Resources */,
+				DECDFA55124BC1B8005064D6 /* StopsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +411,7 @@
 				DE22A56D124951630081FEA3 /* TripsViewController.m in Sources */,
 				DE220F07124A477C00E87057 /* MapViewController.m in Sources */,
 				DE220FC4124A6E9A00E87057 /* ScheduleViewController.m in Sources */,
+				DECDFA54124BC1B8005064D6 /* StopsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

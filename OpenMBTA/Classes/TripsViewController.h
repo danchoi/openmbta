@@ -61,6 +61,7 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet ScheduleViewController *scheduleViewController;
 @property (nonatomic, retain) UIView *currentContentView;
+- (void)addFindStopButton;
 - (void)toggleView:(id)sender;
 - (void)toggleBookmark:(id)sender;
 - (BOOL)isBookmarked;

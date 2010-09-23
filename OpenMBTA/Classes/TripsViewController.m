@@ -51,10 +51,15 @@
             routeNameLabel.text = self.route_short_name;            
         }
     }
+    [self addFindStopButton];
     [super viewWillAppear:animated];
     [self toggleView:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationItem.rightBarButtonItem = nil;
+    [super viewWillDisappear:animated];
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -86,6 +91,20 @@
 
     [super dealloc];
 }
+
+
+- (void)addFindStopButton; {
+    if (self.navigationItem.rightBarButtonItem != nil)
+        return;
+    
+    UIBarButtonItem *findStopButton = [[UIBarButtonItem alloc]
+                                         initWithTitle:@"Find Stop"
+                                         style:UIBarButtonItemStyleBordered
+                                         target:self 
+                                         action:@selector(highlightStopId:)];
+    self.navigationItem.rightBarButtonItem = findStopButton;
+}
+
 
 // This calls the server
 - (void)startLoadingData {    
