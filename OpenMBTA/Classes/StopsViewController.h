@@ -10,8 +10,10 @@
 
 
 @interface StopsViewController : UIViewController {
+    NSArray *orderedStopNames;    
 
 }
+@property (nonatomic, retain) NSArray *orderedStopNames;    
 
 - (void)back:(id)sender;
 @end

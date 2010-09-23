@@ -27,17 +27,20 @@ class RealTime
       end
 
       imminent_stop_ids = []
-      last_vehicle = data[:stops][ data[:ordered_stop_ids].first ][:next_arrivals][0][1]
+      if ! data[:stops][ data[:ordered_stop_ids].first ][:next_arrivals].empty?
+        last_vehicle = data[:stops][ data[:ordered_stop_ids].first ][:next_arrivals][0][1]
 
-      data[:ordered_stop_ids].each do |stop_id|
-        stop_data = data[:stops][ stop_id ]
-        vehicle = stop_data[:next_arrivals][0][1]
-        if vehicle != last_vehicle
-          imminent_stop_ids << stop_id.to_s
+        data[:ordered_stop_ids].each do |stop_id|
+          stop_data = data[:stops][ stop_id ]
+          next if stop_data[:next_arrivals].empty?
+          vehicle = stop_data[:next_arrivals][0][1]
+          if vehicle != last_vehicle
+            imminent_stop_ids << stop_id.to_s
+          end
+          last_vehicle = vehicle
         end
-        last_vehicle = vehicle
+        data[:imminent_stop_ids] = imminent_stop_ids
       end
-      data[:imminent_stop_ids] = imminent_stop_ids
       puts "NEW IMMINENT STOP IDS: #{imminent_stop_ids.inspect}"
 
       data['realtime'] = true

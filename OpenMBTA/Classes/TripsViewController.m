@@ -154,6 +154,11 @@
     }
     [mapViewController annotateStops:self.stops imminentStops:self.imminentStops firstStops:self.firstStops isRealTime:isRealTime];
     
+    NSMutableArray *orderedStopNames = [NSMutableArray arrayWithCapacity:[self.orderedStopIds count]];
+    for (id stopId in self.orderedStopIds) {
+        NSLog(@"ordered stop id: %@", (NSNumber *)stopId);
+        
+    }
     [self hideNetworkActivity];
 }
 

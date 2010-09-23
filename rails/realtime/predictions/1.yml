@@ -7,900 +7,900 @@ directions:
   - tag: "110"
     title: Massachusetts Ave @ Holyoke St - Holyoke Gate
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:00 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:33:00 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:40:00 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:48:00 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:55:00 -04:00
-      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:03:00 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:10:00 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:18:00 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:25:00 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:33:00 -04:00
+      vehicle: "2289"
   - tag: "2168"
     title: Massachusetts Ave @ Johnston Gate
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:48 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:33:48 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:40:48 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:48:48 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:55:48 -04:00
-      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:03:48 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:10:48 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:18:48 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:25:48 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:33:48 -04:00
+      vehicle: "2289"
   - tag: "2166"
     title: Quincy St @ Broadway opp Fogg Museum
     predictions: 
-    - predicted_arrival: 2010-09-23 16:26:59 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:34:59 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:41:59 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:49:59 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:56:59 -04:00
+    - predicted_arrival: 2010-09-23 16:58:09 -04:00
       vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:04:59 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:11:59 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:19:59 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:26:59 -04:00
+      vehicle: "2153"
   - tag: "2167"
     title: Quincy St @ Harvard St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:28:01 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:36:01 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:43:01 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:51:01 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:58:01 -04:00
+    - predicted_arrival: 2010-09-23 16:59:11 -04:00
       vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:06:01 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:13:01 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:21:01 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:28:01 -04:00
+      vehicle: "2153"
   - tag: "66"
     title: Mt Auburn St @ DeWolfe St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:24:43 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:29:04 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:37:04 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:44:04 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:52:04 -04:00
-      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:00:14 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:07:04 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:14:04 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:22:04 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:29:04 -04:00
+      vehicle: "2153"
   - tag: "67"
     title: Mt Auburn St @ Putnam Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:49 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:30:10 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:38:10 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:45:10 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:53:10 -04:00
-      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:01:20 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:08:10 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:15:10 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:23:10 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:30:10 -04:00
+      vehicle: "2153"
   - tag: "68"
     title: Massachusetts Ave @ Bay St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:26:55 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:31:15 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:39:15 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:46:15 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:54:15 -04:00
-      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:02:25 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:09:15 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:16:15 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:24:15 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:31:15 -04:00
+      vehicle: "2153"
   - tag: "69"
     title: Massachusetts Ave @ Hancock St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:25 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:31:46 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:39:46 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:46:46 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:54:46 -04:00
+    - predicted_arrival: 2010-09-23 16:57:37 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:02:55 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:09:46 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:16:46 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:24:46 -04:00
+      vehicle: "2205"
   - tag: "70"
     title: Massachusetts Ave @ Sellers St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:28:15 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:32:36 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:40:36 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:47:36 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:55:36 -04:00
+    - predicted_arrival: 2010-09-23 16:58:28 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:03:46 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:10:36 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:17:36 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:25:36 -04:00
+      vehicle: "2205"
   - tag: "71"
     title: Massachusetts Ave @ Pleasant St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:28:54 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:33:15 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:41:15 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:48:15 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:56:15 -04:00
+    - predicted_arrival: 2010-09-23 16:59:06 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:04:24 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:11:15 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:18:15 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:26:15 -04:00
+      vehicle: "2205"
   - tag: "72"
     title: Massachusetts Ave @ Pearl St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:30:58 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:35:18 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:43:18 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:50:18 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:58:18 -04:00
+    - predicted_arrival: 2010-09-23 17:01:10 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:06:28 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:13:18 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:20:18 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:28:18 -04:00
+      vehicle: "2205"
   - tag: "73"
     title: Massachusetts Ave @ Sidney St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:33:01 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:37:21 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:45:21 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:52:21 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 17:00:21 -04:00
+    - predicted_arrival: 2010-09-23 17:03:13 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:08:31 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:15:21 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:22:21 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:30:21 -04:00
+      vehicle: "2205"
   - tag: "74"
     title: Massachusetts Ave @ Albany St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:34:56 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:39:17 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:47:17 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:54:17 -04:00
+    - predicted_arrival: 2010-09-23 16:58:50 -04:00
       vehicle: "2217"
-    - predicted_arrival: 2010-09-23 17:02:17 -04:00
+    - predicted_arrival: 2010-09-23 17:05:08 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:10:27 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:17:17 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:24:17 -04:00
+      vehicle: "2211"
   - tag: "75"
     title: 84 Massachusetts Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:37:17 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:41:37 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:49:37 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:56:37 -04:00
+    - predicted_arrival: 2010-09-23 17:01:11 -04:00
       vehicle: "2217"
-    - predicted_arrival: 2010-09-23 17:04:37 -04:00
+    - predicted_arrival: 2010-09-23 17:07:29 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:12:47 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:19:37 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:26:37 -04:00
+      vehicle: "2211"
   - tag: "76"
     title: Massachusetts Ave @ Memorial Dr
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:36 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:38:55 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:43:16 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:51:16 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:58:16 -04:00
+    - predicted_arrival: 2010-09-23 17:02:49 -04:00
       vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:09:08 -04:00
+      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:14:26 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:21:16 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:28:16 -04:00
+      vehicle: "2211"
   - tag: "77"
     title: Massachusetts Ave @ Beacon St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:32 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:31:18 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:44:37 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:48:57 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:56:57 -04:00
+    - predicted_arrival: 2010-09-23 16:59:47 -04:00
       vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:08:31 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:14:49 -04:00
+      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:20:07 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:26:57 -04:00
+      vehicle: "2190"
   - tag: "78"
     title: Massachusetts Ave @ Commonwealth Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:30:10 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:33:55 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:47:14 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:51:35 -04:00
+    - predicted_arrival: 2010-09-23 16:58:26 -04:00
       vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:59:35 -04:00
+    - predicted_arrival: 2010-09-23 17:02:24 -04:00
       vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:11:08 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:17:26 -04:00
+      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:22:45 -04:00
+      vehicle: "2143"
   - tag: "79"
     title: Massachusetts Ave @ Newbury St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:31:01 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:34:46 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:48:05 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:52:26 -04:00
+    - predicted_arrival: 2010-09-23 16:59:17 -04:00
       vehicle: "2198"
-    - predicted_arrival: 2010-09-23 17:00:26 -04:00
+    - predicted_arrival: 2010-09-23 17:03:15 -04:00
       vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:11:59 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:18:17 -04:00
+      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:23:36 -04:00
+      vehicle: "2143"
   - tag: "80"
     title: 183 Massachusetts Ave opp Christian Science Ctr
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:54 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:33:19 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:37:05 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:50:23 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:54:44 -04:00
+    - predicted_arrival: 2010-09-23 17:01:36 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:05:34 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:14:18 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:20:36 -04:00
+      vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:25:54 -04:00
+      vehicle: "2143"
   - tag: "81"
     title: Massachusetts Ave @ Westland Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:43 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:35:09 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:38:54 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:52:13 -04:00
+    - predicted_arrival: 2010-09-23 16:57:54 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:56:34 -04:00
+    - predicted_arrival: 2010-09-23 17:03:25 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:07:23 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:16:07 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:22:25 -04:00
+      vehicle: 0693
   - tag: "82"
     title: Massachusetts Ave @ Huntington Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:28:10 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:35:35 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:39:20 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:52:39 -04:00
+    - predicted_arrival: 2010-09-23 16:58:21 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:57:00 -04:00
+    - predicted_arrival: 2010-09-23 17:03:52 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:07:49 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:16:34 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:22:52 -04:00
+      vehicle: 0693
   - tag: "187"
     title: Massachusetts Ave @ Massachusetts Ave Station
     predictions: 
-    - predicted_arrival: 2010-09-23 16:29:17 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:36:42 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:40:28 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:53:47 -04:00
+    - predicted_arrival: 2010-09-23 16:59:28 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:58:07 -04:00
+    - predicted_arrival: 2010-09-23 17:04:59 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:08:57 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:17:41 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:23:59 -04:00
+      vehicle: 0693
   - tag: "83"
     title: Massachusetts Ave @ Columbus Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:30:47 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:38:12 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:41:57 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:55:16 -04:00
+    - predicted_arrival: 2010-09-23 17:00:58 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:59:37 -04:00
+    - predicted_arrival: 2010-09-23 17:06:28 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:10:26 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:19:10 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:25:28 -04:00
+      vehicle: 0693
   - tag: "84"
     title: Massachusetts Ave @ Tremont St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:32:07 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:39:32 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:43:17 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:56:36 -04:00
+    - predicted_arrival: 2010-09-23 17:02:18 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 17:00:57 -04:00
+    - predicted_arrival: 2010-09-23 17:07:48 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:11:46 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:20:30 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:26:48 -04:00
+      vehicle: 0693
   - tag: "85"
     title: Massachusetts Ave @ Shawmut Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:33:21 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:40:46 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:44:32 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:57:51 -04:00
+    - predicted_arrival: 2010-09-23 17:03:32 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 17:02:11 -04:00
+    - predicted_arrival: 2010-09-23 17:09:03 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:13:01 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:21:45 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:28:03 -04:00
+      vehicle: 0693
   - tag: "59"
     title: Massachusetts Ave @ Washington St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:34:12 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:41:37 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:45:22 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 16:58:41 -04:00
+    - predicted_arrival: 2010-09-23 17:04:23 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 17:03:02 -04:00
+    - predicted_arrival: 2010-09-23 17:09:53 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:13:51 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:22:35 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:28:53 -04:00
+      vehicle: 0693
   - tag: "854"
     title: Massachusetts Ave @ Harrison Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:35:44 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:43:09 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:46:54 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:00:13 -04:00
+    - predicted_arrival: 2010-09-23 17:05:55 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 17:04:34 -04:00
+    - predicted_arrival: 2010-09-23 17:11:26 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:15:23 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:24:07 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:30:26 -04:00
+      vehicle: 0693
   - tag: "856"
     title: Massachusetts Ave @ Albany St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:34:56 -04:00
-      vehicle: "2247"
-    - predicted_arrival: 2010-09-23 16:39:17 -04:00
-      vehicle: "2198"
-    - predicted_arrival: 2010-09-23 16:47:17 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:54:17 -04:00
+    - predicted_arrival: 2010-09-23 16:58:50 -04:00
       vehicle: "2217"
-    - predicted_arrival: 2010-09-23 17:02:17 -04:00
+    - predicted_arrival: 2010-09-23 17:05:08 -04:00
       vehicle: 0693
+    - predicted_arrival: 2010-09-23 17:10:27 -04:00
+      vehicle: "2143"
+    - predicted_arrival: 2010-09-23 17:17:17 -04:00
+      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:24:17 -04:00
+      vehicle: "2211"
   - tag: "10099"
     title: Albany St @ Northampton St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:37:53 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:45:18 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:49:04 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:02:22 -04:00
+    - predicted_arrival: 2010-09-23 17:08:04 -04:00
       vehicle: "2247"
-    - predicted_arrival: 2010-09-23 17:06:43 -04:00
+    - predicted_arrival: 2010-09-23 17:13:35 -04:00
       vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:17:33 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:26:17 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:32:35 -04:00
+      vehicle: 0693
   - tag: "10100"
     title: Albany St @ Melnea Cass Blvd
     predictions: 
-    - predicted_arrival: 2010-09-23 16:24:56 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:39:01 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:46:26 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:50:11 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:03:30 -04:00
+    - predicted_arrival: 2010-09-23 17:09:11 -04:00
       vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:14:42 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:18:40 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:27:24 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:33:42 -04:00
+      vehicle: 0693
   - tag: "10101"
     title: Melnea Cass Blvd @ Harrison Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:51 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:39:55 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:47:20 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:51:05 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:04:24 -04:00
+    - predicted_arrival: 2010-09-23 17:10:06 -04:00
       vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:15:36 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:19:34 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:28:18 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:34:36 -04:00
+      vehicle: 0693
   - tag: "61"
     title: Washington St @ Melnea Cass Blvd
     predictions: 
-    - predicted_arrival: 2010-09-23 16:26:56 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:41:00 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:48:25 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:52:10 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:05:29 -04:00
+    - predicted_arrival: 2010-09-23 17:11:11 -04:00
       vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:16:41 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:20:39 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:29:23 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:35:41 -04:00
+      vehicle: 0693
   - tag: "62"
     title: Washington St @ Williams St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:28 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:41:32 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:48:57 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:52:43 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:06:01 -04:00
+    - predicted_arrival: 2010-09-23 17:11:43 -04:00
       vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:17:14 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:21:12 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:29:56 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:36:14 -04:00
+      vehicle: 0693
   - tag: "63"
     title: Washington St @ Ruggles St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:57 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:42:01 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:49:26 -04:00
-      vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:53:11 -04:00
-      vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:06:30 -04:00
+    - predicted_arrival: 2010-09-23 17:12:12 -04:00
       vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:17:43 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:21:40 -04:00
+      vehicle: "2267"
+    - predicted_arrival: 2010-09-23 17:30:24 -04:00
+      vehicle: "2217"
+    - predicted_arrival: 2010-09-23 17:36:43 -04:00
+      vehicle: 0693
   - tag: 64_ar
     title: Dudley Station - Harvard Side
     predictions: 
-    - predicted_arrival: 2010-09-23 16:29:58 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:44:02 -04:00
-      vehicle: "2174"
-    - predicted_arrival: 2010-09-23 16:51:27 -04:00
+    - predicted_arrival: 2010-09-23 16:57:27 -04:00
       vehicle: "2284"
-    - predicted_arrival: 2010-09-23 16:55:12 -04:00
+    - predicted_arrival: 2010-09-23 16:57:37 -04:00
       vehicle: "2209"
-    - predicted_arrival: 2010-09-23 17:08:31 -04:00
+    - predicted_arrival: 2010-09-23 17:14:13 -04:00
       vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:19:43 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:23:41 -04:00
+      vehicle: "2267"
 - headsign: Harvard Station via Mass. Ave.
   direction_name: Outbound
   stops: 
   - tag: "64"
     title: Dudley Station - Harvard Side
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:00 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:33:00 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:40:00 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:48:00 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:03:00 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:10:00 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:18:00 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:25:00 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:33:00 -04:00
+      vehicle: "2267"
   - tag: "1"
     title: Washington St opp Ruggles St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:26:00 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:34:00 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:41:00 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:49:00 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:04:00 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:11:00 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:19:00 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:26:00 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:34:00 -04:00
+      vehicle: "2267"
   - tag: "2"
     title: Washington St @ Melnea Cass Blvd
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:06 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:35:06 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:42:06 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:50:06 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:05:06 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:12:06 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:20:06 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:27:06 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:35:06 -04:00
+      vehicle: "2267"
   - tag: "6"
     title: Melnea Cass Blvd @ Harrison Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:28:09 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:36:09 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:43:09 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:51:09 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:06:09 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:13:09 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:21:09 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:28:09 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:36:09 -04:00
+      vehicle: "2267"
   - tag: "10003"
     title: Albany St opp Randall St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:29:24 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:37:24 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:44:24 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:52:24 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:07:24 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:14:24 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:22:24 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:29:24 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:37:24 -04:00
+      vehicle: "2267"
   - tag: "10004"
     title: Albany St opp Northampton St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:30:05 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:38:05 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:45:05 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:53:05 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:08:05 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:15:05 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:23:05 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:30:05 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:38:05 -04:00
+      vehicle: "2267"
   - tag: "57"
     title: Massachusetts Ave @ Albany St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:31:06 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:39:06 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:46:06 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:54:06 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:09:06 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:16:06 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:24:06 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:31:06 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:39:06 -04:00
+      vehicle: "2267"
   - tag: "58"
     title: Masachusettss Ave @ Harrison Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:26 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:32:19 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:40:19 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:47:19 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:55:19 -04:00
-      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:10:19 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:17:19 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:25:19 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:32:19 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:40:19 -04:00
+      vehicle: "2267"
   - tag: "10590"
     title: Massachusetts Ave @ Washington St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:26:47 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:33:40 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:41:40 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:48:40 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:56:40 -04:00
+    - predicted_arrival: 2010-09-23 16:58:31 -04:00
       vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:11:40 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:18:40 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:26:40 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:33:40 -04:00
+      vehicle: "2198"
   - tag: "86"
     title: Massachusetts Ave @ Shawmut Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:38 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:34:31 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:42:31 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:49:31 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:57:31 -04:00
+    - predicted_arrival: 2010-09-23 16:59:22 -04:00
       vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:12:31 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:19:31 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:27:31 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:34:31 -04:00
+      vehicle: "2198"
   - tag: "87"
     title: Massachusetts Ave @ Tremont St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:29:54 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:36:47 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:44:47 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:51:47 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:59:47 -04:00
+    - predicted_arrival: 2010-09-23 17:01:38 -04:00
       vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:14:47 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:21:47 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:29:47 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:36:47 -04:00
+      vehicle: "2198"
   - tag: "88"
     title: Massachusetts Ave @ Columbus Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:31:04 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:37:57 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:45:57 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:52:57 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 17:00:57 -04:00
+    - predicted_arrival: 2010-09-23 17:02:48 -04:00
       vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:15:57 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:22:57 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:30:57 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:37:57 -04:00
+      vehicle: "2198"
   - tag: "188"
     title: Massachusetts Ave @ Massachusetts Ave Station
     predictions: 
-    - predicted_arrival: 2010-09-23 16:32:11 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:39:04 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:47:04 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:54:04 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 17:02:04 -04:00
+    - predicted_arrival: 2010-09-23 17:03:55 -04:00
       vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:17:04 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:24:04 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:32:04 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:39:04 -04:00
+      vehicle: "2198"
   - tag: "89"
     title: Massachusetts Ave @ St Botolph St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:24:45 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:32:54 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:39:46 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:47:46 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:54:46 -04:00
-      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:04:37 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:17:46 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:24:46 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:32:46 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:39:46 -04:00
+      vehicle: "2198"
   - tag: "90"
     title: Massachusetts Ave @ Westland Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:26:12 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:34:20 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:41:13 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:49:13 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:56:13 -04:00
-      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:06:04 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:19:13 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:26:13 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:34:13 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:41:13 -04:00
+      vehicle: "2198"
   - tag: "91"
     title: Massachusetts Ave @ Clearway St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:23 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:35:31 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:42:24 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:50:24 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:57:24 -04:00
-      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:07:15 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:20:24 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:27:24 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:35:24 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:42:24 -04:00
+      vehicle: "2198"
   - tag: "92"
     title: Massachusetts Ave @ Belvidere St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:28:17 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:36:26 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:43:19 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:51:19 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:58:19 -04:00
-      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:08:09 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:21:19 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:28:19 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:36:19 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:43:19 -04:00
+      vehicle: "2198"
   - tag: "93"
     title: Massachusetts Ave @ Newbury St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:29:47 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:37:55 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:44:48 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:52:48 -04:00
+    - predicted_arrival: 2010-09-23 16:58:03 -04:00
       vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:59:48 -04:00
+    - predicted_arrival: 2010-09-23 16:58:33 -04:00
       vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:09:39 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:22:48 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:29:48 -04:00
+      vehicle: "2209"
   - tag: "94"
     title: Massachusetts Ave @ Commonwealth Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:30:48 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:38:57 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:45:50 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:53:50 -04:00
+    - predicted_arrival: 2010-09-23 16:59:04 -04:00
       vehicle: "2153"
-    - predicted_arrival: 2010-09-23 17:00:50 -04:00
+    - predicted_arrival: 2010-09-23 16:59:35 -04:00
       vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:10:40 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:23:50 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:30:50 -04:00
+      vehicle: "2209"
   - tag: "95"
     title: Massachusetts Ave @ Beacon St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:31:56 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:40:04 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:46:57 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:54:57 -04:00
+    - predicted_arrival: 2010-09-23 17:00:12 -04:00
       vehicle: "2153"
-    - predicted_arrival: 2010-09-23 17:01:57 -04:00
+    - predicted_arrival: 2010-09-23 17:00:42 -04:00
       vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:11:48 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:24:57 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:31:57 -04:00
+      vehicle: "2209"
   - tag: "96"
     title: Massachusetts Ave @ Memorial Dr
     predictions: 
-    - predicted_arrival: 2010-09-23 16:33:59 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:42:08 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:49:01 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:57:01 -04:00
+    - predicted_arrival: 2010-09-23 17:02:16 -04:00
       vehicle: "2153"
-    - predicted_arrival: 2010-09-23 17:04:01 -04:00
+    - predicted_arrival: 2010-09-23 17:02:46 -04:00
       vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:13:51 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:27:01 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:34:01 -04:00
+      vehicle: "2209"
   - tag: "97"
     title: 77 Massachusetts Ave
     predictions: 
-    - predicted_arrival: 2010-09-23 16:34:46 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:42:54 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:49:47 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:57:47 -04:00
+    - predicted_arrival: 2010-09-23 17:03:02 -04:00
       vehicle: "2153"
-    - predicted_arrival: 2010-09-23 17:04:47 -04:00
+    - predicted_arrival: 2010-09-23 17:03:32 -04:00
       vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:14:38 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:27:47 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:34:47 -04:00
+      vehicle: "2209"
   - tag: "98"
     title: Massachusetts Ave @ Vassar St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:35:50 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:43:58 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:50:51 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:58:51 -04:00
+    - predicted_arrival: 2010-09-23 17:04:06 -04:00
       vehicle: "2153"
-    - predicted_arrival: 2010-09-23 17:05:51 -04:00
+    - predicted_arrival: 2010-09-23 17:04:36 -04:00
       vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:15:42 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:28:51 -04:00
+      vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:35:51 -04:00
+      vehicle: "2209"
   - tag: "99"
     title: Massachusetts Ave @ Albany St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:31:06 -04:00
-      vehicle: "2205"
-    - predicted_arrival: 2010-09-23 16:39:06 -04:00
-      vehicle: "2153"
-    - predicted_arrival: 2010-09-23 16:46:06 -04:00
-      vehicle: "2289"
-    - predicted_arrival: 2010-09-23 16:54:06 -04:00
-      vehicle: "2174"
     - predicted_arrival: 2010-09-23 17:09:06 -04:00
       vehicle: "2284"
+    - predicted_arrival: 2010-09-23 17:16:06 -04:00
+      vehicle: "2209"
+    - predicted_arrival: 2010-09-23 17:24:06 -04:00
+      vehicle: "2247"
+    - predicted_arrival: 2010-09-23 17:31:06 -04:00
+      vehicle: "2198"
+    - predicted_arrival: 2010-09-23 17:39:06 -04:00
+      vehicle: "2267"
   - tag: "100"
     title: Massachusetts Ave @ Front St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:24:58 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:37:42 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:45:50 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:52:43 -04:00
+    - predicted_arrival: 2010-09-23 16:59:14 -04:00
       vehicle: "2205"
-    - predicted_arrival: 2010-09-23 17:00:43 -04:00
+    - predicted_arrival: 2010-09-23 17:05:58 -04:00
       vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:06:28 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:17:34 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:30:43 -04:00
+      vehicle: "2284"
   - tag: "101"
     title: Massachusetts Ave @ Main St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:14 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:26:28 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:39:13 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:47:21 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:54:14 -04:00
+    - predicted_arrival: 2010-09-23 17:00:45 -04:00
       vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:07:29 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:07:59 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:19:05 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:32:14 -04:00
+      vehicle: "2284"
   - tag: "102"
     title: Massachusetts Ave @ Prospect St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:53 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:29:07 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:41:51 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:50:00 -04:00
-      vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:56:53 -04:00
+    - predicted_arrival: 2010-09-23 17:03:23 -04:00
       vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:10:07 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:10:38 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:21:43 -04:00
+      vehicle: "2174"
+    - predicted_arrival: 2010-09-23 17:34:53 -04:00
+      vehicle: "2284"
   - tag: "104"
     title: Massachusetts Ave @ Bigelow St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:29:08 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:30:22 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:43:07 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:51:15 -04:00
+    - predicted_arrival: 2010-09-23 16:57:48 -04:00
       vehicle: "2211"
-    - predicted_arrival: 2010-09-23 16:58:08 -04:00
+    - predicted_arrival: 2010-09-23 17:04:39 -04:00
       vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:11:23 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:11:53 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:22:59 -04:00
+      vehicle: "2174"
   - tag: "105"
     title: Massachusetts Ave @ Clinton St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:24:36 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:29:26 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:30:40 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:43:25 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:51:33 -04:00
+    - predicted_arrival: 2010-09-23 16:58:06 -04:00
       vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:04:57 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:11:41 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:12:11 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:23:17 -04:00
+      vehicle: "2174"
   - tag: "106"
     title: Massachusetts Ave @ Hancock St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:25:14 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:30:04 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:31:18 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:44:03 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:52:11 -04:00
+    - predicted_arrival: 2010-09-23 16:58:44 -04:00
       vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:05:35 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:12:19 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:12:49 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:23:55 -04:00
+      vehicle: "2174"
   - tag: "107"
     title: Massachusetts Ave @ Dana St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:26:03 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:30:53 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:32:08 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:44:52 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:53:00 -04:00
+    - predicted_arrival: 2010-09-23 16:59:33 -04:00
       vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:06:24 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:13:08 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:13:38 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:24:44 -04:00
+      vehicle: "2174"
   - tag: "108"
     title: Massachusetts Ave @ Trowbridge St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:27:07 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:31:58 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:33:12 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:45:56 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:54:04 -04:00
+    - predicted_arrival: 2010-09-23 17:00:37 -04:00
       vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:07:28 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:14:12 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:14:43 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:25:48 -04:00
+      vehicle: "2174"
   - tag: "109"
     title: Massachusetts Ave @ Quincy St
     predictions: 
-    - predicted_arrival: 2010-09-23 16:28:16 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:33:06 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:34:21 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:47:05 -04:00
-      vehicle: "2190"
-    - predicted_arrival: 2010-09-23 16:55:13 -04:00
+    - predicted_arrival: 2010-09-23 17:01:46 -04:00
       vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:08:37 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:15:21 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:15:51 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:26:57 -04:00
+      vehicle: "2174"
   - tag: 110_ar
     title: Massachusetts Ave @ Holyoke St - Holyoke Gate
     predictions: 
-    - predicted_arrival: 2010-09-23 16:24:40 -04:00
-      vehicle: "2267"
-    - predicted_arrival: 2010-09-23 16:29:52 -04:00
-      vehicle: "2217"
-    - predicted_arrival: 2010-09-23 16:34:43 -04:00
-      vehicle: 0693
-    - predicted_arrival: 2010-09-23 16:35:57 -04:00
-      vehicle: "2143"
-    - predicted_arrival: 2010-09-23 16:48:42 -04:00
-      vehicle: "2190"
+    - predicted_arrival: 2010-09-23 17:03:22 -04:00
+      vehicle: "2211"
+    - predicted_arrival: 2010-09-23 17:10:14 -04:00
+      vehicle: "2205"
+    - predicted_arrival: 2010-09-23 17:16:58 -04:00
+      vehicle: "2153"
+    - predicted_arrival: 2010-09-23 17:17:28 -04:00
+      vehicle: "2289"
+    - predicted_arrival: 2010-09-23 17:28:33 -04:00
+      vehicle: "2174"
