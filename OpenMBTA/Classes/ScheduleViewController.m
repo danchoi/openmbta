@@ -73,6 +73,8 @@
 }
 
 - (void)highlightNearestStop:(NSString *)stopId {
+    return;
+    
     self.nearestStopId = stopId;
     if (self.request)
         [webView loadRequest:self.request];        

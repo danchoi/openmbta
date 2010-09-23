@@ -14,6 +14,7 @@
 #import "JSON.h"
 #import "MapViewController.h"
 #import "ScheduleViewController.h"
+#import "StopsViewController.h"
 
 @implementation TripsViewController
 @synthesize contentView;
@@ -22,6 +23,7 @@
 @synthesize mapViewController, scheduleViewController;
 @synthesize segmentedControl;
 @synthesize currentContentView;
+@synthesize stopsViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -101,7 +103,7 @@
                                          initWithTitle:@"Find Stop"
                                          style:UIBarButtonItemStyleBordered
                                          target:self 
-                                         action:@selector(highlightStopId:)];
+                                         action:@selector(showStopsController:)];
     self.navigationItem.rightBarButtonItem = findStopButton;
 }
 
@@ -135,6 +137,7 @@
     BOOL isRealTime = NO;
     if ([data objectForKey:@"realtime"]) {
         isRealTime = YES;
+        // do something in view to indicate
     }
     [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];
@@ -174,23 +177,9 @@
     }
 }
 
--(void)toggleBookmark:(id)sender {
-    if ([self isBookmarked]) {
-        Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
-        [prefs removeBookmark: bookmark];
-    } else {
-        Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
-        [prefs addBookmark: bookmark];
-    }
-    // change button image
-}
 
-- (BOOL)isBookmarked {
-    Preferences *prefs = [Preferences sharedInstance]; 
-    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
-    return ([prefs isBookmarked:bookmark]);
+- (void)showStopsController:(id)sender {
+    [self presentModalViewController:self.stopsViewController animated:YES];
 }
 
 

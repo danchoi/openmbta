@@ -54,5 +54,8 @@
     [super dealloc];
 }
 
+- (void)back:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 @end

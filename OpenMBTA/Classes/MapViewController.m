@@ -126,9 +126,7 @@
     }
     //NSLog(@"min distance: %f; closest stop: %@", minDistance, self.nearestStopAnnotation.subtitle);
 
-    //ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.tripsViewController.scheduleViewController;
-    //[scheduleViewController highlightNearestStop:self.nearestStopAnnotation.stop_id];
-    
+
     // Show callout of nearest stop.  We delay this to give the map time to
     // draw the pins for the stops
     if (self.triggerCalloutTimer != nil)

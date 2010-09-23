@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 @class MapViewController;
 @class ScheduleViewController;
+@class StopsViewController;
 
 @interface TripsViewController : BaseViewController <CLLocationManagerDelegate> {
     NSString *headsign;
@@ -38,7 +39,7 @@
     
     ScheduleViewController *scheduleViewController;
     UIView *currentContentView;
-
+    StopsViewController *stopsViewController;
 }
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;
@@ -61,9 +62,11 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet ScheduleViewController *scheduleViewController;
 @property (nonatomic, retain) UIView *currentContentView;
+@property (nonatomic, retain) IBOutlet StopsViewController *stopsViewController;
 - (void)addFindStopButton;
 - (void)toggleView:(id)sender;
-- (void)toggleBookmark:(id)sender;
-- (BOOL)isBookmarked;
+
+
 - (void)startLoadingData;
+- (void)showStopsController:(id)sender;
 @end
