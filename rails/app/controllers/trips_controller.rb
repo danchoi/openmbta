@@ -18,6 +18,9 @@ class TripsController < ApplicationController
                              :route_short_name => (@route = params[:route_short_name]),
                              :now => Now.new(base_time),
                              :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
+
+          @result = RealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route)
+
         else # first version
           @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
                                :route_short_name => (@route = params[:route_short_name]),
@@ -25,6 +28,8 @@ class TripsController < ApplicationController
                                :now => Now.new(base_time)).result
         end
 
+        logger.debug @result.to_json
+        #File.open("#{Rails.root}/realtime/temp.yml", 'w') {|f| f.write( @result.to_yaml )}
         render :json => @result.to_json
       }
 

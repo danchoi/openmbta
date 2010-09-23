@@ -72,14 +72,14 @@
     [mapView regionThatFits:region];
     mapView.hidden = NO;
 }
-- (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops {
+- (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops isRealTime:(BOOL)isRealTime {
     NSArray *stop_ids = [stops allKeys];
     for (NSString *stop_id in stop_ids) {
         StopAnnotation *annotation = [[StopAnnotation alloc] init];
         NSDictionary *stopDict = [stops objectForKey:stop_id];
         NSString *stopName =  [stopDict objectForKey:@"name"];
         annotation.subtitle = stopName;
-        annotation.title = [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"])];
+        annotation.title = [self stopAnnotationTitle:((NSArray *)[stopDict objectForKey:@"next_arrivals"]) isRealTime:isRealTime];
         annotation.numNextArrivals = [NSNumber numberWithInt:[[stopDict objectForKey:@"next_arrivals"] count]];
         annotation.stop_id = stop_id;
         if ([imminentStops containsObject:stop_id]) {
@@ -145,7 +145,7 @@
 }
 
 
-- (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {
+- (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals isRealTime:(BOOL)isRealTime {
     NSMutableArray *times = [NSMutableArray array];
     int count = 0;
     for (NSArray *pair in nextArrivals) {
@@ -153,7 +153,14 @@
         count = count + 1;
         if (count == 3) break;
     }
-    return [nextArrivals count] > 0 ? [times componentsJoinedByString:@" "] : @"No more arrivals today";
+    NSString *title;
+    if ( [nextArrivals count] > 0 ) {
+        title = [NSString stringWithFormat:@"%@ %@", [times componentsJoinedByString:@" "],
+                 (isRealTime ? @"(real-time)" : @"(sched.)")];
+    } else {
+        title = @"No more arrivals today";
+    }
+    return title;
 }
 
 

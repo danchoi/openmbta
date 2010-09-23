@@ -27,7 +27,7 @@
 @property (nonatomic, retain) NSTimer *triggerCalloutTimer;
 @property (nonatomic, retain) CLLocation *location;
 - (void)prepareMap:(NSDictionary *)regionInfo;
-- (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops;
-- (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals; 
+- (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops isRealTime:(BOOL)isRealTime;
+- (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals isRealTime:(BOOL)isRealTime; 
 - (void)findNearestStop;
 @end

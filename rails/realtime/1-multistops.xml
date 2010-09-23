@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright MBTA 2010.">
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Dudley Station - Harvard Side" stopTag="64">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="370" minutes="6" epochTime="1285255080000" isDeparture="true" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1210" minutes="20" epochTime="1285255920000" isDeparture="true" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2050" minutes="34" epochTime="1285256760000" isDeparture="true" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="2890" minutes="48" epochTime="1285257600000" isDeparture="true" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="3730" minutes="62" epochTime="1285258440000" isDeparture="true" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Washington St opp Ruggles St" stopTag="1">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="437" minutes="7" epochTime="1285255146617" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1277" minutes="21" epochTime="1285255986617" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2117" minutes="35" epochTime="1285256826617" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="2957" minutes="49" epochTime="1285257666617" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="3797" minutes="63" epochTime="1285258506617" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Washington St @ Melnea Cass Blvd" stopTag="2">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="509" minutes="8" epochTime="1285255219018" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1349" minutes="22" epochTime="1285256059018" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2189" minutes="36" epochTime="1285256899018" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3029" minutes="50" epochTime="1285257739018" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="3869" minutes="64" epochTime="1285258579018" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Melnea Cass Blvd @ Harrison Ave" stopTag="6">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="557" minutes="9" epochTime="1285255266668" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1397" minutes="23" epochTime="1285256106668" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2237" minutes="37" epochTime="1285256946668" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3077" minutes="51" epochTime="1285257786668" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="3917" minutes="65" epochTime="1285258626668" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Albany St opp Randall St" stopTag="10003">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="630" minutes="10" epochTime="1285255339227" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1470" minutes="24" epochTime="1285256179227" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2310" minutes="38" epochTime="1285257019227" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3150" minutes="52" epochTime="1285257859227" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="3990" minutes="66" epochTime="1285258699227" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Albany St opp Northampton St" stopTag="10004">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="676" minutes="11" epochTime="1285255385867" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1516" minutes="25" epochTime="1285256225867" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2356" minutes="39" epochTime="1285257065867" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3196" minutes="53" epochTime="1285257905867" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="4036" minutes="67" epochTime="1285258745867" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Albany St" stopTag="57">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="758" minutes="12" epochTime="1285255467946" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1598" minutes="26" epochTime="1285256307946" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2438" minutes="40" epochTime="1285257147946" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3278" minutes="54" epochTime="1285257987946" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="4118" minutes="68" epochTime="1285258827946" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Masachusettss Ave @ Harrison Ave" stopTag="58">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="855" minutes="14" epochTime="1285255564245" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1695" minutes="28" epochTime="1285256404245" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2535" minutes="42" epochTime="1285257244245" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3375" minutes="56" epochTime="1285258084245" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="4215" minutes="70" epochTime="1285258924245" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Washington St" stopTag="10590">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="938" minutes="15" epochTime="1285255647674" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1778" minutes="29" epochTime="1285256487674" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2618" minutes="43" epochTime="1285257327674" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3458" minutes="57" epochTime="1285258167674" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+    <prediction seconds="4298" minutes="71" epochTime="1285259007674" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Shawmut Ave" stopTag="86">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="7" minutes="0" epochTime="1285254716348" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="983" minutes="16" epochTime="1285255693143" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1823" minutes="30" epochTime="1285256533143" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2663" minutes="44" epochTime="1285257373143" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3503" minutes="58" epochTime="1285258213143" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Tremont St" stopTag="87">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="107" minutes="1" epochTime="1285254816647" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1084" minutes="18" epochTime="1285255793442" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1924" minutes="32" epochTime="1285256633442" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2764" minutes="46" epochTime="1285257473442" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3604" minutes="60" epochTime="1285258313442" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Columbus Ave" stopTag="88">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="182" minutes="3" epochTime="1285254892236" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1159" minutes="19" epochTime="1285255869031" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="1999" minutes="33" epochTime="1285256709031" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2839" minutes="47" epochTime="1285257549031" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3679" minutes="61" epochTime="1285258389031" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Massachusetts Ave Station" stopTag="188">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="244" minutes="4" epochTime="1285254954165" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1221" minutes="20" epochTime="1285255930960" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2061" minutes="34" epochTime="1285256770960" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2901" minutes="48" epochTime="1285257610960" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3741" minutes="62" epochTime="1285258450960" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ St Botolph St" stopTag="89">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="280" minutes="4" epochTime="1285254989394" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1256" minutes="20" epochTime="1285255966189" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2096" minutes="34" epochTime="1285256806189" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="2936" minutes="48" epochTime="1285257646189" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3776" minutes="62" epochTime="1285258486189" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Westland Ave" stopTag="90">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="371" minutes="6" epochTime="1285255080513" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1348" minutes="22" epochTime="1285256057308" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2188" minutes="36" epochTime="1285256897308" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3028" minutes="50" epochTime="1285257737308" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3868" minutes="64" epochTime="1285258577308" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Clearway St" stopTag="91">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="439" minutes="7" epochTime="1285255148932" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1416" minutes="23" epochTime="1285256125727" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2256" minutes="37" epochTime="1285256965727" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3096" minutes="51" epochTime="1285257805727" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3936" minutes="65" epochTime="1285258645727" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Belvidere St" stopTag="92">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="486" minutes="8" epochTime="1285255195871" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1463" minutes="24" epochTime="1285256172666" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2303" minutes="38" epochTime="1285257012666" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3143" minutes="52" epochTime="1285257852666" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="3983" minutes="66" epochTime="1285258692666" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Newbury St" stopTag="93">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="578" minutes="9" epochTime="1285255287469" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1555" minutes="25" epochTime="1285256264264" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2395" minutes="39" epochTime="1285257104264" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3235" minutes="53" epochTime="1285257944264" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="4075" minutes="67" epochTime="1285258784264" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Commonwealth Ave" stopTag="94">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="637" minutes="10" epochTime="1285255346585" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1614" minutes="26" epochTime="1285256323380" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2454" minutes="40" epochTime="1285257163380" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3294" minutes="54" epochTime="1285258003380" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="4134" minutes="68" epochTime="1285258843380" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Beacon St" stopTag="95">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="713" minutes="11" epochTime="1285255422587" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1690" minutes="28" epochTime="1285256399382" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2530" minutes="42" epochTime="1285257239382" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3370" minutes="56" epochTime="1285258079382" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="4210" minutes="70" epochTime="1285258919382" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Memorial Dr" stopTag="96">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="818" minutes="13" epochTime="1285255528046" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1795" minutes="29" epochTime="1285256504841" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2635" minutes="43" epochTime="1285257344841" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3475" minutes="57" epochTime="1285258184841" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+    <prediction seconds="4315" minutes="71" epochTime="1285259024841" isDeparture="false" dirTag="1_010004v0_0" vehicle="2190" block="C01_8" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="77 Massachusetts Ave" stopTag="97">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="10" minutes="0" epochTime="1285254719704" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="862" minutes="14" epochTime="1285255571265" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1838" minutes="30" epochTime="1285256548060" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2678" minutes="44" epochTime="1285257388060" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+    <prediction seconds="3518" minutes="58" epochTime="1285258228060" isDeparture="false" dirTag="1_010004v0_0" vehicle="2284" block="C01_6" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Vassar St" stopTag="98">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="19" minutes="0" epochTime="1285254728665" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="65" minutes="1" epochTime="1285254775003" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="917" minutes="15" epochTime="1285255626564" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1894" minutes="31" epochTime="1285256603359" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2734" minutes="45" epochTime="1285257443359" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Albany St" stopTag="99">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="64" minutes="1" epochTime="1285254774164" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="111" minutes="1" epochTime="1285254820502" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="962" minutes="16" epochTime="1285255672063" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1939" minutes="32" epochTime="1285256648858" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2779" minutes="46" epochTime="1285257488858" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Front St" stopTag="100">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="116" minutes="1" epochTime="1285254826003" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="163" minutes="2" epochTime="1285254872341" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1014" minutes="16" epochTime="1285255723902" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="1991" minutes="33" epochTime="1285256700697" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2831" minutes="47" epochTime="1285257540697" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Main St" stopTag="101">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="199" minutes="3" epochTime="1285254908572" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="245" minutes="4" epochTime="1285254954910" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1097" minutes="18" epochTime="1285255806471" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2074" minutes="34" epochTime="1285256783266" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="2914" minutes="48" epochTime="1285257623266" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Prospect St" stopTag="102">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="313" minutes="5" epochTime="1285255023001" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="360" minutes="6" epochTime="1285255069339" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1211" minutes="20" epochTime="1285255920900" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2188" minutes="36" epochTime="1285256897695" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3028" minutes="50" epochTime="1285257737695" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Bigelow St" stopTag="104">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="416" minutes="6" epochTime="1285255126039" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="463" minutes="7" epochTime="1285255172377" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1314" minutes="21" epochTime="1285256023938" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2291" minutes="38" epochTime="1285257000733" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3131" minutes="52" epochTime="1285257840733" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Clinton St" stopTag="105">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="434" minutes="7" epochTime="1285255143708" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="480" minutes="8" epochTime="1285255190046" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1332" minutes="22" epochTime="1285256041607" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2309" minutes="38" epochTime="1285257018402" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3149" minutes="52" epochTime="1285257858402" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Hancock St" stopTag="106">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="469" minutes="7" epochTime="1285255178887" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="515" minutes="8" epochTime="1285255225225" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1367" minutes="22" epochTime="1285256076786" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2344" minutes="39" epochTime="1285257053581" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3184" minutes="53" epochTime="1285257893581" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Dana St" stopTag="107">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="510" minutes="8" epochTime="1285255219896" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="556" minutes="9" epochTime="1285255266234" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1408" minutes="23" epochTime="1285256117795" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2385" minutes="39" epochTime="1285257094590" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3225" minutes="53" epochTime="1285257934590" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Trowbridge St" stopTag="108">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="562" minutes="9" epochTime="1285255271384" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="608" minutes="10" epochTime="1285255317722" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1460" minutes="24" epochTime="1285256169283" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2436" minutes="40" epochTime="1285257146078" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3276" minutes="54" epochTime="1285257986078" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Quincy St" stopTag="109">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="628" minutes="10" epochTime="1285255338035" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="675" minutes="11" epochTime="1285255384373" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1526" minutes="25" epochTime="1285256235934" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2503" minutes="41" epochTime="1285257212729" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3343" minutes="55" epochTime="1285258052729" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Holyoke St - Holyoke Gate" stopTag="110_ar">
+  <direction title="Harvard Station via Mass. Ave.">
+    <prediction seconds="715" minutes="11" epochTime="1285255424614" isDeparture="false" dirTag="1_010004v0_0" vehicle="2297" block="C44_219" />
+    <prediction seconds="761" minutes="12" epochTime="1285255470952" isDeparture="false" dirTag="1_010004v0_0" vehicle="2251" block="C01_13" />
+    <prediction seconds="1613" minutes="26" epochTime="1285256322513" isDeparture="false" dirTag="1_010004v0_0" vehicle="0693" block="C01_16" />
+    <prediction seconds="2589" minutes="43" epochTime="1285257299308" isDeparture="false" dirTag="1_010004v0_0" vehicle="2171" block="C01_19" />
+    <prediction seconds="3429" minutes="57" epochTime="1285258139308" isDeparture="false" dirTag="1_010004v0_0" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Holyoke St - Holyoke Gate" stopTag="110">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="715" minutes="11" epochTime="1285255425023" isDeparture="true" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1210" minutes="20" epochTime="1285255920000" isDeparture="true" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2050" minutes="34" epochTime="1285256760000" isDeparture="true" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="2890" minutes="48" epochTime="1285257600000" isDeparture="true" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="3730" minutes="62" epochTime="1285258440000" isDeparture="true" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Johnston Gate" stopTag="2168">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="770" minutes="12" epochTime="1285255479492" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1265" minutes="21" epochTime="1285255974469" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2105" minutes="35" epochTime="1285256814469" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="2945" minutes="49" epochTime="1285257654469" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="3785" minutes="63" epochTime="1285258494469" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Quincy St @ Broadway opp Fogg Museum" stopTag="2166">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="841" minutes="14" epochTime="1285255550321" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1335" minutes="22" epochTime="1285256045298" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2175" minutes="36" epochTime="1285256885298" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3015" minutes="50" epochTime="1285257725298" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="3855" minutes="64" epochTime="1285258565298" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Quincy St @ Harvard St" stopTag="2167">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="908" minutes="15" epochTime="1285255617542" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1403" minutes="23" epochTime="1285256112519" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2243" minutes="37" epochTime="1285256952519" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3083" minutes="51" epochTime="1285257792519" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="3923" minutes="65" epochTime="1285258632519" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Mt Auburn St @ DeWolfe St" stopTag="66">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="969" minutes="16" epochTime="1285255678870" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1464" minutes="24" epochTime="1285256173847" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2304" minutes="38" epochTime="1285257013847" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3144" minutes="52" epochTime="1285257853847" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="3984" minutes="66" epochTime="1285258693847" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Mt Auburn St @ Putnam Ave" stopTag="67">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="1042" minutes="17" epochTime="1285255751458" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1537" minutes="25" epochTime="1285256246435" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2377" minutes="39" epochTime="1285257086435" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3217" minutes="53" epochTime="1285257926435" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="4057" minutes="67" epochTime="1285258766435" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Bay St" stopTag="68">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="1107" minutes="18" epochTime="1285255817019" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1602" minutes="26" epochTime="1285256311996" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2442" minutes="40" epochTime="1285257151996" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3282" minutes="54" epochTime="1285257991996" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="4122" minutes="68" epochTime="1285258831996" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Hancock St" stopTag="69">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="1137" minutes="18" epochTime="1285255847308" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1632" minutes="27" epochTime="1285256342285" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2472" minutes="41" epochTime="1285257182285" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3312" minutes="55" epochTime="1285258022285" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+    <prediction seconds="4152" minutes="69" epochTime="1285258862285" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Sellers St" stopTag="70">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="10" minutes="0" epochTime="1285254719415" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1187" minutes="19" epochTime="1285255896587" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1682" minutes="28" epochTime="1285256391564" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2522" minutes="42" epochTime="1285257231564" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3362" minutes="56" epochTime="1285258071564" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Pleasant St" stopTag="71">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="45" minutes="0" epochTime="1285254755134" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1222" minutes="20" epochTime="1285255932306" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1717" minutes="28" epochTime="1285256427283" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2557" minutes="42" epochTime="1285257267283" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3397" minutes="56" epochTime="1285258107283" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Pearl St" stopTag="72">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="174" minutes="2" epochTime="1285254883473" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1351" minutes="22" epochTime="1285256060645" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1846" minutes="30" epochTime="1285256555622" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2686" minutes="44" epochTime="1285257395622" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3526" minutes="58" epochTime="1285258235622" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Sidney St" stopTag="73">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="298" minutes="4" epochTime="1285255008161" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1475" minutes="24" epochTime="1285256185333" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="1970" minutes="32" epochTime="1285256680310" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2810" minutes="46" epochTime="1285257520310" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3650" minutes="60" epochTime="1285258360310" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Albany St" stopTag="74">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="391" minutes="6" epochTime="1285255101130" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1568" minutes="26" epochTime="1285256278302" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2063" minutes="34" epochTime="1285256773279" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="2903" minutes="48" epochTime="1285257613279" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3743" minutes="62" epochTime="1285258453279" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="84 Massachusetts Ave" stopTag="75">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="492" minutes="8" epochTime="1285255201549" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1669" minutes="27" epochTime="1285256378721" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2164" minutes="36" epochTime="1285256873698" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3004" minutes="50" epochTime="1285257713698" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3844" minutes="64" epochTime="1285258553698" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Memorial Dr" stopTag="76">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="569" minutes="9" epochTime="1285255278668" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1746" minutes="29" epochTime="1285256455840" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2241" minutes="37" epochTime="1285256950817" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3081" minutes="51" epochTime="1285257790817" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="3921" minutes="65" epochTime="1285258630817" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Beacon St" stopTag="77">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="670" minutes="11" epochTime="1285255379957" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1847" minutes="30" epochTime="1285256557129" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2342" minutes="39" epochTime="1285257052106" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3182" minutes="53" epochTime="1285257892106" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="4022" minutes="67" epochTime="1285258732106" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Commonwealth Ave" stopTag="78">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="767" minutes="12" epochTime="1285255476556" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1944" minutes="32" epochTime="1285256653728" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2439" minutes="40" epochTime="1285257148705" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3279" minutes="54" epochTime="1285257988705" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="4119" minutes="68" epochTime="1285258828705" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Newbury St" stopTag="79">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="812" minutes="13" epochTime="1285255522085" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="1989" minutes="33" epochTime="1285256699257" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2484" minutes="41" epochTime="1285257194234" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3324" minutes="55" epochTime="1285258034234" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+    <prediction seconds="4164" minutes="69" epochTime="1285258874234" isDeparture="false" dirTag="1_010003v0_1" vehicle="2171" block="C01_19" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="183 Massachusetts Ave opp Christian Science Ctr" stopTag="80">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="96" minutes="1" epochTime="1285254806312" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="941" minutes="15" epochTime="1285255651344" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2119" minutes="35" epochTime="1285256828516" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2614" minutes="43" epochTime="1285257323493" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3454" minutes="57" epochTime="1285258163493" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Westland Ave" stopTag="81">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="201" minutes="3" epochTime="1285254910551" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1046" minutes="17" epochTime="1285255755583" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2223" minutes="37" epochTime="1285256932755" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2718" minutes="45" epochTime="1285257427732" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3558" minutes="59" epochTime="1285258267732" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Huntington Ave" stopTag="82">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="226" minutes="3" epochTime="1285254936290" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1071" minutes="17" epochTime="1285255781322" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2249" minutes="37" epochTime="1285256958494" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2744" minutes="45" epochTime="1285257453471" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3584" minutes="59" epochTime="1285258293471" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Massachusetts Ave Station" stopTag="187">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="294" minutes="4" epochTime="1285255003749" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1139" minutes="18" epochTime="1285255848781" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2316" minutes="38" epochTime="1285257025953" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2811" minutes="46" epochTime="1285257520930" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3651" minutes="60" epochTime="1285258360930" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Columbus Ave" stopTag="83">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="377" minutes="6" epochTime="1285255086488" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1222" minutes="20" epochTime="1285255931520" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2399" minutes="39" epochTime="1285257108692" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2894" minutes="48" epochTime="1285257603669" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3734" minutes="62" epochTime="1285258443669" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Tremont St" stopTag="84">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="455" minutes="7" epochTime="1285255165147" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1300" minutes="21" epochTime="1285256010179" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2477" minutes="41" epochTime="1285257187351" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="2972" minutes="49" epochTime="1285257682328" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3812" minutes="63" epochTime="1285258522328" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Shawmut Ave" stopTag="85">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="532" minutes="8" epochTime="1285255241986" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1377" minutes="22" epochTime="1285256087018" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2554" minutes="42" epochTime="1285257264190" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3049" minutes="50" epochTime="1285257759167" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3889" minutes="64" epochTime="1285258599167" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Washington St" stopTag="59">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="583" minutes="9" epochTime="1285255292405" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1428" minutes="23" epochTime="1285256137437" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2605" minutes="43" epochTime="1285257314609" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3100" minutes="51" epochTime="1285257809586" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="3940" minutes="65" epochTime="1285258649586" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Harrison Ave" stopTag="854">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="684" minutes="11" epochTime="1285255393464" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1529" minutes="25" epochTime="1285256238496" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2706" minutes="45" epochTime="1285257415668" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3201" minutes="53" epochTime="1285257910645" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4041" minutes="67" epochTime="1285258750645" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Massachusetts Ave @ Albany St" stopTag="856">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="774" minutes="12" epochTime="1285255484013" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1619" minutes="26" epochTime="1285256329045" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2796" minutes="46" epochTime="1285257506217" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3291" minutes="54" epochTime="1285258001194" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4131" minutes="68" epochTime="1285258841194" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Albany St @ Northampton St" stopTag="10099">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="805" minutes="13" epochTime="1285255514442" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1650" minutes="27" epochTime="1285256359474" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2827" minutes="47" epochTime="1285257536646" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3322" minutes="55" epochTime="1285258031623" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4162" minutes="69" epochTime="1285258871623" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Albany St @ Melnea Cass Blvd" stopTag="10100">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="869" minutes="14" epochTime="1285255579181" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1714" minutes="28" epochTime="1285256424213" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2892" minutes="48" epochTime="1285257601385" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3386" minutes="56" epochTime="1285258096362" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4226" minutes="70" epochTime="1285258936362" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Melnea Cass Blvd @ Harrison Ave" stopTag="10101">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="927" minutes="15" epochTime="1285255636380" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1772" minutes="29" epochTime="1285256481412" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="2949" minutes="49" epochTime="1285257658584" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3444" minutes="57" epochTime="1285258153561" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4284" minutes="71" epochTime="1285258993561" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Washington St @ Melnea Cass Blvd" stopTag="61">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="998" minutes="16" epochTime="1285255707690" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1843" minutes="30" epochTime="1285256552722" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="3020" minutes="50" epochTime="1285257729894" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3515" minutes="58" epochTime="1285258224871" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4355" minutes="72" epochTime="1285259064871" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Washington St @ Williams St" stopTag="62">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="1034" minutes="17" epochTime="1285255743909" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1879" minutes="31" epochTime="1285256588941" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="3056" minutes="50" epochTime="1285257766113" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3551" minutes="59" epochTime="1285258261090" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4391" minutes="73" epochTime="1285259101090" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Washington St @ Ruggles St" stopTag="63">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="1070" minutes="17" epochTime="1285255779930" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="1915" minutes="31" epochTime="1285256624962" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="3092" minutes="51" epochTime="1285257802134" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3587" minutes="59" epochTime="1285258297111" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+    <prediction seconds="4427" minutes="73" epochTime="1285259137111" isDeparture="false" dirTag="1_010003v0_1" vehicle="0693" block="C01_16" />
+  </direction>
+</predictions>
+<predictions agencyTitle="MBTA" routeTitle="1" routeTag="1" stopTitle="Dudley Station - Harvard Side" stopTag="64_ar">
+  <direction title="Dudley Station via Mass. Ave.">
+    <prediction seconds="44" minutes="0" epochTime="1285254754097" isDeparture="false" dirTag="1_010003v0_1" vehicle="2280" block="C08_52" />
+    <prediction seconds="1192" minutes="19" epochTime="1285255901759" isDeparture="false" dirTag="1_010003v0_1" vehicle="2284" block="C01_6" />
+    <prediction seconds="2037" minutes="33" epochTime="1285256746791" isDeparture="false" dirTag="1_010003v0_1" vehicle="2190" block="C01_8" />
+    <prediction seconds="3214" minutes="53" epochTime="1285257923963" isDeparture="false" dirTag="1_010003v0_1" vehicle="2297" block="C44_219" />
+    <prediction seconds="3709" minutes="61" epochTime="1285258418940" isDeparture="false" dirTag="1_010003v0_1" vehicle="2251" block="C01_13" />
+  </direction>
+</predictions>
+</body>

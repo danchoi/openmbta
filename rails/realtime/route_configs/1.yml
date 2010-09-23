@@ -1,0 +1,217 @@
+--- 
+route_tag: "1"
+stops: 
+  "64": Dudley Station - Harvard Side
+  "1": Washington St opp Ruggles St
+  "2": Washington St @ Melnea Cass Blvd
+  "6": Melnea Cass Blvd @ Harrison Ave
+  "10003": Albany St opp Randall St
+  "10004": Albany St opp Northampton St
+  "57": Massachusetts Ave @ Albany St
+  "58": Masachusettss Ave @ Harrison Ave
+  "10590": Massachusetts Ave @ Washington St
+  "86": Massachusetts Ave @ Shawmut Ave
+  "87": Massachusetts Ave @ Tremont St
+  "88": Massachusetts Ave @ Columbus Ave
+  "188": Massachusetts Ave @ Massachusetts Ave Station
+  "89": Massachusetts Ave @ St Botolph St
+  "90": Massachusetts Ave @ Westland Ave
+  "91": Massachusetts Ave @ Clearway St
+  "92": Massachusetts Ave @ Belvidere St
+  "93": Massachusetts Ave @ Newbury St
+  "94": Massachusetts Ave @ Commonwealth Ave
+  "95": Massachusetts Ave @ Beacon St
+  "96": Massachusetts Ave @ Memorial Dr
+  "97": 77 Massachusetts Ave
+  "98": Massachusetts Ave @ Vassar St
+  "99": Massachusetts Ave @ Albany St
+  "100": Massachusetts Ave @ Front St
+  "101": Massachusetts Ave @ Main St
+  "102": Massachusetts Ave @ Prospect St
+  "104": Massachusetts Ave @ Bigelow St
+  "105": Massachusetts Ave @ Clinton St
+  "106": Massachusetts Ave @ Hancock St
+  "107": Massachusetts Ave @ Dana St
+  "108": Massachusetts Ave @ Trowbridge St
+  "109": Massachusetts Ave @ Quincy St
+  110_ar: Massachusetts Ave @ Holyoke St - Holyoke Gate
+  "110": Massachusetts Ave @ Holyoke St - Holyoke Gate
+  "2168": Massachusetts Ave @ Johnston Gate
+  "2166": Quincy St @ Broadway opp Fogg Museum
+  "2167": Quincy St @ Harvard St
+  "66": Mt Auburn St @ DeWolfe St
+  "67": Mt Auburn St @ Putnam Ave
+  "68": Massachusetts Ave @ Bay St
+  "69": Massachusetts Ave @ Hancock St
+  "70": Massachusetts Ave @ Sellers St
+  "71": Massachusetts Ave @ Pleasant St
+  "72": Massachusetts Ave @ Pearl St
+  "73": Massachusetts Ave @ Sidney St
+  "74": Massachusetts Ave @ Albany St
+  "75": 84 Massachusetts Ave
+  "76": Massachusetts Ave @ Memorial Dr
+  "77": Massachusetts Ave @ Beacon St
+  "78": Massachusetts Ave @ Commonwealth Ave
+  "79": Massachusetts Ave @ Newbury St
+  "80": 183 Massachusetts Ave opp Christian Science Ctr
+  "81": Massachusetts Ave @ Westland Ave
+  "82": Massachusetts Ave @ Huntington Ave
+  "187": Massachusetts Ave @ Massachusetts Ave Station
+  "83": Massachusetts Ave @ Columbus Ave
+  "84": Massachusetts Ave @ Tremont St
+  "85": Massachusetts Ave @ Shawmut Ave
+  "59": Massachusetts Ave @ Washington St
+  "854": Massachusetts Ave @ Harrison Ave
+  "856": Massachusetts Ave @ Albany St
+  "10099": Albany St @ Northampton St
+  "10100": Albany St @ Melnea Cass Blvd
+  "10101": Melnea Cass Blvd @ Harrison Ave
+  "61": Washington St @ Melnea Cass Blvd
+  "62": Washington St @ Williams St
+  "63": Washington St @ Ruggles St
+  64_ar: Dudley Station - Harvard Side
+directions: 
+- headsign: Dudley Station via Mass. Ave.
+  direction_name: Inbound
+  stops: 
+  - tag: "110"
+    title: Massachusetts Ave @ Holyoke St - Holyoke Gate
+  - tag: "2168"
+    title: Massachusetts Ave @ Johnston Gate
+  - tag: "2166"
+    title: Quincy St @ Broadway opp Fogg Museum
+  - tag: "2167"
+    title: Quincy St @ Harvard St
+  - tag: "66"
+    title: Mt Auburn St @ DeWolfe St
+  - tag: "67"
+    title: Mt Auburn St @ Putnam Ave
+  - tag: "68"
+    title: Massachusetts Ave @ Bay St
+  - tag: "69"
+    title: Massachusetts Ave @ Hancock St
+  - tag: "70"
+    title: Massachusetts Ave @ Sellers St
+  - tag: "71"
+    title: Massachusetts Ave @ Pleasant St
+  - tag: "72"
+    title: Massachusetts Ave @ Pearl St
+  - tag: "73"
+    title: Massachusetts Ave @ Sidney St
+  - tag: "74"
+    title: Massachusetts Ave @ Albany St
+  - tag: "75"
+    title: 84 Massachusetts Ave
+  - tag: "76"
+    title: Massachusetts Ave @ Memorial Dr
+  - tag: "77"
+    title: Massachusetts Ave @ Beacon St
+  - tag: "78"
+    title: Massachusetts Ave @ Commonwealth Ave
+  - tag: "79"
+    title: Massachusetts Ave @ Newbury St
+  - tag: "80"
+    title: 183 Massachusetts Ave opp Christian Science Ctr
+  - tag: "81"
+    title: Massachusetts Ave @ Westland Ave
+  - tag: "82"
+    title: Massachusetts Ave @ Huntington Ave
+  - tag: "187"
+    title: Massachusetts Ave @ Massachusetts Ave Station
+  - tag: "83"
+    title: Massachusetts Ave @ Columbus Ave
+  - tag: "84"
+    title: Massachusetts Ave @ Tremont St
+  - tag: "85"
+    title: Massachusetts Ave @ Shawmut Ave
+  - tag: "59"
+    title: Massachusetts Ave @ Washington St
+  - tag: "854"
+    title: Massachusetts Ave @ Harrison Ave
+  - tag: "856"
+    title: Massachusetts Ave @ Albany St
+  - tag: "10099"
+    title: Albany St @ Northampton St
+  - tag: "10100"
+    title: Albany St @ Melnea Cass Blvd
+  - tag: "10101"
+    title: Melnea Cass Blvd @ Harrison Ave
+  - tag: "61"
+    title: Washington St @ Melnea Cass Blvd
+  - tag: "62"
+    title: Washington St @ Williams St
+  - tag: "63"
+    title: Washington St @ Ruggles St
+  - tag: 64_ar
+    title: Dudley Station - Harvard Side
+- headsign: Harvard Station via Mass. Ave.
+  direction_name: Outbound
+  stops: 
+  - tag: "64"
+    title: Dudley Station - Harvard Side
+  - tag: "1"
+    title: Washington St opp Ruggles St
+  - tag: "2"
+    title: Washington St @ Melnea Cass Blvd
+  - tag: "6"
+    title: Melnea Cass Blvd @ Harrison Ave
+  - tag: "10003"
+    title: Albany St opp Randall St
+  - tag: "10004"
+    title: Albany St opp Northampton St
+  - tag: "57"
+    title: Massachusetts Ave @ Albany St
+  - tag: "58"
+    title: Masachusettss Ave @ Harrison Ave
+  - tag: "10590"
+    title: Massachusetts Ave @ Washington St
+  - tag: "86"
+    title: Massachusetts Ave @ Shawmut Ave
+  - tag: "87"
+    title: Massachusetts Ave @ Tremont St
+  - tag: "88"
+    title: Massachusetts Ave @ Columbus Ave
+  - tag: "188"
+    title: Massachusetts Ave @ Massachusetts Ave Station
+  - tag: "89"
+    title: Massachusetts Ave @ St Botolph St
+  - tag: "90"
+    title: Massachusetts Ave @ Westland Ave
+  - tag: "91"
+    title: Massachusetts Ave @ Clearway St
+  - tag: "92"
+    title: Massachusetts Ave @ Belvidere St
+  - tag: "93"
+    title: Massachusetts Ave @ Newbury St
+  - tag: "94"
+    title: Massachusetts Ave @ Commonwealth Ave
+  - tag: "95"
+    title: Massachusetts Ave @ Beacon St
+  - tag: "96"
+    title: Massachusetts Ave @ Memorial Dr
+  - tag: "97"
+    title: 77 Massachusetts Ave
+  - tag: "98"
+    title: Massachusetts Ave @ Vassar St
+  - tag: "99"
+    title: Massachusetts Ave @ Albany St
+  - tag: "100"
+    title: Massachusetts Ave @ Front St
+  - tag: "101"
+    title: Massachusetts Ave @ Main St
+  - tag: "102"
+    title: Massachusetts Ave @ Prospect St
+  - tag: "104"
+    title: Massachusetts Ave @ Bigelow St
+  - tag: "105"
+    title: Massachusetts Ave @ Clinton St
+  - tag: "106"
+    title: Massachusetts Ave @ Hancock St
+  - tag: "107"
+    title: Massachusetts Ave @ Dana St
+  - tag: "108"
+    title: Massachusetts Ave @ Trowbridge St
+  - tag: "109"
+    title: Massachusetts Ave @ Quincy St
+  - tag: 110_ar
+    title: Massachusetts Ave @ Holyoke St - Holyoke Gate

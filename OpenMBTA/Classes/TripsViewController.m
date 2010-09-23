@@ -131,6 +131,11 @@
 - (void)didFinishLoadingData:(NSString *)rawData {
     if (rawData == nil) return;
     NSDictionary *data = [rawData JSONValue];
+    NSLog(@"%@", data);
+    BOOL isRealTime = NO;
+    if ([data objectForKey:@"realtime"]) {
+        isRealTime = YES;
+    }
     [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];
     //NSLog(@"self stops: %@", self.stops);
@@ -144,7 +149,7 @@
         [mapViewController prepareMap:regionInfo];
         shouldReloadRegion = NO;
     }
-    [mapViewController annotateStops:self.stops imminentStops:self.imminentStops firstStops:self.firstStops];
+    [mapViewController annotateStops:self.stops imminentStops:self.imminentStops firstStops:self.firstStops isRealTime:isRealTime];
     
     [self hideNetworkActivity];
 }
@@ -152,7 +157,7 @@
 
 - (void)toggleView:(id)sender {
     NSUInteger selectedSegment = segmentedControl.selectedSegmentIndex;
-    NSLog(@"segment: %d", selectedSegment);
+
     [currentContentView removeFromSuperview];
     if (selectedSegment == 0) { 
         mapViewController.view.frame = CGRectMake(0, 0, 320, 372); 

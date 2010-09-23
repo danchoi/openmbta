@@ -35,8 +35,8 @@ class NewTripSet
       raise "No stops for params: #{@options.inspect}"
     end
 
-    logger.debug "Trips: #{trips.inspect}"
-    logger.debug "Stops: #{stops.inspect}"
+    #logger.debug "Trips: #{trips.inspect}"
+    #logger.debug "Stops: #{stops.inspect}"
 
     result = { 
       :stops => (stops.inject({}) do |memo, stop|

@@ -1,0 +1,870 @@
+--- 
+:stops: 
+  17012: 
+    :name: Albany St @ Northampton St
+    :lat: 42.333
+    :lng: -71.0742
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:02pm
+      - 196603
+    - - 3:14pm
+      - 196625
+    - - 3:28pm
+      - 196639
+    - - 3:41pm
+      - 196653
+    - - 3:53pm
+      - 193970
+    - - 4:05pm
+      - 193990
+    - - 4:16pm
+      - 194003
+    - - 4:27pm
+      - 194012
+    - - 4:34pm
+      - 194027
+    predictions: &id001 
+      - predicted_arrival: 2010-09-23 11:23:45 -04:00
+        vehicle: "2297"
+      - predicted_arrival: 2010-09-23 11:32:00 -04:00
+        vehicle: "2251"
+      - predicted_arrival: 2010-09-23 11:46:00 -04:00
+        vehicle: 0693
+      - predicted_arrival: 2010-09-23 12:00:00 -04:00
+        vehicle: "2171"
+      - predicted_arrival: 2010-09-23 12:14:00 -04:00
+        vehicle: "2280"
+  17014: 
+    :name: Albany St @ Melnea Cass Blvd
+    :lat: 42.3313
+    :lng: -71.0769
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:04pm
+      - 196603
+    - - 3:16pm
+      - 196625
+    - - 3:30pm
+      - 196639
+    - - 3:43pm
+      - 196653
+    - - 3:55pm
+      - 193970
+    - - 4:07pm
+      - 193990
+    - - 4:18pm
+      - 194003
+    - - 4:29pm
+      - 194012
+    - - 4:36pm
+      - 194027
+    predictions: *id001
+  17015: 
+    :name: Melnea Cass Blvd @ Harrison Ave
+    :lat: 42.332
+    :lng: -71.0792
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:06pm
+      - 196603
+    - - 3:18pm
+      - 196625
+    - - 3:32pm
+      - 196639
+    - - 3:45pm
+      - 196653
+    - - 3:57pm
+      - 193970
+    - - 4:09pm
+      - 193990
+    - - 4:20pm
+      - 194003
+    - - 4:31pm
+      - 194012
+    - - 4:38pm
+      - 194027
+    predictions: *id001
+  17123: 
+    :name: Massachusetts Ave @ Holyoke St - Holyoke Gate
+    :lat: 42.3734
+    :lng: -71.119
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:04pm
+      - 196653
+    - - 3:16pm
+      - 193970
+    - - 3:28pm
+      - 193990
+    - - 3:39pm
+      - 194003
+    - - 3:50pm
+      - 194012
+    - - 3:57pm
+      - 194027
+    predictions: *id001
+  18236: 
+    :name: Massachusetts Ave @ Massachusetts Ave Station
+    :lat: 42.3415
+    :lng: -71.0834
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:05pm
+      - 196625
+    - - 3:19pm
+      - 196639
+    - - 3:32pm
+      - 196653
+    - - 3:44pm
+      - 193970
+    - - 3:56pm
+      - 193990
+    - - 4:07pm
+      - 194003
+    - - 4:18pm
+      - 194012
+    - - 4:25pm
+      - 194027
+    predictions: *id001
+  18481: 
+    :name: Quincy St @ Broadway opp Fogg Museum
+    :lat: 42.3747
+    :lng: -71.1146
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:06pm
+      - 196653
+    - - 3:18pm
+      - 193970
+    - - 3:30pm
+      - 193990
+    - - 3:41pm
+      - 194003
+    - - 3:52pm
+      - 194012
+    - - 3:59pm
+      - 194027
+    predictions: *id001
+  18482: 
+    :name: Quincy St @ Harvard St
+    :lat: 42.3724
+    :lng: -71.1152
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:07pm
+      - 196653
+    - - 3:19pm
+      - 193970
+    - - 3:31pm
+      - 193990
+    - - 3:42pm
+      - 194003
+    - - 3:53pm
+      - 194012
+    - - 4:00pm
+      - 194027
+    predictions: *id001
+  18483: 
+    :name: Massachusetts Ave @ Johnston Gate
+    :lat: 42.3751
+    :lng: -71.1185
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:05pm
+      - 196653
+    - - 3:17pm
+      - 193970
+    - - 3:29pm
+      - 193990
+    - - 3:40pm
+      - 194003
+    - - 3:51pm
+      - 194012
+    - - 3:58pm
+      - 194027
+    predictions: *id001
+  22282: 
+    :name: Massachusetts Ave @ Washington St
+    :lat: 42.3363
+    :lng: -71.0769
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:59pm
+      - 196603
+    - - 3:11pm
+      - 196625
+    - - 3:25pm
+      - 196639
+    - - 3:38pm
+      - 196653
+    - - 3:50pm
+      - 193970
+    - - 4:02pm
+      - 193990
+    - - 4:13pm
+      - 194003
+    - - 4:24pm
+      - 194012
+    - - 4:31pm
+      - 194027
+    predictions: *id001
+  22378: 
+    :name: Washington St @ Melnea Cass Blvd
+    :lat: 42.3326
+    :lng: -71.0812
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:07pm
+      - 196603
+    - - 3:19pm
+      - 196625
+    - - 3:33pm
+      - 196639
+    - - 3:46pm
+      - 196653
+    - - 3:58pm
+      - 193970
+    - - 4:10pm
+      - 193990
+    - - 4:21pm
+      - 194003
+    - - 4:32pm
+      - 194012
+    - - 4:39pm
+      - 194027
+    predictions: *id001
+  22486: 
+    :name: Washington St @ Williams St
+    :lat: 42.3319
+    :lng: -71.0819
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:55pm
+      - 194001
+    - - 3:08pm
+      - 196603
+    - - 3:20pm
+      - 196625
+    - - 3:34pm
+      - 196639
+    - - 3:47pm
+      - 196653
+    - - 3:59pm
+      - 193970
+    - - 4:11pm
+      - 193990
+    - - 4:22pm
+      - 194003
+    - - 4:33pm
+      - 194012
+    - - 4:40pm
+      - 194027
+    predictions: *id001
+  22538: 
+    :name: Washington St @ Ruggles St
+    :lat: 42.331
+    :lng: -71.0829
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:55pm
+      - 194001
+    - - 3:08pm
+      - 196603
+    - - 3:20pm
+      - 196625
+    - - 3:34pm
+      - 196639
+    - - 3:47pm
+      - 196653
+    - - 3:59pm
+      - 193970
+    - - 4:11pm
+      - 193990
+    - - 4:22pm
+      - 194003
+    - - 4:33pm
+      - 194012
+    - - 4:40pm
+      - 194027
+    predictions: *id001
+  22607: 
+    :name: Dudley Station - Harvard Side
+    :lat: 42.3295
+    :lng: -71.0839
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:57pm
+      - 194001
+    - - 3:10pm
+      - 196603
+    - - 3:22pm
+      - 196625
+    - - 3:36pm
+      - 196639
+    - - 3:49pm
+      - 196653
+    - - 4:01pm
+      - 193970
+    - - 4:13pm
+      - 193990
+    - - 4:24pm
+      - 194003
+    - - 4:35pm
+      - 194012
+    - - 4:42pm
+      - 194027
+    predictions: *id001
+  22722: 
+    :name: Mt Auburn St @ DeWolfe St
+    :lat: 42.3709
+    :lng: -71.116
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:55pm
+      - 196639
+    - - 3:07pm
+      - 196653
+    - - 3:19pm
+      - 193970
+    - - 3:31pm
+      - 193990
+    - - 3:42pm
+      - 194003
+    - - 3:53pm
+      - 194012
+    - - 4:00pm
+      - 194027
+    predictions: *id001
+  22810: 
+    :name: Mt Auburn St @ Putnam Ave
+    :lat: 42.3701
+    :lng: -71.1135
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:55pm
+      - 196639
+    - - 3:08pm
+      - 196653
+    - - 3:20pm
+      - 193970
+    - - 3:32pm
+      - 193990
+    - - 3:43pm
+      - 194003
+    - - 3:54pm
+      - 194012
+    - - 4:01pm
+      - 194027
+    predictions: *id001
+  22892: 
+    :name: Massachusetts Ave @ Bay St
+    :lat: 42.369
+    :lng: -71.1104
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:56pm
+      - 196639
+    - - 3:09pm
+      - 196653
+    - - 3:21pm
+      - 193970
+    - - 3:33pm
+      - 193990
+    - - 3:44pm
+      - 194003
+    - - 3:55pm
+      - 194012
+    - - 4:02pm
+      - 194027
+    predictions: *id001
+  22943: 
+    :name: Massachusetts Ave @ Hancock St
+    :lat: 42.3684
+    :lng: -71.1089
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:57pm
+      - 196639
+    - - 3:10pm
+      - 196653
+    - - 3:22pm
+      - 193970
+    - - 3:34pm
+      - 193990
+    - - 3:45pm
+      - 194003
+    - - 3:56pm
+      - 194012
+    - - 4:03pm
+      - 194027
+    predictions: *id001
+  22969: 
+    :name: Massachusetts Ave @ Sellers St
+    :lat: 42.3672
+    :lng: -71.1068
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:58pm
+      - 196639
+    - - 3:11pm
+      - 196653
+    - - 3:23pm
+      - 193970
+    - - 3:35pm
+      - 193990
+    - - 3:46pm
+      - 194003
+    - - 3:57pm
+      - 194012
+    - - 4:04pm
+      - 194027
+    predictions: *id001
+  23231: 
+    :name: Massachusetts Ave @ Pleasant St
+    :lat: 42.3666
+    :lng: -71.1059
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:59pm
+      - 196639
+    - - 3:12pm
+      - 196653
+    - - 3:24pm
+      - 193970
+    - - 3:36pm
+      - 193990
+    - - 3:47pm
+      - 194003
+    - - 3:58pm
+      - 194012
+    - - 4:05pm
+      - 194027
+    predictions: *id001
+  23311: 
+    :name: Massachusetts Ave @ Pearl St
+    :lat: 42.3649
+    :lng: -71.1031
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:00pm
+      - 196639
+    - - 3:13pm
+      - 196653
+    - - 3:25pm
+      - 193970
+    - - 3:37pm
+      - 193990
+    - - 3:48pm
+      - 194003
+    - - 3:59pm
+      - 194012
+    - - 4:06pm
+      - 194027
+    predictions: *id001
+  23394: 
+    :name: Massachusetts Ave @ Sidney St
+    :lat: 42.3628
+    :lng: -71.0995
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:02pm
+      - 196639
+    - - 3:15pm
+      - 196653
+    - - 3:27pm
+      - 193970
+    - - 3:39pm
+      - 193990
+    - - 3:50pm
+      - 194003
+    - - 4:01pm
+      - 194012
+    - - 4:08pm
+      - 194027
+    predictions: *id001
+  23485: 
+    :name: Massachusetts Ave @ Albany St
+    :lat: 42.3608
+    :lng: -71.0962
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:04pm
+      - 196639
+    - - 3:17pm
+      - 196653
+    - - 3:29pm
+      - 193970
+    - - 3:41pm
+      - 193990
+    - - 3:52pm
+      - 194003
+    - - 4:03pm
+      - 194012
+    - - 4:10pm
+      - 194027
+    predictions: *id001
+  23577: 
+    :name: 84 Massachusetts Ave
+    :lat: 42.3591
+    :lng: -71.0938
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:06pm
+      - 196639
+    - - 3:19pm
+      - 196653
+    - - 3:31pm
+      - 193970
+    - - 3:43pm
+      - 193990
+    - - 3:54pm
+      - 194003
+    - - 4:05pm
+      - 194012
+    - - 4:12pm
+      - 194027
+    predictions: *id001
+  23652: 
+    :name: Massachusetts Ave @ Memorial Dr
+    :lat: 42.3574
+    :lng: -71.0929
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:55pm
+      - 196625
+    - - 3:07pm
+      - 196639
+    - - 3:20pm
+      - 196653
+    - - 3:32pm
+      - 193970
+    - - 3:44pm
+      - 193990
+    - - 3:55pm
+      - 194003
+    - - 4:06pm
+      - 194012
+    - - 4:13pm
+      - 194027
+    predictions: *id001
+  23735: 
+    :name: Massachusetts Ave @ Beacon St
+    :lat: 42.3509
+    :lng: -71.0896
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:58pm
+      - 196625
+    - - 3:11pm
+      - 196639
+    - - 3:24pm
+      - 196653
+    - - 3:36pm
+      - 193970
+    - - 3:48pm
+      - 193990
+    - - 3:59pm
+      - 194003
+    - - 4:10pm
+      - 194012
+    - - 4:17pm
+      - 194027
+    predictions: *id001
+  23816: 
+    :name: Massachusetts Ave @ Commonwealth Ave
+    :lat: 42.3487
+    :lng: -71.0885
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:59pm
+      - 196625
+    - - 3:13pm
+      - 196639
+    - - 3:26pm
+      - 196653
+    - - 3:38pm
+      - 193970
+    - - 3:50pm
+      - 193990
+    - - 4:01pm
+      - 194003
+    - - 4:12pm
+      - 194012
+    - - 4:19pm
+      - 194027
+    predictions: *id001
+  23970: 
+    :name: Massachusetts Ave @ Newbury St
+    :lat: 42.3479
+    :lng: -71.0879
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:59pm
+      - 196625
+    - - 3:13pm
+      - 196639
+    - - 3:26pm
+      - 196653
+    - - 3:38pm
+      - 193970
+    - - 3:50pm
+      - 193990
+    - - 4:01pm
+      - 194003
+    - - 4:12pm
+      - 194012
+    - - 4:19pm
+      - 194027
+    predictions: *id001
+  24024: 
+    :name: 183 Massachusetts Ave opp Christian Science Ctr
+    :lat: 42.3442
+    :lng: -71.0863
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:02pm
+      - 196625
+    - - 3:16pm
+      - 196639
+    - - 3:29pm
+      - 196653
+    - - 3:41pm
+      - 193970
+    - - 3:53pm
+      - 193990
+    - - 4:04pm
+      - 194003
+    - - 4:15pm
+      - 194012
+    - - 4:22pm
+      - 194027
+    predictions: *id001
+  24038: 
+    :name: Massachusetts Ave @ Westland Ave
+    :lat: 42.3427
+    :lng: -71.0851
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:03pm
+      - 196625
+    - - 3:17pm
+      - 196639
+    - - 3:30pm
+      - 196653
+    - - 3:42pm
+      - 193970
+    - - 3:54pm
+      - 193990
+    - - 4:05pm
+      - 194003
+    - - 4:16pm
+      - 194012
+    - - 4:23pm
+      - 194027
+    predictions: *id001
+  24136: 
+    :name: Massachusetts Ave @ Huntington Ave
+    :lat: 42.3425
+    :lng: -71.0847
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:04pm
+      - 196625
+    - - 3:18pm
+      - 196639
+    - - 3:31pm
+      - 196653
+    - - 3:43pm
+      - 193970
+    - - 3:55pm
+      - 193990
+    - - 4:06pm
+      - 194003
+    - - 4:17pm
+      - 194012
+    - - 4:24pm
+      - 194027
+    predictions: *id001
+  24246: 
+    :name: Massachusetts Ave @ Columbus Ave
+    :lat: 42.3406
+    :lng: -71.0819
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:06pm
+      - 196625
+    - - 3:20pm
+      - 196639
+    - - 3:33pm
+      - 196653
+    - - 3:45pm
+      - 193970
+    - - 3:57pm
+      - 193990
+    - - 4:08pm
+      - 194003
+    - - 4:19pm
+      - 194012
+    - - 4:26pm
+      - 194027
+    predictions: *id001
+  24316: 
+    :name: Massachusetts Ave @ Tremont St
+    :lat: 42.3391
+    :lng: -71.0803
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:56pm
+      - 196603
+    - - 3:08pm
+      - 196625
+    - - 3:22pm
+      - 196639
+    - - 3:35pm
+      - 196653
+    - - 3:47pm
+      - 193970
+    - - 3:59pm
+      - 193990
+    - - 4:10pm
+      - 194003
+    - - 4:21pm
+      - 194012
+    - - 4:28pm
+      - 194027
+    predictions: *id001
+  24413: 
+    :name: Massachusetts Ave @ Shawmut Ave
+    :lat: 42.3372
+    :lng: -71.078
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 2:58pm
+      - 196603
+    - - 3:10pm
+      - 196625
+    - - 3:24pm
+      - 196639
+    - - 3:37pm
+      - 196653
+    - - 3:49pm
+      - 193970
+    - - 4:01pm
+      - 193990
+    - - 4:12pm
+      - 194003
+    - - 4:23pm
+      - 194012
+    - - 4:30pm
+      - 194027
+    predictions: *id001
+  24470: 
+    :name: Massachusetts Ave @ Harrison Ave
+    :lat: 42.3348
+    :lng: -71.0751
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:00pm
+      - 196603
+    - - 3:12pm
+      - 196625
+    - - 3:26pm
+      - 196639
+    - - 3:39pm
+      - 196653
+    - - 3:51pm
+      - 193970
+    - - 4:03pm
+      - 193990
+    - - 4:14pm
+      - 194003
+    - - 4:25pm
+      - 194012
+    - - 4:32pm
+      - 194027
+    predictions: *id001
+  24502: 
+    :name: Massachusetts Ave @ Albany St
+    :lat: 42.3336
+    :lng: -71.0736
+    :num_stoppings: "10"
+    :next_arrivals: 
+    - - 3:02pm
+      - 196603
+    - - 3:14pm
+      - 196625
+    - - 3:28pm
+      - 196639
+    - - 3:41pm
+      - 196653
+    - - 3:53pm
+      - 193970
+    - - 4:05pm
+      - 193990
+    - - 4:16pm
+      - 194003
+    - - 4:27pm
+      - 194012
+    - - 4:34pm
+      - 194027
+    predictions: *id001
+:first_stop: 
+- Massachusetts Ave @ Holyoke St - Holyoke Gate
+:ordered_trip_ids: 
+- 194001
+- 196603
+- 196625
+- 196639
+- 196653
+- 193970
+- 193990
+- 194003
+- 194012
+- 194027
+:imminent_stop_ids: 
+- "22486"
+- "24316"
+- "23652"
+- "22722"
+:ordered_stop_ids: 
+- 17123
+- 18483
+- 18481
+- 18482
+- 22722
+- 22810
+- 22892
+- 22943
+- 22969
+- 23231
+- 23311
+- 23394
+- 23485
+- 23577
+- 23652
+- 23735
+- 23816
+- 23970
+- 24024
+- 24038
+- 24136
+- 18236
+- 24246
+- 24316
+- 24413
+- 22282
+- 24470
+- 24502
+- 17012
+- 17014
+- 17015
+- 22378
+- 22486
+- 22538
+- 22607
+:region: 
+  :center_lat: 42.354466
+  :center_lng: -71.0963
+  :lat_span: 0.0433200000000003
+  :lng_span: 0.0408600000000007
