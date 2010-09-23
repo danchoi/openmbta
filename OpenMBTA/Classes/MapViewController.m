@@ -125,7 +125,8 @@
     }
     //NSLog(@"min distance: %f; closest stop: %@", minDistance, self.nearestStopAnnotation.subtitle);
 
-    [self.tripsViewController.scheduleViewController highlightNearestStop:self.nearestStopAnnotation.stop_id];
+    ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.tripsViewController.scheduleViewController;
+    [scheduleViewController highlightNearestStop:self.nearestStopAnnotation.stop_id];
     // Show callout of nearest stop.  We delay this to give the map time to
     // draw the pins for the stops
     if (self.triggerCalloutTimer != nil)
@@ -145,8 +146,11 @@
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals {
     NSMutableArray *times = [NSMutableArray array];
+    int count = 0;
     for (NSArray *pair in nextArrivals) {
         [times addObject:[pair objectAtIndex:0]];
+        count = count + 1;
+        if (count == 3) break;
     }
     return [nextArrivals count] > 0 ? [times componentsJoinedByString:@" "] : @"No more arrivals today";
 }
