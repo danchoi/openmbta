@@ -52,6 +52,7 @@ class Service < ActiveRecord::Base
 
   def self.populate
     Generator.generate('calendar.txt') do |row|
+      puts row.inspect
       end_date = Date.parse(row[9])
       if end_date < Date.today
         next

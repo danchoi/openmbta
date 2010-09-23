@@ -19,5 +19,15 @@ namespace :mbta do
     Trip.denormalize
   end
 
+  desc "Update trips to contain direction, after older version of populate"
+  task :add_directions => [:environment, 'db:migrate'] do
+    Generator.generate('trips.txt') do |row|
+      trip = Trip.find_by_mbta_id row[2]
+      next unless trip
+      trip.direction_id = row[4]
+      trip.save
+      puts "Added direction #{trip.direction_id} to trip #{trip.mbta_id}"
+    end
+  end
 
 end

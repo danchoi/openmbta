@@ -38,7 +38,8 @@ class Trip < ActiveRecord::Base
       Trip.create :route => route,
         :service => service,
         :mbta_id => row[2],
-        :headsign => row[3]
+        :headsign => row[3],
+        :direction_id => row[4]
     end
   end
 

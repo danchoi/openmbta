@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091021190030) do
+ActiveRecord::Schema.define(:version => 20100922203013) do
 
   create_table "alerts", :force => true do |t|
     t.string   "title"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20091021190030) do
     t.date    "service_end_date"
     t.string  "route_short_name"
     t.string  "schedule_type"
+    t.integer "direction_id"
   end
 
   add_index "trips", ["end_time"], :name => "index_trips_on_end_time"
