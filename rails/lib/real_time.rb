@@ -24,6 +24,8 @@ class RealTime
         data[:stops][stop_id][:next_arrivals] = stop_predictions['predictions'].
           select {|p| p['predicted_arrival'] >= Time.now}.
           map {|q| [format_time(q['predicted_arrival'].to_s.split(/\s/)[1][/(\d+:\d+)/,1]), q['vehicle']]}
+
+        data[:stops][stop_id][:next_arrivals] << "(real-time)"
       end
 
       imminent_stop_ids = []
