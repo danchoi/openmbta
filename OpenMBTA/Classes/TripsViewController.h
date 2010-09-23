@@ -31,8 +31,8 @@
     NSArray *imminentStops;  
     NSArray *firstStops;
     NSDictionary *regionInfo;
-    NSString *selected_stop_id;
-    NSString *nearest_stop_id;    
+    NSString *selectedStopId;
+
 
     MapViewController *mapViewController;
     UISegmentedControl *segmentedControl;
@@ -56,8 +56,8 @@
 @property (nonatomic, retain) NSArray *imminentStops;
 @property (nonatomic, retain) NSArray *firstStops;
 @property (nonatomic, retain) NSDictionary *regionInfo;
-@property (nonatomic,copy) NSString *selected_stop_id;
-@property (nonatomic,copy) NSString *nearest_stop_id;
+@property (nonatomic,copy) NSString *selectedStopId;
+
 @property (nonatomic, retain) IBOutlet MapViewController *mapViewController;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) IBOutlet ScheduleViewController *scheduleViewController;
@@ -65,7 +65,7 @@
 @property (nonatomic, retain) IBOutlet StopsViewController *stopsViewController;
 - (void)addFindStopButton;
 - (void)toggleView:(id)sender;
-
+- (void)highlightStopNamed:(NSString *)stopName;
 
 - (void)startLoadingData;
 - (void)showStopsController:(id)sender;

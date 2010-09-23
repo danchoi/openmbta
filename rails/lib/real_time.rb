@@ -39,8 +39,8 @@ class RealTime
           end
           last_vehicle = vehicle
         end
-        data[:imminent_stop_ids] = imminent_stop_ids
       end
+      data[:imminent_stop_ids] = imminent_stop_ids
       puts "NEW IMMINENT STOP IDS: #{imminent_stop_ids.inspect}"
 
       data['realtime'] = true

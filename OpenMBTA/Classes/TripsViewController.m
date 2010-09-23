@@ -18,7 +18,7 @@
 
 @implementation TripsViewController
 @synthesize contentView;
-@synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selected_stop_id, nearest_stop_id;
+@synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selectedStopId;
 @synthesize location;
 @synthesize mapViewController, scheduleViewController;
 @synthesize segmentedControl;
@@ -32,6 +32,7 @@
     shouldReloadRegion = YES;
     shouldReloadData = YES;    
     mapViewController.tripsViewController = self;
+    stopsViewController.tripsViewController = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -84,7 +85,7 @@
     self.regionInfo = nil;
     self.headsign = nil;
     self.route_short_name = nil;
-    self.selected_stop_id = nil;
+    self.selectedStopId = nil;
     self.location = nil;
     [locationManager release];
     [operationQueue release];
@@ -156,10 +157,12 @@
     
     NSMutableArray *orderedStopNames = [NSMutableArray arrayWithCapacity:[self.orderedStopIds count]];
     for (id stopId in self.orderedStopIds) {
-        NSLog(@"ordered stop id: %@", (NSNumber *)stopId);
-        
+        NSDictionary *stop = [self.stops objectForKey:[stopId stringValue] ];
+        [orderedStopNames addObject:[stop objectForKey:@"name"]];
     }
+    [self.stopsViewController loadStopNames:orderedStopNames];
     [self hideNetworkActivity];
+
 }
 
 
@@ -187,6 +190,11 @@
     [self presentModalViewController:self.stopsViewController animated:YES];
 }
 
+- (void)highlightStopNamed:(NSString *)stopName {
+    NSLog(@"highlight stop : %@", stopName);
+
+    
+}
 
 
 @end

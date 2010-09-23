@@ -56,8 +56,6 @@
 - (void)prepareMap:(NSDictionary *)regionInfo {
     [mapView removeAnnotations:self.stopAnnotations];
     [self.stopAnnotations removeAllObjects];
-
-    tripsViewController.selected_stop_id = nil;
     
     if ([regionInfo objectForKey:@"center_lat"] == nil) 
         return;
@@ -139,7 +137,7 @@
     
 }
 
-- (void)triggerCallout:(StopAnnotation *)stopAnnotation {
+- (void)triggerCallout:(NSDictionary *)userInfo {
     [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; 
 }
 
