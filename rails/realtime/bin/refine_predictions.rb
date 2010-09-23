@@ -23,21 +23,3 @@ end
 route_config.delete('stops')
 puts route_config.to_yaml
 
-exit
-
-doc.xpath("//predictions").each do |predictions|
-  predictions['routeTag']
-  predictions['stopTitle']
-  predictions['stopTag']
-
-  predictions.children.search("direction") do |direction|
-    direction['title']
-    direction.children.search('prediction') do |prediction|
-      prediction['seconds']
-      prediction['minutes']
-      prediction['epochTime']
-      prediction['vehicle']
-    end
-  end
-end
-

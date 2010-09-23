@@ -131,7 +131,7 @@
 - (void)didFinishLoadingData:(NSString *)rawData {
     if (rawData == nil) return;
     NSDictionary *data = [rawData JSONValue];
-    NSLog(@"%@", data);
+
     BOOL isRealTime = NO;
     if ([data objectForKey:@"realtime"]) {
         isRealTime = YES;
