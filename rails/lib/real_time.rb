@@ -23,7 +23,7 @@ class RealTime
             s['title'] == stop_data[:name]
           } 
 
-        if stop_predictions.nil? || stop_predictions.empty?
+        if stop_predictions.nil? || stop_predictions['predictions'].empty?
           next
         end
         # replace next_arrivals
@@ -36,8 +36,8 @@ class RealTime
         end
       end
 
-      imminent_stop_ids = []
       if ! data[:stops][ data[:ordered_stop_ids].first ][:next_arrivals].empty?
+        imminent_stop_ids = []
         last_vehicle = data[:stops][ data[:ordered_stop_ids].first ][:next_arrivals][0][1]
 
         data[:ordered_stop_ids].each do |stop_id|
@@ -49,11 +49,11 @@ class RealTime
           end
           last_vehicle = vehicle
         end
+        data['realtime'] = true
+        data[:imminent_stop_ids] = imminent_stop_ids
+        puts "NEW IMMINENT STOP IDS: #{imminent_stop_ids.inspect}"
       end
-      data[:imminent_stop_ids] = imminent_stop_ids
-      puts "NEW IMMINENT STOP IDS: #{imminent_stop_ids.inspect}"
 
-      data['realtime'] = true
       puts data.inspect
       data
     else

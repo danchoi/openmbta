@@ -68,7 +68,6 @@
     NSURL *url = [[NSURL alloc] initWithString: urlString];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
     [url release];
-    NSLog(@" loading webview: %@", webView);
     [webView loadRequest:self.request];        
 }
 
