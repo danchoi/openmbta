@@ -13,7 +13,9 @@ class RealTime
       predictions = YAML::load(File.read(predictions_file))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
 
-      # what if directions.nil?
+      if directions.nil?
+        return data # abort
+      end
 
       data[:stops].each do |stop_id, stop_data|
         stop_predictions = direction['stops'].
