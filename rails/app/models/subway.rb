@@ -39,7 +39,6 @@ module Subway
     memo
   end
 
-  # subway headsigns are often too ambiguous; so we need to group by first_stop
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
     results = ActiveRecord::Base.connection.select_all("select routes.id as route_id,  trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where routes.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign").
@@ -82,7 +81,7 @@ module Subway
     service_ids = Service.active_on(date).map(&:id)
     now = now.time
 
-    conditions = if first_stop 
+    conditions = if first_stop && first_stop != 'all points'
                    ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}' and first_stop = ? ", route_ids, headsign, service_ids, first_stop]
                  else
                    ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids]
@@ -108,7 +107,7 @@ module Subway
   end
 
   def self.generate_headsigns(values)
-    values.map {|x| [x["headsign"], x["trips_remaining"].to_i] }
+    values.map {|x| [x["headsign"], x["trips_remaining"].to_i, 'all points'] }
   end
 
   def self.generate_new_headsigns(values)

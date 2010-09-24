@@ -5,7 +5,8 @@ class RoutesController < ApplicationController
   def index
     @transport_type = params[:transport_type].downcase.gsub(' ', "_").to_sym
     @result = if @transport_type == :subway 
-                Route.new_routes(@transport_type, Now.new)
+                Route.routes(@transport_type, Now.new)
+                #Route.new_routes(@transport_type, Now.new)
               else 
                 Route.routes(@transport_type, Now.new)
               end
