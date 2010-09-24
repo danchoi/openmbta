@@ -8,13 +8,13 @@ module TimeFormatting
     if hour > 24
       hour = hour - 24
     elsif hour == 12
-      suffix = 'pm'
+      suffix = 'p'
     elsif hour == 24
       hour = 12
-      suffix = 'am'
+      suffix = 'a'
     elsif hour > 12
       hour = hour - 12
-      suffix = 'pm'
+      suffix = 'p'
     end
     "#{hour}:#{min}#{suffix}"
   end
