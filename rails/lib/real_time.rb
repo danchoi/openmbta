@@ -13,7 +13,7 @@ class RealTime
       predictions = YAML::load(File.read(predictions_file))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
 
-      if directions.nil?
+      if direction.nil?
         return data # abort
       end
 
@@ -23,7 +23,10 @@ class RealTime
             s['title'] == stop_data[:name]
           } 
 
-        next unless stop_predictions
+        if stop_predictions.nil? || stop_predictions.empty?
+          next
+        end
+        # replace next_arrivals
         data[:stops][stop_id][:next_arrivals] = stop_predictions['predictions'].
           select {|p| p['predicted_arrival'] >= Time.now}.
           map {|q| [format_time(q['predicted_arrival'].to_s.split(/\s/)[1][/(\d+:\d+)/,1]), q['vehicle']]}[0,3]
