@@ -19,7 +19,10 @@ class TripsController < ApplicationController
                              :now => Now.new(base_time),
                              :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
 
-          @result = RealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route)
+          if @transport_type == :bus && (base_time > 2.minutes.from_now || base_time < 2.minutes.from_now)
+            logger.debug "searching for REAL TIME data"
+            @result = RealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route)
+          end
 
         else # first version
           @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 

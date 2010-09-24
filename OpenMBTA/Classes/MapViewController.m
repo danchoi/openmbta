@@ -146,14 +146,13 @@
     NSMutableArray *times = [NSMutableArray array];
     int count = 0;
     for (NSArray *pair in nextArrivals) {
-        [times addObject:[pair objectAtIndex:0]];
+        [times addObject:[pair objectAtIndex:0]];       
         count = count + 1;
-        if (count == 3) break;
+        if (count == 4) break;
     }
     NSString *title;
     if ( [nextArrivals count] > 0 ) {
-        title = [NSString stringWithFormat:@"%@ %@", [times componentsJoinedByString:@" "],
-                 (isRealTime ? @"(real-time)" : @"")];
+        title = [times componentsJoinedByString:@" "];
     } else {
         title = @"No more arrivals today";
     }

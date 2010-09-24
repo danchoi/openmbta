@@ -10,6 +10,9 @@ class RoutesController < ApplicationController
                 Route.routes(@transport_type, Now.new)
               end
 
+#    if @transport_type == :bus
+#      logger.debug @result.inspect
+#    end
     respond_to do |format|
 
       format.json {
