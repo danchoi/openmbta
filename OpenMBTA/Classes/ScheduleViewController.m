@@ -9,6 +9,8 @@
 #import "ScheduleViewController.h"
 #import "ServerUrl.h"
 #import "GridCell.h"
+#import "GetRemoteDataOperation.h"
+#import "JSON.h"
 
 const int kRowHeight = 50;
 
@@ -66,7 +68,6 @@ const int kRowHeight = 50;
 - (void)highlightNearestStop:(NSString *)stopId {
     self.nearestStopId = stopId;
 }
-
 
 // FLOATING GRID
 

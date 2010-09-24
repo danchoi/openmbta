@@ -21,7 +21,6 @@
 
     NSString *nearestStopId;
     NSArray *stops;
-    
 }
 @property (nonatomic, copy) NSString *nearestStopId;
 @property (nonatomic, retain) IBOutlet GridScrollView *scrollView;	// holds floating grid
@@ -34,4 +33,5 @@
 - (void)createFloatingGrid;
 - (void)addLabels;
 - (void)releaseLabels;
+
 @end
