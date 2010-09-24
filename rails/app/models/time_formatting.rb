@@ -14,6 +14,7 @@ module TimeFormatting
       suffix = 'a'
     elsif hour > 12
       hour = hour - 12
+      suffix = 'p'
     elsif hour == 0
       suffix = 'a'
       hour = 12 # midnight
