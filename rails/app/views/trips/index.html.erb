@@ -47,7 +47,6 @@ If your device allows geo-location, the closest stop will be <span class="exampl
   <% @result[:ordered_stop_ids].each do |stop_id| %>
     <tr  class='row-header stop-name'>
       <td id="<%=stop_id%>" colspan="<%= @cols %>" class="stop-name-header">
-        <span class="stop-detail" style='float:right'><a href="<%= url_for(params.merge(:stop_id => stop_id, :controller => 'stop_arrivals')) %>">detail</a></span>
         <span class="stop-name-span">
           <%= @result[:stops][stop_id][:name] %>
         </span>
