@@ -7,19 +7,31 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GridScrollView.h"
 
+@class MyScrollView;
 
-@interface ScheduleViewController : UIViewController <UIWebViewDelegate> {
+@interface ScheduleViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate> {
+	GridScrollView *scrollView;	// holds floating grid
+    UITableView *tableView;
+    NSMutableArray *gridTimes;
+    BOOL stopAddingLabels;
+    BOOL gridCreated;
+    NSNumber *gridID;
 
-    UIWebView *webView;
-    NSURLRequest *request;    
     NSString *nearestStopId;
+    NSArray *stops;
     
 }
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) NSURLRequest *request;
 @property (nonatomic, copy) NSString *nearestStopId;
+@property (nonatomic, retain) IBOutlet GridScrollView *scrollView;	// holds floating grid
+@property (nonatomic, retain) NSMutableArray *gridTimes;
+@property (nonatomic, copy) NSNumber *gridID;
+@property (nonatomic, retain) NSArray *stops;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
-- (void)loadWebViewWithTransportType:(NSString *)transportType routeShortName:(NSString *)routeShortName headsign:(NSString *)headsign firstStop:(NSString *)firstStop;
 - (void)highlightNearestStop:(NSString *)stopId;
+- (void)createFloatingGrid;
+- (void)addLabels;
+- (void)releaseLabels;
 @end

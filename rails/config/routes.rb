@@ -12,6 +12,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/trips.:format', :controller => 'trips'
   map.connect '/trips/:id', :controller => 'trips', :action => "show"
 
+  map.connect '/grid/:route_short_name', :controller => :grids, :action => 'show'
+
   map.connect '/stop_arrivals', :controller => 'stop_arrivals', :action => 'index'
 
   map.connect '/alerts', :controller => 'alerts', :action => 'index'

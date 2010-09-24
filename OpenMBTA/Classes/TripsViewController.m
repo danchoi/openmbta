@@ -142,6 +142,9 @@
     }
     [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];
+
+    // get GRID data
+
     //NSLog(@"self stops: %@", self.stops);
     self.orderedStopIds = [data objectForKey:@"ordered_stop_ids"]; // will use in the table
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
@@ -177,11 +180,10 @@
 
     } else { 
         scheduleViewController.view.frame = CGRectMake(0, 0, 320, 372); 
-        scheduleViewController.webView.frame = CGRectMake(0, 0, 320, 280); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
-        [scheduleViewController loadWebViewWithTransportType:self.transportType routeShortName:self.route_short_name headsign:self.headsign firstStop:self.firstStop];
 
+        // do something
     }
 }
 

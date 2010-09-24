@@ -40,6 +40,9 @@
 		DEC080B2107EC1F300B22DE8 /* TripsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC080B1107EC1F300B22DE8 /* TripsMapViewController.m */; };
 		DECDFB0B124BF36A005064D6 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFB09124BF36A005064D6 /* StopsViewController.m */; };
 		DECDFB0C124BF36A005064D6 /* StopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECDFB0A124BF36A005064D6 /* StopsViewController.xib */; };
+		DECDFC7A124D3F18005064D6 /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECDFC79124D3F18005064D6 /* GridCell.xib */; };
+		DECDFC83124D3F5B005064D6 /* GridScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFC82124D3F5B005064D6 /* GridScrollView.m */; };
+		DECDFC94124D3FB2005064D6 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFC93124D3FB2005064D6 /* GridCell.m */; };
 		DEE669A6107ED7B400A29725 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE669A5107ED7B400A29725 /* StopAnnotation.m */; };
 		DEE867F9107FC56C0067992D /* GetRemoteDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE867F8107FC56C0067992D /* GetRemoteDataOperation.m */; };
 		DEE8687F107FD09E0067992D /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8687E107FD09E0067992D /* RoutesViewController.m */; };
@@ -115,6 +118,11 @@
 		DECDFB08124BF36A005064D6 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
 		DECDFB09124BF36A005064D6 /* StopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewController.m; sourceTree = "<group>"; };
 		DECDFB0A124BF36A005064D6 /* StopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StopsViewController.xib; sourceTree = "<group>"; };
+		DECDFC79124D3F18005064D6 /* GridCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridCell.xib; sourceTree = "<group>"; };
+		DECDFC81124D3F5B005064D6 /* GridScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridScrollView.h; sourceTree = "<group>"; };
+		DECDFC82124D3F5B005064D6 /* GridScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridScrollView.m; sourceTree = "<group>"; };
+		DECDFC92124D3FB2005064D6 /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
+		DECDFC93124D3FB2005064D6 /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 		DEE669A4107ED7B400A29725 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		DEE669A5107ED7B400A29725 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 		DEE867F7107FC56C0067992D /* GetRemoteDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRemoteDataOperation.h; sourceTree = "<group>"; };
@@ -170,6 +178,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DECDFC92124D3FB2005064D6 /* GridCell.h */,
+				DECDFC93124D3FB2005064D6 /* GridCell.m */,
+				DECDFC81124D3F5B005064D6 /* GridScrollView.h */,
+				DECDFC82124D3F5B005064D6 /* GridScrollView.m */,
+				DECDFC79124D3F18005064D6 /* GridCell.xib */,
 				DE4213041184891300757B6A /* TweetsViewController.h */,
 				DE4213051184891300757B6A /* TweetsViewController.m */,
 				DEE872A810837B440067992D /* Reachability.h */,
@@ -375,6 +388,7 @@
 				DE220F08124A477C00E87057 /* MapViewController.xib in Resources */,
 				DE220FC5124A6E9A00E87057 /* ScheduleViewController.xib in Resources */,
 				DECDFB0C124BF36A005064D6 /* StopsViewController.xib in Resources */,
+				DECDFC7A124D3F18005064D6 /* GridCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +426,8 @@
 				DE220F07124A477C00E87057 /* MapViewController.m in Sources */,
 				DE220FC4124A6E9A00E87057 /* ScheduleViewController.m in Sources */,
 				DECDFB0B124BF36A005064D6 /* StopsViewController.m in Sources */,
+				DECDFC83124D3F5B005064D6 /* GridScrollView.m in Sources */,
+				DECDFC94124D3FB2005064D6 /* GridCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
