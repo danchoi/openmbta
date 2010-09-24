@@ -8,7 +8,8 @@ class RealTime
     headsign = params[:headsign]
     route_short_name = params[:route_short_name]
     predictions_file = "#{Rails.root}/realtime/predictions/#{route_short_name}.yml"
-    if File.exist? predictions_file
+
+    if File.exist?(predictions_file) && (File.mtime(predictions_file) > 30.minutes.ago)
       predictions = YAML::load(File.read(predictions_file))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
 
