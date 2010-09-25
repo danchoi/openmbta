@@ -208,9 +208,12 @@ const int kCellWidth = 37;
     selectedRow = row;
     float x = self.scrollView.contentOffset.x;
     float maxY = self.scrollView.contentSize.height - 280;
-    float y = MIN( (row * kRowHeight), maxY);
-    CGPoint contentOffset = CGPointMake(x , y);
-    [self.scrollView setContentOffset:contentOffset animated:YES];
+    float newY = row *kRowHeight;
+    if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
+        float y = MIN(newY, maxY);
+        CGPoint contentOffset = CGPointMake(x , y);
+        [self.scrollView setContentOffset:contentOffset animated:YES];        
+    }
     [tableView reloadData];
     
 }
