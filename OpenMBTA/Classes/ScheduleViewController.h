@@ -17,7 +17,6 @@
     UITableView *tableView;
     NSMutableArray *gridTimes;
     BOOL stopAddingLabels;
-    BOOL gridCreated;
     NSNumber *gridID;
 
     NSString *nearestStopId;
@@ -32,7 +31,6 @@
 
 - (void)highlightNearestStop:(NSString *)stopId;
 - (void)createFloatingGrid;
-- (void)addLabels;
-- (void)releaseLabels;
+- (void)clearGrid;
 
 @end

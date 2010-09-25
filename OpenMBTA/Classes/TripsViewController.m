@@ -112,6 +112,7 @@
 // This calls the server
 - (void)startLoadingData {    
     [self showNetworkActivity];
+    [self.scheduleViewController clearGrid];
 
     // We need to substitute a different character for the ampersand in the
     // headsign because Rails splits parameters on ampersands, even escaped
@@ -134,7 +135,7 @@
 - (void)didFinishLoadingData:(NSString *)rawData {
     if (rawData == nil) return;
     NSDictionary *data = [rawData JSONValue];
-    self.scheduleViewController.stops = [data objectForKey:@"grid"];
+    scheduleViewController.stops = [data objectForKey:@"grid"];
     [scheduleViewController createFloatingGrid];
     
     BOOL isRealTime = NO;
@@ -185,9 +186,8 @@
         scheduleViewController.view.frame = CGRectMake(0, 0, 320, 300); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
+        [scheduleViewController createFloatingGrid];        
 
-
-        // do something
     }
 }
 

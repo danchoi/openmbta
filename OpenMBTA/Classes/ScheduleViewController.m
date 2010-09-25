@@ -60,8 +60,9 @@ const int kCellWidth = 37;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
-    [self.view bringSubviewToFront:self.scrollView];
+//   [self.tableView reloadData];
+//    [self.view bringSubviewToFront:self.scrollView];
+    self.scrollView.scrollEnabled = YES;
     [super viewWillAppear:animated];
 }
 
@@ -87,14 +88,20 @@ const int kCellWidth = 37;
 
 // FLOATING GRID
 
+- (void)clearGrid {
+    self.stops = [NSArray array];
+    self.tableView.hidden = YES;    
+    self.scrollView.hidden = YES;
+}
+
 - (void)createFloatingGrid {
+
+    self.tableView.hidden = NO;
     [self.tableView reloadData];
+
     self.scrollView.stops = [NSArray array];
     self.scrollView.hidden = YES;
-    NSLog(@"starting to creating grid");
-    
 
-    gridCreated = YES;
     if ([self.stops count] == 0) 
         return;
     NSDictionary *firstRow = [self.stops objectAtIndex:0];
@@ -104,20 +111,12 @@ const int kCellWidth = 37;
     int gridWidth = (numColumns * kCellWidth) + 10;
     int gridHeight = ([self.stops count] * kRowHeight) + 50;
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
-    [scrollView setBackgroundColor:[UIColor clearColor]];
-
-    [scrollView setCanCancelContentTouches:NO];
-    scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    scrollView.clipsToBounds = YES;		// default is NO, we want to restrict drawing within our scrollview
-    scrollView.scrollEnabled = YES;
-    scrollView.directionalLockEnabled = YES;
-    //scrollView.pagingEnabled = YES;
-    scrollView.delegate = self;
     scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 
     
     scrollView.stops = self.stops;
+    [self.view bringSubviewToFront:scrollView];
     
-    [self.view addSubview:scrollView];
+//    [self.view addSubview:scrollView];
     
     [scrollView reloadData];
     

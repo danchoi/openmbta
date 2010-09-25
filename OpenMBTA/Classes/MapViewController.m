@@ -10,6 +10,7 @@
 #import "TripsViewController.h"
 #import "StopAnnotation.h"
 #import "ScheduleViewController.h"
+#import "StopsViewController.h"
 
 @implementation MapViewController
 @synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location;

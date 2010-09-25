@@ -24,15 +24,23 @@
         // we will recycle tiles by removing them from the view and storing them here
         reusableTiles = [[NSMutableSet alloc] init];
         
-                [self setBackgroundColor:[UIColor redColor]];
+        
         
         // we need a tile container view to hold all the tiles. This is the view that is returned
         // in the -viewForZoomingInScrollView: delegate method, and it also detects taps.
         
         
         // no rows or columns are visible at first; note this by making the firsts very high and the lasts very low
+        
         firstVisibleRow = firstVisibleColumn = NSIntegerMax;
         lastVisibleRow  = lastVisibleColumn  = NSIntegerMin;
+        [self setBackgroundColor:[UIColor clearColor]];
+        [self setCanCancelContentTouches:NO];
+        self.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+        self.clipsToBounds = YES;		// default is NO, we want to restrict drawing within our scrollview
+        self.scrollEnabled = YES;
+        self.directionalLockEnabled = YES;
+        //self.pagingEnabled = YES;
         
     }
     return self;
@@ -49,10 +57,10 @@
     CGPoint location = [touch locationInView:self];
     NSString *coord = NSStringFromCGPoint(location); 
     if(touch.tapCount == 1) { 
-        NSLog(@"1 tap: %@", coord);
+        //NSLog(@"1 tap: %@", coord);
     } 
     if(touch.tapCount == 2) { 
-        NSLog(@"2 taps: %@", coord);
+        //NSLog(@"2 taps: %@", coord);
     } 
     [super touchesEnded:touches withEvent:event];
 } 
