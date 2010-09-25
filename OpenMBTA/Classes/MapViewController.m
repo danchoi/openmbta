@@ -135,8 +135,16 @@
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
+    MKCoordinateRegion region;    
+    region.center.latitude = self.selectedStopAnnotation.coordinate.latitude;
+    region.center.longitude = self.selectedStopAnnotation.coordinate.longitude;
+    region.span.latitudeDelta = mapView.region.span.latitudeDelta;
+    region.span.longitudeDelta = mapView.region.span.longitudeDelta;
+    [mapView setRegion:region animated:YES];
+    
     [mapView selectAnnotation:self.selectedStopAnnotation animated:YES]; 
-}
+    
+ }
 
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals isRealTime:(BOOL)isRealTime {
