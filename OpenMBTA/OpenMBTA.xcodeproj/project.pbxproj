@@ -37,7 +37,6 @@
 		DEC08072107EBC3900B22DE8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC0806B107EBC3900B22DE8 /* SBJsonParser.m */; };
 		DEC08073107EBC3900B22DE8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC0806D107EBC3900B22DE8 /* SBJsonWriter.m */; };
 		DEC08091107EBE0C00B22DE8 /* trips-bus-1.json in Resources */ = {isa = PBXBuildFile; fileRef = DEC08090107EBE0C00B22DE8 /* trips-bus-1.json */; };
-		DEC080B2107EC1F300B22DE8 /* TripsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC080B1107EC1F300B22DE8 /* TripsMapViewController.m */; };
 		DECDFB0B124BF36A005064D6 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFB09124BF36A005064D6 /* StopsViewController.m */; };
 		DECDFB0C124BF36A005064D6 /* StopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECDFB0A124BF36A005064D6 /* StopsViewController.xib */; };
 		DECDFC7A124D3F18005064D6 /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECDFC79124D3F18005064D6 /* GridCell.xib */; };
@@ -47,7 +46,6 @@
 		DEE867F9107FC56C0067992D /* GetRemoteDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE867F8107FC56C0067992D /* GetRemoteDataOperation.m */; };
 		DEE8687F107FD09E0067992D /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8687E107FD09E0067992D /* RoutesViewController.m */; };
 		DEE870DA10835AEA0067992D /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE870D810835AEA0067992D /* RootViewController.xib */; };
-		DEE870DB10835AEA0067992D /* TripsMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE870D910835AEA0067992D /* TripsMapViewController.xib */; };
 		DEE870EE10835BF50067992D /* RoutesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE870ED10835BF50067992D /* RoutesViewController.xib */; };
 		DEE872AA10837B440067992D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE872A910837B440067992D /* Reachability.m */; };
 		DEE872B410837B6C0067992D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE872B310837B6C0067992D /* SystemConfiguration.framework */; };
@@ -113,8 +111,6 @@
 		DEC0806C107EBC3900B22DE8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		DEC0806D107EBC3900B22DE8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		DEC08090107EBE0C00B22DE8 /* trips-bus-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "trips-bus-1.json"; path = "DummyData/trips-bus-1.json"; sourceTree = "<group>"; };
-		DEC080B0107EC1F300B22DE8 /* TripsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsMapViewController.h; sourceTree = "<group>"; };
-		DEC080B1107EC1F300B22DE8 /* TripsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsMapViewController.m; sourceTree = "<group>"; };
 		DECDFB08124BF36A005064D6 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
 		DECDFB09124BF36A005064D6 /* StopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewController.m; sourceTree = "<group>"; };
 		DECDFB0A124BF36A005064D6 /* StopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StopsViewController.xib; sourceTree = "<group>"; };
@@ -131,7 +127,6 @@
 		DEE8687D107FD09E0067992D /* RoutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesViewController.h; sourceTree = "<group>"; };
 		DEE8687E107FD09E0067992D /* RoutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesViewController.m; sourceTree = "<group>"; };
 		DEE870D810835AEA0067992D /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
-		DEE870D910835AEA0067992D /* TripsMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsMapViewController.xib; sourceTree = "<group>"; };
 		DEE870ED10835BF50067992D /* RoutesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesViewController.xib; sourceTree = "<group>"; };
 		DEE872A810837B440067992D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DEE872A910837B440067992D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -191,9 +186,6 @@
 				DEE870D810835AEA0067992D /* RootViewController.xib */,
 				1D3623240D0F684500981E51 /* OpenMBTAAppDelegate.h */,
 				1D3623250D0F684500981E51 /* OpenMBTAAppDelegate.m */,
-				DEC080B0107EC1F300B22DE8 /* TripsMapViewController.h */,
-				DEC080B1107EC1F300B22DE8 /* TripsMapViewController.m */,
-				DEE870D910835AEA0067992D /* TripsMapViewController.xib */,
 				DEE669A4107ED7B400A29725 /* StopAnnotation.h */,
 				DEE669A5107ED7B400A29725 /* StopAnnotation.m */,
 				DEE867F7107FC56C0067992D /* GetRemoteDataOperation.h */,
@@ -372,7 +364,6 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				DEC08091107EBE0C00B22DE8 /* trips-bus-1.json in Resources */,
 				DEE870DA10835AEA0067992D /* RootViewController.xib in Resources */,
-				DEE870DB10835AEA0067992D /* TripsMapViewController.xib in Resources */,
 				DEE870EE10835BF50067992D /* RoutesViewController.xib in Resources */,
 				DEE873DF1083B5770067992D /* TAlertsViewController.xib in Resources */,
 				DEE874841083BB090067992D /* HelpViewController.xib in Resources */,
@@ -408,7 +399,6 @@
 				DEC08071107EBC3900B22DE8 /* SBJsonBase.m in Sources */,
 				DEC08072107EBC3900B22DE8 /* SBJsonParser.m in Sources */,
 				DEC08073107EBC3900B22DE8 /* SBJsonWriter.m in Sources */,
-				DEC080B2107EC1F300B22DE8 /* TripsMapViewController.m in Sources */,
 				DEE669A6107ED7B400A29725 /* StopAnnotation.m in Sources */,
 				DEE867F9107FC56C0067992D /* GetRemoteDataOperation.m in Sources */,
 				DEE8687F107FD09E0067992D /* RoutesViewController.m in Sources */,
