@@ -55,7 +55,7 @@
             routeNameLabel.text = self.route_short_name;            
         }
     }
-    [self addFindStopButton];
+
     [super viewWillAppear:animated];
     [self toggleView:nil];
 }
