@@ -32,7 +32,7 @@
     NSArray *firstStops;
     NSDictionary *regionInfo;
     NSString *selectedStopId;
-
+    NSMutableArray *orderedStopNames;
 
     MapViewController *mapViewController;
     UISegmentedControl *segmentedControl;
@@ -63,6 +63,7 @@
 @property (nonatomic, retain) IBOutlet ScheduleViewController *scheduleViewController;
 @property (nonatomic, retain) UIView *currentContentView;
 @property (nonatomic, retain) IBOutlet StopsViewController *stopsViewController;
+@property (nonatomic, retain) NSMutableArray *orderedStopNames;
 - (void)addFindStopButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;

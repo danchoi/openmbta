@@ -21,6 +21,8 @@
 
     NSString *nearestStopId;
     NSArray *stops;
+
+    NSString *selectedStopName;
 }
 @property (nonatomic, copy) NSString *nearestStopId;
 @property (nonatomic, retain) IBOutlet GridScrollView *scrollView;	// holds floating grid
@@ -28,9 +30,11 @@
 @property (nonatomic, copy) NSNumber *gridID;
 @property (nonatomic, retain) NSArray *stops;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) NSString *selectedStopName;
 
 - (void)highlightNearestStop:(NSString *)stopId;
 - (void)createFloatingGrid;
 - (void)clearGrid;
+- (void)highlightRow:(int)row;
 
 @end

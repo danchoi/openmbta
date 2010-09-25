@@ -16,17 +16,14 @@ const int kRowHeight = 36;
 const int kCellWidth = 37;
 
 @implementation ScheduleViewController
-@synthesize stops, nearestStopId;
+@synthesize stops, nearestStopId, selectedStopName;
 @synthesize tableView, scrollView, gridTimes, gridID;
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
+        self.stops = [NSArray array];
     }
     return self;
 }
-*/
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,6 +61,7 @@ const int kCellWidth = 37;
 //    [self.view bringSubviewToFront:self.scrollView];
     self.scrollView.scrollEnabled = YES;
     [super viewWillAppear:animated];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -146,10 +144,7 @@ const int kCellWidth = 37;
     label.backgroundColor = [UIColor clearColor];
     
     return (UIView *)label; 
-
 }
-
-
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
@@ -182,8 +177,8 @@ const int kCellWidth = 37;
         cell = [nib objectAtIndex:0];
 
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
-        cell.accessoryType =  UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;        
+        cell.accessoryType =  UITableViewCellAccessoryNone; 
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         
     }
     NSDictionary *stopDict = [[self.stops objectAtIndex:indexPath.row] objectForKey:@"stop"];;
@@ -193,6 +188,20 @@ const int kCellWidth = 37;
     cell.textLabel.textColor = [UIColor blackColor];        
     cell.detailTextLabel.text =  @" ";
     return cell;
+}
+
+- (void)highlightRow:(int)row {
+    if ([self.stops count] == 0) return;
+    
+    float x = self.scrollView.contentOffset.x;
+    CGPoint contentOffset = CGPointMake(x , row * 36 );
+    [self.scrollView setContentOffset:contentOffset animated:YES];
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+
+
+
 }
 
 

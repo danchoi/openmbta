@@ -24,6 +24,7 @@
 @synthesize segmentedControl;
 @synthesize currentContentView;
 @synthesize stopsViewController;
+@synthesize orderedStopNames;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -80,6 +81,7 @@
 - (void)dealloc {
     self.imminentStops = nil;
     self.orderedStopIds = nil;
+    self.orderedStopNames = nil;
     self.firstStops = nil;    
     self.stops = nil;
     self.regionInfo = nil;
@@ -162,12 +164,12 @@
     }
     [mapViewController annotateStops:self.stops imminentStops:self.imminentStops firstStops:self.firstStops isRealTime:isRealTime];
     
-    NSMutableArray *orderedStopNames = [NSMutableArray arrayWithCapacity:[self.orderedStopIds count]];
+    self.orderedStopNames = [NSMutableArray arrayWithCapacity:[self.orderedStopIds count]];
     for (id stopId in self.orderedStopIds) {
         NSDictionary *stop = [self.stops objectForKey:[stopId stringValue] ];
-        [orderedStopNames addObject:[stop objectForKey:@"name"]];
+        [self.orderedStopNames addObject:[stop objectForKey:@"name"]];
     }
-    [self.stopsViewController loadStopNames:orderedStopNames];
+    [self.stopsViewController loadStopNames:self.orderedStopNames];
     [self hideNetworkActivity];
 
 }
@@ -198,6 +200,10 @@
 
 - (void)highlightStopNamed:(NSString *)stopName {
     [self.mapViewController highlightStopNamed:stopName];
+
+    int row = [self.orderedStopNames indexOfObject:stopName];
+    [self.scheduleViewController highlightRow:row];
+
 }
 
 
