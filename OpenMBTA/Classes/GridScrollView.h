@@ -14,7 +14,6 @@
 @interface GridScrollView : UIScrollView {
     id <GridScrollViewDataSource>  dataSource;
     
-    CGSize                          tileSize;
     NSMutableSet *reusableTiles;    
     
     // we use the following ivars to keep track of which rows and columns are visible
@@ -23,7 +22,6 @@
     NSArray *stops;
 }
 @property (nonatomic, assign) id <GridScrollViewDataSource> dataSource;
-@property (nonatomic, assign) CGSize tileSize;
 @property (nonatomic, retain) NSArray *stops;
 
 

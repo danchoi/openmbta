@@ -90,7 +90,7 @@ const int kCellWidth = 37;
 - (void)createFloatingGrid {
     [self.tableView reloadData];
     self.scrollView.stops = [NSArray array];
-    [scrollView reloadData];
+    self.scrollView.hidden = YES;
     NSLog(@"starting to creating grid");
     
 
@@ -110,9 +110,10 @@ const int kCellWidth = 37;
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     scrollView.clipsToBounds = YES;		// default is NO, we want to restrict drawing within our scrollview
     scrollView.scrollEnabled = YES;
+    scrollView.directionalLockEnabled = YES;
+    //scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
     scrollView.frame = CGRectMake(10, 10, 310, 430); 
-    scrollView.tileSize = CGSizeMake(kCellWidth, kRowHeight); 
     
     scrollView.stops = self.stops;
     
@@ -124,7 +125,6 @@ const int kCellWidth = 37;
 
 
 - (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {
- 
     if ((row >= [self.stops count])  || (column >= [[[self.stops objectAtIndex:row] objectForKey:@"times"] count])) {
         return nil;
     }

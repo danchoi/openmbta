@@ -182,7 +182,7 @@
         [contentView addSubview:mapViewController.view];
 
     } else { 
-        scheduleViewController.view.frame = CGRectMake(0, 0, 320, 372); 
+        scheduleViewController.view.frame = CGRectMake(0, 0, 320, 342); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
 
