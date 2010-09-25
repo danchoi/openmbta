@@ -13,7 +13,7 @@
 #import "StopsViewController.h"
 
 @implementation MapViewController
-@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName;
+@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName, initialRegion;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -68,11 +68,13 @@
     region.center.longitude = [[regionInfo objectForKey:@"center_lng"] floatValue];
     region.span.latitudeDelta = [[regionInfo objectForKey:@"lat_span"] floatValue];
     region.span.longitudeDelta = [[regionInfo objectForKey:@"lng_span"] floatValue];
-    
+    self.initialRegion = region;
+    zoomInOnSelect = YES;
     [mapView setRegion:region animated:NO];
     [mapView regionThatFits:region];
     mapView.hidden = NO;
 }
+
 - (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops isRealTime:(BOOL)isRealTime {
     
     [self.mapView removeAnnotations: self.mapView.annotations];
@@ -146,19 +148,29 @@
                                    userInfo: nil
                                     repeats: NO];
     
+
+    
+    
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
     MKCoordinateRegion region;    
     region.center.latitude = self.selectedStopAnnotation.coordinate.latitude;
     region.center.longitude = self.selectedStopAnnotation.coordinate.longitude;
-    region.span.latitudeDelta = mapView.region.span.latitudeDelta;
-    region.span.longitudeDelta = mapView.region.span.longitudeDelta;
+    
+    if (zoomInOnSelect == YES) {
+        NSLog(@"zooming in");
+        region.span.latitudeDelta = initialRegion.span.latitudeDelta * 0.5;
+        region.span.longitudeDelta = initialRegion.span.longitudeDelta * 0.5;
+        zoomInOnSelect = NO;
+    } else {
+        region.span.latitudeDelta = mapView.region.span.latitudeDelta;
+        region.span.longitudeDelta = mapView.region.span.longitudeDelta;
+    }
     [mapView setRegion:region animated:YES];
-    
+
     [mapView selectAnnotation:self.selectedStopAnnotation animated:YES]; 
-    
- }
+     }
 
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals isRealTime:(BOOL)isRealTime {
