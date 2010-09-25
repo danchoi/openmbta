@@ -193,6 +193,7 @@
             [scheduleViewController createFloatingGrid];        
             gridCreated = YES;
         }
+        [self.scheduleViewController scrollViewDidScroll:self.scheduleViewController.scrollView]; // to align table with grid
     }
 }
 

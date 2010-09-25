@@ -186,10 +186,10 @@ const int kCellWidth = 37;
     NSString *stopName =  [stopDict objectForKey:@"name"];
     
     if (indexPath.row == selectedRow)  {
-        cell.selected = YES; // this is buggy, use textColor instead as signal
+
         cell.textLabel.textColor = [UIColor redColor];        
     } else {
-        cell.selected = NO;
+
         cell.textLabel.textColor = [UIColor blackColor];        
     }
 
