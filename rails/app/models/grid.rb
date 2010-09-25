@@ -3,6 +3,7 @@ class Grid
 
 
   def initialize(route_short_name, headsign, first_stop=nil)
+    puts "GRID FOR #{route_short_name}, #{headsign}"
     now = Now.new
     date = now.date
     service_ids = Service.active_on(date).map(&:id)

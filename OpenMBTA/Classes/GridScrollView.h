@@ -8,9 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol GridScrollViewDataSource;
+
 
 @interface GridScrollView : UIScrollView {
+    id <GridScrollViewDataSource>  dataSource;
+    
+    CGSize                          tileSize;
+    NSMutableSet *reusableTiles;    
+    
+    // we use the following ivars to keep track of which rows and columns are visible
+    int firstVisibleRow, firstVisibleColumn, lastVisibleRow, lastVisibleColumn;
 
+    NSArray *stops;
 }
+@property (nonatomic, assign) id <GridScrollViewDataSource> dataSource;
+@property (nonatomic, assign) CGSize tileSize;
+@property (nonatomic, retain) NSArray *stops;
+
+
+- (UIView *)dequeueReusableTile;  // Used by the delegate to acquire an already allocated tile, in lieu of allocating a new one.
+
+- (void)reloadData;
+
+
+@end
+
+@protocol GridScrollViewDataSource <NSObject>
+- (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column;
 
 @end

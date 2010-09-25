@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "GridScrollView.h"
 
+@protocol GridScrollViewDataSource;
 @class MyScrollView;
 
-@interface ScheduleViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate> {
+@interface ScheduleViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, GridScrollViewDataSource> {
 	GridScrollView *scrollView;	// holds floating grid
     UITableView *tableView;
     NSMutableArray *gridTimes;

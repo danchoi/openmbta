@@ -12,7 +12,8 @@
 #import "GetRemoteDataOperation.h"
 #import "JSON.h"
 
-const int kRowHeight = 50;
+const int kRowHeight = 36;
+const int kCellWidth = 37;
 
 @implementation ScheduleViewController
 @synthesize stops, nearestStopId;
@@ -59,9 +60,24 @@ const int kRowHeight = 50;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self.tableView reloadData];
+    [self.view bringSubviewToFront:self.scrollView];
+    [super viewWillAppear:animated];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"viewWillDisappear");
+    //[self performSelectorInBackground:@selector(releaseLabels) withObject:nil];
+    stopAddingLabels = YES;
+    //[self releaseLabels];
+
+    [super viewWillDisappear:animated];
+}
+
 
 
 
@@ -72,100 +88,69 @@ const int kRowHeight = 50;
 // FLOATING GRID
 
 - (void)createFloatingGrid {
+    [self.tableView reloadData];
+    self.scrollView.stops = [NSArray array];
+    [scrollView reloadData];
     NSLog(@"starting to creating grid");
-    //self.scrollView = nil; // destroy old scrollView
+    
 
     gridCreated = YES;
-
+    if ([self.stops count] == 0) 
+        return;
     NSDictionary *firstRow = [self.stops objectAtIndex:0];
     NSArray *timesForFirstRow = [firstRow objectForKey:@"times"];
     NSInteger numColumns = [timesForFirstRow count];
 
-    int gridWidth = (numColumns * 50) + 10;
+    int gridWidth = (numColumns * kCellWidth) + 10;
     int gridHeight = ([self.stops count] * kRowHeight) + 50;
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
     [scrollView setBackgroundColor:[UIColor clearColor]];
-    //[scrollView setBackgroundColor:[UIColor redColor]];
+
     [scrollView setCanCancelContentTouches:NO];
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     scrollView.clipsToBounds = YES;		// default is NO, we want to restrict drawing within our scrollview
     scrollView.scrollEnabled = YES;
     scrollView.delegate = self;
+    scrollView.frame = CGRectMake(10, 10, 310, 430); 
+    scrollView.tileSize = CGSizeMake(kCellWidth, kRowHeight); 
+    
+    scrollView.stops = self.stops;
+    
     [self.view addSubview:scrollView];
-
-
-    [self performSelectorInBackground:@selector(addLabels) withObject:nil];
+    
+    [scrollView reloadData];
+    
 }
 
-- (void)addLabels { // do in background thread
 
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    stopAddingLabels = NO; // set to yes when viewWillDisappear
-
-    [self releaseLabels];
-
-    NSDictionary *firstRow = [self.stops objectAtIndex:0];
-    NSArray *timesForFirstRow = [firstRow objectForKey:@"times"];
-    NSInteger numColumns = [timesForFirstRow count];
-
-    for (int row = 0; row < [self.stops count]; row++) {
-        if (stopAddingLabels) {
-            NSLog(@"break from adding labels");
-            break;
-        }
-
-        for (int i = 1; i <= numColumns; i++) {
-            if (stopAddingLabels) {
-                NSLog(@"break from adding labels");
-                break;
-            }
-
-            int width = 50;
-            int height = kRowHeight;
-            int x = (i * width) - 40;
-            int y = (row * kRowHeight) + 1;
-            CGRect rect = CGRectMake(x, y, width, height);
-            UILabel *label = [[UILabel alloc] initWithFrame: rect ];
-
-            id stringOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:(i - 1)];
-            if (stringOrNull == [NSNull null]) {
-                label.text = @" ";
-            } else {
-                NSString *time = (NSString *)stringOrNull;
-                label.text = time;
-            }
-
-            if (i % 2 == 0)
-                label.textColor = [UIColor grayColor];
-            else
-                label.textColor = [UIColor blackColor];
-
-            label.font = [UIFont systemFontOfSize: 11];
-            label.backgroundColor = [UIColor clearColor];
-            
-            [self.scrollView addSubview:label];
-
-            [label release];
-        }
+- (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {
+ 
+    if ((row >= [self.stops count])  || (column >= [[[self.stops objectAtIndex:row] objectForKey:@"times"] count])) {
+        return nil;
     }
-    NSLog(@"done creating new labels");
+    UILabel *label = [[UILabel alloc] init];
+    id stringOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
 
-    [self scrollViewDidScroll:(id)self.scrollView];
-    [self.scrollView setNeedsDisplay];
-
-    [pool release];
-}
-
-- (void)releaseLabels { 
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    for (UIView *label in [self.scrollView subviews]) {
-        //NSLog(@"removing label %@", [label class]);
-        [label removeFromSuperview];
+    if (stringOrNull == [NSNull null]) {
+        label.text = @" ";
+    } else {
+        NSString *time = (NSString *)stringOrNull;
+        label.text = time;
     }
+    
+    if (column % 2 == 0)
+        label.textColor = [UIColor grayColor];
+    else
+        label.textColor = [UIColor blackColor];
+    
+    label.font = [UIFont systemFontOfSize: 11];
+    label.backgroundColor = [UIColor clearColor];
+    
+    return (UIView *)label; 
 
-    [pool release];
 }
+
+
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {

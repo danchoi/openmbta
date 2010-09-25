@@ -10,11 +10,15 @@ class TripsController < ApplicationController
     respond_to do |format|
       format.json { 
         # pass in options[:now] to set different base time
-        if params[:version] == "2"
+        if params[:version] == "2" || params[:version] == "3"
+          @first_stop = params[:first_stop]
+          if @first_stop == "(null)"
+            @first_stop = nil
+          end
           @result = NewTripSet.new(:offset => params[:offset], 
                                    :limit => 10,
                                    :headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
-                                   :first_stop => params[:first_stop],
+                                   :first_stop => @first_stop,
                              :route_short_name => (@route = params[:route_short_name]),
                              :now => Now.new(base_time),
                              :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
@@ -22,6 +26,19 @@ class TripsController < ApplicationController
           if @transport_type == :bus && (base_time < 2.minutes.from_now && base_time > 2.minutes.ago)
             logger.debug "searching for REAL TIME data"
             @result = RealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route)
+          end
+
+          # add schedule grid
+          if params[:version] == '3'
+            logger.debug("ADDING GRID")
+
+            if @transport_type == :commuter_rail
+              @headsign = @headsign.sub(/^To /, '')
+              @route = "CR-#{@route}"
+            end
+
+            grid = Grid.new(@route, @headsign, @first_stop)
+            @result.merge!(:grid => grid.grid)
           end
 
         else # first version

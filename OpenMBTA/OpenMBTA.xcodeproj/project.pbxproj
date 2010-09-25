@@ -180,8 +180,6 @@
 			children = (
 				DECDFC92124D3FB2005064D6 /* GridCell.h */,
 				DECDFC93124D3FB2005064D6 /* GridCell.m */,
-				DECDFC81124D3F5B005064D6 /* GridScrollView.h */,
-				DECDFC82124D3F5B005064D6 /* GridScrollView.m */,
 				DECDFC79124D3F18005064D6 /* GridCell.xib */,
 				DE4213041184891300757B6A /* TweetsViewController.h */,
 				DE4213051184891300757B6A /* TweetsViewController.m */,
@@ -236,6 +234,8 @@
 				DECDFB08124BF36A005064D6 /* StopsViewController.h */,
 				DECDFB09124BF36A005064D6 /* StopsViewController.m */,
 				DECDFB0A124BF36A005064D6 /* StopsViewController.xib */,
+				DECDFC81124D3F5B005064D6 /* GridScrollView.h */,
+				DECDFC82124D3F5B005064D6 /* GridScrollView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -438,7 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -446,8 +446,8 @@
 				GCC_PREFIX_HEADER = OpenMBTA_Prefix.pch;
 				INFOPLIST_FILE = "OpenMBTA-Info.plist";
 				PRODUCT_NAME = OpenMBTA;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03B729CC-3ECF-4B6F-8150-A404CA73684C";
-				SDKROOT = iphonesimulator4.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};

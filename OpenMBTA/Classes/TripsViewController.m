@@ -117,7 +117,7 @@
     // headsign because Rails splits parameters on ampersands, even escaped
     // ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?version=2&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@&first_stop=%@",
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?version=3&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@&first_stop=%@",
                         ServerURL, 
                         self.route_short_name, 
                         headsignAmpersandEscaped, 
@@ -134,7 +134,9 @@
 - (void)didFinishLoadingData:(NSString *)rawData {
     if (rawData == nil) return;
     NSDictionary *data = [rawData JSONValue];
-
+    self.scheduleViewController.stops = [data objectForKey:@"grid"];
+    [scheduleViewController createFloatingGrid];
+    
     BOOL isRealTime = NO;
     if ([data objectForKey:@"realtime"]) {
         isRealTime = YES;
@@ -143,8 +145,9 @@
     [self checkForMessage:data];
     self.stops = [data objectForKey:@"stops"];
 
-    // get GRID data
+    // construct GRID
 
+    
     //NSLog(@"self stops: %@", self.stops);
     self.orderedStopIds = [data objectForKey:@"ordered_stop_ids"]; // will use in the table
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
@@ -182,6 +185,7 @@
         scheduleViewController.view.frame = CGRectMake(0, 0, 320, 372); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
+
 
         // do something
     }
