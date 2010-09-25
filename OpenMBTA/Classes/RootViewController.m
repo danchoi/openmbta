@@ -8,7 +8,7 @@
 #import "Preferences.h"
 
 @interface RootViewController (Private)
-- (TripsMapViewController *)tripsMapViewController;
+- (TripsViewController *)tripsMapViewController;
 
 @end
 
@@ -158,16 +158,15 @@
         [self tripsMapViewController].shouldReloadRegion = YES;
         [self tripsMapViewController].shouldReloadData = YES;
 
-        [[self tripsMapViewController] resetBaseTime];
         [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
 
      
     }
 }
 
-- (TripsMapViewController *)tripsMapViewController {
+- (TripsViewController *)tripsMapViewController {
     if (tripsMapViewController == nil) {
-        tripsMapViewController = [[TripsMapViewController alloc] initWithNibName:@"TripsMapViewController" bundle:nil];
+        tripsMapViewController = [[TripsViewController alloc] initWithNibName:@"TripsViewController" bundle:nil];
     }
     return tripsMapViewController;
 }

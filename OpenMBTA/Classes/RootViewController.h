@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-#import "TripsMapViewController.h"
+#import "TripsViewController.h"
 @class RoutesViewController;
 @class TAlertsViewController;
 @class TweetsViewController;
@@ -18,7 +18,7 @@
     RoutesViewController *routesViewController;
     TAlertsViewController *tAlertsViewController;
     TweetsViewController *tweetsViewController;
-    TripsMapViewController *tripsMapViewController;
+    TripsViewController *tripsMapViewController;
     NSOperationQueue *operationQueue;
     NSArray *menu;
     NSArray *bookmarks;

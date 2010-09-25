@@ -15,10 +15,12 @@
 #import "MapViewController.h"
 #import "ScheduleViewController.h"
 #import "StopsViewController.h"
+#import "Preferences.h"
+
 
 @implementation TripsViewController
 @synthesize contentView;
-@synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selectedStopId;
+@synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selectedStopId, bookmarkButton ;
 @synthesize location;
 @synthesize mapViewController, scheduleViewController;
 @synthesize segmentedControl;
@@ -38,6 +40,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self addBookmarkButton];
     if (self.shouldReloadData) {
         
         self.stops = [NSArray array];
@@ -105,18 +108,50 @@
     [super dealloc];
 }
 
+- (BOOL)isBookmarked {
+    Preferences *prefs = [Preferences sharedInstance]; 
+    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
+    return ([prefs isBookmarked:bookmark]);
+}
 
-- (void)addFindStopButton; {
+- (void)addBookmarkButton; {
     if (self.navigationItem.rightBarButtonItem != nil)
         return;
     
-    UIBarButtonItem *findStopButton = [[UIBarButtonItem alloc]
-                                         initWithTitle:@"Find Stop"
-                                         style:UIBarButtonItemStyleBordered
-                                         target:self 
-                                         action:@selector(showStopsController:)];
-    self.navigationItem.rightBarButtonItem = findStopButton;
+    if ([self isBookmarked]) {
+        self.bookmarkButton = [[UIBarButtonItem alloc]
+                               initWithTitle:@"Bookmarked"
+                               style:UIBarButtonItemStyleDone
+                               target:self 
+                               action:@selector(toggleBookmark:)];
+        
+        
+    } else {
+        self.bookmarkButton = [[UIBarButtonItem alloc]
+                               initWithTitle:@"Bookmark"
+                               style:UIBarButtonItemStylePlain
+                               target:self 
+                               action:@selector(toggleBookmark:)];
+    }
+
+    self.navigationItem.rightBarButtonItem = self.bookmarkButton;
 }
+
+
+-(void)toggleBookmark:(id)sender {
+    if ([self isBookmarked]) {
+        Preferences *prefs = [Preferences sharedInstance]; 
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
+        [prefs removeBookmark: bookmark];
+    } else {
+        Preferences *prefs = [Preferences sharedInstance]; 
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
+        [prefs addBookmark: bookmark];
+    }
+    self.navigationItem.rightBarButtonItem = nil;
+    [self addBookmarkButton];
+}
+
 
 - (void)reloadData:(id)sender {    
     self.stops = [NSArray array];    

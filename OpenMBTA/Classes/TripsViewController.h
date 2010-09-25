@@ -41,6 +41,7 @@
     UIView *currentContentView;
     StopsViewController *stopsViewController;
     BOOL gridCreated;
+    UIBarButtonItem *bookmarkButton; 
 }
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;
@@ -65,11 +66,15 @@
 @property (nonatomic, retain) UIView *currentContentView;
 @property (nonatomic, retain) IBOutlet StopsViewController *stopsViewController;
 @property (nonatomic, retain) NSMutableArray *orderedStopNames;
-- (void)addFindStopButton;
+@property (nonatomic, retain) UIBarButtonItem *bookmarkButton; 
+- (void)addBookmarkButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;
 - (void)highlightStopPosition:(int)pos;
 - (void)startLoadingData;
 - (void)showStopsController:(id)sender;
 - (void)reloadData:(id)sender;
+- (void)toggleBookmark:(id)sender;
+- (BOOL)isBookmarked;
+- (void)toggleBookmark:(id)sender;
 @end
