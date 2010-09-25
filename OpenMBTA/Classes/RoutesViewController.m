@@ -5,7 +5,6 @@
 
 @interface RoutesViewController (Private)
 - (TripsViewController *)tripsViewController;
-- (TripsMapViewController *)tripsMapViewController;
 - (void)startLoadingData;
 - (void)didFinishLoadingData:(NSString *)rawData;
 @end
@@ -199,12 +198,6 @@
  // [anotherViewController release];
 }
 
-- (TripsMapViewController *)tripsMapViewController {
-    if (tripsMapViewController == nil) {
-        tripsMapViewController = [[TripsMapViewController alloc] initWithNibName:@"TripsMapViewController" bundle:nil];
-    }
-    return tripsMapViewController;
-}
 
 - (TripsViewController *)tripsViewController {
     if (tripsViewController == nil) {

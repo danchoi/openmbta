@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "TripsViewController.h"
-#import "TripsMapViewController.h"
 #import "BaseViewController.h"
 
 @interface RoutesViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
-    TripsMapViewController *tripsMapViewController;
     TripsViewController *tripsViewController;
     NSOperationQueue *operationQueue;
     NSArray *data;

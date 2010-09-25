@@ -31,13 +31,7 @@ class TripsController < ApplicationController
           # add schedule grid
           if params[:version] == '3'
             logger.debug("ADDING GRID")
-
-            if @transport_type == :commuter_rail
-              @headsign = @headsign.sub(/^To /, '')
-              @route = "CR-#{@route}"
-            end
-
-            grid = Grid.new(@route, @headsign, @first_stop)
+            grid = Grid.new(@transport_type.to_s, @route, @headsign, @first_stop)
             @result.merge!(:grid => grid.grid)
           end
 

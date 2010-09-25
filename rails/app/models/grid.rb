@@ -2,19 +2,44 @@ class Grid
   include TimeFormatting
 
 
-  def initialize(route_short_name, headsign, first_stop=nil)
+  def initialize(transport_type, route_short_name, headsign, first_stop=nil)
     puts "GRID FOR #{route_short_name}, #{headsign}"
     now = Now.new
     date = now.date
     service_ids = Service.active_on(date).map(&:id)
-    conditions = if first_stop
-                   ["routes.short_name = ? and headsign = ? and first_stop = ? and service_id in (?)", route_short_name, headsign, first_stop, service_ids]
-                 else 
-                   ["routes.short_name = ? and headsign = ? and service_id in (?)", route_short_name, headsign, service_ids]
-                 end
-    @trips = Trip.all(:joins => :route, 
-                      :conditions => conditions,
-                      :order => "start_time asc")
+
+    @trips = case transport_type 
+             when 'bus' 
+               Trip.all(:joins => :route,
+                 :conditions => ["routes.short_name = ? and headsign = ? and service_id in (?)", route_short_name, headsign, service_ids], 
+                 :order => "start_time asc")
+
+             when 'subway'
+              route_ids = Subway::ROUTE_NAME_TO_ID[route_short_name]
+              conditions = if first_stop 
+                             ["routes.id in (?) and headsign = ? and service_id in (?) and first_stop = ? ", route_ids, headsign, service_ids, first_stop]
+                           else
+                             ["routes.id in (?) and headsign = ? and service_id in (?)", route_ids, headsign, service_ids]
+                           end
+              Trip.all(:joins => :route,
+                       :conditions => conditions, 
+                       :order => "start_time asc")
+
+             when 'commuter_rail'
+              route_short_name = "CR-#{route_short_name}"
+              headsign = headsign.sub(/^To /, '')
+              Trip.all(:joins => :route,
+                       :conditions => ["routes.mbta_id = ? and headsign LIKE ? and service_id in (?) ", route_short_name, "#{headsign}%", service_ids], 
+                       :order => "start_time asc")
+
+             when 'boat'
+              route_mbta_id = Boat::NAME_TO_MBTA_ID[route_short_name]
+              first_stop, last_stop = headsign.split(' to ')
+              conditions = ["routes.mbta_id = ? and first_stop = ? and last_stop = ? and service_id in (?)", route_mbta_id, first_stop, last_stop, service_ids]
+              Trip.all(:joins => :route,
+                       :conditions => conditions,
+                       :order => "start_time asc")
+             end
   end
 
   def grid
