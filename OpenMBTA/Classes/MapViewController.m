@@ -72,6 +72,8 @@
     mapView.hidden = NO;
 }
 - (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops isRealTime:(BOOL)isRealTime {
+    
+    [self.mapView removeAnnotations: self.mapView.annotations];
     NSArray *stop_ids = [stops allKeys];
     for (NSString *stop_id in stop_ids) {
         StopAnnotation *annotation = [[StopAnnotation alloc] init];

@@ -116,6 +116,7 @@
 }
 
 - (void)reloadData:(id)sender {    
+    self.stops = [NSArray array];    
     [self startLoadingData];
 }
 
