@@ -40,6 +40,7 @@
     ScheduleViewController *scheduleViewController;
     UIView *currentContentView;
     StopsViewController *stopsViewController;
+    BOOL gridCreated;
 }
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;

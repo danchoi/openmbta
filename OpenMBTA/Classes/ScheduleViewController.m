@@ -81,8 +81,6 @@ const int kCellWidth = 37;
 }
 
 
-
-
 - (void)highlightNearestStop:(NSString *)stopId {
     self.nearestStopId = stopId;
 }
@@ -188,13 +186,14 @@ const int kCellWidth = 37;
     NSString *stopName =  [stopDict objectForKey:@"name"];
     
     if (indexPath.row == selectedRow)  {
-        cell.selected = YES;
+        cell.selected = YES; // this is buggy, use textColor instead as signal
+        cell.textLabel.textColor = [UIColor redColor];        
     } else {
         cell.selected = NO;
+        cell.textLabel.textColor = [UIColor blackColor];        
     }
 
     cell.textLabel.text = stopName;
-    cell.textLabel.textColor = [UIColor blackColor];        
     cell.detailTextLabel.text =  @" ";
     return cell;
 }
@@ -206,6 +205,7 @@ const int kCellWidth = 37;
     float x = self.scrollView.contentOffset.x;
     CGPoint contentOffset = CGPointMake(x , row * 36 );
     [self.scrollView setContentOffset:contentOffset animated:YES];
+    [tableView reloadData];
     
 
 }

@@ -114,6 +114,7 @@
 // This calls the server
 - (void)startLoadingData {    
     [self showNetworkActivity];
+    gridCreated = NO;
     [self.scheduleViewController clearGrid];
 
     // We need to substitute a different character for the ampersand in the
@@ -188,8 +189,10 @@
         scheduleViewController.view.frame = CGRectMake(0, 0, 320, 300); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
-        [scheduleViewController createFloatingGrid];        
-
+        if (!gridCreated) {
+            [scheduleViewController createFloatingGrid];        
+            gridCreated = YES;
+        }
     }
 }
 
