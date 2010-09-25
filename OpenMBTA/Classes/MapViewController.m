@@ -187,6 +187,8 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     self.triggerCalloutTimer.invalidate;
+    NSString *stopName = ((StopAnnotation *)view.annotation).subtitle;
+    [self.tripsViewController.stopsViewController selectStopNamed:stopName];
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {

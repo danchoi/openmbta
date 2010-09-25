@@ -10,7 +10,7 @@
 #import "TripsViewController.h"
 
 @implementation StopsViewController
-@synthesize orderedStopNames, tableView, tripsViewController;
+@synthesize orderedStopNames, tableView, tripsViewController, selectedStopName;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -50,6 +50,14 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.selectedStopName) {
+        int row = [self.orderedStopNames indexOfObject:self.selectedStopName];    
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+        [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    }
+    [super viewWillAppear:animated];
+}
 
 - (void)dealloc {
     self.tripsViewController = nil;
@@ -64,6 +72,11 @@
 - (void)loadStopNames:(NSMutableArray *)stopNames {
     self.orderedStopNames = stopNames;
     [self.tableView reloadData];
+}
+
+
+- (void)selectStopNamed:(NSString *)stopName {
+    self.selectedStopName = stopName;
 }
 
 #pragma mark Table view methods
@@ -107,6 +120,5 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 36.0;
 }
-
 
 @end
