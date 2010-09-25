@@ -12,7 +12,7 @@
 #import "ScheduleViewController.h"
 
 @implementation MapViewController
-@synthesize tripsViewController, mapView, stopAnnotations, nearestStopAnnotation, triggerCalloutTimer, location;
+@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -102,7 +102,7 @@
     if (!location || [self.mapView.annotations count] < 2) {
         if (self.triggerCalloutTimer != nil)
             self.triggerCalloutTimer.invalidate;
-       [NSTimer scheduledTimerWithTimeInterval: 1.4
+       self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 1.4
                                         target: self
                                        selector: @selector(findNearestStop)
                                         userInfo: nil
@@ -110,26 +110,23 @@
        return;
     }
 
-    self.nearestStopAnnotation = nil;
+    self.selectedStopAnnotation = nil;
     float minDistance = -1;
     for (id annotation in self.stopAnnotations) {
         CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
         CLLocationDistance distance = [stopLocation distanceFromLocation:location];
         [stopLocation release];
         if ((minDistance == -1) || (distance < minDistance)) {
-            self.nearestStopAnnotation = (StopAnnotation *)annotation;
+            self.selectedStopAnnotation = (StopAnnotation *)annotation;
             minDistance = distance;
         } 
-        //NSLog(@"distance: %f", distance);
     }
-    //NSLog(@"min distance: %f; closest stop: %@", minDistance, self.nearestStopAnnotation.subtitle);
-
 
     // Show callout of nearest stop.  We delay this to give the map time to
     // draw the pins for the stops
     if (self.triggerCalloutTimer != nil)
         self.triggerCalloutTimer.invalidate;
-    [NSTimer scheduledTimerWithTimeInterval: 2.0
+    self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 2.0
                                      target: self
                                    selector: @selector(triggerCallout:)
                                    userInfo: nil
@@ -138,7 +135,7 @@
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
-    [mapView selectAnnotation:self.nearestStopAnnotation animated:YES]; 
+    [mapView selectAnnotation:self.selectedStopAnnotation animated:YES]; 
 }
 
 
@@ -180,6 +177,20 @@
 	return pinView;
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    self.triggerCalloutTimer.invalidate;
+}
 
+- (void)highlightStopNamed:(NSString *)stopName {
+    self.selectedStopAnnotation = nil;
+    for (id annotation in self.stopAnnotations) {
+        if ( [((StopAnnotation *)annotation).subtitle isEqualToString:stopName] ) {
+            self.selectedStopAnnotation = (StopAnnotation *)annotation;
+            break;
+        }
+    }
+    [self triggerCallout:nil];
+    
+}
 
 @end

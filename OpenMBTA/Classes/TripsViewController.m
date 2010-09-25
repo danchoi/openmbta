@@ -182,7 +182,7 @@
         [contentView addSubview:mapViewController.view];
 
     } else { 
-        scheduleViewController.view.frame = CGRectMake(0, 0, 320, 342); 
+        scheduleViewController.view.frame = CGRectMake(0, 0, 320, 300); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
 
@@ -197,9 +197,7 @@
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
-    NSLog(@"highlight stop : %@", stopName);
-
-    
+    [self.mapViewController highlightStopNamed:stopName];
 }
 
 

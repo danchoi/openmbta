@@ -113,7 +113,7 @@ const int kCellWidth = 37;
     scrollView.directionalLockEnabled = YES;
     //scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
-    scrollView.frame = CGRectMake(10, 10, 310, 430); 
+    scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 
     
     scrollView.stops = self.stops;
     

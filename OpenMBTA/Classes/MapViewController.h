@@ -16,7 +16,7 @@
     TripsViewController *tripsViewController;
     MKMapView *mapView;
     NSMutableArray *stopAnnotations;
-    StopAnnotation *nearestStopAnnotation;
+    StopAnnotation *selectedStopAnnotation;
     NSTimer *triggerCalloutTimer;
     CLLocation *location;
 
@@ -24,11 +24,12 @@
 @property (nonatomic, retain) TripsViewController *tripsViewController;
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSMutableArray *stopAnnotations;
-@property (nonatomic, retain) StopAnnotation *nearestStopAnnotation;
+@property (nonatomic, retain) StopAnnotation *selectedStopAnnotation;
 @property (nonatomic, retain) NSTimer *triggerCalloutTimer;
 @property (nonatomic, retain) CLLocation *location;
 - (void)prepareMap:(NSDictionary *)regionInfo;
 - (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops isRealTime:(BOOL)isRealTime;
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals isRealTime:(BOOL)isRealTime; 
 - (void)findNearestStop;
+- (void)highlightStopNamed:(NSString *)stopName;
 @end
