@@ -17,7 +17,7 @@ const int kCellWidth = 37;
 
 @implementation ScheduleViewController
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
-@synthesize tableView, scrollView, gridTimes, gridID;
+@synthesize tableView, scrollView, gridTimes, gridID, tripsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -59,6 +59,7 @@ const int kCellWidth = 37;
 - (void)dealloc {
     self.nearestStopId = nil;
     self.orderedStopNames = nil;
+    self.tripsViewController = nil;
     [super dealloc];
 }
 
@@ -111,7 +112,7 @@ const int kCellWidth = 37;
     NSInteger numColumns = [timesForFirstRow count];
 
     int gridWidth = (numColumns * kCellWidth) + 0;
-    int gridHeight = ([self.stops count] * kRowHeight) + 50;
+    int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
     scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 
     
@@ -203,7 +204,7 @@ const int kCellWidth = 37;
 
 - (void)highlightRow:(int)row {
     if ([self.stops count] == 0) return;
-    NSLog(@"highlightRow %d", row);
+
     selectedRow = row;
     float x = self.scrollView.contentOffset.x;
     float maxY = self.scrollView.contentSize.height - 280;
@@ -212,11 +213,9 @@ const int kCellWidth = 37;
     [self.scrollView setContentOffset:contentOffset animated:YES];
     [tableView reloadData];
     
-
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
-    NSLog(@"highlightStopNamed %@", stopName);
     int row = [self.orderedStopNames indexOfObject:stopName];
     [self highlightRow:row];
 }

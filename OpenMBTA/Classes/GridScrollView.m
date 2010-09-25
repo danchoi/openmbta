@@ -6,10 +6,12 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "GridScrollView.h"
 
+#import "GridScrollView.h"
+#import "ScheduleViewController.h"
+#import "TripsViewController.h"
 @interface GridScrollView ()
-- (void)annotateTile:(UIView *)tile;
+
 @end
 
 @implementation GridScrollView
@@ -58,7 +60,11 @@
     if(touch.tapCount == 1) { 
 
         int row = (int)(y / self.tileHeight);
-        NSLog(@"1 tap: %f; row: %d", row);
+        // yeah this is terrible encapsulation, but ...
+        ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.dataSource;
+        TripsViewController *tripViewController = scheduleViewController.tripsViewController;
+        [tripViewController highlightStopPosition:row];
+        
     } 
     if(touch.tapCount == 2) { 
         //NSLog(@"2 taps: %@", coord);

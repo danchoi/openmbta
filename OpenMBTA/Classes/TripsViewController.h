@@ -71,4 +71,5 @@
 - (void)highlightStopPosition:(int)pos;
 - (void)startLoadingData;
 - (void)showStopsController:(id)sender;
+- (void)reloadData:(id)sender;
 @end

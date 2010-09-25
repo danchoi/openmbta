@@ -11,6 +11,7 @@
 
 @protocol GridScrollViewDataSource;
 @class MyScrollView;
+@class TripsViewController;
 
 @interface ScheduleViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, GridScrollViewDataSource> {
 	GridScrollView *scrollView;	// holds floating grid
@@ -25,6 +26,7 @@
     NSString *selectedStopName;
     int selectedRow;
     NSArray *orderedStopNames;
+    TripsViewController *tripsViewController;
 }
 @property (nonatomic, copy) NSString *nearestStopId;
 @property (nonatomic, retain) IBOutlet GridScrollView *scrollView;	// holds floating grid
@@ -33,7 +35,8 @@
 @property (nonatomic, retain) NSArray *stops;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSString *selectedStopName;
-@property (nonatomic, retain)     NSArray *orderedStopNames;
+@property (nonatomic, retain) NSArray *orderedStopNames;
+@property (nonatomic, retain) TripsViewController *tripsViewController;
 - (void)highlightNearestStop:(NSString *)stopId;
 - (void)createFloatingGrid;
 - (void)clearGrid;

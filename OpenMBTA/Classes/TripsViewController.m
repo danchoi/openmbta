@@ -33,6 +33,7 @@
     shouldReloadRegion = YES;
     shouldReloadData = YES;    
     mapViewController.tripsViewController = self;
+    scheduleViewController.tripsViewController = self;
     stopsViewController.tripsViewController = self;
 }
 
@@ -76,6 +77,10 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    mapViewController.tripsViewController = nil;
+    scheduleViewController.tripsViewController = nil;
+    stopsViewController.tripsViewController = nil;
+    
 }
 
 - (void)dealloc {
@@ -110,6 +115,9 @@
     self.navigationItem.rightBarButtonItem = findStopButton;
 }
 
+- (void)reloadData:(id)sender {    
+    [self startLoadingData];
+}
 
 // This calls the server
 - (void)startLoadingData {    
@@ -177,7 +185,8 @@
 
 
 - (void)toggleView:(id)sender {
-    NSUInteger selectedSegment = segmentedControl.selectedSegmentIndex;
+
+    NSUInteger selectedSegment = self.segmentedControl.selectedSegmentIndex;
 
     [currentContentView removeFromSuperview];
     if (selectedSegment == 0) { 

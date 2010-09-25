@@ -111,9 +111,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    NSString *stopName = [self.orderedStopNames objectAtIndex:indexPath.row];
+//    NSString *stopName = [self.orderedStopNames objectAtIndex:indexPath.row];
     [self dismissModalViewControllerAnimated:YES];
-    [self.tripsViewController highlightStopNamed:stopName];
+    [self.tripsViewController highlightStopPosition:indexPath.row];
 
 }
 
