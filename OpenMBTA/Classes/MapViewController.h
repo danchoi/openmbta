@@ -17,6 +17,7 @@
     MKMapView *mapView;
     NSMutableArray *stopAnnotations;
     StopAnnotation *selectedStopAnnotation;
+    NSString *selectedStopName;
     NSTimer *triggerCalloutTimer;
     CLLocation *location;
 
@@ -27,9 +28,12 @@
 @property (nonatomic, retain) StopAnnotation *selectedStopAnnotation;
 @property (nonatomic, retain) NSTimer *triggerCalloutTimer;
 @property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, copy) NSString *selectedStopName;
+
 - (void)prepareMap:(NSDictionary *)regionInfo;
 - (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops isRealTime:(BOOL)isRealTime;
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals isRealTime:(BOOL)isRealTime; 
 - (void)findNearestStop;
 - (void)highlightStopNamed:(NSString *)stopName;
+- (void)triggerCallout:(NSDictionary *)info;
 @end

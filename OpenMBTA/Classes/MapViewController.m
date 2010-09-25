@@ -13,7 +13,7 @@
 #import "StopsViewController.h"
 
 @implementation MapViewController
-@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location;
+@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -51,6 +51,8 @@
 
 - (void)dealloc {
     self.triggerCalloutTimer = nil;
+    self.selectedStopName = nil;
+    self.selectedStopAnnotation = nil;
     [super dealloc];
 }
 
@@ -95,8 +97,17 @@
         [annotation release];
     }
     [mapView addAnnotations:self.stopAnnotations];    
-    [self findNearestStop];
-    
+    if (!self.selectedStopAnnotation) {
+        [self findNearestStop];
+    } else {
+        self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 1.4
+                                                                    target: self
+                                                                  selector: @selector(triggerCallout:)
+                                                                  userInfo: nil
+                                                                   repeats: NO];
+        
+    }
+
     
 }
 

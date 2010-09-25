@@ -39,8 +39,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     if (self.shouldReloadData) {
+        
         self.stops = [NSArray array];
+        self.mapViewController.selectedStopAnnotation = nil;
         [self startLoadingData];
+        
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
         if ([self.transportType isEqualToString: @"Bus"]) {
