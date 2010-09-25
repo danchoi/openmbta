@@ -16,6 +16,9 @@
     
     NSMutableSet *reusableTiles;    
     
+    float tileHeight;
+    float tileWidth;
+
     // we use the following ivars to keep track of which rows and columns are visible
     int firstVisibleRow, firstVisibleColumn, lastVisibleRow, lastVisibleColumn;
 
@@ -23,7 +26,8 @@
 }
 @property (nonatomic, assign) id <GridScrollViewDataSource> dataSource;
 @property (nonatomic, retain) NSArray *stops;
-
+@property float tileHeight;
+@property float tileWidth;
 
 - (UIView *)dequeueReusableTile;  // Used by the delegate to acquire an already allocated tile, in lieu of allocating a new one.
 

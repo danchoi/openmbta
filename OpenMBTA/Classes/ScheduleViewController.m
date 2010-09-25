@@ -30,6 +30,9 @@ const int kCellWidth = 37;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.gridTimes = [NSMutableArray array];
+    self.scrollView.tileWidth  = kCellWidth;
+    self.scrollView.tileHeight = kRowHeight;
+
 }
 
 /*
@@ -107,7 +110,7 @@ const int kCellWidth = 37;
     NSArray *timesForFirstRow = [firstRow objectForKey:@"times"];
     NSInteger numColumns = [timesForFirstRow count];
 
-    int gridWidth = (numColumns * kCellWidth) + 60;
+    int gridWidth = (numColumns * kCellWidth) + 0;
     int gridHeight = ([self.stops count] * kRowHeight) + 50;
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
     scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 

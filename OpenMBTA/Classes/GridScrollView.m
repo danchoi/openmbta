@@ -8,14 +8,13 @@
 
 #import "GridScrollView.h"
 
-
 @interface GridScrollView ()
 - (void)annotateTile:(UIView *)tile;
 @end
 
 @implementation GridScrollView
 @synthesize dataSource;
-@synthesize stops;
+@synthesize stops, tileHeight, tileWidth;
 
 
 - (id)initWithFrame:(CGRect)frame {
@@ -55,9 +54,11 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event { 
     UITouch *touch = [touches anyObject]; 
     CGPoint location = [touch locationInView:self];
-    NSString *coord = NSStringFromCGPoint(location); 
+    float y = location.y; 
     if(touch.tapCount == 1) { 
-        //NSLog(@"1 tap: %@", coord);
+
+        int row = (int)(y / self.tileHeight);
+        NSLog(@"1 tap: %f; row: %d", row);
     } 
     if(touch.tapCount == 2) { 
         //NSLog(@"2 taps: %@", coord);
@@ -111,8 +112,6 @@
     }
     
     // calculate which rows and columns are visible by doing a bunch of math.
-    float tileWidth  = 37.5;
-    float tileHeight = 36;
     int firstNeededRow = MAX(0, floorf(visibleBounds.origin.y / tileHeight));
     int firstNeededCol = MAX(0, floorf(visibleBounds.origin.x / tileWidth));
     int lastNeededRow  = floorf((visibleBounds.origin.y + visibleBounds.size.height) / tileHeight);
