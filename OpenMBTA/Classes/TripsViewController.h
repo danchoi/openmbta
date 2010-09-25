@@ -67,7 +67,7 @@
 - (void)addFindStopButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;
-
+- (void)highlightStopPosition:(int)pos;
 - (void)startLoadingData;
 - (void)showStopsController:(id)sender;
 @end

@@ -190,6 +190,7 @@
     self.triggerCalloutTimer.invalidate;
     NSString *stopName = ((StopAnnotation *)view.annotation).subtitle;
     [self.tripsViewController.stopsViewController selectStopNamed:stopName];
+    [self.tripsViewController.scheduleViewController highlightStopNamed:stopName];
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {

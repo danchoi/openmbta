@@ -16,11 +16,13 @@ const int kRowHeight = 36;
 const int kCellWidth = 37;
 
 @implementation ScheduleViewController
-@synthesize stops, nearestStopId, selectedStopName;
+@synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
 @synthesize tableView, scrollView, gridTimes, gridID;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         self.stops = [NSArray array];
+        self.orderedStopNames = [NSArray array];
     }
     return self;
 }
@@ -53,6 +55,7 @@ const int kCellWidth = 37;
 
 - (void)dealloc {
     self.nearestStopId = nil;
+    self.orderedStopNames = nil;
     [super dealloc];
 }
 
@@ -178,12 +181,18 @@ const int kCellWidth = 37;
 
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
         cell.accessoryType =  UITableViewCellAccessoryNone; 
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
     }
     NSDictionary *stopDict = [[self.stops objectAtIndex:indexPath.row] objectForKey:@"stop"];;
     NSString *stopName =  [stopDict objectForKey:@"name"];
     
+    if (indexPath.row == selectedRow)  {
+        cell.selected = YES;
+    } else {
+        cell.selected = NO;
+    }
+
     cell.textLabel.text = stopName;
     cell.textLabel.textColor = [UIColor blackColor];        
     cell.detailTextLabel.text =  @" ";
@@ -192,17 +201,19 @@ const int kCellWidth = 37;
 
 - (void)highlightRow:(int)row {
     if ([self.stops count] == 0) return;
-    
+    NSLog(@"highlightRow %d", row);
+    selectedRow = row;
     float x = self.scrollView.contentOffset.x;
     CGPoint contentOffset = CGPointMake(x , row * 36 );
     [self.scrollView setContentOffset:contentOffset animated:YES];
-
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-
-
+    
 
 }
 
+- (void)highlightStopNamed:(NSString *)stopName {
+    NSLog(@"highlightStopNamed %@", stopName);
+    int row = [self.orderedStopNames indexOfObject:stopName];
+    [self highlightRow:row];
+}
 
 @end

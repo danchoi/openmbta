@@ -156,8 +156,7 @@
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
     self.firstStops = [data objectForKey:@"first_stop"]; // an array of stop names
     self.regionInfo = [data objectForKey:@"region"];
-    //NSLog(@"num stops loaded: %d", [stops count]);
-    //NSLog(@"loaded region: %@", regionInfo);    
+
     if (shouldReloadRegion == YES) {
         [mapViewController prepareMap:regionInfo];
         shouldReloadRegion = NO;
@@ -170,6 +169,7 @@
         [self.orderedStopNames addObject:[stop objectForKey:@"name"]];
     }
     [self.stopsViewController loadStopNames:self.orderedStopNames];
+    self.scheduleViewController.orderedStopNames = self.orderedStopNames;
     [self hideNetworkActivity];
 
 }
@@ -200,10 +200,15 @@
 
 - (void)highlightStopNamed:(NSString *)stopName {
     [self.mapViewController highlightStopNamed:stopName];
-
     int row = [self.orderedStopNames indexOfObject:stopName];
     [self.scheduleViewController highlightRow:row];
+}
 
+
+- (void)highlightStopPosition:(int)pos {
+    NSString *stopName = [self.orderedStopNames objectAtIndex:pos];
+    [self.mapViewController highlightStopNamed:stopName];
+    [self.scheduleViewController highlightRow:pos];
 }
 
 
