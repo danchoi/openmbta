@@ -203,7 +203,9 @@ const int kCellWidth = 37;
     NSLog(@"highlightRow %d", row);
     selectedRow = row;
     float x = self.scrollView.contentOffset.x;
-    CGPoint contentOffset = CGPointMake(x , row * 36 );
+    float maxY = self.scrollView.contentSize.height - 280;
+    float y = MIN( (row * kRowHeight), maxY);
+    CGPoint contentOffset = CGPointMake(x , y);
     [self.scrollView setContentOffset:contentOffset animated:YES];
     [tableView reloadData];
     
