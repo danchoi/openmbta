@@ -62,8 +62,9 @@
         int row = (int)(y / self.tileHeight);
         // yeah this is terrible encapsulation, but ...
         ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.dataSource;
+        NSString *stopName = [scheduleViewController.orderedStopNames objectAtIndex:row];
         TripsViewController *tripViewController = scheduleViewController.tripsViewController;
-        [tripViewController highlightStopPosition:row];
+        [tripViewController highlightStopNamed:stopName];
         
     } 
     if(touch.tapCount == 2) { 

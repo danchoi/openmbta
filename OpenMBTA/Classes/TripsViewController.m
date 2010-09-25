@@ -252,8 +252,7 @@
 
 - (void)highlightStopNamed:(NSString *)stopName {
     [self.mapViewController highlightStopNamed:stopName];
-    int row = [self.orderedStopNames indexOfObject:stopName];
-    [self.scheduleViewController highlightRow:row];
+    [self.scheduleViewController highlightStopNamed:stopName];
 }
 
 
