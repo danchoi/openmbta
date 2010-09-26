@@ -77,7 +77,7 @@
 
 - (void)showLoadingIndicators {
     progressView = [self newProgressView];
-    progressView.center = CGPointMake(160, 350);
+    progressView.center = CGPointMake(160, 210);
     [self.view addSubview:progressView];
 }
 

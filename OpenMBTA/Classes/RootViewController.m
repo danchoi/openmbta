@@ -56,7 +56,7 @@
     if (section == 1) {
         return [self.menu count];
     } else {
-        return [self.bookmarks count];
+        return ([self.bookmarks count] > 0 ? [self.bookmarks count] : 1);
 
     }
 }
@@ -84,8 +84,10 @@
 
         NSString *menuChoice = [self.menu objectAtIndex:indexPath.row];
         cell.textLabel.text = menuChoice;
-        return cell;
+        return cell;  
+        
     } else {
+        
         static NSString *CellIdentifier = @"BookmarkCell";
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -95,6 +97,13 @@
             cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
 
         }
+        
+        if ([self.bookmarks count] == 0) {
+            cell.textLabel.text = @"No bookmarks";
+            cell.detailTextLabel.text = @"You can bookmark your regular routes";
+            return cell;
+        }            
+        
         NSDictionary *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
         NSString *transportType = [bookmark objectForKey:@"transportType"];
             
