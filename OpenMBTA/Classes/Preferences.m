@@ -37,6 +37,25 @@
     return prefs;
 };
 
+NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *context) {
+    NSComparisonResult result1 = [[bookmark1 objectForKey:@"transportType"] compare:[bookmark2 objectForKey:@"transportType"]];
+    NSComparisonResult result2 = [[bookmark1 objectForKey:@"headsign"] compare:[bookmark2 objectForKey:@"headsign"]];
+    NSComparisonResult result3 = [[bookmark1 objectForKey:@"routeShortName"] compare:[bookmark2 objectForKey:@"routeShortName"]];
+    NSComparisonResult result4 = [[bookmark1 objectForKey:@"firstStop"] compare:[bookmark2 objectForKey:@"firstStop"]];
+
+    if (result1 != NSOrderedSame) return result1;
+    if (result2 != NSOrderedSame) return result2;
+    if (result3 != NSOrderedSame) return result3;
+
+    return result4;
+}
+
+- (NSArray *)orderedBookmarks {
+    NSArray *unorderedBookmarks = [[self preferences] objectForKey:@"bookmarks"];
+    return [unorderedBookmarks sortedArrayUsingFunction:bookmarkSort context:NULL];
+}
+
+
 - (NSString *) prefsFilePath { 
     NSString *cacheDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]; 
     NSString *prefsFilePath = [cacheDirectory stringByAppendingPathComponent: @"OpenMBTAPrefs.plist"]; 
@@ -46,7 +65,7 @@
 
 - (void)addBookmark:(NSDictionary *)bookmark {
     NSMutableDictionary *prefs = [self preferences];
-    NSArray *bookmarks = [prefs objectForKey:@"bookmarks"];
+    NSMutableArray *bookmarks = [prefs objectForKey:@"bookmarks"];
     [bookmarks addObject:bookmark];
 
     if (![prefs writeToFile:[self prefsFilePath] atomically:YES]) {
@@ -57,7 +76,7 @@
 
 - (void)removeBookmark:(NSDictionary *)bookmark {
     NSMutableDictionary *prefs = [self preferences];
-    NSArray *bookmarks = [prefs objectForKey:@"bookmarks"];
+    NSMutableArray *bookmarks = [prefs objectForKey:@"bookmarks"];
     for (NSDictionary *saved in bookmarks) {
         if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
             [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&

@@ -1,5 +1,5 @@
 //
-//  Bookmarks.h
+//  Preferences.h
 //  OpenMBTA
 //
 //  Created by Daniel Choi on 4/20/10.
@@ -18,4 +18,5 @@
 - (void)removeBookmark:(NSDictionary *)bookmark;
 - (void)addBookmark:(NSDictionary *)bookmark;
 - (BOOL)isBookmarked:(NSDictionary *)bookmark;
+- (NSArray *)orderedBookmarks;
 @end

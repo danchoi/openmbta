@@ -25,7 +25,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.bookmarks = [[[Preferences sharedInstance] preferences] objectForKey:@"bookmarks"];
+    self.bookmarks = [[Preferences sharedInstance] orderedBookmarks]; 
     [tableView reloadData];
 }
 
