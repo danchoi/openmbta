@@ -12,8 +12,8 @@
 #import "GetRemoteDataOperation.h"
 #import "JSON.h"
 
-const int kRowHeight = 36;
-const int kCellWidth = 37;
+const int kRowHeight = 50;
+const int kCellWidth = 44;
 
 @implementation ScheduleViewController
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
@@ -131,6 +131,8 @@ const int kCellWidth = 37;
         return nil;
     }
     UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont boldSystemFontOfSize:12.0];
+    //label.textAlignment = UITextAlignmentCenter;
     id stringOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
 
     if (stringOrNull == [NSNull null]) {
@@ -139,14 +141,16 @@ const int kCellWidth = 37;
         NSString *time = (NSString *)stringOrNull;
         label.text = time;
     }
-    
-    if (column % 2 == 0)
-        label.textColor = [UIColor grayColor];
-    else
-        label.textColor = [UIColor blackColor];
-    
-    label.font = [UIFont systemFontOfSize: 11];
+
     label.backgroundColor = [UIColor clearColor];
+    
+    if (column % 2 == 0) {
+        label.textColor = [UIColor grayColor];
+    } else {
+        label.textColor = [UIColor colorWithRed: (161/255.0) green: (161/255.0) blue: (255/255.0) alpha: 1.0];
+    }
+
+    
     
     return (UIView *)label; 
 }
@@ -181,7 +185,6 @@ const int kCellWidth = 37;
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GridCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
 
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
         cell.accessoryType =  UITableViewCellAccessoryNone; 
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
@@ -190,13 +193,16 @@ const int kCellWidth = 37;
     NSString *stopName =  [stopDict objectForKey:@"name"];
     
     if (indexPath.row == selectedRow)  {
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:13.0];
 
-        cell.textLabel.textColor = [UIColor redColor];        
+        cell.textLabel.textColor = [UIColor blackColor];        
     } else {
+        cell.textLabel.font = [UIFont systemFontOfSize:12.0];
 
         cell.textLabel.textColor = [UIColor blackColor];        
     }
-
+    
+     
     cell.textLabel.text = stopName;
     cell.detailTextLabel.text =  @" ";
     return cell;
