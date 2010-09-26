@@ -242,7 +242,10 @@ const int kCellWidth = 44;
         y = MIN(newY, maxY);
     }
     float x = MIN(newX, maxX);
-        
+
+    if (self.scrollView.contentSize.width < self.view.frame.size.width) {
+        x = 0;
+    }    
     CGPoint contentOffset = CGPointMake(x , y);
     [self.scrollView setContentOffset:contentOffset animated:YES];        
     
