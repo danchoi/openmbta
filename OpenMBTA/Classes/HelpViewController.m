@@ -37,7 +37,7 @@
 }
 
 - (void)loadWebView {
-    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@/%@", ServerURL, self.viewName, self.transportType];
+    NSString *urlString = [NSString stringWithFormat:@"%@/help/%@/%@?version=3", ServerURL, self.viewName, self.transportType];
     NSString *urlStringEscaped = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];    
     NSURL *url = [[NSURL alloc] initWithString: urlStringEscaped];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
