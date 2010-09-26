@@ -170,10 +170,10 @@
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
-							<object class="IBUIButton" id="577263313">
+							<object class="IBUIButton" id="689048245">
 								<reference key="NSNextResponder" ref="133236747"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{282, 13}, {18, 19}}</string>
+								<string key="NSFrame">{{292, 13}, {18, 19}}</string>
 								<reference key="NSSuperview" ref="133236747"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -206,7 +206,6 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4yMDAwMDAwMDMgMC4yMDAwMDAwMDMgMC4yMDAwMDAwMDMAA</bytes>
 						</object>
-						<float key="IBUIAlpha">0.82394367456436157</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
@@ -342,7 +341,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">infoButtonPressed:</string>
-						<reference key="source" ref="577263313"/>
+						<reference key="source" ref="689048245"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -451,13 +450,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="443485766"/>
 							<reference ref="1052230285"/>
-							<reference ref="577263313"/>
+							<reference ref="689048245"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">54</int>
-						<reference key="object" ref="577263313"/>
+						<reference key="object" ref="689048245"/>
 						<reference key="parent" ref="133236747"/>
 					</object>
 					<object class="IBObjectRecord">
