@@ -111,7 +111,7 @@ const int kCellWidth = 44;
     NSArray *timesForFirstRow = [firstRow objectForKey:@"times"];
     NSInteger numColumns = [timesForFirstRow count];
 
-    int gridWidth = (numColumns * kCellWidth) + 0;
+    int gridWidth = (numColumns * kCellWidth) - 10;
     int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
     scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 
@@ -229,22 +229,29 @@ const int kCellWidth = 44;
         }
         col++;
     }
-    NSLog(@"col: %d", col);    
-    float x = kCellWidth * col;
+    float maxX = self.scrollView.contentSize.width - 300;
+    float newX = kCellWidth * col;
 
     float maxY = self.scrollView.contentSize.height - 280;
     float newY = row *kRowHeight;
+
+    float y = self.scrollView.contentOffset.y;
     if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
-        float y = MIN(newY, maxY);
-        CGPoint contentOffset = CGPointMake(x , y);
-        [self.scrollView setContentOffset:contentOffset animated:YES];        
+        y = MIN(newY, maxY);
     }
+    float x = MIN(newX, maxX);
+        
+    CGPoint contentOffset = CGPointMake(x , y);
+    [self.scrollView setContentOffset:contentOffset animated:YES];        
+    
     [tableView reloadData];
     
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
     int row = [self.orderedStopNames indexOfObject:stopName];
+    if (row == NSNotFound)
+        return;
     [self highlightRow:row];
 }
 
