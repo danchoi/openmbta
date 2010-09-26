@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="34"/>
+			<integer value="8"/>
 			<integer value="27"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -48,10 +48,10 @@
 						<int key="NSvFlags">266</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUISegmentedControl" id="242761839">
+							<object class="IBUISegmentedControl" id="687311452">
 								<reference key="NSNextResponder" ref="864362241"/>
 								<int key="NSvFlags">264</int>
-								<string key="NSFrame">{{74, 7}, {157, 30}}</string>
+								<string key="NSFrame">{{78, 7}, {153, 30}}</string>
 								<reference key="NSSuperview" ref="864362241"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -92,13 +92,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUINavigationItem" id="749217242">
 								<reference key="IBUINavigationBar" ref="864362241"/>
-								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="489089544">
-									<string key="IBUITitle">Reload</string>
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="427343860">
+									<string key="IBUITitle">Refresh</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="749217242"/>
 								</object>
-								<reference key="IBUITitleView" ref="242761839"/>
+								<reference key="IBUITitleView" ref="687311452"/>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="1007389255">
 									<string key="IBUITitle">Find Stop</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -282,7 +282,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">reloadData:</string>
-						<reference key="source" ref="489089544"/>
+						<reference key="source" ref="427343860"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">38</int>
@@ -290,7 +290,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">toggleView:</string>
-						<reference key="source" ref="242761839"/>
+						<reference key="source" ref="687311452"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">13</int>
 					</object>
@@ -300,7 +300,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">segmentedControl</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="242761839"/>
+						<reference key="destination" ref="687311452"/>
 					</object>
 					<int key="connectionID">40</int>
 				</object>
@@ -351,8 +351,8 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="1007389255"/>
-							<reference ref="242761839"/>
-							<reference ref="489089544"/>
+							<reference ref="687311452"/>
+							<reference ref="427343860"/>
 						</object>
 						<reference key="parent" ref="864362241"/>
 					</object>
@@ -409,12 +409,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">34</int>
-						<reference key="object" ref="242761839"/>
+						<reference key="object" ref="687311452"/>
 						<reference key="parent" ref="749217242"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">36</int>
-						<reference key="object" ref="489089544"/>
+						<reference key="object" ref="427343860"/>
 						<reference key="parent" ref="749217242"/>
 					</object>
 				</object>
@@ -455,7 +455,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>TripsViewController</string>
 					<string>UIResponder</string>
-					<string>{{78, 276}, {320, 480}}</string>
+					<string>{{78, 0}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -477,7 +477,7 @@
 					<string>{{21, 242}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>StopsViewController</string>
-					<string>{{42, 219}, {320, 480}}</string>
+					<string>{{262, 235}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -652,10 +652,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>reloadData:</string>
 							<string>showStopsController:</string>
+							<string>toggleBookmark:</string>
 							<string>toggleView:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -667,6 +669,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>reloadData:</string>
 							<string>showStopsController:</string>
+							<string>toggleBookmark:</string>
 							<string>toggleView:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -677,6 +680,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">showStopsController:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleBookmark:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
