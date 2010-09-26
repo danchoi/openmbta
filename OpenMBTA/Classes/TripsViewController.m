@@ -16,7 +16,7 @@
 #import "ScheduleViewController.h"
 #import "StopsViewController.h"
 #import "Preferences.h"
-
+#import "HelpViewController.h"
 
 @implementation TripsViewController
 @synthesize contentView;
@@ -229,12 +229,12 @@
 
     [currentContentView removeFromSuperview];
     if (selectedSegment == 0) { 
-        mapViewController.view.frame = CGRectMake(0, 0, 320, 372); 
+        mapViewController.view.frame = CGRectMake(0, 50, 320, 322); 
         self.currentContentView = mapViewController.view;
         [contentView addSubview:mapViewController.view];
 
     } else { 
-        scheduleViewController.view.frame = CGRectMake(0, 0, 320, 300); 
+        scheduleViewController.view.frame = CGRectMake(0, 50, 320, 322); 
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
         if (!gridCreated) {
@@ -263,5 +263,15 @@
     [self.scheduleViewController highlightRow:pos];
 }
 
+
+- (IBAction)infoButtonPressed:(id)sender {
+    NSLog(@"info button pressed");
+    HelpViewController *vc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
+    vc.viewName = self.segmentedControl.selectedSegmentIndex == 0 ? @"map" : @"schedule";
+    vc.transportType = self.transportType;
+    [self presentModalViewController:vc animated:YES];
+    [vc release];
+    
+}
 
 @end
