@@ -97,13 +97,18 @@
         }
         NSDictionary *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
         NSString *transportType = [bookmark objectForKey:@"transportType"];
+            
         NSString *headsign  = [bookmark objectForKey:@"headsign"];
         NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
 
         // Configure the cell.
 
         cell.textLabel.text = headsign;
-        cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ %@", transportType, routeShortName];
+        if ([transportType isEqualToString:@"Bus"])
+            cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ %@", transportType, routeShortName];
+        else
+            cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ : %@", transportType, routeShortName];
+
         return cell;
     }
 }

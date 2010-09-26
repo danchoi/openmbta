@@ -283,7 +283,6 @@ const int kCellWidth = 44;
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
-    NSLog(@"highlight stop named %@", stopName);
     if (stopName == nil)
         return;
     int row = [self.orderedStopNames indexOfObject:stopName];
