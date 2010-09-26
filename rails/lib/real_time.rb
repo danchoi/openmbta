@@ -43,12 +43,12 @@ class RealTime
         data[:ordered_stop_ids].each do |stop_id|
           stop_data = data[:stops][ stop_id ]
           next if stop_data[:next_arrivals].empty?
-          stop_data[:next_arrivals].each do |prediction|
-            time, vehicle = *prediction
-            next if time =~ /realtime/
-            vehicles[vehicle] ||= []
-            vehicles[vehicle] << [time, vehicle, stop_id]
-          end
+          prediction = stop_data[:next_arrivals].first
+          time, vehicle = *prediction
+          next if time =~ /realtime/
+          vehicles[vehicle] ||= []
+          vehicles[vehicle] << [time, vehicle, stop_id]
+          
           #if vehicle != last_vehicle
           #  imminent_stop_ids << stop_id.to_s
           #end
