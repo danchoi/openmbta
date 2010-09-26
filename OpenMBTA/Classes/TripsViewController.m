@@ -53,7 +53,7 @@
             routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.route_short_name];
 
         } else if (self.transportType == @"Subway") {
-            routeNameLabel.text = [NSString stringWithFormat:@"%@ (times are only approximate)", self.route_short_name];        
+            routeNameLabel.text = [NSString stringWithFormat:@"%@", self.firstStop];        
 
         } else if ([self.transportType isEqualToString: @"Commuter Rail"]) {
             routeNameLabel.text = [NSString stringWithFormat:@"%@ Line", self.route_short_name];     
