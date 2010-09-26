@@ -155,6 +155,7 @@
 
 - (void)reloadData:(id)sender {    
     [self.mapViewController.stopAnnotations removeAllObjects];
+    self.mapViewController.selectedStopAnnotation = nil;
     self.stops = [NSArray array];    
     [self startLoadingData];
 }

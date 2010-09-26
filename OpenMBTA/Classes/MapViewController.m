@@ -127,6 +127,7 @@
     }
 
     self.selectedStopAnnotation = nil;
+    self.selectedStopName = nil;
     float minDistance = -1;
     for (id annotation in self.stopAnnotations) {
         CLLocation *stopLocation = [[CLLocation alloc] initWithCoordinate:((StopAnnotation *)annotation).coordinate altitude:0 horizontalAccuracy:kCLLocationAccuracyNearestTenMeters verticalAccuracy:kCLLocationAccuracyHundredMeters timestamp:[NSDate date]];
@@ -151,6 +152,18 @@
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
+    if (self.selectedStopAnnotation == nil && self.selectedStopName == nil) {
+        return;
+    }
+    if (self.selectedStopAnnotation == nil && self.selectedStopName != nil) {
+        for (id annotation in self.stopAnnotations) {
+            if ( [((StopAnnotation *)annotation).subtitle isEqualToString:self.selectedStopName] ) {
+                self.selectedStopAnnotation = ((StopAnnotation *)annotation);
+                break;
+            }
+        }
+    }
+    
     MKCoordinateRegion region;    
     region.center.latitude = self.selectedStopAnnotation.coordinate.latitude;
     region.center.longitude = self.selectedStopAnnotation.coordinate.longitude;
