@@ -15,7 +15,13 @@
 const int kRowHeight = 50;
 const int kCellWidth = 44;
 
+@interface ScheduleViewController (Private)
+- (void)alignGrid;
+@end
+
+
 @implementation ScheduleViewController
+
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
 @synthesize tableView, scrollView, gridTimes, gridID, tripsViewController;
 
@@ -122,7 +128,6 @@ const int kCellWidth = 44;
 //    [self.view addSubview:scrollView];
     
     [scrollView reloadData];
-    
 }
 
 
@@ -160,10 +165,34 @@ const int kCellWidth = 44;
     return (UIView *)label; 
 }
 
+#pragma mark Scroll View delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
     tableView.contentOffset = CGPointMake(0, aScrollView.contentOffset.y);
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self alignGrid];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate)
+        [self alignGrid];
+}
+
+#pragma mark align grid after decelerating or drag
+
+- (void)alignGrid {
+    
+    float x = self.scrollView.contentOffset.x;
+    float y = self.scrollView.contentOffset.y;
+    
+    CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth) , (round(y/kRowHeight) * kRowHeight) );
+    [self.scrollView setContentOffset:contentOffset animated:YES];        
+}
+
+
+#pragma mark Table View stuff
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return kRowHeight;
@@ -254,6 +283,9 @@ const int kCellWidth = 44;
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
+    NSLog(@"highlight stop named %@", stopName);
+    if (stopName == nil)
+        return;
     int row = [self.orderedStopNames indexOfObject:stopName];
     if (row == NSNotFound)
         return;
