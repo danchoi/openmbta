@@ -146,9 +146,17 @@
     if (self.transportType == @"Subway") {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"from %@", [headsignArray objectAtIndex:2]];
     } else {
+
         NSNumber *trips_remaining = [headsignArray objectAtIndex:1];
-        NSString *pluralized = [trips_remaining intValue] > 1 ? @"trips" : @"trip";
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ more %@ today", trips_remaining, pluralized];
+        NSString *tripText;
+
+        if ([trips_remaining intValue] == 0) {
+            tripText = @"No more trips today";
+        } else {
+            NSString *pluralized = [trips_remaining intValue] == 1 ? @"trip" : @"trips";
+            tripText = [NSString stringWithFormat:@"%@ more %@ today", trips_remaining, pluralized];
+        }
+        cell.detailTextLabel.text = tripText;
     }
     return cell;
 }
