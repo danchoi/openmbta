@@ -11,6 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		DE0A4B8E124FD0B000751514 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0A4B8D124FD0B000751514 /* ProgressView.xib */; };
 		DE220F07124A477C00E87057 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE220F05124A477C00E87057 /* MapViewController.m */; };
 		DE220F08124A477C00E87057 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE220F06124A477C00E87057 /* MapViewController.xib */; };
 		DE220FC4124A6E9A00E87057 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE220FC2124A6E9A00E87057 /* ScheduleViewController.m */; };
@@ -73,6 +74,7 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OpenMBTA-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OpenMBTA-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DE0A4B8D124FD0B000751514 /* ProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 		DE220F04124A477C00E87057 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		DE220F05124A477C00E87057 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		DE220F06124A477C00E87057 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				DECDFB0A124BF36A005064D6 /* StopsViewController.xib */,
 				DECDFC81124D3F5B005064D6 /* GridScrollView.h */,
 				DECDFC82124D3F5B005064D6 /* GridScrollView.m */,
+				DE0A4B8D124FD0B000751514 /* ProgressView.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				DE220FC5124A6E9A00E87057 /* ScheduleViewController.xib in Resources */,
 				DECDFB0C124BF36A005064D6 /* StopsViewController.xib in Resources */,
 				DECDFC7A124D3F18005064D6 /* GridCell.xib in Resources */,
+				DE0A4B8E124FD0B000751514 /* ProgressView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,13 @@
 #import "BaseViewController.h"
 
 
+@interface BaseViewController (Private)
+- (UIView *)newProgressView;
+- (void)showLoadingIndicators;
+- (void)hideLoadingIndicators;
+
+@end
+
 @implementation BaseViewController
 
 
@@ -17,10 +24,12 @@
 }
 
 - (void)showNetworkActivity {
+    [self showLoadingIndicators];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;    
 }
 
 - (void)hideNetworkActivity {
+    [self hideLoadingIndicators];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
@@ -48,5 +57,33 @@
     [super dealloc];
 }
 
+
+// loading indicator
+
+- (UIView*)newProgressView {
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProgressView" owner:self options:nil];
+    
+    NSEnumerator *enumerator = [nib objectEnumerator];
+    id object;
+    
+    while ((object = [enumerator nextObject])) {
+        if ([object isMemberOfClass:[UIView class]]) {
+            return object;
+        }
+    }    
+    return nil;
+}
+
+
+- (void)showLoadingIndicators {
+    progressView = [self newProgressView];
+    progressView.center = CGPointMake(160, 350);
+    [self.view addSubview:progressView];
+}
+
+- (void)hideLoadingIndicators
+{
+    [progressView removeFromSuperview];    
+}
 
 @end

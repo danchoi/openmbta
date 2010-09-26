@@ -11,6 +11,7 @@
 
 @interface BaseViewController : UIViewController {
     HelpViewController *helpViewController;
+    UIView *progressView;
 }
 
 - (void)showNetworkActivity;
