@@ -39,14 +39,35 @@
 
 NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *context) {
     NSComparisonResult result1 = [[bookmark1 objectForKey:@"transportType"] compare:[bookmark2 objectForKey:@"transportType"]];
-    NSComparisonResult result2 = [[bookmark1 objectForKey:@"headsign"] compare:[bookmark2 objectForKey:@"headsign"]];
-    NSComparisonResult result3 = [[bookmark1 objectForKey:@"routeShortName"] compare:[bookmark2 objectForKey:@"routeShortName"]];
+    NSComparisonResult result2 = [[bookmark1 objectForKey:@"routeShortName"] compare:[bookmark2 objectForKey:@"routeShortName"]];
+    NSComparisonResult result3 = [[bookmark1 objectForKey:@"headsign"] compare:[bookmark2 objectForKey:@"headsign"]];
     NSComparisonResult result4 = [[bookmark1 objectForKey:@"firstStop"] compare:[bookmark2 objectForKey:@"firstStop"]];
 
-    if (result1 != NSOrderedSame) return result1;
-    if (result2 != NSOrderedSame) return result2;
-    if (result3 != NSOrderedSame) return result3;
+    if (result1 != NSOrderedSame) {
+        if ([[bookmark1 objectForKey:@"transportType"] isEqualToString:@"Boat"])
+            return NSOrderedDescending;
+        else if ([[bookmark2 objectForKey:@"transportType"]  isEqualToString:@"Boat"]) 
+            return NSOrderedAscending; 
+        else
+            return result1;
+    }
+    if (result2 != NSOrderedSame) {
+        if ([[bookmark1 objectForKey:@"transportType"]  isEqualToString:@"Bus"]) {
+            // order numerically for Bus Routes
+            int x = [[bookmark1 objectForKey:@"routeShortName"] integerValue];
+            int y = [[bookmark2 objectForKey:@"routeShortName"] integerValue];
+            if (x > y)
+                return NSOrderedDescending;
+            else if (x < y)
+                return NSOrderedAscending;
+            // skip to next if
+        } else {
+            return result3;
+        }
+    }
 
+    if (result3 != NSOrderedSame) 
+        return result3;
     return result4;
 }
 
