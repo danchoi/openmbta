@@ -67,6 +67,21 @@ class Grid
           @first_stops << stop
         end
         time = time.split(':')[0,2].join(':')
+
+        hour, min = time.split(':')[0,2]
+        now_hour = Time.now.hour
+        if now_hour < 3 # 24 hour clock, 1 am
+          now_hour = now_hour + 24
+        end
+        now_string = [now_hour, Time.now.min].join(":")
+
+        if time < now_string 
+          time = [time, -1]
+        else
+          time = [time, 1]
+        end
+
+
         stop_row = @grid.detect {|x| x.is_a?(Hash) && x[:stop] && x[:stop][:stop_id] == stop.id}
         if stop_row
           stop_row[:times][col] = time

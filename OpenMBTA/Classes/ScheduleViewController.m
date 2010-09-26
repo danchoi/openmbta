@@ -133,24 +133,29 @@ const int kCellWidth = 44;
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont boldSystemFontOfSize:12.0];
     //label.textAlignment = UITextAlignmentCenter;
-    id stringOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
-
-    if (stringOrNull == [NSNull null]) {
-        label.text = @" ";
-    } else {
-        NSString *time = (NSString *)stringOrNull;
-        label.text = time;
-    }
+    id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
 
     label.backgroundColor = [UIColor clearColor];
-    
-    if (column % 2 == 0) {
-        label.textColor = [UIColor grayColor];
+    if (arrayOrNull == [NSNull null]) {
+        label.text = @" ";
     } else {
-        label.textColor = [UIColor colorWithRed: (161/255.0) green: (161/255.0) blue: (255/255.0) alpha: 1.0];
+        
+        NSString *time = [(NSArray *)arrayOrNull objectAtIndex:0];
+        int period = [(NSNumber *)[(NSArray *)arrayOrNull objectAtIndex:1] intValue];   
+        label.text = time;
+            
+        if (period == -1) {
+            label.textColor = [UIColor colorWithRed: (214/255.0) green: (191/255.0) blue: (191/255.0) alpha: 1.0];   
+        } else {
+            if (column % 2 == 0) {
+                label.textColor = [UIColor grayColor];
+            } else {
+                label.textColor = [UIColor colorWithRed: (122/255.0) green: (122/255.0) blue: (251/255.0) alpha: 1.0];
+            }
+        }
+        
     }
 
-    
     
     return (UIView *)label; 
 }
@@ -212,7 +217,21 @@ const int kCellWidth = 44;
     if ([self.stops count] == 0) return;
 
     selectedRow = row;
-    float x = self.scrollView.contentOffset.x;
+    
+    // move to most relevant column
+    NSArray *times = [[self.stops objectAtIndex:row] objectForKey:@"times"];
+
+    int col = 0;
+    for (NSArray *time in times) {
+        int period = [(NSNumber *)[time objectAtIndex:1] intValue];
+        if (period == 1) {
+            break;
+        }
+        col++;
+    }
+    NSLog(@"col: %d", col);    
+    float x = kCellWidth * col;
+
     float maxY = self.scrollView.contentSize.height - 280;
     float newY = row *kRowHeight;
     if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
