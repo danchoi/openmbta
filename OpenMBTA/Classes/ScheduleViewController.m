@@ -131,7 +131,7 @@ const int kCellWidth = 44;
         return nil;
     }
     UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont boldSystemFontOfSize:12.0];
+    label.font = [UIFont boldSystemFontOfSize:11.0];
     //label.textAlignment = UITextAlignmentCenter;
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
 
