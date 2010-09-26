@@ -24,7 +24,16 @@ module Boat
 
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
-    results = ActiveRecord::Base.connection.select_all("select route_id, trips.first_stop, trips.last_stop, count(trips.id) as trips_remaining from trips inner join routes on routes.id = trips.route_id where routes.route_type = 4 and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by route_id, trips.first_stop;").
+
+    query = <<-END
+select a.route_id, a.first_stop, a.last_stop, coalesce(b.trips_remaining, 0) as trips_remaining from 
+(select route_id, trips.first_stop, trips.last_stop, count(trips.id) as trips_remaining from trips inner join routes on routes.id = trips.route_id where routes.route_type = 4 and trips.service_id in (#{service_ids.join(',')}) group by route_id, trips.first_stop) a
+    left outer join
+(select route_id, trips.first_stop, trips.last_stop, count(trips.id) as trips_remaining from trips inner join routes on routes.id = trips.route_id where routes.route_type = 4 and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by route_id, trips.first_stop) b
+    on a.route_id = b.route_id and a.first_stop = b.first_stop and a.last_stop = b.last_stop;
+    END
+
+    results = ActiveRecord::Base.connection.select_all(query).
       group_by {|x| ROUTE_ID_TO_NAME[x["route_id"].to_i] }.
       map { |route_name, values| { :route_short_name  =>  route_name, :headsigns => generate_headsigns(values) }}
   end

@@ -2,7 +2,15 @@ module Bus
 
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
-    ActiveRecord::Base.connection.select_all("select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) and trips.end_time > '#{now.time}' group by routes.short_name, trips.headsign").
+    query = <<-END
+select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining from 
+(select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) group by routes.short_name, trips.headsign) a
+    left outer join 
+    (select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) and trips.end_time > '#{now.time}' group by routes.short_name, trips.headsign) b
+    on a.route_short_name = b.route_short_name and a.headsign = b.headsign;
+
+    END
+    ActiveRecord::Base.connection.select_all(query).
       group_by {|r| r["route_short_name"]}.
       select {|short_name, value|  short_name != "Shuttle" && short_name != "Other"}.
       map {|short_name, values| {:route_short_name => short_name, 
