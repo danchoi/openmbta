@@ -43,6 +43,7 @@
 		DECDFC7A124D3F18005064D6 /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DECDFC79124D3F18005064D6 /* GridCell.xib */; };
 		DECDFC83124D3F5B005064D6 /* GridScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFC82124D3F5B005064D6 /* GridScrollView.m */; };
 		DECDFC94124D3FB2005064D6 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFC93124D3FB2005064D6 /* GridCell.m */; };
+		DED28856124FDF850092D987 /* loadingIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = DED28855124FDF850092D987 /* loadingIndicator.png */; };
 		DEE669A6107ED7B400A29725 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE669A5107ED7B400A29725 /* StopAnnotation.m */; };
 		DEE867F9107FC56C0067992D /* GetRemoteDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE867F8107FC56C0067992D /* GetRemoteDataOperation.m */; };
 		DEE8687F107FD09E0067992D /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8687E107FD09E0067992D /* RoutesViewController.m */; };
@@ -121,6 +122,7 @@
 		DECDFC82124D3F5B005064D6 /* GridScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridScrollView.m; sourceTree = "<group>"; };
 		DECDFC92124D3FB2005064D6 /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
 		DECDFC93124D3FB2005064D6 /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
+		DED28855124FDF850092D987 /* loadingIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingIndicator.png; sourceTree = "<group>"; };
 		DEE669A4107ED7B400A29725 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		DEE669A5107ED7B400A29725 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 		DEE867F7107FC56C0067992D /* GetRemoteDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRemoteDataOperation.h; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DED28855124FDF850092D987 /* loadingIndicator.png */,
 				DE4212781183AA8E00757B6A /* favoritesButton_clicked.png */,
 				DE4212731183AA0E00757B6A /* favoritesButton.png */,
 				DEAF7335117DF0E900A36ABD /* action-pressed.png */,
@@ -384,6 +387,7 @@
 				DECDFB0C124BF36A005064D6 /* StopsViewController.xib in Resources */,
 				DECDFC7A124D3F18005064D6 /* GridCell.xib in Resources */,
 				DE0A4B8E124FD0B000751514 /* ProgressView.xib in Resources */,
+				DED28856124FDF850092D987 /* loadingIndicator.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
