@@ -142,15 +142,12 @@
     // draw the pins for the stops
     if (self.triggerCalloutTimer != nil)
         self.triggerCalloutTimer.invalidate;
+
     self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 2.0
                                      target: self
                                    selector: @selector(triggerCallout:)
                                    userInfo: nil
                                     repeats: NO];
-    
-
-    
-    
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
@@ -159,7 +156,6 @@
     region.center.longitude = self.selectedStopAnnotation.coordinate.longitude;
     
     if (zoomInOnSelect == YES) {
-        NSLog(@"zooming in");
         region.span.latitudeDelta = initialRegion.span.latitudeDelta * 0.4;
         region.span.longitudeDelta = initialRegion.span.longitudeDelta * 0.4;
         zoomInOnSelect = NO;
@@ -170,7 +166,9 @@
     [mapView setRegion:region animated:YES];
     [mapView regionThatFits:region];
     [mapView selectAnnotation:self.selectedStopAnnotation animated:YES]; 
-     }
+    self.selectedStopName = self.selectedStopAnnotation.subtitle;
+
+}
 
 
 - (NSString *)stopAnnotationTitle:(NSArray *)nextArrivals isRealTime:(BOOL)isRealTime {
@@ -219,6 +217,10 @@
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
+    if (stopName == nil)
+        return;
+
+
     self.selectedStopAnnotation = nil;
     for (id annotation in self.stopAnnotations) {
         if ( [((StopAnnotation *)annotation).subtitle isEqualToString:stopName] ) {

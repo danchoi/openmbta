@@ -239,6 +239,7 @@
         [contentView addSubview:scheduleViewController.view];
         if (!gridCreated) {
             [scheduleViewController createFloatingGrid];        
+            [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName];
             gridCreated = YES;
         }
         [self.scheduleViewController scrollViewDidScroll:self.scheduleViewController.scrollView]; // to align table with grid
