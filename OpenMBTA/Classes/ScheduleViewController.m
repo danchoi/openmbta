@@ -222,11 +222,13 @@ const int kCellWidth = 44;
     NSArray *times = [[self.stops objectAtIndex:row] objectForKey:@"times"];
 
     int col = 0;
-    for (NSArray *time in times) {
-        int period = [(NSNumber *)[time objectAtIndex:1] intValue];
-        if (period == 1) {
-            break;
-        }
+    for (id time in times) {
+        if (![time isEqual:[NSNull null]]) {
+            int period = [(NSNumber *)[(NSArray *)time objectAtIndex:1] intValue];
+            if (period == 1) {
+                break;
+            }
+         }
         col++;
     }
     float maxX = self.scrollView.contentSize.width - 300;
