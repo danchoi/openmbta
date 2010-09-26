@@ -22,6 +22,7 @@
     CLLocation *location;
     MKCoordinateRegion initialRegion;
     BOOL zoomInOnSelect;
+    UIView *progressView;
 
 }
 @property (nonatomic, retain) TripsViewController *tripsViewController;
@@ -39,4 +40,8 @@
 - (void)findNearestStop;
 - (void)highlightStopNamed:(NSString *)stopName;
 - (void)triggerCallout:(NSDictionary *)info;
+
+- (void)showFindingIndicators;
+- (void)hideFindingIndicators;
+
 @end

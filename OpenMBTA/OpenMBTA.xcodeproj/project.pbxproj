@@ -44,6 +44,7 @@
 		DECDFC83124D3F5B005064D6 /* GridScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFC82124D3F5B005064D6 /* GridScrollView.m */; };
 		DECDFC94124D3FB2005064D6 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFC93124D3FB2005064D6 /* GridCell.m */; };
 		DED28856124FDF850092D987 /* loadingIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = DED28855124FDF850092D987 /* loadingIndicator.png */; };
+		DED2890A125006A10092D987 /* LocatingProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED28909125006A10092D987 /* LocatingProgress.xib */; };
 		DEE669A6107ED7B400A29725 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE669A5107ED7B400A29725 /* StopAnnotation.m */; };
 		DEE867F9107FC56C0067992D /* GetRemoteDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE867F8107FC56C0067992D /* GetRemoteDataOperation.m */; };
 		DEE8687F107FD09E0067992D /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8687E107FD09E0067992D /* RoutesViewController.m */; };
@@ -123,6 +124,7 @@
 		DECDFC92124D3FB2005064D6 /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
 		DECDFC93124D3FB2005064D6 /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 		DED28855124FDF850092D987 /* loadingIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingIndicator.png; sourceTree = "<group>"; };
+		DED28909125006A10092D987 /* LocatingProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocatingProgress.xib; sourceTree = "<group>"; };
 		DEE669A4107ED7B400A29725 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		DEE669A5107ED7B400A29725 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 		DEE867F7107FC56C0067992D /* GetRemoteDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRemoteDataOperation.h; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DED28909125006A10092D987 /* LocatingProgress.xib */,
 				DECDFC92124D3FB2005064D6 /* GridCell.h */,
 				DECDFC93124D3FB2005064D6 /* GridCell.m */,
 				DECDFC79124D3F18005064D6 /* GridCell.xib */,
@@ -388,6 +391,7 @@
 				DECDFC7A124D3F18005064D6 /* GridCell.xib in Resources */,
 				DE0A4B8E124FD0B000751514 /* ProgressView.xib in Resources */,
 				DED28856124FDF850092D987 /* loadingIndicator.png in Resources */,
+				DED2890A125006A10092D987 /* LocatingProgress.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

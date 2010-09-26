@@ -42,6 +42,7 @@
     StopsViewController *stopsViewController;
     BOOL gridCreated;
     UIBarButtonItem *bookmarkButton; 
+
 }
 @property (nonatomic, copy) NSString *headsign;
 @property (nonatomic, retain) NSString *route_short_name;
@@ -78,4 +79,7 @@
 - (BOOL)isBookmarked;
 - (void)toggleBookmark:(id)sender;
 - (IBAction)infoButtonPressed:(id)sender;
+
+
+
 @end

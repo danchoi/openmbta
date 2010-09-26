@@ -143,7 +143,7 @@
     // draw the pins for the stops
     if (self.triggerCalloutTimer != nil)
         self.triggerCalloutTimer.invalidate;
-
+    [self showFindingIndicators];
     self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 2.0
                                      target: self
                                    selector: @selector(triggerCallout:)
@@ -152,6 +152,7 @@
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
+    [self hideFindingIndicators];
     if (self.selectedStopAnnotation == nil && self.selectedStopName == nil) {
         return;
     }
@@ -244,5 +245,37 @@
     [self triggerCallout:nil];
     
 }
+
+
+
+// loading indicator
+
+- (UIView*)newProgressView {
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LocatingProgress" owner:self options:nil];
+    
+    NSEnumerator *enumerator = [nib objectEnumerator];
+    id object;
+    
+    while ((object = [enumerator nextObject])) {
+        if ([object isMemberOfClass:[UIView class]]) {
+            return object;
+        }
+    }    
+    return nil;
+}
+
+
+- (void)showFindingIndicators {
+    progressView = [self newProgressView];
+    progressView.center = CGPointMake(160, 160);
+    [self.view addSubview:progressView];
+}
+
+- (void)hideFindingIndicators
+{
+    [progressView removeFromSuperview];    
+}
+
+
 
 @end
