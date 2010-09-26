@@ -76,9 +76,9 @@ class Grid
         now_string = [now_hour, Time.now.min].join(":")
 
         if time < now_string 
-          time = [time, -1]
+          time = [format_time(time), -1]
         else
-          time = [time, 1]
+          time = [format_time(time), 1]
         end
 
 
