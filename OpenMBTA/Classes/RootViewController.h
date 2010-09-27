@@ -30,5 +30,6 @@
 @property (nonatomic,retain) NSArray *menu2;
 @property (nonatomic,retain) NSArray *bookmarks;
 @property (nonatomic,retain) UITableView *tableView;
+- (void)loadLastViewedTrip;
 
 @end

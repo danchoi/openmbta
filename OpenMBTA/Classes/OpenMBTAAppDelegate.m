@@ -30,27 +30,7 @@
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
     [self testReachability];
-    /*
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    //locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
-    */
-    
-
-    NSDictionary *lastViewedTrip = [[NSUserDefaults standardUserDefaults]
-                       objectForKey:@"lastViewedTrip"];
-    if (lastViewedTrip) {
-
-        rootViewController.tripsViewController.headsign = [lastViewedTrip objectForKey:@"headsign"];
-        rootViewController.tripsViewController.route_short_name = [lastViewedTrip objectForKey:@"routeShortName"];
-        rootViewController.tripsViewController.transportType = [lastViewedTrip objectForKey:@"transportType"];;
-        rootViewController.tripsViewController.firstStop = [lastViewedTrip objectForKey:@";firstStop"];
-        rootViewController.tripsViewController.shouldReloadRegion = YES;
-        rootViewController.tripsViewController.shouldReloadData = YES;
-        [navigationController pushViewController:rootViewController.tripsViewController animated:YES];
-        
-    }
+    [rootViewController loadLastViewedTrip];
     
 }
 
