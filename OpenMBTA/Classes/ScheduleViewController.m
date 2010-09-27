@@ -75,6 +75,7 @@ const int kCellWidth = 44;
 //   [self.tableView reloadData];
 //    [self.view bringSubviewToFront:self.scrollView];
     self.scrollView.scrollEnabled = YES;
+    self.scrollView.directionalLockEnabled = YES;    
     [super viewWillAppear:animated];
 
 }
@@ -173,6 +174,8 @@ const int kCellWidth = 44;
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
     tableView.contentOffset = CGPointMake(0, aScrollView.contentOffset.y);
+    self.scrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
+    NSLog(@"%d", self.scrollView.directionalLockEnabled);
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
