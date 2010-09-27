@@ -131,7 +131,7 @@ const int kCellWidth = 44;
 }
 
 - (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(10, 0, 300, self.view.frame.size.height + 10); 
+    scrollView.frame = CGRectMake(0, 0, 320, self.view.frame.size.height + 10); 
 }
 
 - (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {
@@ -163,7 +163,7 @@ const int kCellWidth = 44;
     }
 
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
-    label.frame = CGRectMake(0, 15, kCellWidth, kRowHeight - 15);
+    label.frame = CGRectMake(10, 15, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
     return (UIView *)view; 
