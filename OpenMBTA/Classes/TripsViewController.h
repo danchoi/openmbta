@@ -38,6 +38,7 @@
 
     MapViewController *mapViewController;
     UISegmentedControl *segmentedControl;
+    NSInteger startOnSegementIndex;
     
     ScheduleViewController *scheduleViewController;
     UIView *currentContentView;
@@ -74,6 +75,7 @@
 @property (nonatomic, retain) UIBarButtonItem *bookmarkButton; 
 @property BOOL bannerIsVisible;
 @property (nonatomic, retain) ADBannerView *adView;
+@property  NSInteger startOnSegementIndex;
 - (void)addBookmarkButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;

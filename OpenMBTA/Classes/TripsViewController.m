@@ -35,6 +35,7 @@
 @synthesize orderedStopNames;
 @synthesize bannerIsVisible;
 @synthesize adView;
+@synthesize startOnSegementIndex; 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,6 +73,9 @@
             routeNameLabel.text = self.route_short_name;            
         }
     }
+    if (self.startOnSegementIndex) {
+        self.segmentedControl.selectedSegmentIndex = self.startOnSegementIndex;
+    }
     [self saveState];
     [super viewWillAppear:animated];
     [self toggleView:nil];
@@ -79,8 +83,7 @@
    
 }
 
-- (void)saveState {
-    
+- (void)saveState {    
     NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.route_short_name, @"routeShortName", self.transportType, @"transportType", [NSNumber numberWithInteger:self.segmentedControl.selectedSegmentIndex], @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
 
     [[NSUserDefaults standardUserDefaults] setObject:lastViewedTrip
