@@ -128,7 +128,7 @@
 							<object class="IBUILabel" id="443485766">
 								<reference key="NSNextResponder" ref="133236747"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 3}, {254, 21}}</string>
+								<string key="NSFrame">{{10, 3}, {280, 21}}</string>
 								<reference key="NSSuperview" ref="133236747"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -152,7 +152,7 @@
 							<object class="IBUILabel" id="1052230285">
 								<reference key="NSNextResponder" ref="133236747"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 23}, {254, 21}}</string>
+								<string key="NSFrame">{{10, 23}, {275, 21}}</string>
 								<reference key="NSSuperview" ref="133236747"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -173,7 +173,7 @@
 							<object class="IBUIButton" id="689048245">
 								<reference key="NSNextResponder" ref="133236747"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{292, 13}, {18, 19}}</string>
+								<string key="NSFrame">{{293, 13}, {18, 19}}</string>
 								<reference key="NSSuperview" ref="133236747"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
