@@ -156,7 +156,8 @@
             NSString *pluralized = [trips_remaining intValue] == 1 ? @"trip" : @"trips";
             tripText = [NSString stringWithFormat:@"%@ more %@ today", trips_remaining, pluralized];
         }
-        if ([headsignArray count] == 3) {
+        if ([headsignArray count] == 3 && [trips_remaining intValue] > 0) {
+            // 3rd element is (+ realtime day)
             tripText = [NSString stringWithFormat:@"%@ %@", tripText, [headsignArray objectAtIndex:2]];
         }
 
