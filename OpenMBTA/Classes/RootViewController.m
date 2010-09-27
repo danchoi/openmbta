@@ -13,13 +13,15 @@
 @end
 
 @implementation RootViewController
-@synthesize menu, bookmarks, tableView, tripsViewController;
+@synthesize menu,  menu2, bookmarks, tableView, tripsViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", @"T Alerts", @"Tweets #mbta", @"About / FAQ", nil];
-    self.title = @"Main";
+    self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", nil];
+    self.menu2 = [[NSArray alloc] initWithObjects:@"T Alerts", @"Tweets #mbta", @"About / FAQ", nil];
+
+    self.title = @"Main Menu";
 
 }
 
@@ -40,6 +42,7 @@
     [tAlertsViewController release];
     self.tripsViewController = nil;
     self.menu = nil;
+    self.menu2 = nil;
     self.bookmarks = nil;
     self.tableView = nil;
     [super dealloc];
@@ -48,7 +51,7 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 
@@ -56,15 +59,18 @@
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
     if (section == 1) {
         return [self.menu count];
+    } else if (section == 2) {
+        return [self.menu2 count];
     } else {
-        return ([self.bookmarks count] > 0 ? [self.bookmarks count] : 1);
-
+        return ([self.bookmarks count] > 0 ? [self.bookmarks count] : 1);        
     }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIndex {
     if (sectionIndex == 1) {
-        return @"Main Menu";
+        return @"Modes of Transport";
+    } else if (sectionIndex == 2) {
+        return @"Extras";
     } else {
         return @"Bookmarks";
     }
@@ -73,7 +79,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 1 || indexPath.section == 2) {
         static NSString *CellIdentifier = @"Cell";
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -83,7 +89,11 @@
         
         // Configure the cell.
 
-        NSString *menuChoice = [self.menu objectAtIndex:indexPath.row];
+        NSString *menuChoice;
+        if (indexPath.section == 1) 
+            menuChoice = [self.menu objectAtIndex:indexPath.row];
+        else
+            menuChoice = [self.menu2 objectAtIndex:indexPath.row];
         cell.textLabel.text = menuChoice;
         return cell;  
         
@@ -126,28 +136,6 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 1) {
-        if (indexPath.row == 4) { 
-            if (tAlertsViewController == nil) {
-                tAlertsViewController = [[TAlertsViewController alloc] initWithNibName:@"TAlertsViewController" bundle:nil];
-            }
-            [self.navigationController pushViewController:tAlertsViewController animated:YES];
-            return;
-        }
-        if (indexPath.row == 5) { 
-            if (tweetsViewController == nil) {
-                tweetsViewController = [[TweetsViewController alloc] initWithNibName:@"TAlertsViewController" bundle:nil];
-            }
-            [self.navigationController pushViewController:tweetsViewController animated:YES];
-            return;
-        }
-        
-        if (indexPath.row == 6) { 
-            AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
-            [vc release];
-            return;
-        }
-        
         
         if (routesViewController == nil) {
             routesViewController = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
@@ -159,17 +147,44 @@
         [routesViewController reset];
         [self.navigationController pushViewController:routesViewController animated:YES];
 
+    } else if (indexPath.section == 2) {
+        if (indexPath.row == 0) { 
+            if (tAlertsViewController == nil) {
+                tAlertsViewController = [[TAlertsViewController alloc] initWithNibName:@"TAlertsViewController" bundle:nil];
+            }
+            [self.navigationController pushViewController:tAlertsViewController animated:YES];
+            return;
+        }
+        if (indexPath.row == 1) { 
+            if (tweetsViewController == nil) {
+                tweetsViewController = [[TweetsViewController alloc] initWithNibName:@"TAlertsViewController" bundle:nil];
+            }
+            [self.navigationController pushViewController:tweetsViewController animated:YES];
+            return;
+        }
+        
+        if (indexPath.row == 2) { 
+            AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            [vc release];
+            return;
+        }
+        
+        
+        
+        
     } else {
         NSDictionary *bookmark = [self.bookmarks objectAtIndex: indexPath.row];
         NSString *transportType = [bookmark objectForKey:@"transportType"];
         NSString *headsign  = [bookmark objectForKey:@"headsign"];
         NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
         NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
-
+        
         [self tripsViewController].headsign = headsign;
         [self tripsViewController].route_short_name = routeShortName;
         [self tripsViewController].transportType = transportType;
         [self tripsViewController].firstStop = firstStop;
+
         [self tripsViewController].shouldReloadRegion = YES;
         [self tripsViewController].shouldReloadData = YES;
 

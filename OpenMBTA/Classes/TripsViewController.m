@@ -73,7 +73,8 @@
 
 - (void)saveState {
     
-    NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.route_short_name, @"routeShortName", self.transportType, @"transportType", self.firstStop, @"firstStop", [NSNumber numberWithInt:self.segmentedControl.selectedSegmentIndex], @"selectedSegment"];
+    NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.route_short_name, @"routeShortName", self.transportType, @"transportType", [NSNumber numberWithInteger:self.segmentedControl.selectedSegmentIndex], @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
+
     [[NSUserDefaults standardUserDefaults] setObject:lastViewedTrip
                                               forKey:@"lastViewedTrip"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -261,6 +262,7 @@
         }
         [self.scheduleViewController scrollViewDidScroll:self.scheduleViewController.scrollView]; // to align table with grid
     }
+    [self saveState];
 }
 
 

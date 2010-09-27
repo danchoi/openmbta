@@ -21,11 +21,13 @@
     TripsViewController *tripsViewController;
     NSOperationQueue *operationQueue;
     NSArray *menu;
+    NSArray *menu2;    
     NSArray *bookmarks;
 }
 
 @property (nonatomic, retain) TripsViewController *tripsViewController;
 @property (nonatomic,retain) NSArray *menu;
+@property (nonatomic,retain) NSArray *menu2;
 @property (nonatomic,retain) NSArray *bookmarks;
 @property (nonatomic,retain) UITableView *tableView;
 
