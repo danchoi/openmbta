@@ -163,7 +163,7 @@ const int kCellWidth = 44;
     }
 
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
-    label.frame = CGRectMake(0, 10, kCellWidth, kRowHeight - 10);
+    label.frame = CGRectMake(0, 15, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
     return (UIView *)view; 
