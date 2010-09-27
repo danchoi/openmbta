@@ -136,6 +136,8 @@ const int kCellWidth = 44;
     scrollView.frame = CGRectMake(0, 0, 320, self.view.frame.size.height + 10); 
 }
 
+#pragma mark color grid cell
+
 - (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {
     if ((row >= [self.stops count])  || (column >= [[[self.stops objectAtIndex:row] objectForKey:@"times"] count])) {
         return nil;
@@ -167,7 +169,7 @@ const int kCellWidth = 44;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
     
     if (selectedColumn == column) {
-        view.backgroundColor = [UIColor redColor];        
+        view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
     } else {
         view.backgroundColor = [UIColor clearColor];
     }
@@ -289,6 +291,7 @@ const int kCellWidth = 44;
             col++;
         }
         newX = kCellWidth * col;        
+        selectedColumn = col;
     } else {
         newX = self.scrollView.contentOffset.x; // keep the old value
     }
