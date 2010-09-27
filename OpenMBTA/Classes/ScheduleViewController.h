@@ -42,5 +42,4 @@
 - (void)clearGrid;
 - (void)highlightRow:(int)row;
 - (void)highlightStopNamed:(NSString *)stopName;
-- (void)adjustScrollViewFrame;
 @end

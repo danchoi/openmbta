@@ -201,19 +201,6 @@
     return tripsViewController;
 }
 
-- (void)loadLastViewedTrip {
-    NSDictionary *lastViewedTrip = [[NSUserDefaults standardUserDefaults]
-                                    objectForKey:@"lastViewedTrip"];
-    if (lastViewedTrip) {
-        self.tripsViewController.headsign = [lastViewedTrip objectForKey:@"headsign"];
-        self.tripsViewController.route_short_name = [lastViewedTrip objectForKey:@"routeShortName"];
-        self.tripsViewController.transportType = [lastViewedTrip objectForKey:@"transportType"];;
-        self.tripsViewController.firstStop = [lastViewedTrip objectForKey:@";firstStop"];
-        self.tripsViewController.shouldReloadRegion = YES;
-        self.tripsViewController.shouldReloadData = YES;
-        [self.navigationController pushViewController:self.tripsViewController animated:YES];
-    }   
-}
 
 
 @end

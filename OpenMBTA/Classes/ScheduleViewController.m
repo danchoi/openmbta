@@ -120,7 +120,8 @@ const int kCellWidth = 44;
     int gridWidth = (numColumns * kCellWidth) - 10;
     int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
-    [self adjustScrollViewFrame];
+    scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 
+    
     scrollView.stops = self.stops;
     [self.view bringSubviewToFront:scrollView];
     
@@ -129,9 +130,6 @@ const int kCellWidth = 44;
     [scrollView reloadData];
 }
 
-- (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 
-}
 
 - (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {
     if ((row >= [self.stops count])  || (column >= [[[self.stops objectAtIndex:row] objectForKey:@"times"] count])) {
