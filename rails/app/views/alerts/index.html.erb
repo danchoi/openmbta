@@ -2,14 +2,13 @@
   <div class="nav">
     <%= link_to "main", "/mobile" %> &gt; t-alerts
   </div>
-<% end %>
-
   <div class="info" style="font-weight:bold">
     T-Alerts
   </div>
+<% end %>
 
 <% @alerts.each do |alert| %>
-  <div class="alert <%= cycle('odd', 'even') %>">
+   <div class="alert <%= cycle('odd', 'even') %>">
     <h4><%= alert.title %>
       <span class="time"><%= alert.pub_date %></span>
     </h4>

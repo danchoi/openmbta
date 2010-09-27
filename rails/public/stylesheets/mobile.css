@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  width: 316px;
+  width: 320px;
   font-family: Helvetica;
-  padding: 10px 2px;
+  padding: 0px; 
 }
 p, div { font-size: 13px; }
 .main-menu li {

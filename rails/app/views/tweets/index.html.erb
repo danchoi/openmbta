@@ -2,12 +2,10 @@
   <div class="nav">
     <%= link_to "main", "/mobile" %> &gt; twitter
   </div>
+  <div class="info" style="font-weight:bold">
+    Recent tweets to <strong>#mbta</strong>
+  </div>
 <% end %>
-
-<div class="info" style="font-weight:bold">
-  Recent tweets to <strong>#mbta</strong>
-</div>
-
 
 <% @entries.each do |t| %>
   <div class="alert <%= cycle('odd', 'even') %>" style="clear:left">
