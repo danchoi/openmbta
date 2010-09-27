@@ -45,6 +45,7 @@
     BOOL gridCreated;
     UIBarButtonItem *bookmarkButton; 
     BOOL bannerIsVisible;
+    ADBannerView *adView;
 
 }
 @property (nonatomic, copy) NSString *headsign;
@@ -72,6 +73,7 @@
 @property (nonatomic, retain) NSMutableArray *orderedStopNames;
 @property (nonatomic, retain) UIBarButtonItem *bookmarkButton; 
 @property BOOL bannerIsVisible;
+@property (nonatomic, retain) ADBannerView *adView;
 - (void)addBookmarkButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;

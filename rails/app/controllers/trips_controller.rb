@@ -32,7 +32,7 @@ class TripsController < ApplicationController
             grid = Grid.new(@transport_type.to_s, @route, @headsign, @first_stop)
             @result.merge!(:grid => grid.grid)
           end
-          @result.merge!(:ads => "iAds")
+          @result.merge!(:ads => "iAds") # controls whether iAds are shown
 
         else # first version
           @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 

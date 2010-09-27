@@ -34,6 +34,7 @@
 @synthesize stopsViewController;
 @synthesize orderedStopNames;
 @synthesize bannerIsVisible;
+@synthesize adView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,12 +47,6 @@
     stopsViewController.tripsViewController = self;
     self.navigationItem.title = @"openmbta";
 
-    ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
-    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
-    adView.frame = CGRectMake(0, -50, 320, 50);
-    adView.delegate = self;
-    [self.view addSubview:adView];
-    [adView release];
  }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -119,6 +114,7 @@
 }
 
 - (void)dealloc {
+    self.adView = nil;
     self.imminentStops = nil;
     self.orderedStopIds = nil;
     self.orderedStopNames = nil;
@@ -249,8 +245,22 @@
     self.scheduleViewController.orderedStopNames = self.orderedStopNames;
     [self hideNetworkActivity];
 
-    if ([[data objectForKey;@"ads"] isEqualTo:@"iAds"]) {
-        NSLog(@"show iAds");
+    if ([[data objectForKey:@"ads"] isEqual:@"iAds"]) {
+        if (!self.adView) {
+            NSLog(@"initializing adView");
+            self.adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
+            adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
+            adView.frame = CGRectMake(0, -50, 320, 50);
+            adView.delegate = self;
+            [self.view addSubview:adView];
+            [adView release];
+            [self adjustFrames];
+        }
+    } else if (self.adView) {
+        NSLog(@"removing adview");
+        [self.adView removeFromSuperview];
+        self.adView = nil;
+        [self adjustFrames];
     }
 }
 
