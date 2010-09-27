@@ -39,6 +39,7 @@ const int kCellWidth = 44;
     self.gridTimes = [NSMutableArray array];
     self.scrollView.tileWidth  = kCellWidth;
     self.scrollView.tileHeight = kRowHeight;
+    self.view.clipsToBounds = YES;
 
 }
 

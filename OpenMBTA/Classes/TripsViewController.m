@@ -322,7 +322,7 @@
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
     NSLog(@"banner view did load banner");
-    //banner.frame = CGRectMake(0, 325, 320, 50);        
+    banner.frame = CGRectMake(0, 325, 320, 50);        
     self.bannerIsVisible = YES;
     [self adjustFrames];
 }
