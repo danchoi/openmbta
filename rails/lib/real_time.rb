@@ -9,7 +9,7 @@ class RealTime
   end
 
   def self.available?(route_short_name)
-    File.exist?(predictions_file(route_short_name)) && (File.mtime(predictions_file(route_short_name)) > 30.minutes.ago)
+    File.exist?(predictions_file(route_short_name)) && (File.mtime(predictions_file(route_short_name)) > 45.minutes.ago)
   end
 
   def self.add_data(data, params)
