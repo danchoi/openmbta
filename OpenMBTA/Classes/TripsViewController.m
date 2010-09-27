@@ -244,24 +244,24 @@
     [self.stopsViewController loadStopNames:self.orderedStopNames];
     self.scheduleViewController.orderedStopNames = self.orderedStopNames;
     [self hideNetworkActivity];
-//
-//    if ([[data objectForKey:@"ads"] isEqual:@"iAds"]) {
-//        if (!self.adView) {
-//            NSLog(@"initializing adView");
-//            self.adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
-//            adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
-//            adView.frame = CGRectMake(0, -50, 320, 50);
-//            adView.delegate = self;
-//            [self.view addSubview:adView];
-//            [adView release];
-//            [self adjustFrames];
-//        }
-//    } else if (self.adView) {
-//        NSLog(@"removing adview");
-//        [self.adView removeFromSuperview];
-//        self.adView = nil;
-//        [self adjustFrames];
-//    }
+
+    if ([[data objectForKey:@"ads"] isEqual:@"iAds"]) {
+        if (!self.adView) {
+            NSLog(@"initializing adView");
+            self.adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
+            adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
+            adView.frame = CGRectMake(0, -50, 320, 50);
+            adView.delegate = self;
+            [self.view addSubview:adView];
+            [adView release];
+            [self adjustFrames];
+        }
+    } else if (self.adView) {
+        NSLog(@"removing adview");
+        [self.adView removeFromSuperview];
+        self.adView = nil;
+        [self adjustFrames];
+    }
 }
 
 
