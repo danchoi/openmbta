@@ -20,7 +20,7 @@
 #import <iAd/iAd.h>
 
 @interface TripsViewController ()
--(void)saveState;
+- (void)saveState;
 @end
 
 @implementation TripsViewController
@@ -74,7 +74,8 @@
     
     ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
     adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
-    adView.frame = CGRectMake(0, 325, 320, 50);
+//    adView.frame = CGRectMake(0, 325, 320, 50);
+    adView.delegate = self;
     [self.view addSubview:adView];
     
 }
@@ -302,5 +303,27 @@
 }
 
 
+# pragma mark IAD delegate
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"banner view did fail to load with error", error);
+    [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+    banner.frame = CGRectOffset(banner.frame, 0, -50);
+    mapViewController.view.frame = CGRectMake(0, 50, 320, 322); 
+    scheduleViewController.view.frame = CGRectMake(0, 50, 320, 322);     
+    [UIView commitAnimations];
+    [scheduleViewController adjustScrollViewFrame];
+
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    NSLog(@"banner view did load banner");
+
+    [UIView beginAnimations:@"animateAdBannerOn" context:NULL]; 
+    banner.frame = CGRectMake(0, 325, 320, 50);        
+    mapViewController.view.frame = CGRectMake(0, 50, 320, 272); 
+    scheduleViewController.view.frame = CGRectMake(0, 50, 320, 272);         
+    [UIView commitAnimations]; 
+    [scheduleViewController adjustScrollViewFrame];
+}
 
 @end

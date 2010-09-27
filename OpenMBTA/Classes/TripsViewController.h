@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <iAd/iAd.h>
+
 @class MapViewController;
 @class ScheduleViewController;
 @class StopsViewController;
 
-@interface TripsViewController : BaseViewController <CLLocationManagerDelegate> {
+@interface TripsViewController : BaseViewController <CLLocationManagerDelegate, ADBannerViewDelegate> {
     NSString *headsign;
     NSString *route_short_name;
     NSString *transportType;
