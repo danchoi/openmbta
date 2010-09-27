@@ -21,6 +21,7 @@
 
 @interface TripsViewController ()
 - (void)saveState;
+- (void)adjustFrames;
 @end
 
 @implementation TripsViewController
@@ -32,6 +33,7 @@
 @synthesize currentContentView;
 @synthesize stopsViewController;
 @synthesize orderedStopNames;
+@synthesize bannerIsVisible;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,7 +45,14 @@
     scheduleViewController.tripsViewController = self;
     stopsViewController.tripsViewController = self;
     self.navigationItem.title = @"openmbta";
-}
+
+    ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
+    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
+    adView.frame = CGRectMake(0, -50, 320, 50);
+    adView.delegate = self;
+    [self.view addSubview:adView];
+    [adView release];
+ }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self addBookmarkButton];
@@ -72,12 +81,7 @@
     [super viewWillAppear:animated];
     [self toggleView:nil];
     
-    ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
-    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
-//    adView.frame = CGRectMake(0, 325, 320, 50);
-    adView.delegate = self;
-    [self.view addSubview:adView];
-    
+   
 }
 
 - (void)saveState {
@@ -202,7 +206,6 @@
                         self.transportType, 
                         [NSDate date],
                         self.firstStop];
-    //NSLog(@"would call API with URL: %@", apiUrl);
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrlEscaped target:self action:@selector(didFinishLoadingData:)];
     [operationQueue addOperation:operation];
@@ -226,7 +229,6 @@
     // construct GRID
 
     
-    //NSLog(@"self stops: %@", self.stops);
     self.orderedStopIds = [data objectForKey:@"ordered_stop_ids"]; // will use in the table
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
     self.firstStops = [data objectForKey:@"first_stop"]; // an array of stop names
@@ -251,17 +253,15 @@
 
 
 - (void)toggleView:(id)sender {
-
     NSUInteger selectedSegment = self.segmentedControl.selectedSegmentIndex;
-
     [currentContentView removeFromSuperview];
     if (selectedSegment == 0) { 
-        mapViewController.view.frame = CGRectMake(0, 50, 320, 322); 
+        [self adjustFrames];
         self.currentContentView = mapViewController.view;
         [contentView addSubview:mapViewController.view];
 
     } else { 
-        scheduleViewController.view.frame = CGRectMake(0, 50, 320, 322); 
+        [self adjustFrames];
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
         if (!gridCreated) {
@@ -274,6 +274,16 @@
     [self saveState];
 }
 
+- (void)adjustFrames {
+    if (bannerIsVisible) {
+        mapViewController.view.frame = CGRectMake(0, 50, 320, 275); 
+        scheduleViewController.view.frame = CGRectMake(0, 50, 320, 275);         
+    } else {
+        mapViewController.view.frame = CGRectMake(0, 50, 320, 322); 
+        scheduleViewController.view.frame = CGRectMake(0, 50, 320, 322);     
+    }
+    [scheduleViewController adjustScrollViewFrame];
+}
 
 - (void)showStopsController:(id)sender {
     [self presentModalViewController:self.stopsViewController animated:YES];
@@ -293,7 +303,6 @@
 
 
 - (IBAction)infoButtonPressed:(id)sender {
-    NSLog(@"info button pressed");
     HelpViewController *vc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
     vc.viewName = self.segmentedControl.selectedSegmentIndex == 0 ? @"map" : @"schedule";
     vc.transportType = self.transportType;
@@ -306,24 +315,16 @@
 # pragma mark IAD delegate
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"banner view did fail to load with error", error);
-    [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
-    banner.frame = CGRectOffset(banner.frame, 0, -50);
-    mapViewController.view.frame = CGRectMake(0, 50, 320, 322); 
-    scheduleViewController.view.frame = CGRectMake(0, 50, 320, 322);     
-    [UIView commitAnimations];
-    [scheduleViewController adjustScrollViewFrame];
-
+    banner.frame = CGRectOffset(banner.frame, -320, 0);
+    self.bannerIsVisible = YES;
+    [self adjustFrames];
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
     NSLog(@"banner view did load banner");
-
-    [UIView beginAnimations:@"animateAdBannerOn" context:NULL]; 
-    banner.frame = CGRectMake(0, 325, 320, 50);        
-    mapViewController.view.frame = CGRectMake(0, 50, 320, 272); 
-    scheduleViewController.view.frame = CGRectMake(0, 50, 320, 272);         
-    [UIView commitAnimations]; 
-    [scheduleViewController adjustScrollViewFrame];
+    //banner.frame = CGRectMake(0, 325, 320, 50);        
+    self.bannerIsVisible = YES;
+    [self adjustFrames];
 }
 
 @end

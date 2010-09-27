@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleViewController.h"
+#import "TripsViewController.h"
 #import "ServerUrl.h"
 #import "GridCell.h"
 #import "GetRemoteDataOperation.h"
@@ -82,7 +83,6 @@ const int kCellWidth = 44;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    NSLog(@"viewWillDisappear");
     //[self performSelectorInBackground:@selector(releaseLabels) withObject:nil];
     stopAddingLabels = YES;
     //[self releaseLabels];
@@ -130,7 +130,7 @@ const int kCellWidth = 44;
 }
 
 - (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height - 10); 
+    scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height ); 
 }
 
 - (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {
@@ -185,11 +185,21 @@ const int kCellWidth = 44;
 #pragma mark align grid after decelerating or drag
 
 - (void)alignGrid {
-    
     float x = self.scrollView.contentOffset.x;
     float y = self.scrollView.contentOffset.y;
+    float maxY = self.scrollView.contentSize.height - self.scrollView.frame.size.height - (kRowHeight / 2);
+
+    // when at bottom, align toward bottom
     
-    CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth) , (round(y/kRowHeight) * kRowHeight) );
+    float newY;
+    if (  y > maxY ) {
+        NSLog(@"close to bottom");
+        newY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
+    } else {
+        newY = round(y/kRowHeight) * kRowHeight;
+    }
+    CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth), newY);
+
     [self.scrollView setContentOffset:contentOffset animated:YES];        
 }
 
@@ -265,7 +275,7 @@ const int kCellWidth = 44;
     float maxX = self.scrollView.contentSize.width - 300;
     float newX = kCellWidth * col;
 
-    float maxY = self.scrollView.contentSize.height - 280;
+    float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.tripsViewController.scheduleViewController).view.frame.size.height;
     float newY = row *kRowHeight;
 
     float y = self.scrollView.contentOffset.y;

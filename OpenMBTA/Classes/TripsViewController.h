@@ -44,6 +44,7 @@
     StopsViewController *stopsViewController;
     BOOL gridCreated;
     UIBarButtonItem *bookmarkButton; 
+    BOOL bannerIsVisible;
 
 }
 @property (nonatomic, copy) NSString *headsign;
@@ -70,6 +71,7 @@
 @property (nonatomic, retain) IBOutlet StopsViewController *stopsViewController;
 @property (nonatomic, retain) NSMutableArray *orderedStopNames;
 @property (nonatomic, retain) UIBarButtonItem *bookmarkButton; 
+@property BOOL bannerIsVisible;
 - (void)addBookmarkButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;
