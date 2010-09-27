@@ -24,7 +24,7 @@ const int kCellWidth = 44;
 @implementation ScheduleViewController
 
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
-@synthesize tableView, scrollView, gridTimes, gridID, tripsViewController;
+@synthesize tableView, scrollView, gridTimes, gridID, tripsViewController, selectedColumn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -104,6 +104,8 @@ const int kCellWidth = 44;
 
 - (void)clearGrid {
     self.stops = [NSArray array];
+    self.selectedStopName = nil;
+    self.selectedColumn = -1;
     self.tableView.hidden = YES;    
     self.scrollView.hidden = YES;
 }
@@ -293,7 +295,7 @@ const int kCellWidth = 44;
             col++;
         }
         newX = kCellWidth * col;        
-        selectedColumn = col;
+        [self highlightColumn:col];
     } else {
         newX = self.scrollView.contentOffset.x; // keep the old value
     }

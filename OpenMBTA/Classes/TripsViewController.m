@@ -79,8 +79,6 @@
     [self saveState];
     [super viewWillAppear:animated];
     [self toggleView:nil];
-    
-   
 }
 
 - (void)saveState {    
@@ -190,6 +188,7 @@
 
 // This calls the server
 - (void)startLoadingData {    
+    
     [self showNetworkActivity];
     gridCreated = NO;
     [self.scheduleViewController clearGrid];
