@@ -73,8 +73,9 @@
             routeNameLabel.text = self.route_short_name;            
         }
     }
-    if (self.startOnSegementIndex) {
+    if (self.startOnSegementIndex != -1) {
         self.segmentedControl.selectedSegmentIndex = self.startOnSegementIndex;
+        self.startOnSegementIndex = -1;
     }
     [self saveState];
     [super viewWillAppear:animated];
@@ -304,14 +305,15 @@
 
 - (void)highlightStopNamed:(NSString *)stopName {
     [self.mapViewController highlightStopNamed:stopName];
-    [self.scheduleViewController highlightStopNamed:stopName showCurrentColumn:NO];
+    // map controller will trigger scheduleViewController
+//    [self.scheduleViewController highlightStopNamed:stopName showCurrentColumn:NO];
 }
 
 
 - (void)highlightStopPosition:(int)pos {
     NSString *stopName = [self.orderedStopNames objectAtIndex:pos];
     [self.mapViewController highlightStopNamed:stopName];
-    [self.scheduleViewController highlightRow:pos showCurrentColumn:NO];
+//    [self.scheduleViewController highlightRow:pos showCurrentColumn:NO];
 }
 
 

@@ -81,6 +81,7 @@ const int kCellWidth = 44;
     self.scrollView.directionalLockEnabled = YES;    
     [super viewWillAppear:animated];
 
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -213,7 +214,7 @@ const int kCellWidth = 44;
     
     float newY;
     if (  y > maxY ) {
-        NSLog(@"close to bottom");
+//        NSLog(@"close to bottom");
         newY = self.scrollView.contentSize.height - self.scrollView.frame.size.height + 10;
     } else {
         newY = round(y/kRowHeight) * kRowHeight;
@@ -275,6 +276,8 @@ const int kCellWidth = 44;
 }
 
 - (void)highlightRow:(int)row showCurrentColumn:(BOOL)showCurrentColumn {
+    
+   // NSLog(@"hightlight row %d showCurrentColumn %d", row, showCurrentColumn);    
     if ([self.stops count] == 0) return;
 
     selectedRow = row;
@@ -295,7 +298,7 @@ const int kCellWidth = 44;
             col++;
         }
         newX = kCellWidth * col;        
-        [self highlightColumn:col];
+        self.selectedColumn = col;
     } else {
         newX = self.scrollView.contentOffset.x; // keep the old value
     }
@@ -314,12 +317,14 @@ const int kCellWidth = 44;
     }    
     CGPoint contentOffset = CGPointMake(x , y);
     [self.scrollView setContentOffset:contentOffset animated:YES];        
-    
+    [scrollView reloadData];
     [tableView reloadData];
     
 }
 
 - (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)showCurrentColumn {
+ //   NSLog(@"selected stop %@ selected col %d", self.selectedStopName, self.selectedColumn);
+    
     if (stopName == nil)
         return;
     int row = [self.orderedStopNames indexOfObject:stopName];

@@ -66,9 +66,9 @@
         // yeah this is poor encapsulation, but life is short
         ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.dataSource;
         if  (row < [scheduleViewController.orderedStopNames count]) {
-            NSString *stopName = [scheduleViewController.orderedStopNames objectAtIndex:row];
-            TripsViewController *tripViewController = scheduleViewController.tripsViewController;
-            [tripViewController highlightStopNamed:stopName];
+//            NSString *stopName = [scheduleViewController.orderedStopNames objectAtIndex:row];
+ //           TripsViewController *tripViewController = scheduleViewController.tripsViewController;
+//            [tripViewController highlightStopNamed:stopName];
             [scheduleViewController highlightColumn:col];
             
         }
