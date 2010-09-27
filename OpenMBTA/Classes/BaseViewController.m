@@ -17,9 +17,19 @@
 @end
 
 @implementation BaseViewController
-
+@synthesize progressView;
 
 - (void)viewDidLoad {
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProgressView" owner:self options:nil];
+    
+    NSEnumerator *enumerator = [nib objectEnumerator];
+    id object;
+    
+    while ((object = [enumerator nextObject])) {
+        if ([object isMemberOfClass:[UIView class]]) {
+            self.progressView =  (UIView *)object;
+        }
+    }    
     [super viewDidLoad];
 }
 
@@ -60,30 +70,15 @@
 
 // loading indicator
 
-- (UIView*)newProgressView {
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProgressView" owner:self options:nil];
-    
-    NSEnumerator *enumerator = [nib objectEnumerator];
-    id object;
-    
-    while ((object = [enumerator nextObject])) {
-        if ([object isMemberOfClass:[UIView class]]) {
-            return object;
-        }
-    }    
-    return nil;
-}
-
 
 - (void)showLoadingIndicators {
-    progressView = [self newProgressView];
-    progressView.center = CGPointMake(160, 210);
+    self.progressView.center = CGPointMake(160, 210);
     [self.view addSubview:progressView];
 }
 
 - (void)hideLoadingIndicators
 {
-    [progressView removeFromSuperview];    
+    [self.progressView removeFromSuperview];    
 }
 
 @end

@@ -13,7 +13,7 @@
 #import "StopsViewController.h"
 
 @implementation MapViewController
-@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName, initialRegion;
+@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName, initialRegion, progressView;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -27,6 +27,21 @@
 
 - (void)viewDidLoad {
     self.stopAnnotations = [NSMutableArray array];
+    if (self.progressView == nil) {
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LocatingProgress" owner:self options:nil];
+        
+        NSEnumerator *enumerator = [nib objectEnumerator];
+        id object;
+        
+        while ((object = [enumerator nextObject])) {
+            if ([object isMemberOfClass:[UIView class]]) {
+                
+                self.progressView = (UIView *)object;
+            }
+            
+        }    
+    }     
     [super viewDidLoad];
 }
 
@@ -43,6 +58,7 @@
     [self.stopAnnotations removeAllObjects];
     self.tripsViewController = nil;
     self.stopAnnotations = nil; 
+    self.progressView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,6 +69,7 @@
     self.triggerCalloutTimer = nil;
     self.selectedStopName = nil;
     self.selectedStopAnnotation = nil;
+    self.progressView = nil;
     [super dealloc];
 }
 
@@ -228,6 +245,7 @@
     NSString *stopName = ((StopAnnotation *)view.annotation).subtitle;
     [self.tripsViewController.stopsViewController selectStopNamed:stopName];
     [self.tripsViewController.scheduleViewController highlightStopNamed:stopName];
+    [self hideFindingIndicators];
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
@@ -250,30 +268,15 @@
 
 // loading indicator
 
-- (UIView*)newProgressView {
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LocatingProgress" owner:self options:nil];
-    
-    NSEnumerator *enumerator = [nib objectEnumerator];
-    id object;
-    
-    while ((object = [enumerator nextObject])) {
-        if ([object isMemberOfClass:[UIView class]]) {
-            return object;
-        }
-    }    
-    return nil;
-}
-
 
 - (void)showFindingIndicators {
-    progressView = [self newProgressView];
-    progressView.center = CGPointMake(160, 160);
+    self.progressView.center = CGPointMake(160, 160);
     [self.view addSubview:progressView];
 }
 
 - (void)hideFindingIndicators
 {
-    [progressView removeFromSuperview];    
+    [self.progressView removeFromSuperview];    
 }
 
 
