@@ -279,7 +279,7 @@
         [contentView addSubview:scheduleViewController.view];
         if (!gridCreated) {
             [scheduleViewController createFloatingGrid];        
-            [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName];
+            [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName showCurrentColumn:NO];
             gridCreated = YES;
         }
         [self.scheduleViewController scrollViewDidScroll:self.scheduleViewController.scrollView]; // to align table with grid
@@ -304,14 +304,14 @@
 
 - (void)highlightStopNamed:(NSString *)stopName {
     [self.mapViewController highlightStopNamed:stopName];
-    [self.scheduleViewController highlightStopNamed:stopName];
+    [self.scheduleViewController highlightStopNamed:stopName showCurrentColumn:NO];
 }
 
 
 - (void)highlightStopPosition:(int)pos {
     NSString *stopName = [self.orderedStopNames objectAtIndex:pos];
     [self.mapViewController highlightStopNamed:stopName];
-    [self.scheduleViewController highlightRow:pos];
+    [self.scheduleViewController highlightRow:pos showCurrentColumn:NO];
 }
 
 

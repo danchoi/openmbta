@@ -30,6 +30,7 @@ const int kCellWidth = 44;
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         self.stops = [NSArray array];
         self.orderedStopNames = [NSArray array];
+
     }
     return self;
 }
@@ -40,7 +41,7 @@ const int kCellWidth = 44;
     self.scrollView.tileWidth  = kCellWidth;
     self.scrollView.tileHeight = kRowHeight;
     self.view.clipsToBounds = YES;
-
+    selectedColumn = -1;
 }
 
 /*
@@ -142,7 +143,7 @@ const int kCellWidth = 44;
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont boldSystemFontOfSize:11.0];
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
-    label.backgroundColor = [UIColor clearColor];
+    
     if (arrayOrNull == [NSNull null]) {
         label.text = @" ";
     } else {
@@ -162,11 +163,20 @@ const int kCellWidth = 44;
         }
         
     }
-
+    label.backgroundColor = [UIColor clearColor];
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
-    label.frame = CGRectMake(10, 15, kCellWidth, kRowHeight - 15);
+    
+    if (selectedColumn == column) {
+        view.backgroundColor = [UIColor redColor];        
+    } else {
+        view.backgroundColor = [UIColor clearColor];
+    }
+
+    label.frame = CGRectMake(5, 15, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
+
+    
     return (UIView *)view; 
 }
 
@@ -175,7 +185,6 @@ const int kCellWidth = 44;
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
     tableView.contentOffset = CGPointMake(0, aScrollView.contentOffset.y);
     self.scrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
-    NSLog(@"%d", self.scrollView.directionalLockEnabled);
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -259,27 +268,31 @@ const int kCellWidth = 44;
     return cell;
 }
 
-- (void)highlightRow:(int)row {
+- (void)highlightRow:(int)row showCurrentColumn:(BOOL)showCurrentColumn {
     if ([self.stops count] == 0) return;
 
     selectedRow = row;
     
-    // move to most relevant column
-    NSArray *times = [[self.stops objectAtIndex:row] objectForKey:@"times"];
+    float newX;
+    if (showCurrentColumn) {
+        // move to most relevant column
+        NSArray *times = [[self.stops objectAtIndex:row] objectForKey:@"times"];
 
-    int col = 0;
-    for (id time in times) {
-        if (![time isEqual:[NSNull null]]) {
-            int period = [(NSNumber *)[(NSArray *)time objectAtIndex:1] intValue];
-            if (period == 1) {
-                break;
-            }
-         }
-        col++;
+        int col = 0;
+        for (id time in times) {
+            if (![time isEqual:[NSNull null]]) {
+                int period = [(NSNumber *)[(NSArray *)time objectAtIndex:1] intValue];
+                if (period == 1) {
+                    break;
+                }
+             }
+            col++;
+        }
+        newX = kCellWidth * col;        
+    } else {
+        newX = self.scrollView.contentOffset.x; // keep the old value
     }
     float maxX = self.scrollView.contentSize.width - 300;
-    float newX = kCellWidth * col;
-
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.tripsViewController.scheduleViewController).view.frame.size.height;
     float newY = row *kRowHeight;
 
@@ -287,8 +300,8 @@ const int kCellWidth = 44;
     if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
         y = MIN(newY, maxY);
     }
-    float x = MIN(newX, maxX);
 
+    float x = MIN(newX, maxX);
     if (self.scrollView.contentSize.width < self.view.frame.size.width) {
         x = 0;
     }    
@@ -299,13 +312,18 @@ const int kCellWidth = 44;
     
 }
 
-- (void)highlightStopNamed:(NSString *)stopName {
+- (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)showCurrentColumn {
     if (stopName == nil)
         return;
     int row = [self.orderedStopNames indexOfObject:stopName];
     if (row == NSNotFound)
         return;
-    [self highlightRow:row];
+    [self highlightRow:row showCurrentColumn:showCurrentColumn];
+}
+
+- (void)highlightColumn:(int)col {
+    selectedColumn = col;
+    [scrollView reloadData];
 }
 
 @end

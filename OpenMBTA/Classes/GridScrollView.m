@@ -57,15 +57,20 @@
     UITouch *touch = [touches anyObject]; 
     CGPoint location = [touch locationInView:self];
     float y = location.y; 
+    float x = location.x;
     if(touch.tapCount == 1) { 
 
-        int row = (int)(y / self.tileHeight);
-        // yeah this is terrible encapsulation, but ...
+        int row = (int)(y / self.tileHeight);        
+        int col = x / self.tileWidth;
+        
+        // yeah this is poor encapsulation, but life is short
         ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.dataSource;
         if  (row < [scheduleViewController.orderedStopNames count]) {
             NSString *stopName = [scheduleViewController.orderedStopNames objectAtIndex:row];
             TripsViewController *tripViewController = scheduleViewController.tripsViewController;
             [tripViewController highlightStopNamed:stopName];
+            [scheduleViewController highlightColumn:col];
+            
         }
         
     } 

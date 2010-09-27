@@ -157,6 +157,7 @@
         [stopLocation release];
         if ((minDistance == -1) || (distance < minDistance)) {
             self.selectedStopAnnotation = (StopAnnotation *)annotation;
+            self.selectedStopName = self.selectedStopAnnotation.subtitle;
             minDistance = distance;
         } 
     }
@@ -171,6 +172,7 @@
                                    selector: @selector(triggerCallout:)
                                    userInfo: nil
                                     repeats: NO];
+    [self.tripsViewController.scheduleViewController highlightStopNamed:self.selectedStopName showCurrentColumn:YES];    
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
@@ -249,7 +251,7 @@
     self.triggerCalloutTimer.invalidate;
     NSString *stopName = ((StopAnnotation *)view.annotation).subtitle;
     [self.tripsViewController.stopsViewController selectStopNamed:stopName];
-    [self.tripsViewController.scheduleViewController highlightStopNamed:stopName];
+    [self.tripsViewController.scheduleViewController highlightStopNamed:stopName showCurrentColumn:NO];
     [self hideFindingIndicators];
 }
 
