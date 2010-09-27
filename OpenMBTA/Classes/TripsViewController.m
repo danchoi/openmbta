@@ -249,6 +249,9 @@
     self.scheduleViewController.orderedStopNames = self.orderedStopNames;
     [self hideNetworkActivity];
 
+    if ([[data objectForKey;@"ads"] isEqualTo:@"iAds"]) {
+        NSLog(@"show iAds");
+    }
 }
 
 

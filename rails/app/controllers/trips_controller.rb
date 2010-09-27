@@ -24,16 +24,15 @@ class TripsController < ApplicationController
                              :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
 
           if @transport_type == :bus && (base_time < 2.minutes.from_now && base_time > 2.minutes.ago)
-            logger.debug "searching for REAL TIME data"
             @result = RealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route)
           end
-
-          # add schedule grid
+       
           if params[:version] == '3'
             logger.debug("ADDING GRID")
             grid = Grid.new(@transport_type.to_s, @route, @headsign, @first_stop)
             @result.merge!(:grid => grid.grid)
           end
+          @result.merge!(:ads => "iAds")
 
         else # first version
           @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
@@ -41,9 +40,7 @@ class TripsController < ApplicationController
                                :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym),
                                :now => Now.new(base_time)).result
         end
-
-        logger.debug @result.to_json
-        #File.open("#{Rails.root}/realtime/temp.yml", 'w') {|f| f.write( @result.to_yaml )}
+        
         render :json => @result.to_json
       }
 
