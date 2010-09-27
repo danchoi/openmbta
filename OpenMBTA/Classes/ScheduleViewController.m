@@ -131,7 +131,7 @@ const int kCellWidth = 44;
 }
 
 - (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(10, 10, 300, self.view.frame.size.height ); 
+    scrollView.frame = CGRectMake(10, 0, 300, self.view.frame.size.height + 10); 
 }
 
 - (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {
@@ -140,9 +140,7 @@ const int kCellWidth = 44;
     }
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont boldSystemFontOfSize:11.0];
-    //label.textAlignment = UITextAlignmentCenter;
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
-
     label.backgroundColor = [UIColor clearColor];
     if (arrayOrNull == [NSNull null]) {
         label.text = @" ";
@@ -164,8 +162,11 @@ const int kCellWidth = 44;
         
     }
 
-    
-    return (UIView *)label; 
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
+    label.frame = CGRectMake(0, 10, kCellWidth, kRowHeight - 10);
+    [view addSubview:label];
+    [label release];
+    return (UIView *)view; 
 }
 
 #pragma mark Scroll View delegate
@@ -195,7 +196,7 @@ const int kCellWidth = 44;
     float newY;
     if (  y > maxY ) {
         NSLog(@"close to bottom");
-        newY = self.scrollView.contentSize.height - self.scrollView.frame.size.height;
+        newY = self.scrollView.contentSize.height - self.scrollView.frame.size.height + 10;
     } else {
         newY = round(y/kRowHeight) * kRowHeight;
     }
