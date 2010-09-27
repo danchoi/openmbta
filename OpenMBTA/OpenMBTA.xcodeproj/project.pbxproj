@@ -45,6 +45,7 @@
 		DECDFC94124D3FB2005064D6 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DECDFC93124D3FB2005064D6 /* GridCell.m */; };
 		DED28856124FDF850092D987 /* loadingIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = DED28855124FDF850092D987 /* loadingIndicator.png */; };
 		DED2890A125006A10092D987 /* LocatingProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = DED28909125006A10092D987 /* LocatingProgress.xib */; };
+		DED28B7212504E710092D987 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED28B7112504E710092D987 /* iAd.framework */; };
 		DEE669A6107ED7B400A29725 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE669A5107ED7B400A29725 /* StopAnnotation.m */; };
 		DEE867F9107FC56C0067992D /* GetRemoteDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE867F8107FC56C0067992D /* GetRemoteDataOperation.m */; };
 		DEE8687F107FD09E0067992D /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE8687E107FD09E0067992D /* RoutesViewController.m */; };
@@ -125,6 +126,7 @@
 		DECDFC93124D3FB2005064D6 /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 		DED28855124FDF850092D987 /* loadingIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingIndicator.png; sourceTree = "<group>"; };
 		DED28909125006A10092D987 /* LocatingProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocatingProgress.xib; sourceTree = "<group>"; };
+		DED28B7112504E710092D987 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		DEE669A4107ED7B400A29725 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		DEE669A5107ED7B400A29725 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 		DEE867F7107FC56C0067992D /* GetRemoteDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRemoteDataOperation.h; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				DE22A63712496E7E0081FEA3 /* UIKit.framework in Frameworks */,
 				DE22A64112496F160081FEA3 /* CoreFoundation.framework in Frameworks */,
 				DE22A65F1249713A0081FEA3 /* CoreGraphics.framework in Frameworks */,
+				DED28B7212504E710092D987 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +299,7 @@
 				DE22A5A312495F210081FEA3 /* CoreLocation.framework */,
 				DE22A62312496E3D0081FEA3 /* MapKit.framework */,
 				DE22A62F12496E6E0081FEA3 /* Foundation.framework */,
+				DED28B7112504E710092D987 /* iAd.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

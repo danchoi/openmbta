@@ -275,7 +275,7 @@
 
 
 - (void)showFindingIndicators {
-    self.progressView.center = CGPointMake(160, 160);
+    self.progressView.center = CGPointMake(160, 132);
     [self.view addSubview:progressView];
 }
 

@@ -49,7 +49,7 @@
         rootViewController.tripsViewController.shouldReloadRegion = YES;
         rootViewController.tripsViewController.shouldReloadData = YES;
         [navigationController pushViewController:rootViewController.tripsViewController animated:YES];
-
+        
     }
     
 }

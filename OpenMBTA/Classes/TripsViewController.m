@@ -17,6 +17,7 @@
 #import "StopsViewController.h"
 #import "Preferences.h"
 #import "HelpViewController.h"
+#import <iAd/iAd.h>
 
 @interface TripsViewController ()
 -(void)saveState;
@@ -41,6 +42,7 @@
     mapViewController.tripsViewController = self;
     scheduleViewController.tripsViewController = self;
     stopsViewController.tripsViewController = self;
+    self.navigationItem.title = @"openmbta";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,6 +71,12 @@
     [self saveState];
     [super viewWillAppear:animated];
     [self toggleView:nil];
+    
+    ADBannerView *adView = [[ADBannerView alloc] initWithFrame:CGRectZero]; 
+    adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifier320x50; 
+    adView.frame = CGRectMake(0, 325, 320, 50);
+    [self.view addSubview:adView];
+    
 }
 
 - (void)saveState {
