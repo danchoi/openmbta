@@ -15,12 +15,13 @@
     NSURLRequest *request;    
     NSString *transportType;
     
-    UIActivityIndicatorView *spinner;
-    UILabel *loadingLabel;
+    
+        UIView *progressView;
     
     
     
 }
+@property (retain, nonatomic) UIView *progressView;
 @property (nonatomic, copy) NSString *viewName;
 @property (nonatomic, copy) NSString *transportType;
 @property (nonatomic, retain) UIWebView *webView;

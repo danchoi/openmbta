@@ -14,9 +14,20 @@
 @end
 
 @implementation HelpViewController
-@synthesize viewName, transportType, webView, request;
+@synthesize viewName, transportType, webView, request, progressView;
 
 - (void)viewDidLoad {
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProgressView" owner:self options:nil];
+    
+    NSEnumerator *enumerator = [nib objectEnumerator];
+    id object;
+    
+    while ((object = [enumerator nextObject])) {
+        if ([object isMemberOfClass:[UIView class]]) {
+            self.progressView =  (UIView *)object;
+        }
+    }    
+    
     [super viewDidLoad];
 
 }
@@ -31,8 +42,7 @@
     self.transportType = nil;
     self.webView = nil;
     self.request = nil;
-    [spinner release];
-    [loadingLabel release];
+    self.progressView = nil;
     [super dealloc];
 }
 
@@ -79,48 +89,19 @@
 
 }
 
+// loading indicator
+
+
 - (void)showLoadingIndicators {
-    if (!spinner) {
-        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [spinner startAnimating];
-        
-        loadingLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        loadingLabel.font = [UIFont systemFontOfSize:18];
-        loadingLabel.textColor = [UIColor grayColor];
-        loadingLabel.text = @"Loading...";
-        [loadingLabel sizeToFit];
-        
-        static CGFloat bufferWidth = 8.0;
-        
-        CGFloat totalWidth = spinner.frame.size.width + bufferWidth + loadingLabel.frame.size.width;
-        
-        CGRect spinnerFrame = spinner.frame;
-        spinnerFrame.origin.x = (self.view.bounds.size.width - totalWidth) / 2.0;
-        spinnerFrame.origin.y = ((self.view.bounds.size.height - spinnerFrame.size.height) / 2.0) - 20;
-        spinner.frame = spinnerFrame;
-        [self.view addSubview:spinner];
-        
-        CGRect labelFrame = loadingLabel.frame;
-        labelFrame.origin.x = (self.view.bounds.size.width - totalWidth) / 2.0 + spinnerFrame.size.width + bufferWidth;
-        labelFrame.origin.y = ((self.view.bounds.size.height - labelFrame.size.height) / 2.0) - 20;
-        loadingLabel.frame = labelFrame;
-        [self.view addSubview:loadingLabel];
-    }
+    self.progressView.center = CGPointMake(160, 182);
+    [self.view addSubview:progressView];
 }
 
 - (void)hideLoadingIndicators
 {
-    if (spinner) {
-        [spinner stopAnimating];
-        [spinner removeFromSuperview];
-        [spinner release];
-        spinner = nil;
-        
-        [loadingLabel removeFromSuperview];
-        [loadingLabel release];
-        loadingLabel = nil;
-    }
+    [self.progressView removeFromSuperview];    
 }
+
 
 
 @end

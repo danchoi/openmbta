@@ -10,7 +10,6 @@
 
 
 @interface BaseViewController (Private)
-- (UIView *)newProgressView;
 - (void)showLoadingIndicators;
 - (void)hideLoadingIndicators;
 
