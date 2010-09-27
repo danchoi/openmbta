@@ -21,7 +21,7 @@ class RealTime
         stop_predictions = direction['stops'].
           detect {|s| 
             #s['title'] == stop_data[:name]
-            s['tag'] == stop_data[:mbta_id].to_s
+            s['tag'].split("_").first == stop_data[:mbta_id].to_s
           } 
 
         if stop_predictions.nil? || stop_predictions['predictions'].empty?
