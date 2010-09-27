@@ -13,7 +13,7 @@
 @end
 
 @implementation RootViewController
-@synthesize menu, bookmarks, tableView;
+@synthesize menu, bookmarks, tableView, tripsViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +38,7 @@
 - (void)dealloc {
     [routesViewController release];
     [tAlertsViewController release];
+    self.tripsViewController = nil;
     self.menu = nil;
     self.bookmarks = nil;
     self.tableView = nil;
@@ -165,24 +166,24 @@
         NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
         NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
 
-        [self tripsMapViewController].headsign = headsign;
-        [self tripsMapViewController].route_short_name = routeShortName;
-        [self tripsMapViewController].transportType = transportType;
-        [self tripsMapViewController].firstStop = firstStop;
-        [self tripsMapViewController].shouldReloadRegion = YES;
-        [self tripsMapViewController].shouldReloadData = YES;
+        [self tripsViewController].headsign = headsign;
+        [self tripsViewController].route_short_name = routeShortName;
+        [self tripsViewController].transportType = transportType;
+        [self tripsViewController].firstStop = firstStop;
+        [self tripsViewController].shouldReloadRegion = YES;
+        [self tripsViewController].shouldReloadData = YES;
 
-        [self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
+        [self.navigationController pushViewController:[self tripsViewController] animated:YES];
 
      
     }
 }
 
-- (TripsViewController *)tripsMapViewController {
-    if (tripsMapViewController == nil) {
-        tripsMapViewController = [[TripsViewController alloc] initWithNibName:@"TripsViewController" bundle:nil];
+- (TripsViewController *)tripsViewController {
+    if (tripsViewController == nil) {
+        tripsViewController = [[TripsViewController alloc] initWithNibName:@"TripsViewController" bundle:nil];
     }
-    return tripsMapViewController;
+    return tripsViewController;
 }
 
 

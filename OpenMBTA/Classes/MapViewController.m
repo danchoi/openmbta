@@ -131,7 +131,12 @@
 }
 
 - (void)findNearestStop {
+    
+    if (![CLLocationManager locationServicesEnabled])
+        return;
+
     self.location = mapView.userLocation.location;
+    
     if (!location || [self.mapView.annotations count] < 2) {
         if (self.triggerCalloutTimer != nil)
             self.triggerCalloutTimer.invalidate;

@@ -18,6 +18,10 @@
 #import "Preferences.h"
 #import "HelpViewController.h"
 
+@interface TripsViewController ()
+-(void)saveState;
+@end
+
 @implementation TripsViewController
 @synthesize contentView;
 @synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selectedStopId, bookmarkButton ;
@@ -62,13 +66,24 @@
             routeNameLabel.text = self.route_short_name;            
         }
     }
-
+    [self saveState];
     [super viewWillAppear:animated];
     [self toggleView:nil];
 }
 
+- (void)saveState {
+    
+    NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.route_short_name, @"routeShortName", self.transportType, @"transportType", self.firstStop, @"firstStop", [NSNumber numberWithInt:self.segmentedControl.selectedSegmentIndex], @"selectedSegment"];
+    [[NSUserDefaults standardUserDefaults] setObject:lastViewedTrip
+                                              forKey:@"lastViewedTrip"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     self.navigationItem.rightBarButtonItem = nil;
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"lastViewedTrip"];
+    [[NSUserDefaults standardUserDefaults] synchronize];    
     [super viewWillDisappear:animated];
 }
 

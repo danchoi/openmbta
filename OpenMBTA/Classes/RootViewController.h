@@ -18,11 +18,13 @@
     RoutesViewController *routesViewController;
     TAlertsViewController *tAlertsViewController;
     TweetsViewController *tweetsViewController;
-    TripsViewController *tripsMapViewController;
+    TripsViewController *tripsViewController;
     NSOperationQueue *operationQueue;
     NSArray *menu;
     NSArray *bookmarks;
 }
+
+@property (nonatomic, retain) TripsViewController *tripsViewController;
 @property (nonatomic,retain) NSArray *menu;
 @property (nonatomic,retain) NSArray *bookmarks;
 @property (nonatomic,retain) UITableView *tableView;
