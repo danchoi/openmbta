@@ -125,7 +125,7 @@ const int kCellWidth = 44;
     NSArray *timesForFirstRow = [firstRow objectForKey:@"times"];
     NSInteger numColumns = [timesForFirstRow count];
 
-    int gridWidth = (numColumns * kCellWidth) - 10;
+    int gridWidth = (numColumns * kCellWidth) + 10;
     int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
     [self adjustScrollViewFrame];
