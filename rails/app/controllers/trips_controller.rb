@@ -29,8 +29,14 @@ class TripsController < ApplicationController
        
           if params[:version] == '3'
             logger.debug("ADDING GRID")
-            grid = Grid.new(@transport_type.to_s, @route, @headsign, @first_stop)
-            @result.merge!(:grid => grid.grid)
+            grid = Grid.new(@transport_type.to_s, @route, @headsign, @first_stop).grid
+            # make sure grid has same order as result
+            final_grid = []
+            @result[:ordered_stop_ids].each do |x|
+              final_grid << grid.detect {|y| y[:stop][:stop_id].to_s == x.to_s}
+            end
+            @result.merge!(:grid => final_grid.compact)
+
           end
           @result.merge!(:ads => "iAds") # controls whether iAds are shown
 

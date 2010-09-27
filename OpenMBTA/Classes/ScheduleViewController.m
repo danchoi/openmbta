@@ -256,7 +256,9 @@ const int kCellWidth = 44;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
     }
-    NSDictionary *stopDict = [[self.stops objectAtIndex:indexPath.row] objectForKey:@"stop"];;
+    NSDictionary *stopDict = [[self.stops objectAtIndex:indexPath.row] objectForKey:@"stop"];
+    
+    
     NSString *stopName =  [stopDict objectForKey:@"name"];
     
     if (indexPath.row == selectedRow)  {
@@ -323,7 +325,7 @@ const int kCellWidth = 44;
 }
 
 - (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)showCurrentColumn {
- //   NSLog(@"selected stop %@ selected col %d", self.selectedStopName, self.selectedColumn);
+    NSLog(@"selected stop %@ selected col %d", stopName, self.selectedColumn);
     
     if (stopName == nil)
         return;

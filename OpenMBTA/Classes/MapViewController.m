@@ -251,16 +251,17 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     self.triggerCalloutTimer.invalidate;
     NSString *stopName = ((StopAnnotation *)view.annotation).subtitle;
+    
     [self.tripsViewController.stopsViewController selectStopNamed:stopName];
     [self.tripsViewController.scheduleViewController highlightStopNamed:stopName showCurrentColumn:YES];
+    
     [self hideFindingIndicators];
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
+    
     if (stopName == nil)
         return;
-
-
     self.selectedStopAnnotation = nil;
     for (id annotation in self.stopAnnotations) {
         if ( [((StopAnnotation *)annotation).subtitle isEqualToString:stopName] ) {
