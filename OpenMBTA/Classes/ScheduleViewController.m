@@ -41,6 +41,8 @@ const int kCellWidth = 44;
     self.scrollView.tileWidth  = kCellWidth;
     self.scrollView.tileHeight = kRowHeight;
     self.view.clipsToBounds = YES;
+    self.tableView.scrollEnabled = NO;
+    
     selectedColumn = -1;
 }
 
@@ -133,7 +135,7 @@ const int kCellWidth = 44;
 }
 
 - (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(0, 0, 320, self.view.frame.size.height + 10); 
+    scrollView.frame = CGRectMake(6, 0, 320, self.view.frame.size.height + 10); 
 }
 
 #pragma mark color grid cell
@@ -248,7 +250,7 @@ const int kCellWidth = 44;
         cell = [nib objectAtIndex:0];
 
         cell.accessoryType =  UITableViewCellAccessoryNone; 
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
     }
     NSDictionary *stopDict = [[self.stops objectAtIndex:indexPath.row] objectForKey:@"stop"];;

@@ -223,8 +223,6 @@
     self.stops = [data objectForKey:@"stops"];
 
     // construct GRID
-
-    
     self.orderedStopIds = [data objectForKey:@"ordered_stop_ids"]; // will use in the table
     self.imminentStops = [data objectForKey:@"imminent_stop_ids"];
     self.firstStops = [data objectForKey:@"first_stop"]; // an array of stop names
