@@ -284,6 +284,7 @@
             gridCreated = YES;
         }
         [self.scheduleViewController scrollViewDidScroll:self.scheduleViewController.scrollView]; // to align table with grid
+        [self.scheduleViewController alignGridAnimated:NO];
     }
     [self saveState];
 }

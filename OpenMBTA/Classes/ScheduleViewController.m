@@ -17,7 +17,7 @@ const int kRowHeight = 50;
 const int kCellWidth = 44;
 
 @interface ScheduleViewController (Private)
-- (void)alignGrid;
+
 @end
 
 
@@ -195,17 +195,17 @@ const int kCellWidth = 44;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self alignGrid];
+    [self alignGridAnimated:YES];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate)
-        [self alignGrid];
+        [self alignGridAnimated:YES];
 }
 
 #pragma mark align grid after decelerating or drag
 
-- (void)alignGrid {
+- (void)alignGridAnimated:(BOOL)animated {
     float x = self.scrollView.contentOffset.x;
     float y = self.scrollView.contentOffset.y;
     float maxY = self.scrollView.contentSize.height - self.scrollView.frame.size.height - (kRowHeight / 2);
@@ -221,7 +221,7 @@ const int kCellWidth = 44;
     }
     CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth), newY);
 
-    [self.scrollView setContentOffset:contentOffset animated:YES];        
+    [self.scrollView setContentOffset:contentOffset animated:animated];        
 }
 
 
@@ -325,7 +325,6 @@ const int kCellWidth = 44;
 }
 
 - (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)showCurrentColumn {
-    NSLog(@"selected stop %@ selected col %d", stopName, self.selectedColumn);
     
     if (stopName == nil)
         return;

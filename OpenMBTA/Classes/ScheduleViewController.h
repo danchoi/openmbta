@@ -47,4 +47,5 @@
 - (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)s;
 - (void)highlightColumn:(int)col;
 - (void)adjustScrollViewFrame;
+- (void)alignGridAnimated:(BOOL)animated;
 @end

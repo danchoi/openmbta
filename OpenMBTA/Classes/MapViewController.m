@@ -195,6 +195,7 @@
     region.center.longitude = self.selectedStopAnnotation.coordinate.longitude;
     
     if (zoomInOnSelect == YES) {
+        //NSLog(@"zooming in");
         region.span.latitudeDelta = initialRegion.span.latitudeDelta * 0.4;
         region.span.longitudeDelta = initialRegion.span.longitudeDelta * 0.4;
         zoomInOnSelect = NO;

@@ -31,9 +31,13 @@ class TripsController < ApplicationController
             logger.debug("ADDING GRID")
             grid = Grid.new(@transport_type.to_s, @route, @headsign, @first_stop).grid
             # make sure grid has same order as result
-            final_grid = []
-            @result[:ordered_stop_ids].each do |x|
-              final_grid << grid.detect {|y| y[:stop][:stop_id].to_s == x.to_s}
+            if @result[:ordered_stop_ids]
+              final_grid = []
+              @result[:ordered_stop_ids].each do |x|
+                final_grid << grid.detect {|y| y[:stop][:stop_id].to_s == x.to_s}
+              end
+            else
+              final_grid = grid
             end
             @result.merge!(:grid => final_grid.compact)
 
