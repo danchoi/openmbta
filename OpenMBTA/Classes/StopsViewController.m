@@ -113,7 +113,9 @@
 {
 //    NSString *stopName = [self.orderedStopNames objectAtIndex:indexPath.row];
     [self dismissModalViewControllerAnimated:YES];
-    [self.tripsViewController highlightStopPosition:indexPath.row];
+
+    NSString *stopName = [self.orderedStopNames objectAtIndex:indexPath.row];
+    [self.tripsViewController highlightStopNamed:stopName];
 
 }
 
