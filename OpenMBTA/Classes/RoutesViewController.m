@@ -156,6 +156,10 @@
             NSString *pluralized = [trips_remaining intValue] == 1 ? @"trip" : @"trips";
             tripText = [NSString stringWithFormat:@"%@ more %@ today", trips_remaining, pluralized];
         }
+        if ([headsignArray count] == 3) {
+            tripText = [NSString stringWithFormat:@"%@ %@", tripText, [headsignArray objectAtIndex:2]];
+        }
+
         cell.detailTextLabel.text = tripText;
     }
     return cell;

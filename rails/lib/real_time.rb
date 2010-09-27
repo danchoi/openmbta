@@ -4,13 +4,21 @@ class RealTime
 
   extend TimeFormatting
 
+  def self.predictions_file(route_short_name)
+    "#{Rails.root}/realtime/predictions/#{route_short_name}.yml"
+  end
+
+  def self.available?(route_short_name)
+    File.exist?(predictions_file(route_short_name)) && (File.mtime(predictions_file(route_short_name)) > 30.minutes.ago)
+  end
+
   def self.add_data(data, params)
     headsign = params[:headsign]
     route_short_name = params[:route_short_name]
-    predictions_file = "#{Rails.root}/realtime/predictions/#{route_short_name}.yml"
 
-    if File.exist?(predictions_file) && (File.mtime(predictions_file) > 30.minutes.ago)
-      predictions = YAML::load(File.read(predictions_file))
+    if available?(route_short_name)
+      
+      predictions = YAML::load(File.read(predictions_file(route_short_name)))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
 
       if direction.nil?
