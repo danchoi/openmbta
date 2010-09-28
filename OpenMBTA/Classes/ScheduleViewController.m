@@ -289,6 +289,7 @@ const int kCellWidth = 44;
     
    // NSLog(@"hightlight row %d showCurrentColumn %d", row, showCurrentColumn);    
     if ([self.stops count] == 0) return;
+    if (row >= [self.stops count]) return;
 
     selectedRow = row;
     
