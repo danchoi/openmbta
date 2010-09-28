@@ -312,7 +312,7 @@ const int kCellWidth = 44;
     } else {
         newX = self.scrollView.contentOffset.x; // keep the old value
     }
-    float maxX = self.scrollView.contentSize.width - 300;
+    float maxX = self.scrollView.contentSize.width - 320;
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.tripsViewController.scheduleViewController).view.frame.size.height;
     float newY = row *kRowHeight;
 

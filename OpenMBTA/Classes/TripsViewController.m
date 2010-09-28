@@ -215,7 +215,7 @@
     if (rawData == nil) return;
     NSDictionary *data = [rawData JSONValue];
     scheduleViewController.stops = [data objectForKey:@"grid"];
-    [scheduleViewController createFloatingGrid];
+
     
     BOOL isRealTime = NO;
     if ([data objectForKey:@"realtime"]) {
@@ -251,6 +251,9 @@
         [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName showCurrentColumn:NO];
         gridCreated = YES;
     }
+
+    [scheduleViewController adjustScrollViewFrame];    
+    [scheduleViewController alignGridAnimated:NO];
 
     if ([[data objectForKey:@"ads"] isEqual:@"iAds"]) {
         if (!self.adView) {
@@ -302,6 +305,8 @@
         scheduleViewController.view.frame = CGRectMake(0, 50, 320, 322);     
     }
     [scheduleViewController adjustScrollViewFrame];
+    [scheduleViewController alignGridAnimated:NO];
+    
 }
 
 - (void)showStopsController:(id)sender {
