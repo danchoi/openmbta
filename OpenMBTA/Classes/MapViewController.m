@@ -13,7 +13,7 @@
 #import "StopsViewController.h"
 
 @implementation MapViewController
-@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName, initialRegion, progressView;
+@synthesize tripsViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName, initialRegion;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -27,21 +27,6 @@
 
 - (void)viewDidLoad {
     self.stopAnnotations = [NSMutableArray array];
-    if (self.progressView == nil) {
-        
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LocatingProgress" owner:self options:nil];
-        
-        NSEnumerator *enumerator = [nib objectEnumerator];
-        id object;
-        
-        while ((object = [enumerator nextObject])) {
-            if ([object isMemberOfClass:[UIView class]]) {
-                
-                self.progressView = (UIView *)object;
-            }
-            
-        }    
-    }     
     [super viewDidLoad];
 }
 
@@ -58,7 +43,6 @@
     [self.stopAnnotations removeAllObjects];
     self.tripsViewController = nil;
     self.stopAnnotations = nil; 
-    self.progressView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,7 +53,6 @@
     self.triggerCalloutTimer = nil;
     self.selectedStopName = nil;
     self.selectedStopAnnotation = nil;
-    self.progressView = nil;
     [super dealloc];
 }
 
@@ -166,7 +149,7 @@
     // draw the pins for the stops
     if (self.triggerCalloutTimer != nil)
         self.triggerCalloutTimer.invalidate;
-    [self showFindingIndicators];
+    [self.tripsViewController showFindingIndicators];
     self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 2.0
                                      target: self
                                    selector: @selector(triggerCallout:)
@@ -177,7 +160,7 @@
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
-    [self hideFindingIndicators];
+    [self.tripsViewController hideFindingIndicators];
     if (self.selectedStopAnnotation == nil && self.selectedStopName == nil) {
         return;
     }
@@ -256,7 +239,7 @@
     [self.tripsViewController.stopsViewController selectStopNamed:stopName];
     [self.tripsViewController.scheduleViewController highlightStopNamed:stopName showCurrentColumn:YES];
     
-    [self hideFindingIndicators];
+    [self.tripsViewController hideFindingIndicators];
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
@@ -272,22 +255,6 @@
     }
     [self triggerCallout:nil];
     
-}
-
-
-
-// loading indicator
-
-
-- (void)showFindingIndicators {
-    self.progressView.center = CGPointMake(160, 132
-                                           );
-    [self.view addSubview:progressView];
-}
-
-- (void)hideFindingIndicators
-{
-    [self.progressView removeFromSuperview];    
 }
 
 

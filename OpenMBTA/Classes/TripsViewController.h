@@ -48,6 +48,7 @@
     BOOL bannerIsVisible;
     ADBannerView *adView;
     UIBarButtonItem *findStopButton;
+    UIView *findingProgressView;
 
 }
 @property (nonatomic, copy) NSString *headsign;
@@ -78,6 +79,7 @@
 @property (nonatomic, retain) ADBannerView *adView;
 @property  NSInteger startOnSegementIndex;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *findStopButton;
+@property (nonatomic, retain)   UIView *findingProgressView;
 
 - (void)addBookmarkButton;
 - (void)toggleView:(id)sender;
@@ -91,6 +93,8 @@
 - (void)toggleBookmark:(id)sender;
 - (IBAction)infoButtonPressed:(id)sender;
 
+- (void)showFindingIndicators;
+- (void)hideFindingIndicators;
 
 
 @end

@@ -35,7 +35,7 @@
 @synthesize orderedStopNames;
 @synthesize bannerIsVisible;
 @synthesize adView;
-@synthesize startOnSegementIndex, findStopButton; 
+@synthesize startOnSegementIndex, findStopButton, findingProgressView; 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +47,17 @@
     scheduleViewController.tripsViewController = self;
     stopsViewController.tripsViewController = self;
     self.navigationItem.title = @"openmbta";
+    
+    if (self.findingProgressView == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"LocatingProgress" owner:self options:nil];
+        NSEnumerator *enumerator = [nib objectEnumerator];
+        id object;
+        while ((object = [enumerator nextObject])) {
+            if ([object isMemberOfClass:[UIView class]]) {
+                self.findingProgressView = (UIView *)object;
+            }
+        }    
+    }     
 
  }
 
@@ -116,6 +127,7 @@
     scheduleViewController.tripsViewController = nil;
     stopsViewController.tripsViewController = nil;
     self.findStopButton = nil;
+    self.findingProgressView = nil;
     
 }
 
@@ -356,5 +368,20 @@
     self.bannerIsVisible = YES;
     [self adjustFrames];
 }
+
+
+
+- (void)showFindingIndicators {
+    self.findingProgressView.center = CGPointMake(160, 182);
+    NSLog(@"showFindingIndicators");
+    [self.view addSubview:self.findingProgressView];
+
+}
+
+- (void)hideFindingIndicators {
+    [self.findingProgressView removeFromSuperview];    
+}
+
+
 
 @end
