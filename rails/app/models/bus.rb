@@ -15,7 +15,7 @@ select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_r
       select {|short_name, value|  short_name != "Shuttle" && short_name != "Other"}.
       map {|short_name, values| {:route_short_name => short_name, 
           :headsigns => values.map {|x| 
-            if RealTime.available?(short_name)
+            if RealTime.available?(short_name, x['headsign'])
               [x["headsign"], x["trips_remaining"].to_i, "+ realtime data" ] 
             else
               [x["headsign"], x["trips_remaining"].to_i ] 

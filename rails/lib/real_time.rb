@@ -4,21 +4,51 @@ class RealTime
 
   extend TimeFormatting
 
-  def self.predictions_file(route_short_name)
-    "#{Rails.root}/realtime/predictions/#{route_short_name}.yml"
+  def self.predictions_file(route_short_name, headsign)
+    filename = case route_short_name 
+               when 'CT1'
+                 '701'
+               when 'CT3'
+                 '708'
+               when 'CT2'
+                 case headsign
+                 when /Ruggles via Kendall/ # south
+                   '747'
+                 when /Sullivan Station via Kendall/
+                   '748'
+                 end
+               when 'SL'
+                 case headsign
+                 when /SL1/
+                   '741'
+                 when /SL2/
+                   '742'
+                 when /SL4/
+                   '751'
+                 when /SL5/
+                   '749'
+                 when /Silver Line Way/
+
+                 end
+               else
+                 route_short_name
+               end
+
+    "#{Rails.root}/realtime/predictions/#{filename}.yml".tap {|x| puts route_short_name; puts headsign; puts x}
   end
 
-  def self.available?(route_short_name)
-    File.exist?(predictions_file(route_short_name)) && (File.mtime(predictions_file(route_short_name)) > 45.minutes.ago)
+  def self.available?(route_short_name, headsign)
+    file = predictions_file(route_short_name, headsign)
+    File.exist?(file) && (File.mtime(file) > 45.minutes.ago)
   end
 
   def self.add_data(data, params)
     headsign = params[:headsign]
     route_short_name = params[:route_short_name]
 
-    if available?(route_short_name)
+    if available?(route_short_name, headsign)
       
-      predictions = YAML::load(File.read(predictions_file(route_short_name)))
+      predictions = YAML::load(File.read(predictions_file(route_short_name, headsign)))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
 
       if direction.nil? || data[:stops].nil? || direction['stops'].nil?
