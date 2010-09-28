@@ -21,7 +21,11 @@ class RealTime
       predictions = YAML::load(File.read(predictions_file(route_short_name)))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
 
-      if direction.nil? || data[:stops].nil?
+      if direction.nil? || data[:stops].nil? || direction['stops'].nil?
+        return data # abort
+      end
+
+      if direction['stops'].all? {|x| x['predictions'].empty?}
         return data # abort
       end
 
