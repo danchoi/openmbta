@@ -34,7 +34,7 @@ class RealTime
                  route_short_name
                end
 
-    "#{Rails.root}/realtime/predictions/#{filename}.yml".tap {|x| puts route_short_name; puts headsign; puts x}
+    "#{Rails.root}/realtime/predictions/#{filename}.yml"
   end
 
   def self.available?(route_short_name, headsign)
