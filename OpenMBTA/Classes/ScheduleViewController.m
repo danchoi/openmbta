@@ -210,11 +210,11 @@ const int kCellWidth = 44;
     float y = self.scrollView.contentOffset.y;
     float maxY = self.scrollView.contentSize.height - self.scrollView.frame.size.height - (kRowHeight / 2);
 
-    // when at bottom, align toward bottom
+    // when at bottom, align toward bottom, except when too few rows
     
+
     float newY;
-    if (  y > maxY ) {
-//        NSLog(@"close to bottom");
+    if ( (y > maxY ) &&  (maxY > self.scrollView.frame.size.height) )   {
         newY = self.scrollView.contentSize.height - self.scrollView.frame.size.height + 10;
     } else {
         newY = round(y/kRowHeight) * kRowHeight;

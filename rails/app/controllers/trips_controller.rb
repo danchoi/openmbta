@@ -39,8 +39,8 @@ class TripsController < ApplicationController
             else
               final_grid = grid
             end
+            logger.debug final_grid.inspect
             @result.merge!(:grid => final_grid.compact)
-
           end
           @result.merge!(:ads => "iAds") # controls whether iAds are shown
 

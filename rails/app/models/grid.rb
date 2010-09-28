@@ -73,7 +73,7 @@ class Grid
         if now_hour < 3 # 24 hour clock, 1 am
           now_hour = now_hour + 24
         end
-        now_string = [now_hour, Time.now.min].join(":")
+        now_string = [ "%.2d" % now_hour, "%.2d" % Time.now.min].join(":")
 
         if time < now_string 
           time = [format_time(time), -1]
