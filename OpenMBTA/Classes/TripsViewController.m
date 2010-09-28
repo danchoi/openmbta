@@ -95,6 +95,9 @@
     self.navigationItem.rightBarButtonItem = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"lastViewedTrip"];
     [[NSUserDefaults standardUserDefaults] synchronize];    
+    [operationQueue cancelAllOperations];
+    [self hideNetworkActivity];
+
     [super viewWillDisappear:animated];
 }
 
