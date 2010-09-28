@@ -33,6 +33,7 @@ class RealTime
           } 
 
         if stop_predictions.nil? || stop_predictions['predictions'].empty?
+          data[:stops][stop_id][:next_arrivals] = [["real time data missing", nil]]
           next
         end
         # replace next_arrivals
@@ -66,6 +67,7 @@ class RealTime
 
         imminent_stop_ids = []
         vehicles.each do |k,v|
+          next if k == nil
           puts v.first.inspect
           imminent_stop_ids << v.first[2].to_s
         end
