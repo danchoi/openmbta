@@ -125,7 +125,7 @@ const int kCellWidth = 44;
     NSArray *timesForFirstRow = [firstRow objectForKey:@"times"];
     NSInteger numColumns = [timesForFirstRow count];
 
-    int gridWidth = (numColumns * kCellWidth) + 10;
+    int gridWidth = (numColumns * kCellWidth) + 12;
     int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
     [self adjustScrollViewFrame];
@@ -256,14 +256,22 @@ const int kCellWidth = 44;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
     }
-    NSDictionary *stopDict = [[self.stops objectAtIndex:indexPath.row] objectForKey:@"stop"];
+    
+    if (indexPath.row >= [self.stops count]) {
+        cell.textLabel.text = @"missing";
+        cell.detailTextLabel.text = @"missing";
+        return cell;
+        
+    }
+                          
+    NSDictionary *stopRow = [self.stops objectAtIndex:indexPath.row];
+    NSDictionary *stopDict = [stopRow objectForKey:@"stop"];
     
     
     NSString *stopName =  [stopDict objectForKey:@"name"];
     
     if (indexPath.row == selectedRow)  {
         cell.textLabel.font = [UIFont boldSystemFontOfSize:13.0];
-
         cell.textLabel.textColor = [UIColor blackColor];        
     } else {
         cell.textLabel.font = [UIFont systemFontOfSize:12.0];
