@@ -35,7 +35,7 @@
 @synthesize orderedStopNames;
 @synthesize bannerIsVisible;
 @synthesize adView;
-@synthesize startOnSegementIndex; 
+@synthesize startOnSegementIndex, findStopButton; 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -115,6 +115,7 @@
     mapViewController.tripsViewController = nil;
     scheduleViewController.tripsViewController = nil;
     stopsViewController.tripsViewController = nil;
+    self.findStopButton = nil;
     
 }
 
@@ -194,6 +195,7 @@
 - (void)startLoadingData {    
     
     [self showNetworkActivity];
+    self.findStopButton.enabled = NO;
     gridCreated = NO;
     [self.scheduleViewController clearGrid];
 
@@ -276,7 +278,7 @@
         [self adjustFrames];
     }
     
-    
+    self.findStopButton.enabled = YES;    
 }
 
 

@@ -47,6 +47,7 @@
     UIBarButtonItem *bookmarkButton; 
     BOOL bannerIsVisible;
     ADBannerView *adView;
+    UIBarButtonItem *findStopButton;
 
 }
 @property (nonatomic, copy) NSString *headsign;
@@ -76,6 +77,8 @@
 @property BOOL bannerIsVisible;
 @property (nonatomic, retain) ADBannerView *adView;
 @property  NSInteger startOnSegementIndex;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *findStopButton;
+
 - (void)addBookmarkButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;
