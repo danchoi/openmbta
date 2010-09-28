@@ -245,6 +245,12 @@
     [self.stopsViewController loadStopNames:self.orderedStopNames];
     self.scheduleViewController.orderedStopNames = self.orderedStopNames;
     [self hideNetworkActivity];
+    
+    if (!gridCreated) {
+        [scheduleViewController createFloatingGrid];        
+        [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName showCurrentColumn:NO];
+        gridCreated = YES;
+    }
 
     if ([[data objectForKey:@"ads"] isEqual:@"iAds"]) {
         if (!self.adView) {
@@ -263,6 +269,8 @@
         self.adView = nil;
         [self adjustFrames];
     }
+    
+    
 }
 
 
@@ -278,11 +286,7 @@
         [self adjustFrames];
         self.currentContentView = scheduleViewController.view;
         [contentView addSubview:scheduleViewController.view];
-        if (!gridCreated) {
-            [scheduleViewController createFloatingGrid];        
-            [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName showCurrentColumn:NO];
-            gridCreated = YES;
-        }
+
         [self.scheduleViewController scrollViewDidScroll:self.scheduleViewController.scrollView]; // to align table with grid
         [self.scheduleViewController alignGridAnimated:NO];
     }
