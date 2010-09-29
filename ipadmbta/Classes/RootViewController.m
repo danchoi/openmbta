@@ -41,16 +41,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
+    self.bookmarks = [[Preferences sharedInstance] orderedBookmarks]; 
+    [self.tableView reloadData];
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
- self.bookmarks = [[Preferences sharedInstance] orderedBookmarks]; 
- NSLog(@"bookmarks: %@", self.bookmarks);
- [self.tableView reloadData];
-    NSLog(@"tableview: %@", self.tableView);
-
     [super viewWillAppear:animated];
 }
 /*
