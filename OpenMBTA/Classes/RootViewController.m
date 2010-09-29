@@ -7,10 +7,6 @@
 #import "AboutViewController.h"
 #import "Preferences.h"
 
-@interface RootViewController (Private)
-- (TripsViewController *)tripsMapViewController;
-
-@end
 
 @implementation RootViewController
 @synthesize menu,  menu2, bookmarks, tableView, tripsViewController;
@@ -33,7 +29,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    //[self.navigationController pushViewController:[self tripsMapViewController] animated:YES];
+    //[self.navigationController pushViewController:[self tripsViewController] animated:YES];
     //[self.navigationController pushViewController:[self routesViewController] animated:YES];
 }
 

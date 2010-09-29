@@ -12,7 +12,7 @@
 @class TAlertsViewController;
 @class TweetsViewController;
 
-
+// note this controller doesn't need to be a subclass of BaseViewC
 @interface RootViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
     RoutesViewController *routesViewController;
