@@ -75,7 +75,9 @@ class RealTime
           select {|p| p['predicted_arrival'] >= Time.now}.
           map {|q| [format_time(q['predicted_arrival'].to_s.split(/\s/)[1][/(\d+:\d+)/,1]), q['vehicle']]}[0,3]
 
-        unless data[:stops][stop_id][:next_arrivals].empty?
+        if data[:stops][stop_id][:next_arrivals].empty?
+          data[:stops][stop_id][:next_arrivals] << ["real time data missing", nil]
+        else
           data[:stops][stop_id][:next_arrivals] << ["(realtime)", 0]
         end
       end
