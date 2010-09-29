@@ -128,6 +128,7 @@ const int kCellWidth = 44;
     int gridWidth = (numColumns * kCellWidth) + 12;
     int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
+    
     [self adjustScrollViewFrame];
     scrollView.stops = self.stops;
     [self.view bringSubviewToFront:scrollView];
@@ -138,7 +139,8 @@ const int kCellWidth = 44;
 }
 
 - (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(6, 0, 320, self.view.frame.size.height + 10); 
+    scrollView.frame = CGRectMake(6, 0, 320, self.view.frame.size.height); 
+    
 }
 
 #pragma mark color grid cell
