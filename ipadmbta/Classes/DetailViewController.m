@@ -120,7 +120,7 @@
 
     [self styleBookmarkButton];
     
-    if (![startOnSegmentIndex isEqual:[NSNull null]]) {
+    if (startOnSegmentIndex) {
         self.segmentedControl.selectedSegmentIndex = [startOnSegmentIndex intValue];
     }
     [self toggleView:nil];    
