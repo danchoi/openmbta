@@ -45,7 +45,6 @@
 
     MapViewController *mapViewController;
     UISegmentedControl *segmentedControl;
-    NSInteger startOnSegmentIndex;
     
     ScheduleViewController *scheduleViewController;
     UIView *currentContentView;
@@ -84,7 +83,6 @@
 @property (nonatomic, retain) IBOutlet StopsViewController *stopsViewController;
 @property (nonatomic, retain) NSMutableArray *orderedStopNames;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *bookmarkButton; 
-@property  NSInteger startOnSegmentIndex;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *findStopButton;
 @property (nonatomic, retain)   UIView *findingProgressView;
 

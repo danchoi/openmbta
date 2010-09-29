@@ -138,7 +138,9 @@ const int kCellWidth = 44;
 }
 
 - (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(6, 0, 320, self.view.frame.size.height + 10); 
+    float xoffset = self.tableView.frame.size.width;
+    float width = self.view.frame.size.width - self.tableView.frame.size.width;
+    scrollView.frame = CGRectMake(xoffset, 0, width, self.view.frame.size.height); 
 }
 
 #pragma mark color grid cell

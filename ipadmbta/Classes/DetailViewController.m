@@ -41,7 +41,7 @@
 @synthesize currentContentView;
 @synthesize stopsViewController;
 @synthesize orderedStopNames;
-@synthesize startOnSegmentIndex, findStopButton, findingProgressView; 
+@synthesize findStopButton, findingProgressView; 
 
 - (void)viewDidLoad {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -97,7 +97,8 @@
     self.routeShortName = [[notification userInfo] objectForKey:@"routeShortName"];    
     self.headsign = [[notification userInfo] objectForKey:@"headsign"];
     self.firstStop = [[notification userInfo] objectForKey:@"firstStop"];    
-
+    NSNumber *startOnSegmentIndex = [[notification userInfo] objectForKey:@"startOnSegmentIndex"];
+    
     shouldReloadRegion = [[[notification userInfo] objectForKey:@"shouldReloadMapRegion"] boolValue];    
     self.stops = [NSArray array];
     self.mapViewController.selectedStopAnnotation = nil;
@@ -119,9 +120,8 @@
 
     [self styleBookmarkButton];
     
-    if (self.startOnSegmentIndex != -1) {
-        self.segmentedControl.selectedSegmentIndex = self.startOnSegmentIndex;
-        self.startOnSegmentIndex = -1;
+    if (![startOnSegmentIndex isEqual:[NSNull null]]) {
+        self.segmentedControl.selectedSegmentIndex = [startOnSegmentIndex intValue];
     }
     [self toggleView:nil];    
     
@@ -135,7 +135,7 @@
     else 
         index = 0;
         
-    NSNumber *selectedSegmentAsNumber = [NSNumber numberWithInt:0]; 
+    NSNumber *selectedSegmentAsNumber = [NSNumber numberWithInt:index]; 
     NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", selectedSegmentAsNumber, @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
     
     [[NSUserDefaults standardUserDefaults] setObject:lastViewedTrip
