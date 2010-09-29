@@ -203,6 +203,9 @@
     [self startLoadingData];
 }
 
+#pragma mark -
+#pragma mark loading methods
+
 // This calls the server
 - (void)startLoadingData {    
     
