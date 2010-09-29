@@ -326,7 +326,7 @@
 
 
 - (void)showFindingIndicators {
-    self.findingProgressView.center = CGPointMake(160, 182);
+    self.findingProgressView.center = self.contentView.center;
     NSLog(@"showFindingIndicators");
     [self.view addSubview:self.findingProgressView];
     
@@ -336,7 +336,10 @@
     [self.findingProgressView removeFromSuperview];    
 }
 
-
+- (void)showLoadingIndicators {
+    self.progressView.center = self.contentView.center;
+    [self.view addSubview:self.progressView];
+}
 
 
 
