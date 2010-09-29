@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* ipadmbtaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* ipadmbtaAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2804200B108E984D000629CD /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28042008108E984D000629CD /* RootViewController.m */; };
+		2804200C108E984D000629CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804200A108E984D000629CD /* DetailViewController.m */; };
+		2804203C108E9BAB000629CD /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2804203B108E9BAB000629CD /* DetailView.xib */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		DE8D9F2E12537C95008867B5 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F2312537C95008867B5 /* NSObject+SBJSON.m */; };
+		DE8D9F2F12537C95008867B5 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F2512537C95008867B5 /* NSString+SBJSON.m */; };
+		DE8D9F3012537C95008867B5 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F2712537C95008867B5 /* SBJSON.m */; };
+		DE8D9F3112537C95008867B5 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F2912537C95008867B5 /* SBJsonBase.m */; };
+		DE8D9F3212537C95008867B5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F2B12537C95008867B5 /* SBJsonParser.m */; };
+		DE8D9F3312537C95008867B5 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F2D12537C95008867B5 /* SBJsonWriter.m */; };
+		DE8D9F3812537CE6008867B5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F3712537CE6008867B5 /* Reachability.m */; };
+		DE8D9F3C12537D01008867B5 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F3B12537D01008867B5 /* Preferences.m */; };
+		DE8D9F3E12537D18008867B5 /* LocatingProgress.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F3D12537D18008867B5 /* LocatingProgress.xib */; };
+		DE8D9F4312537D81008867B5 /* GetRemoteDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F4212537D81008867B5 /* GetRemoteDataOperation.m */; };
+		DE8D9F4612537D90008867B5 /* GridScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F4512537D90008867B5 /* GridScrollView.m */; };
+		DE8D9F4912537D98008867B5 /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F4812537D98008867B5 /* GridCell.m */; };
+		DE8D9F4B12537DA8008867B5 /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F4A12537DA8008867B5 /* GridCell.xib */; };
+		DE8D9F4E12537DB2008867B5 /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F4D12537DB2008867B5 /* TweetsViewController.m */; };
+		DE8D9F5212537DDB008867B5 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F5112537DDB008867B5 /* StopAnnotation.m */; };
+		DE8D9F5512537E0A008867B5 /* TAlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F5412537E0A008867B5 /* TAlertsViewController.m */; };
+		DE8D9F5712537E11008867B5 /* TAlertsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F5612537E11008867B5 /* TAlertsViewController.xib */; };
+		DE8D9F5A12537E19008867B5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F5912537E19008867B5 /* BaseViewController.m */; };
+		DE8D9F5D12537E22008867B5 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F5C12537E22008867B5 /* HelpViewController.m */; };
+		DE8D9F5F12537E28008867B5 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F5E12537E28008867B5 /* HelpViewController.xib */; };
+		DE8D9F6212537E46008867B5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F6112537E46008867B5 /* AboutViewController.m */; };
+		DE8D9F6412538008008867B5 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F6312538008008867B5 /* AboutViewController.xib */; };
+		DE8D9F6912538025008867B5 /* TripsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F6812538025008867B5 /* TripsViewController.xib */; };
+		DE8D9F6E12538037008867B5 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F6D12538037008867B5 /* MapViewController.xib */; };
+		DE8D9F711253803F008867B5 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F701253803F008867B5 /* ScheduleViewController.m */; };
+		DE8D9F7312538045008867B5 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F7212538045008867B5 /* ScheduleViewController.xib */; };
+		DE8D9F761253804F008867B5 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F751253804F008867B5 /* StopsViewController.m */; };
+		DE8D9F781253805D008867B5 /* StopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F771253805D008867B5 /* StopsViewController.xib */; };
+		DE8D9F7A12538076008867B5 /* loadingIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F7912538076008867B5 /* loadingIndicator.png */; };
+		DE8D9F7C1253809B008867B5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F7B1253809B008867B5 /* icon.png */; };
+		DE8D9F7E125380B1008867B5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8D9F7D125380B1008867B5 /* CoreLocation.framework */; };
+		DE8D9F82125380C7008867B5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8D9F81125380C7008867B5 /* MapKit.framework */; };
+		DE8D9F9A125381D7008867B5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8D9F99125381D7008867B5 /* SystemConfiguration.framework */; };
+		DE8D9FF812538289008867B5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9FF712538289008867B5 /* MapViewController.m */; };
+		DE8DA01312538426008867B5 /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8DA01212538426008867B5 /* RoutesViewController.m */; };
+		DE8DA01512538431008867B5 /* RoutesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8DA01412538431008867B5 /* RoutesViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* ipadmbtaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipadmbtaAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* ipadmbtaAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ipadmbtaAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* ipadmbta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipadmbta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28042007108E984D000629CD /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		28042008108E984D000629CD /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		28042009108E984D000629CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2804200A108E984D000629CD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		2804203B108E9BAB000629CD /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AAE50D9B0CCF005BE974 /* ipadmbta_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipadmbta_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* ipadmbta-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ipadmbta-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DE8D9F2112537C95008867B5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		DE8D9F2212537C95008867B5 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		DE8D9F2312537C95008867B5 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		DE8D9F2412537C95008867B5 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		DE8D9F2512537C95008867B5 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		DE8D9F2612537C95008867B5 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		DE8D9F2712537C95008867B5 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		DE8D9F2812537C95008867B5 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		DE8D9F2912537C95008867B5 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		DE8D9F2A12537C95008867B5 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		DE8D9F2B12537C95008867B5 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		DE8D9F2C12537C95008867B5 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		DE8D9F2D12537C95008867B5 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		DE8D9F3612537CE6008867B5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DE8D9F3712537CE6008867B5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DE8D9F3A12537D01008867B5 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		DE8D9F3B12537D01008867B5 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		DE8D9F3D12537D18008867B5 /* LocatingProgress.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocatingProgress.xib; sourceTree = "<group>"; };
+		DE8D9F4012537D79008867B5 /* ServerUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerUrl.h; sourceTree = "<group>"; };
+		DE8D9F4112537D81008867B5 /* GetRemoteDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRemoteDataOperation.h; sourceTree = "<group>"; };
+		DE8D9F4212537D81008867B5 /* GetRemoteDataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetRemoteDataOperation.m; sourceTree = "<group>"; };
+		DE8D9F4412537D90008867B5 /* GridScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridScrollView.h; sourceTree = "<group>"; };
+		DE8D9F4512537D90008867B5 /* GridScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridScrollView.m; sourceTree = "<group>"; };
+		DE8D9F4712537D98008867B5 /* GridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
+		DE8D9F4812537D98008867B5 /* GridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
+		DE8D9F4A12537DA8008867B5 /* GridCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridCell.xib; sourceTree = "<group>"; };
+		DE8D9F4C12537DB2008867B5 /* TweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewController.h; sourceTree = "<group>"; };
+		DE8D9F4D12537DB2008867B5 /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
+		DE8D9F5012537DDB008867B5 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
+		DE8D9F5112537DDB008867B5 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
+		DE8D9F5312537E0A008867B5 /* TAlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAlertsViewController.h; sourceTree = "<group>"; };
+		DE8D9F5412537E0A008867B5 /* TAlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAlertsViewController.m; sourceTree = "<group>"; };
+		DE8D9F5612537E11008867B5 /* TAlertsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAlertsViewController.xib; sourceTree = "<group>"; };
+		DE8D9F5812537E19008867B5 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		DE8D9F5912537E19008867B5 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		DE8D9F5B12537E22008867B5 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		DE8D9F5C12537E22008867B5 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		DE8D9F5E12537E28008867B5 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
+		DE8D9F6012537E46008867B5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		DE8D9F6112537E46008867B5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		DE8D9F6312538008008867B5 /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		DE8D9F6812538025008867B5 /* TripsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsViewController.xib; sourceTree = "<group>"; };
+		DE8D9F6D12538037008867B5 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		DE8D9F6F1253803F008867B5 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		DE8D9F701253803F008867B5 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		DE8D9F7212538045008867B5 /* ScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
+		DE8D9F741253804F008867B5 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
+		DE8D9F751253804F008867B5 /* StopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewController.m; sourceTree = "<group>"; };
+		DE8D9F771253805D008867B5 /* StopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StopsViewController.xib; sourceTree = "<group>"; };
+		DE8D9F7912538076008867B5 /* loadingIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingIndicator.png; sourceTree = "<group>"; };
+		DE8D9F7B1253809B008867B5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DE8D9F7D125380B1008867B5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DE8D9F81125380C7008867B5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DE8D9F99125381D7008867B5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DE8D9FF612538289008867B5 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		DE8D9FF712538289008867B5 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		DE8DA01112538426008867B5 /* RoutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesViewController.h; sourceTree = "<group>"; };
+		DE8DA01212538426008867B5 /* RoutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesViewController.m; sourceTree = "<group>"; };
+		DE8DA01412538431008867B5 /* RoutesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				DE8D9F7E125380B1008867B5 /* CoreLocation.framework in Frameworks */,
+				DE8D9F82125380C7008867B5 /* MapKit.framework in Frameworks */,
+				DE8D9F9A125381D7008867B5 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DE8D9F4F12537DD2008867B5 /* Map */,
+				DE8D9F3F12537D6B008867B5 /* Grid */,
+				DE8D9F3512537CDD008867B5 /* Utility */,
+				DE8D9F2012537C95008867B5 /* JSON */,
+				1D3623240D0F684500981E51 /* ipadmbtaAppDelegate.h */,
+				1D3623250D0F684500981E51 /* ipadmbtaAppDelegate.m */,
+				28042007108E984D000629CD /* RootViewController.h */,
+				28042008108E984D000629CD /* RootViewController.m */,
+				28042009108E984D000629CD /* DetailViewController.h */,
+				2804200A108E984D000629CD /* DetailViewController.m */,
+				DE8D9F4012537D79008867B5 /* ServerUrl.h */,
+				DE8D9F5812537E19008867B5 /* BaseViewController.h */,
+				DE8D9F5912537E19008867B5 /* BaseViewController.m */,
+				DE8D9F5B12537E22008867B5 /* HelpViewController.h */,
+				DE8D9F5C12537E22008867B5 /* HelpViewController.m */,
+				DE8D9F4C12537DB2008867B5 /* TweetsViewController.h */,
+				DE8D9F4D12537DB2008867B5 /* TweetsViewController.m */,
+				DE8D9F5312537E0A008867B5 /* TAlertsViewController.h */,
+				DE8D9F5412537E0A008867B5 /* TAlertsViewController.m */,
+				DE8D9F6012537E46008867B5 /* AboutViewController.h */,
+				DE8D9F6112537E46008867B5 /* AboutViewController.m */,
+				DE8DA01112538426008867B5 /* RoutesViewController.h */,
+				DE8DA01212538426008867B5 /* RoutesViewController.m */,
+				DE8D9FF612538289008867B5 /* MapViewController.h */,
+				DE8D9FF712538289008867B5 /* MapViewController.m */,
+				DE8D9F6F1253803F008867B5 /* ScheduleViewController.h */,
+				DE8D9F701253803F008867B5 /* ScheduleViewController.m */,
+				DE8D9F741253804F008867B5 /* StopsViewController.h */,
+				DE8D9F751253804F008867B5 /* StopsViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* ipadmbta.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				DE8D9F99125381D7008867B5 /* SystemConfiguration.framework */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* ipadmbta_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				2804203B108E9BAB000629CD /* DetailView.xib */,
+				8D1107310486CEB800E47090 /* ipadmbta-Info.plist */,
+				DE8D9F3D12537D18008867B5 /* LocatingProgress.xib */,
+				DE8D9F4A12537DA8008867B5 /* GridCell.xib */,
+				DE8D9F5612537E11008867B5 /* TAlertsViewController.xib */,
+				DE8D9F5E12537E28008867B5 /* HelpViewController.xib */,
+				DE8D9F6312538008008867B5 /* AboutViewController.xib */,
+				DE8DA01412538431008867B5 /* RoutesViewController.xib */,
+				DE8D9F6812538025008867B5 /* TripsViewController.xib */,
+				DE8D9F6D12538037008867B5 /* MapViewController.xib */,
+				DE8D9F7212538045008867B5 /* ScheduleViewController.xib */,
+				DE8D9F771253805D008867B5 /* StopsViewController.xib */,
+				DE8D9F7912538076008867B5 /* loadingIndicator.png */,
+				DE8D9F7B1253809B008867B5 /* icon.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				DE8D9F7D125380B1008867B5 /* CoreLocation.framework */,
+				DE8D9F81125380C7008867B5 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE8D9F2012537C95008867B5 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				DE8D9F2112537C95008867B5 /* JSON.h */,
+				DE8D9F2212537C95008867B5 /* NSObject+SBJSON.h */,
+				DE8D9F2312537C95008867B5 /* NSObject+SBJSON.m */,
+				DE8D9F2412537C95008867B5 /* NSString+SBJSON.h */,
+				DE8D9F2512537C95008867B5 /* NSString+SBJSON.m */,
+				DE8D9F2612537C95008867B5 /* SBJSON.h */,
+				DE8D9F2712537C95008867B5 /* SBJSON.m */,
+				DE8D9F2812537C95008867B5 /* SBJsonBase.h */,
+				DE8D9F2912537C95008867B5 /* SBJsonBase.m */,
+				DE8D9F2A12537C95008867B5 /* SBJsonParser.h */,
+				DE8D9F2B12537C95008867B5 /* SBJsonParser.m */,
+				DE8D9F2C12537C95008867B5 /* SBJsonWriter.h */,
+				DE8D9F2D12537C95008867B5 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		DE8D9F3512537CDD008867B5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DE8D9F4112537D81008867B5 /* GetRemoteDataOperation.h */,
+				DE8D9F4212537D81008867B5 /* GetRemoteDataOperation.m */,
+				DE8D9F3A12537D01008867B5 /* Preferences.h */,
+				DE8D9F3B12537D01008867B5 /* Preferences.m */,
+				DE8D9F3612537CE6008867B5 /* Reachability.h */,
+				DE8D9F3712537CE6008867B5 /* Reachability.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		DE8D9F3F12537D6B008867B5 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				DE8D9F4412537D90008867B5 /* GridScrollView.h */,
+				DE8D9F4512537D90008867B5 /* GridScrollView.m */,
+				DE8D9F4712537D98008867B5 /* GridCell.h */,
+				DE8D9F4812537D98008867B5 /* GridCell.m */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		DE8D9F4F12537DD2008867B5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DE8D9F5012537DDB008867B5 /* StopAnnotation.h */,
+				DE8D9F5112537DDB008867B5 /* StopAnnotation.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* ipadmbta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ipadmbta" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ipadmbta;
+			productName = ipadmbta;
+			productReference = 1D6058910D05DD3D006BFB54 /* ipadmbta.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ipadmbta" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* ipadmbta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				2804203C108E9BAB000629CD /* DetailView.xib in Resources */,
+				DE8D9F3E12537D18008867B5 /* LocatingProgress.xib in Resources */,
+				DE8D9F4B12537DA8008867B5 /* GridCell.xib in Resources */,
+				DE8D9F5712537E11008867B5 /* TAlertsViewController.xib in Resources */,
+				DE8D9F5F12537E28008867B5 /* HelpViewController.xib in Resources */,
+				DE8D9F6412538008008867B5 /* AboutViewController.xib in Resources */,
+				DE8D9F6912538025008867B5 /* TripsViewController.xib in Resources */,
+				DE8D9F6E12538037008867B5 /* MapViewController.xib in Resources */,
+				DE8D9F7312538045008867B5 /* ScheduleViewController.xib in Resources */,
+				DE8D9F781253805D008867B5 /* StopsViewController.xib in Resources */,
+				DE8D9F7A12538076008867B5 /* loadingIndicator.png in Resources */,
+				DE8D9F7C1253809B008867B5 /* icon.png in Resources */,
+				DE8DA01512538431008867B5 /* RoutesViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* ipadmbtaAppDelegate.m in Sources */,
+				2804200B108E984D000629CD /* RootViewController.m in Sources */,
+				2804200C108E984D000629CD /* DetailViewController.m in Sources */,
+				DE8D9F2E12537C95008867B5 /* NSObject+SBJSON.m in Sources */,
+				DE8D9F2F12537C95008867B5 /* NSString+SBJSON.m in Sources */,
+				DE8D9F3012537C95008867B5 /* SBJSON.m in Sources */,
+				DE8D9F3112537C95008867B5 /* SBJsonBase.m in Sources */,
+				DE8D9F3212537C95008867B5 /* SBJsonParser.m in Sources */,
+				DE8D9F3312537C95008867B5 /* SBJsonWriter.m in Sources */,
+				DE8D9F3812537CE6008867B5 /* Reachability.m in Sources */,
+				DE8D9F3C12537D01008867B5 /* Preferences.m in Sources */,
+				DE8D9F4312537D81008867B5 /* GetRemoteDataOperation.m in Sources */,
+				DE8D9F4612537D90008867B5 /* GridScrollView.m in Sources */,
+				DE8D9F4912537D98008867B5 /* GridCell.m in Sources */,
+				DE8D9F4E12537DB2008867B5 /* TweetsViewController.m in Sources */,
+				DE8D9F5212537DDB008867B5 /* StopAnnotation.m in Sources */,
+				DE8D9F5512537E0A008867B5 /* TAlertsViewController.m in Sources */,
+				DE8D9F5A12537E19008867B5 /* BaseViewController.m in Sources */,
+				DE8D9F5D12537E22008867B5 /* HelpViewController.m in Sources */,
+				DE8D9F6212537E46008867B5 /* AboutViewController.m in Sources */,
+				DE8D9F711253803F008867B5 /* ScheduleViewController.m in Sources */,
+				DE8D9F761253804F008867B5 /* StopsViewController.m in Sources */,
+				DE8D9FF812538289008867B5 /* MapViewController.m in Sources */,
+				DE8DA01312538426008867B5 /* RoutesViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
+				INFOPLIST_FILE = "ipadmbta-Info.plist";
+				PRODUCT_NAME = ipadmbta;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
+				INFOPLIST_FILE = "ipadmbta-Info.plist";
+				PRODUCT_NAME = ipadmbta;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ipadmbta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ipadmbta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
