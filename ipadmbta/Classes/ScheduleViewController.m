@@ -41,7 +41,7 @@ const int kCellWidth = 44;
     self.scrollView.tileWidth  = kCellWidth;
     self.scrollView.tileHeight = kRowHeight;
     self.view.clipsToBounds = YES;
-    self.tableView.scrollEnabled = NO;
+    self.tableView.scrollEnabled = YES;
     
     selectedColumn = -1;
 }
@@ -76,7 +76,7 @@ const int kCellWidth = 44;
 
 - (void)viewWillAppear:(BOOL)animated {
 //   [self.tableView reloadData];
-//    [self.view bringSubviewToFront:self.scrollView];
+    [self.view bringSubviewToFront:self.scrollView];
     self.scrollView.scrollEnabled = YES;
     self.scrollView.directionalLockEnabled = YES;    
     [super viewWillAppear:animated];
@@ -117,7 +117,7 @@ const int kCellWidth = 44;
     [self.tableView reloadData];
 
     self.scrollView.stops = [NSArray array];
-    self.scrollView.hidden = YES;
+    self.scrollView.hidden = NO;
 
     if ([self.stops count] == 0) 
         return;
@@ -131,16 +131,13 @@ const int kCellWidth = 44;
     [self adjustScrollViewFrame];
     scrollView.stops = self.stops;
     [self.view bringSubviewToFront:scrollView];
-    
-//    [self.view addSubview:scrollView];
-    
     [scrollView reloadData];
 }
 
 - (void)adjustScrollViewFrame {
-    float xoffset = self.tableView.frame.size.width;
-    float width = self.view.frame.size.width - self.tableView.frame.size.width;
-    scrollView.frame = CGRectMake(xoffset, 0, width, self.view.frame.size.height); 
+    scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height); 
+    [self.view bringSubviewToFront:self.scrollView];
+    
 }
 
 #pragma mark color grid cell
@@ -192,17 +189,23 @@ const int kCellWidth = 44;
 #pragma mark Scroll View delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
-    tableView.contentOffset = CGPointMake(0, aScrollView.contentOffset.y);
+
+    if ([aScrollView isEqual:tableView]) {
+        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, tableView.contentOffset.y);
+    } else if ([aScrollView isEqual:scrollView]) {
+        tableView.contentOffset = CGPointMake(0, scrollView.contentOffset.y); 
+    }
     self.scrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)sScrollView {
     [self alignGridAnimated:YES];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)sScrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate)
         [self alignGridAnimated:YES];
+
 }
 
 #pragma mark align grid after decelerating or drag
@@ -258,6 +261,7 @@ const int kCellWidth = 44;
 
         cell.accessoryType =  UITableViewCellAccessoryNone; 
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor clearColor];
         
     }
     
@@ -288,6 +292,11 @@ const int kCellWidth = 44;
     cell.detailTextLabel.text =  @" ";
     return cell;
 }
+
+
+
+
+# pragma mark - highlightRow
 
 - (void)highlightRow:(int)row showCurrentColumn:(BOOL)showCurrentColumn {
     

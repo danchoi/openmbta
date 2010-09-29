@@ -115,7 +115,7 @@
     self.selectedStopName = stopName;
     int row = [self.orderedStopNames indexOfObject:stopName];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 #pragma mark Table view methods
