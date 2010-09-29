@@ -253,7 +253,7 @@
             NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
             NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
             
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", firstStop, @"firstStop", nil];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"shouldReloadMapRegion", transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", firstStop, @"firstStop", nil];
             NSNotification *notification = [NSNotification notificationWithName:@"loadMBTATrips"  object:nil userInfo:userInfo];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
         }
@@ -300,7 +300,7 @@
         NSString *firstStop = [lastViewedTrip objectForKey:@";firstStop"];
         NSNumber *startOnSegmentIndex = [lastViewedTrip objectForKey:@"selectedSegmentIndex"];
         
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", startOnSegmentIndex, @"startOnSegmentIndex", firstStop, @"firstStop", nil];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"shouldReloadMapRegion", transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", startOnSegmentIndex, @"startOnSegmentIndex", firstStop, @"firstStop", nil];
         NSNotification *notification = [NSNotification notificationWithName:@"loadMBTATrips"  object:nil userInfo:userInfo];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
 
