@@ -67,8 +67,8 @@
     MKCoordinateRegion region;    
     region.center.latitude = [[regionInfo objectForKey:@"center_lat"] floatValue];
     region.center.longitude = [[regionInfo objectForKey:@"center_lng"] floatValue];
-    region.span.latitudeDelta = [[regionInfo objectForKey:@"lat_span"] floatValue] * 1.1;
-    region.span.longitudeDelta = [[regionInfo objectForKey:@"lng_span"] floatValue] * 1.1;
+    region.span.latitudeDelta = [[regionInfo objectForKey:@"lat_span"] floatValue] * 0.95;
+    region.span.longitudeDelta = [[regionInfo objectForKey:@"lng_span"] floatValue] * 0.95;
     self.initialRegion = region;
     zoomInOnSelect = NO; // for ipad
     [mapView setRegion:region animated:NO];
@@ -170,21 +170,6 @@
         }
     }
     
-    MKCoordinateRegion region;    
-    region.center.latitude = self.selectedStopAnnotation.coordinate.latitude;
-    region.center.longitude = self.selectedStopAnnotation.coordinate.longitude;
-    
-    if (zoomInOnSelect == YES) {
-        //NSLog(@"zooming in");
-        region.span.latitudeDelta = initialRegion.span.latitudeDelta * 0.4;
-        region.span.longitudeDelta = initialRegion.span.longitudeDelta * 0.4;
-        zoomInOnSelect = NO;
-    } else {
-        region.span.latitudeDelta = mapView.region.span.latitudeDelta;
-        region.span.longitudeDelta = mapView.region.span.longitudeDelta;
-    }
-    [mapView setRegion:region animated:YES];
-    [mapView regionThatFits:region];
     [mapView selectAnnotation:self.selectedStopAnnotation animated:YES]; 
     self.selectedStopName = self.selectedStopAnnotation.subtitle;
 

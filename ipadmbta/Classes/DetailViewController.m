@@ -66,6 +66,7 @@
             }
         }    
     }     
+
     [super viewDidLoad];
 }
 
@@ -284,8 +285,6 @@
 }
 
 - (void)adjustFrames {
-
-
     mapViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
     scheduleViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
   
