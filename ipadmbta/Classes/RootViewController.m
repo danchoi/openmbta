@@ -20,7 +20,7 @@
 @implementation RootViewController
 
 @synthesize detailViewController;
-@synthesize menu,  menu2, bookmarks, tableView;
+@synthesize menu,  menu2, bookmarks;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -40,15 +40,18 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+
     [super viewWillAppear:animated];
-    self.bookmarks = [[Preferences sharedInstance] orderedBookmarks]; 
-    [tableView reloadData];
 }
-/*
+
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+ self.bookmarks = [[Preferences sharedInstance] orderedBookmarks]; 
+ NSLog(@"bookmarks: %@", self.bookmarks);
+ [self.tableView reloadData];
+    NSLog(@"tableview: %@", self.tableView);
+
+    [super viewWillAppear:animated];
 }
-*/
 /*
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -106,7 +109,7 @@
     if (indexPath.section == 1 || indexPath.section == 2) {
         static NSString *CellIdentifier = @"Cell";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         }
@@ -125,7 +128,7 @@
         
         static NSString *CellIdentifier = @"BookmarkCell";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
             cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];

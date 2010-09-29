@@ -83,7 +83,7 @@
 @property (nonatomic, retain) UIView *currentContentView;
 @property (nonatomic, retain) IBOutlet StopsViewController *stopsViewController;
 @property (nonatomic, retain) NSMutableArray *orderedStopNames;
-@property (nonatomic, retain) UIBarButtonItem *bookmarkButton; 
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *bookmarkButton; 
 @property  NSInteger startOnSegmentIndex;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *findStopButton;
 @property (nonatomic, retain)   UIView *findingProgressView;

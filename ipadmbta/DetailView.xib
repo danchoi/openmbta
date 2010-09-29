@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="95"/>
+			<integer value="63"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -363,6 +363,22 @@
 					</object>
 					<int key="connectionID">87</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">bookmarkButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="619002196"/>
+					</object>
+					<int key="connectionID">100</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">toggleBookmark:</string>
+						<reference key="source" ref="619002196"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">101</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -614,7 +630,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">99</int>
+			<int key="maxID">101</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -687,6 +703,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>bookmarkButton</string>
 							<string>contentView</string>
 							<string>detailDescriptionLabel</string>
 							<string>detailItem</string>
@@ -701,6 +718,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIBarButtonItem</string>
 							<string>UIView</string>
 							<string>UILabel</string>
 							<string>id</string>
@@ -718,6 +736,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>bookmarkButton</string>
 							<string>contentView</string>
 							<string>detailDescriptionLabel</string>
 							<string>detailItem</string>
@@ -732,6 +751,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">bookmarkButton</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">contentView</string>
 								<string key="candidateClassName">UIView</string>

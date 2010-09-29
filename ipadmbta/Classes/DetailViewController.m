@@ -162,7 +162,6 @@
                                action:@selector(toggleBookmark:)];
     }
     
-    self.navigationItem.rightBarButtonItem = self.bookmarkButton;
 }
 
 
@@ -175,6 +174,7 @@
         Preferences *prefs = [Preferences sharedInstance]; 
         NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
         [prefs addBookmark: bookmark];
+        NSLog(@"bookmarks %@", [prefs orderedBookmarks]);
     }
     self.navigationItem.rightBarButtonItem = nil;
     [self addBookmarkButton];
