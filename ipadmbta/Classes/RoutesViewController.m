@@ -10,6 +10,7 @@
 
 @implementation RoutesViewController
 @synthesize tableView, data, transportType, lineName, lineHeadsign, shouldReloadData;
+@synthesize stopsVC;
 
 - (void)viewDidLoad 
 {
@@ -53,6 +54,7 @@
     self.lineHeadsign = nil;    
     self.transportType = nil;
     [operationQueue release];
+    self.stopsVC = nil;
     [super dealloc];
 }
 
@@ -184,6 +186,9 @@
     NSNotification *notification = [NSNotification notificationWithName:@"loadMBTATrips"  object:nil userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
     
+    // load stopsVC
+    
+    [self.navigationController pushViewController:stopsVC animated:YES];
 }
 
 @end

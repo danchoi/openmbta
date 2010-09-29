@@ -251,7 +251,11 @@
         NSDictionary *stop = [self.stops objectForKey:[stopId stringValue] ];
         [self.orderedStopNames addObject:[stop objectForKey:@"name"]];
     }
-    [self.stopsViewController loadStopNames:self.orderedStopNames];
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.orderedStopNames forKey:@"orderedStopNames"];
+    NSNotification *notification = [NSNotification notificationWithName:@"MBTAloadOrderedStopNames" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+
     self.scheduleViewController.orderedStopNames = self.orderedStopNames;
     [self hideNetworkActivity];
     
@@ -455,7 +459,6 @@
     // e.g. self.myOutlet = nil;
     mapViewController.detailViewController = nil;
     scheduleViewController.detailViewController = nil;
-    stopsViewController.tripsViewController = nil;
     self.findStopButton = nil;
     self.findingProgressView = nil;    
 }

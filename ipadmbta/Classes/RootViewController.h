@@ -11,13 +11,12 @@
 @class RoutesViewController;
 @class TAlertsViewController;
 @class TweetsViewController;
-
+#import "StopsViewController.h"
 
 @class DetailViewController;
 
 @interface RootViewController : UITableViewController {
     DetailViewController *detailViewController;
-
     RoutesViewController *routesViewController;
     TAlertsViewController *tAlertsViewController;
     TweetsViewController *tweetsViewController;
@@ -25,6 +24,7 @@
     NSArray *menu;
     NSArray *menu2;    
     NSArray *bookmarks;
+    StopsViewController *stopsVC;
     
 }
 
@@ -32,7 +32,7 @@
 @property (nonatomic,retain) NSArray *menu;
 @property (nonatomic,retain) NSArray *menu2;
 @property (nonatomic,retain) NSArray *bookmarks;
-
+@property (nonatomic, retain) StopsViewController *stopsVC;
 - (void)loadLastViewedTrip;
 
 @end

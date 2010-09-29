@@ -19,7 +19,7 @@
 
 @implementation RootViewController
 
-@synthesize detailViewController;
+@synthesize detailViewController, stopsVC;
 @synthesize menu,  menu2, bookmarks;
 
 #pragma mark -
@@ -36,6 +36,7 @@
     
     self.title = @"Main Menu";
     
+    self.stopsVC = [[StopsViewController alloc] initWithNibName:@"StopsViewController" bundle:nil];
     
 }
 
@@ -256,6 +257,7 @@
             NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"shouldReloadMapRegion", transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", firstStop, @"firstStop", nil];
             NSNotification *notification = [NSNotification notificationWithName:@"loadMBTATrips"  object:nil userInfo:userInfo];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
+            [self.navigationController pushViewController:self.stopsVC animated:YES];
         }
     }
 }
@@ -285,7 +287,8 @@
     self.menu = nil;
     self.menu2 = nil;
     self.bookmarks = nil;
-    self.tableView = nil;    
+    self.tableView = nil;   
+    self.stopsVC = nil;
     [super dealloc];
 }
 
@@ -303,9 +306,11 @@
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"shouldReloadMapRegion", transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", startOnSegmentIndex, @"startOnSegmentIndex", firstStop, @"firstStop", nil];
         NSNotification *notification = [NSNotification notificationWithName:@"loadMBTATrips"  object:nil userInfo:userInfo];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
-
+        [self.navigationController pushViewController:self.stopsVC animated:YES];
     }   
 }
+
+
 
 
 

@@ -7,10 +7,14 @@
 //
 
 #import "StopsViewController.h"
-#import "TripsViewController.h"
+
+@interface StopsViewController ()
+- (void)reset:(NSNotification *)notification;
+@end
+
 
 @implementation StopsViewController
-@synthesize orderedStopNames, tableView, tripsViewController, selectedStopName;
+@synthesize orderedStopNames, selectedStopName;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -21,12 +25,24 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadStopNames:)
+                                                 name:@"MBTAloadOrderedStopNames" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reset:)
+                                                 name:@"loadMBTATrips" object:nil];
+    
+    self.title = @"Stops";
+
 }
-*/
+
+- (void)reset:(NSNotification *)notification {
+    self.orderedStopNames = [NSMutableArray array];
+    [self.tableView reloadData];
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -60,7 +76,6 @@
 }
 
 - (void)dealloc {
-    self.tripsViewController = nil;
     self.orderedStopNames = nil;
     [super dealloc];
 }
@@ -69,7 +84,9 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)loadStopNames:(NSMutableArray *)stopNames {
+- (void)loadStopNames:(NSNotification *)notification {
+    
+    NSMutableArray *stopNames = [NSMutableArray arrayWithArray:[[notification userInfo] objectForKey:@"orderedStopNames"]];
     self.orderedStopNames = stopNames;
     [self.tableView reloadData];
 }
@@ -97,7 +114,7 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0]; 
@@ -115,7 +132,7 @@
     [self dismissModalViewControllerAnimated:YES];
 
     NSString *stopName = [self.orderedStopNames objectAtIndex:indexPath.row];
-    [self.tripsViewController highlightStopNamed:stopName];
+
 
 }
 
@@ -123,5 +140,16 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 36.0;
 }
+
+
+#pragma mark -
+#pragma mark Rotation support
+
+
+// Ensure that the view controller supports rotation and that the split view can therefore show in both portrait and landscape.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
 
 @end

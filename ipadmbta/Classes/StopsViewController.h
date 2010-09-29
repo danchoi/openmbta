@@ -6,19 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TripsViewController;
 
-@interface StopsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface StopsViewController : UITableViewController {
     NSMutableArray *orderedStopNames;    
     NSString *selectedStopName;
-    UITableView *tableView;
-    TripsViewController *tripsViewController;
 }
 @property (nonatomic, retain) NSMutableArray *orderedStopNames;    
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) TripsViewController *tripsViewController;
 @property (nonatomic, retain) NSString *selectedStopName;
-- (void)back:(id)sender;
-- (void)loadStopNames:(NSMutableArray *)stopNames;
+- (void)loadStopNames:(NSNotification *)userInfo;
 - (void)selectStopNamed:(NSString *)stopName;
 @end

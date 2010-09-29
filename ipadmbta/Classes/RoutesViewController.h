@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "StopsViewController.h"
 
 @interface RoutesViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
@@ -17,6 +18,8 @@
     NSString *lineName; // only used when used as a second level CR menu
     NSString *lineHeadsign; // only used when used as a second level CR menu
     BOOL shouldReloadData;
+    StopsViewController *stopsVC;
+    
 }
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray *data;
@@ -24,5 +27,6 @@
 @property (nonatomic, retain) NSString *lineName;
 @property (nonatomic, retain) NSString *lineHeadsign;
 @property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
+@property (nonatomic, retain) IBOutlet StopsViewController *stopsVC;
 - (void)reset;
 @end
