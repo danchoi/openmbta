@@ -144,7 +144,7 @@
     NSString *headsign = [headsignArray objectAtIndex:0];
 
     cell.textLabel.text = headsign;
-    if (self.transportType == @"Subway") {
+    if ([self.transportType isEqualToString: @"Subway"]) {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"from %@", [headsignArray objectAtIndex:2]];
     } else {
 
@@ -177,7 +177,7 @@
     NSString *headsign = [headsignArray objectAtIndex:0];
     NSNumber *shouldReloadMapRegion = [NSNumber numberWithBool:YES];
     NSString *firstStop;
-    if (self.transportType == @"Subway") 
+    if ([self.transportType isEqualToString: @"Subway"]) 
         firstStop = [headsignArray objectAtIndex:2];
     else
         firstStop = nil;

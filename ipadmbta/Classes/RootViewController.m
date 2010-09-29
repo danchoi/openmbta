@@ -144,12 +144,16 @@
         
         NSString *headsign  = [bookmark objectForKey:@"headsign"];
         NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
-        
+        NSString *firstStop =  [bookmark objectForKey:@"firstStop"];
         // Configure the cell.
         
         cell.textLabel.text = headsign;
         if ([transportType isEqualToString:@"Bus"])
             cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ %@", transportType, routeShortName];
+
+        else if (firstStop)
+            cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ : %@", routeShortName, firstStop];
+
         else
             cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ : %@", transportType, routeShortName];
         
@@ -288,15 +292,17 @@
     [super dealloc];
 }
 
+# pragma mark -
+# pragma Restore Application State
 
 - (void)loadLastViewedTrip {
-    NSDictionary *lastViewedTrip = [[NSUserDefaults standardUserDefaults]
-                                    objectForKey:@"lastViewedTrip"];
-    if (lastViewedTrip) {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *lastViewedTrip = [userDefaults objectForKey:@"lastViewedTrip"];
+    if (![lastViewedTrip isEqual:[NSNull null]] ) {
         NSString *headsign = [lastViewedTrip objectForKey:@"headsign"];
         NSString *routeShortName = [lastViewedTrip objectForKey:@"routeShortName"];
         NSString *transportType = [lastViewedTrip objectForKey:@"transportType"];;
-        NSString *firstStop = [lastViewedTrip objectForKey:@";firstStop"];
+        NSString *firstStop = [lastViewedTrip objectForKey:@"firstStop"];
         NSNumber *startOnSegmentIndex = [lastViewedTrip objectForKey:@"selectedSegmentIndex"];
         
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"shouldReloadMapRegion", transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", startOnSegmentIndex, @"startOnSegmentIndex", firstStop, @"firstStop", nil];

@@ -107,7 +107,7 @@
     if ([self.transportType isEqualToString: @"Bus"]) {
         routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.routeShortName];
         
-    } else if (self.transportType == @"Subway") {
+    } else if ([self.transportType isEqualToString: @"Subway"]) {
         routeNameLabel.text = [NSString stringWithFormat:@"%@", self.firstStop];        
         
     } else if ([self.transportType isEqualToString: @"Commuter Rail"]) {
@@ -117,20 +117,26 @@
         routeNameLabel.text = self.routeShortName;            
     }
 
-    [self addBookmarkButton];
+    [self styleBookmarkButton];
     
     if (self.startOnSegmentIndex != -1) {
         self.segmentedControl.selectedSegmentIndex = self.startOnSegmentIndex;
         self.startOnSegmentIndex = -1;
     }
-    [self saveState];
     [self toggleView:nil];    
     
     
 }
 
 - (void)saveState {    
-    NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", [NSNumber numberWithInteger:self.segmentedControl.selectedSegmentIndex], @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
+    int index;
+    if (self.segmentedControl) 
+        index = self.segmentedControl.selectedSegmentIndex;
+    else 
+        index = 0;
+        
+    NSNumber *selectedSegmentAsNumber = [NSNumber numberWithInt:0]; 
+    NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", selectedSegmentAsNumber, @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
     
     [[NSUserDefaults standardUserDefaults] setObject:lastViewedTrip
                                               forKey:@"lastViewedTrip"];
@@ -141,46 +147,33 @@
 
 - (BOOL)isBookmarked {
     Preferences *prefs = [Preferences sharedInstance]; 
-    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", nil];
+    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
     return ([prefs isBookmarked:bookmark]);
 }
 
-- (void)addBookmarkButton; {
-    if (self.navigationItem.rightBarButtonItem != nil)
-        return;
-    
+- (void)styleBookmarkButton; {    
     if ([self isBookmarked]) {
-        self.bookmarkButton = [[UIBarButtonItem alloc]
-                               initWithTitle:@"Bookmarked"
-                               style:UIBarButtonItemStyleDone
-                               target:self 
-                               action:@selector(toggleBookmark:)];
-        
-        
+        self.bookmarkButton.style = UIBarStyleBlackTranslucent;         
+        self.bookmarkButton.title = @"Bookmarked";
     } else {
-        self.bookmarkButton = [[UIBarButtonItem alloc]
-                               initWithTitle:@"Bookmark"
-                               style:UIBarButtonItemStylePlain
-                               target:self 
-                               action:@selector(toggleBookmark:)];
+        self.bookmarkButton.style = UIBarStyleBlackOpaque;
+        self.bookmarkButton.title = @"Bookmark";
     }
-    
 }
 
 
 -(void)toggleBookmark:(id)sender {
     if ([self isBookmarked]) {
         Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", self.firstStop, @"firstStop", nil];
         [prefs removeBookmark: bookmark];
     } else {
         Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", self.firstStop, @"firstStop", nil];
         [prefs addBookmark: bookmark];
         NSLog(@"bookmarks %@", [prefs orderedBookmarks]);
     }
-    self.navigationItem.rightBarButtonItem = nil;
-    [self addBookmarkButton];
+    [self styleBookmarkButton];
 }
 
 

@@ -116,12 +116,14 @@
             
         NSString *headsign  = [bookmark objectForKey:@"headsign"];
         NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
-
+        NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
         // Configure the cell.
 
         cell.textLabel.text = headsign;
         if ([transportType isEqualToString:@"Bus"])
             cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ %@", transportType, routeShortName];
+        else if (firstStop)
+            cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ : %@", routeShortName, firstStop];
         else
             cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ : %@", transportType, routeShortName];
 
@@ -204,7 +206,7 @@
         self.tripsViewController.headsign = [lastViewedTrip objectForKey:@"headsign"];
         self.tripsViewController.routeShortName = [lastViewedTrip objectForKey:@"routeShortName"];
         self.tripsViewController.transportType = [lastViewedTrip objectForKey:@"transportType"];;
-        self.tripsViewController.firstStop = [lastViewedTrip objectForKey:@";firstStop"];
+        self.tripsViewController.firstStop = [lastViewedTrip objectForKey:@"firstStop"];
         self.tripsViewController.startOnSegmentIndex = [[lastViewedTrip objectForKey:@"selectedSegmentIndex"] intValue];        
         self.tripsViewController.shouldReloadRegion = YES;
         self.tripsViewController.shouldReloadData = YES;

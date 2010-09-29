@@ -71,10 +71,11 @@
         
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
+
         if ([self.transportType isEqualToString: @"Bus"]) {
             routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.routeShortName];
 
-        } else if (self.transportType == @"Subway") {
+        } else if ([self.transportType isEqualToString: @"Subway"]) {
             routeNameLabel.text = [NSString stringWithFormat:@"%@", self.firstStop];        
 
         } else if ([self.transportType isEqualToString: @"Commuter Rail"]) {
@@ -153,7 +154,7 @@
 
 - (BOOL)isBookmarked {
     Preferences *prefs = [Preferences sharedInstance]; 
-    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", nil];
+    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
     return ([prefs isBookmarked:bookmark]);
 }
 

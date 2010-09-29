@@ -90,7 +90,7 @@
 
 
 - (void)loadTrips:(NSNotification *)notification;
-- (void)addBookmarkButton;
+- (void)styleBookmarkButton;
 - (void)toggleView:(id)sender;
 - (void)highlightStopNamed:(NSString *)stopName;
 - (void)highlightStopPosition:(int)pos;

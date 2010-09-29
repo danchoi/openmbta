@@ -42,7 +42,7 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
     NSComparisonResult result2 = [[bookmark1 objectForKey:@"routeShortName"] compare:[bookmark2 objectForKey:@"routeShortName"]];
     NSComparisonResult result3 = [[bookmark1 objectForKey:@"headsign"] compare:[bookmark2 objectForKey:@"headsign"]];
     NSComparisonResult result4 = [[bookmark1 objectForKey:@"firstStop"] compare:[bookmark2 objectForKey:@"firstStop"]];
-
+    
     if (result1 != NSOrderedSame) {
         if ([[bookmark1 objectForKey:@"transportType"] isEqualToString:@"Boat"])
             return NSOrderedDescending;
@@ -65,7 +65,7 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
             return result3;
         }
     }
-
+    
     if (result3 != NSOrderedSame) 
         return result3;
     return result4;
@@ -85,12 +85,13 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
 
 
 - (void)addBookmark:(NSDictionary *)bookmark {
+    
     NSMutableDictionary *prefs = [self preferences];
     NSMutableArray *bookmarks = [prefs objectForKey:@"bookmarks"];
     [bookmarks addObject:bookmark];
-
+    
     if (![prefs writeToFile:[self prefsFilePath] atomically:YES]) {
-         NSLog(@"VRM failed to save preferences to file!");
+        NSLog(@"VRM failed to save preferences to file!");
     }
     //NSLog(@"added bookmark. new prefs: %@", [self preferences]);
 }
@@ -102,28 +103,41 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
         if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
             [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&
             [[saved objectForKey:@"transportType"] isEqualToString: [bookmark objectForKey:@"transportType"]])  {
-             [bookmarks removeObject:saved];
+            [bookmarks removeObject:saved];
             if (![prefs writeToFile:[self prefsFilePath] atomically:YES]) {
-                 NSLog(@"VRM failed to save preferences to file!");
+                NSLog(@"VRM failed to save preferences to file!");
             }
-
-    //        NSLog(@"removed bookmark. new prefs: %@", [self preferences]);
+            
+            //        NSLog(@"removed bookmark. new prefs: %@", [self preferences]);
             return;
         }
     }
 }
 
 - (BOOL)isBookmarked:(NSDictionary *)bookmark {
+    
     NSMutableDictionary *prefs = [self preferences];
     NSArray *bookmarks = [prefs objectForKey:@"bookmarks"];
+    
     for (NSDictionary *saved in bookmarks) {
-        if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
-            [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&
-            [[saved objectForKey:@"transportType"] isEqualToString: [bookmark objectForKey:@"transportType"]])  {
-            return true;
+        if ([[saved allKeys] count] == 4) {
+            if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
+                [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&
+                [[saved objectForKey:@"transportType"] isEqualToString: [bookmark objectForKey:@"transportType"]] &&
+                [[saved objectForKey:@"firstStop"] isEqualToString: [bookmark objectForKey:@"firstStop"]])  {
+                return true;
+            }
+        } else if ([[saved allKeys] count] == 3) {
+            if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
+                [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&
+                [[saved objectForKey:@"transportType"] isEqualToString: [bookmark objectForKey:@"transportType"]]) {
+                return true;
+            }            
         }
+        
+        
     }
-
+    
     return false;
 }
 

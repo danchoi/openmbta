@@ -143,7 +143,7 @@
     NSString *headsign = [headsignArray objectAtIndex:0];
 
     cell.textLabel.text = headsign;
-    if (self.transportType == @"Subway") {
+    if ([self.transportType isEqualToString: @"Subway"]) {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"from %@", [headsignArray objectAtIndex:2]];
     } else {
 
@@ -193,7 +193,7 @@
         [self tripsViewController].headsign = headsign;
         [self tripsViewController].routeShortName = routeShortName;
         [self tripsViewController].transportType = self.transportType;
-        if (self.transportType == @"Subway") 
+        if ([self.transportType isEqualToString: @"Subway"]) 
             [self tripsViewController].firstStop = [headsignArray objectAtIndex:2];
         else
             [self tripsViewController].firstStop = nil;

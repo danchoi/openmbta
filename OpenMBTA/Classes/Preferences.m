@@ -85,6 +85,7 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
 
 
 - (void)addBookmark:(NSDictionary *)bookmark {
+
     NSMutableDictionary *prefs = [self preferences];
     NSMutableArray *bookmarks = [prefs objectForKey:@"bookmarks"];
     [bookmarks addObject:bookmark];
@@ -114,14 +115,27 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
 }
 
 - (BOOL)isBookmarked:(NSDictionary *)bookmark {
+
     NSMutableDictionary *prefs = [self preferences];
     NSArray *bookmarks = [prefs objectForKey:@"bookmarks"];
+    
     for (NSDictionary *saved in bookmarks) {
-        if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
-            [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&
-            [[saved objectForKey:@"transportType"] isEqualToString: [bookmark objectForKey:@"transportType"]])  {
-            return true;
+        if ([[saved allKeys] count] == 4) {
+            if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
+                [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&
+                [[saved objectForKey:@"transportType"] isEqualToString: [bookmark objectForKey:@"transportType"]] &&
+                [[saved objectForKey:@"firstStop"] isEqualToString: [bookmark objectForKey:@"firstStop"]])  {
+                return true;
+                }
+        } else if ([[saved allKeys] count] == 3) {
+            if ([[saved objectForKey:@"headsign"] isEqualToString: [bookmark objectForKey:@"headsign"]] &&
+                [[saved objectForKey:@"routeShortName"] isEqualToString: [bookmark objectForKey:@"routeShortName"]] &&
+                [[saved objectForKey:@"transportType"] isEqualToString: [bookmark objectForKey:@"transportType"]]) {
+                    return true;
+                }            
         }
+        
+        
     }
 
     return false;
