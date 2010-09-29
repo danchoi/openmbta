@@ -26,8 +26,23 @@
 */
 
 - (void)viewDidLoad {
-    self.stopAnnotations = [NSMutableArray array];
     [super viewDidLoad];
+    self.stopAnnotations = [NSMutableArray array];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(mapViewShouldHighlightStop:)
+                                                 name:@"MBTAShouldHighlightStop" object:nil];    
+
+}
+
+- (void)mapViewShouldHighlightStop:(NSNotification *)notification {
+    id sender = [notification object];
+    if ([sender isEqual:self])
+        return;
+    NSString *stopName = [[notification userInfo] objectForKey:@"stopName"];
+    NSLog(@"sender %@", sender);
+    [self highlightStopNamed:stopName];
+    
 }
 
 /*
@@ -218,14 +233,18 @@
     self.triggerCalloutTimer.invalidate;
     NSString *stopName = ((StopAnnotation *)view.annotation).subtitle;
     
-    [self.detailViewController.stopsViewController selectStopNamed:stopName];
+//    [self.detailViewController.stopsViewController selectStopNamed:stopName]; // CHANGEME for iPad
+    
     [self.detailViewController.scheduleViewController highlightStopNamed:stopName showCurrentColumn:YES];
     
     [self.detailViewController hideFindingIndicators];
+    
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:stopName forKey:@"stopName"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MBTAShouldHighlightStop" object:self userInfo:userInfo];
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
-    
     if (stopName == nil)
         return;
     self.selectedStopAnnotation = nil;

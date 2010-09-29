@@ -10,6 +10,8 @@
 
 @interface StopsViewController ()
 - (void)reset:(NSNotification *)notification;
+- (void)viewShouldHighlightStop:(NSNotification *)notification;
+
 @end
 
 
@@ -34,6 +36,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reset:)
                                                  name:@"loadMBTATrips" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(viewShouldHighlightStop:)
+                                                 name:@"MBTAShouldHighlightStop" object:nil];
     
     self.title = @"Stops";
 
@@ -43,6 +48,20 @@
     self.orderedStopNames = [NSMutableArray array];
     [self.tableView reloadData];
 }
+
+
+- (void)viewShouldHighlightStop:(NSNotification *)notification {
+    id sender = [notification object];
+    if ([sender isEqual:self]) {
+        return;
+    }
+    NSString *stopName = [[notification userInfo] objectForKey:@"stopName"];
+    NSLog(@"%@: sender %@", self, sender);
+    [self selectStopNamed:stopName];
+    
+}
+
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -94,6 +113,9 @@
 
 - (void)selectStopNamed:(NSString *)stopName {
     self.selectedStopName = stopName;
+    int row = [self.orderedStopNames indexOfObject:stopName];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
 #pragma mark Table view methods
@@ -118,7 +140,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0]; 
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+
 
     }
 	// Configure the cell.
@@ -128,11 +150,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-//    NSString *stopName = [self.orderedStopNames objectAtIndex:indexPath.row];
-    [self dismissModalViewControllerAnimated:YES];
-
     NSString *stopName = [self.orderedStopNames objectAtIndex:indexPath.row];
-
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:stopName forKey:@"stopName"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MBTAShouldHighlightStop" object:self userInfo:userInfo];
 
 }
 

@@ -305,6 +305,8 @@
 }
 
 - (void)highlightStopNamed:(NSString *)stopName {
+    
+    
     [self.mapViewController highlightStopNamed:stopName];
     // map controller will trigger scheduleViewController
     //    [self.scheduleViewController highlightStopNamed:stopName showCurrentColumn:NO];
