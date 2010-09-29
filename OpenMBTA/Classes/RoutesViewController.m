@@ -191,7 +191,7 @@
     */
         
         [self tripsViewController].headsign = headsign;
-        [self tripsViewController].route_short_name = routeShortName;
+        [self tripsViewController].routeShortName = routeShortName;
         [self tripsViewController].transportType = self.transportType;
         if (self.transportType == @"Subway") 
             [self tripsViewController].firstStop = [headsignArray objectAtIndex:2];

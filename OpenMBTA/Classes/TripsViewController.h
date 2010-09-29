@@ -17,7 +17,7 @@
 
 @interface TripsViewController : BaseViewController <CLLocationManagerDelegate, ADBannerViewDelegate> {
     NSString *headsign;
-    NSString *route_short_name;
+    NSString *routeShortName;
     NSString *transportType;
     NSString *firstStop; // used for Subway
     BOOL shouldReloadData;
@@ -38,7 +38,7 @@
 
     MapViewController *mapViewController;
     UISegmentedControl *segmentedControl;
-    NSInteger startOnSegementIndex;
+    NSInteger startOnSegmentIndex;
     
     ScheduleViewController *scheduleViewController;
     UIView *currentContentView;
@@ -52,7 +52,7 @@
 
 }
 @property (nonatomic, copy) NSString *headsign;
-@property (nonatomic, retain) NSString *route_short_name;
+@property (nonatomic, retain) NSString *routeShortName;
 @property (nonatomic, retain) NSString *transportType;
 @property (nonatomic, retain) NSString *firstStop;
 @property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
@@ -77,7 +77,7 @@
 @property (nonatomic, retain) UIBarButtonItem *bookmarkButton; 
 @property BOOL bannerIsVisible;
 @property (nonatomic, retain) ADBannerView *adView;
-@property  NSInteger startOnSegementIndex;
+@property  NSInteger startOnSegmentIndex;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *findStopButton;
 @property (nonatomic, retain)   UIView *findingProgressView;
 

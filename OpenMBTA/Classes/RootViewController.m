@@ -178,7 +178,7 @@
             NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
             
             [self tripsViewController].headsign = headsign;
-            [self tripsViewController].route_short_name = routeShortName;
+            [self tripsViewController].routeShortName = routeShortName;
             [self tripsViewController].transportType = transportType;
             [self tripsViewController].firstStop = firstStop;
 
@@ -202,10 +202,10 @@
                                     objectForKey:@"lastViewedTrip"];
     if (lastViewedTrip) {
         self.tripsViewController.headsign = [lastViewedTrip objectForKey:@"headsign"];
-        self.tripsViewController.route_short_name = [lastViewedTrip objectForKey:@"routeShortName"];
+        self.tripsViewController.routeShortName = [lastViewedTrip objectForKey:@"routeShortName"];
         self.tripsViewController.transportType = [lastViewedTrip objectForKey:@"transportType"];;
         self.tripsViewController.firstStop = [lastViewedTrip objectForKey:@";firstStop"];
-        self.tripsViewController.startOnSegementIndex = [[lastViewedTrip objectForKey:@"selectedSegmentIndex"] intValue];        
+        self.tripsViewController.startOnSegmentIndex = [[lastViewedTrip objectForKey:@"selectedSegmentIndex"] intValue];        
         self.tripsViewController.shouldReloadRegion = YES;
         self.tripsViewController.shouldReloadData = YES;
 

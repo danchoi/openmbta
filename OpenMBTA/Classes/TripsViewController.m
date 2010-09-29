@@ -26,7 +26,7 @@
 
 @implementation TripsViewController
 @synthesize contentView;
-@synthesize headsign, route_short_name, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selectedStopId, bookmarkButton ;
+@synthesize headsign, routeShortName, transportType, firstStop, shouldReloadData, shouldReloadRegion, stops, orderedStopIds, imminentStops, firstStops, regionInfo, headsignLabel, routeNameLabel, selectedStopId, bookmarkButton ;
 @synthesize location;
 @synthesize mapViewController, scheduleViewController;
 @synthesize segmentedControl;
@@ -35,7 +35,7 @@
 @synthesize orderedStopNames;
 @synthesize bannerIsVisible;
 @synthesize adView;
-@synthesize startOnSegementIndex, findStopButton, findingProgressView; 
+@synthesize startOnSegmentIndex, findStopButton, findingProgressView; 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,21 +72,21 @@
         self.shouldReloadData = NO;        
         headsignLabel.text = self.headsign;
         if ([self.transportType isEqualToString: @"Bus"]) {
-            routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.route_short_name];
+            routeNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.transportType, self.routeShortName];
 
         } else if (self.transportType == @"Subway") {
             routeNameLabel.text = [NSString stringWithFormat:@"%@", self.firstStop];        
 
         } else if ([self.transportType isEqualToString: @"Commuter Rail"]) {
-            routeNameLabel.text = [NSString stringWithFormat:@"%@ Line", self.route_short_name];     
+            routeNameLabel.text = [NSString stringWithFormat:@"%@ Line", self.routeShortName];     
 
         } else {
-            routeNameLabel.text = self.route_short_name;            
+            routeNameLabel.text = self.routeShortName;            
         }
     }
-    if (self.startOnSegementIndex != -1) {
-        self.segmentedControl.selectedSegmentIndex = self.startOnSegementIndex;
-        self.startOnSegementIndex = -1;
+    if (self.startOnSegmentIndex != -1) {
+        self.segmentedControl.selectedSegmentIndex = self.startOnSegmentIndex;
+        self.startOnSegmentIndex = -1;
     }
     [self saveState];
     [super viewWillAppear:animated];
@@ -94,7 +94,7 @@
 }
 
 - (void)saveState {    
-    NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.route_short_name, @"routeShortName", self.transportType, @"transportType", [NSNumber numberWithInteger:self.segmentedControl.selectedSegmentIndex], @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
+    NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", [NSNumber numberWithInteger:self.segmentedControl.selectedSegmentIndex], @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
 
     [[NSUserDefaults standardUserDefaults] setObject:lastViewedTrip
                                               forKey:@"lastViewedTrip"];
@@ -140,7 +140,7 @@
     self.stops = nil;
     self.regionInfo = nil;
     self.headsign = nil;
-    self.route_short_name = nil;
+    self.routeShortName = nil;
     self.selectedStopId = nil;
     self.location = nil;
     [locationManager release];
@@ -153,7 +153,7 @@
 
 - (BOOL)isBookmarked {
     Preferences *prefs = [Preferences sharedInstance]; 
-    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", nil];
+    NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", nil];
     return ([prefs isBookmarked:bookmark]);
 }
 
@@ -184,11 +184,11 @@
 -(void)toggleBookmark:(id)sender {
     if ([self isBookmarked]) {
         Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
         [prefs removeBookmark: bookmark];
     } else {
         Preferences *prefs = [Preferences sharedInstance]; 
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", route_short_name, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: headsign, @"headsign", routeShortName, @"routeShortName", transportType, @"transportType", firstStop, @"firstStop", nil];
         [prefs addBookmark: bookmark];
     }
     self.navigationItem.rightBarButtonItem = nil;
@@ -217,7 +217,7 @@
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
     NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?version=3&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@&first_stop=%@",
                         ServerURL, 
-                        self.route_short_name, 
+                        self.routeShortName, 
                         headsignAmpersandEscaped, 
                         self.transportType, 
                         [NSDate date],
