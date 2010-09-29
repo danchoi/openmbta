@@ -77,7 +77,7 @@
 
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated { // will never happen in ipad
     self.navigationItem.rightBarButtonItem = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"lastViewedTrip"];
     [[NSUserDefaults standardUserDefaults] synchronize];    
@@ -90,6 +90,9 @@
 
 
 - (void)loadTrips:(NSNotification *)notification {
+    [operationQueue cancelAllOperations];
+    [self hideNetworkActivity];
+    
     self.transportType = [[notification userInfo] objectForKey:@"transportType"];
     self.routeShortName = [[notification userInfo] objectForKey:@"routeShortName"];    
     self.headsign = [[notification userInfo] objectForKey:@"headsign"];
