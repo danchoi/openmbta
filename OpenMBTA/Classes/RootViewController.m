@@ -170,23 +170,23 @@
         
         
     } else {
-        NSDictionary *bookmark = [self.bookmarks objectAtIndex: indexPath.row];
-        NSString *transportType = [bookmark objectForKey:@"transportType"];
-        NSString *headsign  = [bookmark objectForKey:@"headsign"];
-        NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
-        NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
-        
-        [self tripsViewController].headsign = headsign;
-        [self tripsViewController].route_short_name = routeShortName;
-        [self tripsViewController].transportType = transportType;
-        [self tripsViewController].firstStop = firstStop;
+        if (indexPath.row < [self.bookmarks count]) {
+            NSDictionary *bookmark = [self.bookmarks objectAtIndex: indexPath.row];
+            NSString *transportType = [bookmark objectForKey:@"transportType"];
+            NSString *headsign  = [bookmark objectForKey:@"headsign"];
+            NSString *routeShortName  = [bookmark objectForKey:@"routeShortName"];
+            NSString *firstStop  = [bookmark objectForKey:@"firstStop"];
+            
+            [self tripsViewController].headsign = headsign;
+            [self tripsViewController].route_short_name = routeShortName;
+            [self tripsViewController].transportType = transportType;
+            [self tripsViewController].firstStop = firstStop;
 
-        [self tripsViewController].shouldReloadRegion = YES;
-        [self tripsViewController].shouldReloadData = YES;
+            [self tripsViewController].shouldReloadRegion = YES;
+            [self tripsViewController].shouldReloadData = YES;
 
-        [self.navigationController pushViewController:[self tripsViewController] animated:YES];
-
-     
+            [self.navigationController pushViewController:[self tripsViewController] animated:YES];
+        }
     }
 }
 
