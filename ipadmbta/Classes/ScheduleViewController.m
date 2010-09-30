@@ -329,7 +329,9 @@ const int kCellWidth = 45;
                 if (period == 1) {
                     break;
                 }
-             }
+            } else {
+                NSLog(@"time is null");
+            }
             col++;
         }
         newX = kCellWidth * col;        
@@ -337,7 +339,7 @@ const int kCellWidth = 45;
     } else {
         newX = self.scrollView.contentOffset.x; // keep the old value
     }
-    float maxX = self.scrollView.contentSize.width - 320;
+    float maxX = self.scrollView.contentSize.width - self.scrollView.frame.size.width;
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.detailViewController.scheduleViewController).view.frame.size.height;
 
     float newY = row *kRowHeight;
@@ -346,7 +348,7 @@ const int kCellWidth = 45;
         y = MIN(newY, maxY);
     }
     float x = MIN(newX, maxX);
-    if (self.scrollView.contentSize.width < self.view.frame.size.width) {
+    if (self.scrollView.contentSize.width < self.scrollView.frame.size.width) {
         x = 0;
     }    
 
