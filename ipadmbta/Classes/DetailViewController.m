@@ -260,13 +260,13 @@
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 
     self.scheduleViewController.orderedStopNames = self.orderedStopNames;
-    [self hideNetworkActivity];
     
     if (!gridCreated) {
         [scheduleViewController createFloatingGrid];        
         [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName showCurrentColumn:NO];
         gridCreated = YES;
     }
+    [self hideNetworkActivity];
     
     [scheduleViewController adjustScrollViewFrame];    
     [scheduleViewController alignGridAnimated:NO];
@@ -338,11 +338,13 @@
 
 
 - (void)showFindingIndicators {
+    self.progressView.hidden = YES;
     self.findingProgressView.center = self.contentView.center;
     [self.view addSubview:self.findingProgressView];
 }
 
 - (void)hideFindingIndicators {
+    self.progressView.hidden = YES;
     [self.findingProgressView removeFromSuperview];    
 }
 
