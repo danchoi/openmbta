@@ -436,7 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -444,7 +444,7 @@
 				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
 				INFOPLIST_FILE = "ipadmbta-Info.plist";
 				PRODUCT_NAME = ipadmbta;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E387A1D0-A7E2-48F4-9DB9-969AE617F6F0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23156A42-0214-4AC2-9EDD-CB756FB2F91E";
 			};
 			name = Debug;
 		};
@@ -452,11 +452,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
 				INFOPLIST_FILE = "ipadmbta-Info.plist";
 				PRODUCT_NAME = ipadmbta;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23156A42-0214-4AC2-9EDD-CB756FB2F91E";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -490,6 +492,37 @@
 			};
 			name = Release;
 		};
+		DEE0E5741255073D00DB99DA /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23156A42-0214-4AC2-9EDD-CB756FB2F91E";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Distribution;
+		};
+		DEE0E5751255073D00DB99DA /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
+				INFOPLIST_FILE = "ipadmbta-Info.plist";
+				PRODUCT_NAME = ipadmbta;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23156A42-0214-4AC2-9EDD-CB756FB2F91E";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -498,6 +531,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				DEE0E5751255073D00DB99DA /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -507,6 +541,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				DEE0E5741255073D00DB99DA /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
