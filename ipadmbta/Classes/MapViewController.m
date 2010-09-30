@@ -11,7 +11,9 @@
 #import "StopAnnotation.h"
 #import "ScheduleViewController.h"
 #import "StopsViewController.h"
-
+@interface MapViewController ()
+- (void)showMap;
+@end
 @implementation MapViewController
 @synthesize detailViewController, mapView, stopAnnotations, selectedStopAnnotation, triggerCalloutTimer, location, selectedStopName, initialRegion;
 
@@ -28,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.stopAnnotations = [NSMutableArray array];
-    
+    self.mapView.hidden = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(mapViewShouldHighlightStop:)
                                                  name:@"MBTAShouldHighlightStop" object:nil];    
@@ -72,7 +74,6 @@
 }
 
 - (void)prepareMap:(NSDictionary *)regionInfo {
-    //NSLog(@"prepareMap: %@", regionInfo);
     [mapView removeAnnotations:self.stopAnnotations];
     [self.stopAnnotations removeAllObjects];
     
@@ -88,7 +89,20 @@
     zoomInOnSelect = NO; // for ipad
     [mapView setRegion:region animated:NO];
     [mapView regionThatFits:region];
-    mapView.hidden = NO;
+    [self showMap];
+}
+
+- (void)showMap {
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationUnknown) {
+        [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                         target: self
+                                       selector: @selector(showMap:)
+                                       userInfo: nil
+                                        repeats: NO];
+    } else {
+        mapView.hidden = NO;
+    }
+    
 }
 
 - (void)annotateStops:(NSDictionary *)stops imminentStops:(NSArray *)imminentStops firstStops:(NSArray *)firstStops isRealTime:(BOOL)isRealTime {

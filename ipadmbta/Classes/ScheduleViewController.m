@@ -318,8 +318,6 @@ const int kCellWidth = 45;
              }
             col++;
         }
-        if (col > 0)
-            col = col - 1; // show one outdated column
         newX = kCellWidth * col;        
         self.selectedColumn = col;
     } else {
