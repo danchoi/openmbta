@@ -15,7 +15,7 @@
     self.title = @"About / FAQ";
 }
 - (void)loadWebView {
-    NSString *urlString = [NSString stringWithFormat:@"%@/about", ServerURL];
+    NSString *urlString = [NSString stringWithFormat:@"%@/about?platform=ipad3.2", ServerURL];
     //NSLog(@"calling %@", urlString);
     NSURL *url = [[NSURL alloc] initWithString: urlString];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 
