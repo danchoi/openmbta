@@ -36,7 +36,7 @@
     
     self.title = @"Main Menu";
     
-    self.stopsVC = [[StopsViewController alloc] initWithNibName:@"StopsViewController" bundle:nil];
+    self.stopsVC = [[StopsViewController alloc] initWithStyle:UITableViewStylePlain];
     
 }
 

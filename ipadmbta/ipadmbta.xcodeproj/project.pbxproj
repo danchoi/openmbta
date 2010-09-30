@@ -43,7 +43,6 @@
 		DE8D9F711253803F008867B5 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F701253803F008867B5 /* ScheduleViewController.m */; };
 		DE8D9F7312538045008867B5 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F7212538045008867B5 /* ScheduleViewController.xib */; };
 		DE8D9F761253804F008867B5 /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9F751253804F008867B5 /* StopsViewController.m */; };
-		DE8D9F781253805D008867B5 /* StopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F771253805D008867B5 /* StopsViewController.xib */; };
 		DE8D9F7A12538076008867B5 /* loadingIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F7912538076008867B5 /* loadingIndicator.png */; };
 		DE8D9F7C1253809B008867B5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE8D9F7B1253809B008867B5 /* icon.png */; };
 		DE8D9F7E125380B1008867B5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8D9F7D125380B1008867B5 /* CoreLocation.framework */; };
@@ -125,7 +124,6 @@
 		DE8D9F7212538045008867B5 /* ScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
 		DE8D9F741253804F008867B5 /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
 		DE8D9F751253804F008867B5 /* StopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewController.m; sourceTree = "<group>"; };
-		DE8D9F771253805D008867B5 /* StopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StopsViewController.xib; sourceTree = "<group>"; };
 		DE8D9F7912538076008867B5 /* loadingIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingIndicator.png; sourceTree = "<group>"; };
 		DE8D9F7B1253809B008867B5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DE8D9F7D125380B1008867B5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -250,7 +248,6 @@
 				DE8D9F6812538025008867B5 /* TripsViewController.xib */,
 				DE8D9F6D12538037008867B5 /* MapViewController.xib */,
 				DE8D9F7212538045008867B5 /* ScheduleViewController.xib */,
-				DE8D9F771253805D008867B5 /* StopsViewController.xib */,
 				DE8D9F7912538076008867B5 /* loadingIndicator.png */,
 				DE8D9F7B1253809B008867B5 /* icon.png */,
 			);
@@ -384,7 +381,6 @@
 				DE8D9F6912538025008867B5 /* TripsViewController.xib in Resources */,
 				DE8D9F6E12538037008867B5 /* MapViewController.xib in Resources */,
 				DE8D9F7312538045008867B5 /* ScheduleViewController.xib in Resources */,
-				DE8D9F781253805D008867B5 /* StopsViewController.xib in Resources */,
 				DE8D9F7A12538076008867B5 /* loadingIndicator.png in Resources */,
 				DE8D9F7C1253809B008867B5 /* icon.png in Resources */,
 				DE8DA01512538431008867B5 /* RoutesViewController.xib in Resources */,
@@ -440,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Choi (KDT882BKVN)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -447,6 +444,7 @@
 				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
 				INFOPLIST_FILE = "ipadmbta-Info.plist";
 				PRODUCT_NAME = ipadmbta;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E387A1D0-A7E2-48F4-9DB9-969AE617F6F0";
 			};
 			name = Debug;
 		};
