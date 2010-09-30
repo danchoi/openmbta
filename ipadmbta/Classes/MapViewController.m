@@ -131,17 +131,17 @@
     [mapView addAnnotations:self.stopAnnotations];    
     if (!self.selectedStopAnnotation) {
         [self findNearestStop];
-    } else {
-        self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 1.4
-                                                                    target: self
-                                                                  selector: @selector(triggerCallout:)
-                                                                  userInfo: nil
-                                                                   repeats: NO];
-        
     }
-
-    
 }
+
+-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+     self.triggerCalloutTimer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                        target: self
+                                      selector: @selector(triggerCallout:)
+                                        userInfo: nil
+                                        repeats: NO];
+}
+
 
 - (void)findNearestStop {
     self.location = mapView.userLocation.location;
