@@ -43,6 +43,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.bookmarks = [[Preferences sharedInstance] orderedBookmarks]; 
     [self.tableView reloadData];
+    
     [super viewWillAppear:animated];
 }
 

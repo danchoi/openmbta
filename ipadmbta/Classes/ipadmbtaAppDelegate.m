@@ -29,7 +29,7 @@
     [window addSubview:splitViewController.view];
     [window makeKeyAndVisible];
     [rootViewController loadLastViewedTrip];
-    
+
     return YES;
 }
 

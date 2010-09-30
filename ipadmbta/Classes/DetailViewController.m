@@ -19,6 +19,7 @@
 #import "Preferences.h"
 #import "HelpViewController.h"
 
+
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
 - (void)configureView;
@@ -193,7 +194,7 @@
 - (void)startLoadingData {    
 
     [self showNetworkActivity];
-    NSLog(@"self.contentView.frame: %@", NSStringFromCGRect(self.contentView.frame));
+
     
     self.findStopButton.enabled = NO;
     gridCreated = NO;
@@ -333,7 +334,6 @@
     self.findingProgressView.center = self.contentView.center;
     NSLog(@"showFindingIndicators");
     [self.view addSubview:self.findingProgressView];
-    
 }
 
 - (void)hideFindingIndicators {
@@ -341,7 +341,19 @@
 }
 
 - (void)showLoadingIndicators {
-    self.progressView.hidden = NO;
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationUnknown) {
+        [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                         target: self
+                                       selector: @selector(showLoadingIndicators)
+                                       userInfo: nil
+                                        repeats: NO];
+
+    } else {
+        self.progressView.center = self.contentView.center;        
+        self.progressView.hidden = NO;        
+    }
+
+
 }
 
 - (void)hideLoadingIndicators {

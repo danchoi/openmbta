@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="8"/>
+			<integer value="107"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -264,7 +264,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIImageView" id="753141619">
 								<reference key="NSNextResponder" ref="126853806"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">272</int>
 								<string key="NSFrame">{{19, -11}, {185, 186}}</string>
 								<reference key="NSSuperview" ref="126853806"/>
 								<float key="IBUIAlpha">0.82394367456436157</float>
@@ -627,6 +627,7 @@
 					<string>-2.CustomClassName</string>
 					<string>107.IBEditorWindowLastContentRect</string>
 					<string>107.IBPluginDependency</string>
+					<string>107.IBViewBoundsToFrameTransform</string>
 					<string>108.IBPluginDependency</string>
 					<string>108.IBViewBoundsToFrameTransform</string>
 					<string>109.IBPluginDependency</string>
@@ -670,6 +671,9 @@
 					<string>UIResponder</string>
 					<string>{{96, 241}, {225, 163}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDxwAAw+MAAA</bytes>
+					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABCzAAAwowAAA</bytes>
@@ -714,7 +718,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxDqAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxC+AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
