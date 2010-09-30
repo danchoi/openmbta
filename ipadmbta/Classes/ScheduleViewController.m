@@ -161,7 +161,13 @@ const int kCellWidth = 45;
 #pragma mark CoveringScrollViewDelegate
 
 - (void)scrollView:(CoveringScrollView *)scrollView didTouchX:(float)x y:(float)y {
-    
+    int row = y / kRowHeight;
+    if (row < [self.orderedStopNames count]) {
+        NSString *stopName = [self.orderedStopNames objectAtIndex:row];
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:stopName forKey:@"stopName"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MBTAShouldHighlightStop" object:self userInfo:userInfo];
+     
+    }
 }
 
 
@@ -363,7 +369,6 @@ const int kCellWidth = 45;
 }
 
 - (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)showCurrentColumn {
-    
     if (stopName == nil)
         return;
     int row = [self.orderedStopNames indexOfObject:stopName];
