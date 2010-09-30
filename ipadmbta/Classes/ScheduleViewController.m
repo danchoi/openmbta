@@ -216,6 +216,10 @@ const int kCellWidth = 45;
 #pragma mark align grid after decelerating or drag
 
 - (void)alignGridAnimated:(BOOL)animated {
+    
+    if (self.coveringScrollView.dragging || self.coveringScrollView.tracking || self.coveringScrollView.decelerating) {
+        return;
+    }
     float x = self.scrollView.contentOffset.x;
     float y = self.scrollView.contentOffset.y;
     CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth), y);
