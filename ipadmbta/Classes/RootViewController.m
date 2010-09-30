@@ -32,7 +32,7 @@
     
     
     self.menu = [[NSArray alloc] initWithObjects:@"Bus", @"Commuter Rail", @"Subway", @"Boat", nil];
-    self.menu2 = [[NSArray alloc] initWithObjects:@"T Alerts", @"Tweets #mbta", @"About / FAQ", nil];
+    self.menu2 = [[NSArray alloc] initWithObjects:@"T Alerts", @"Tweets #mbta", nil];
     
     self.title = @"Main Menu";
     
@@ -236,15 +236,6 @@
             [self.navigationController pushViewController:tweetsViewController animated:YES];
             return;
         }
-        
-        if (indexPath.row == 2) { 
-            AboutViewController *vc = [[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
-            [vc release];
-            return;
-        }
-        
-        
         
         
     } else {
