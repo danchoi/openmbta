@@ -31,6 +31,7 @@
     int selectedColumn;
     NSArray *orderedStopNames;
     DetailViewController *detailViewController;
+    UIView *coloredBand;
 }
 @property (nonatomic, copy) NSString *nearestStopId;
 @property (nonatomic, retain) IBOutlet GridScrollView *scrollView;	// holds floating grid
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) DetailViewController *detailViewController;
 @property int selectedColumn;
 @property int selectedRow;
+@property (nonatomic, retain) IBOutlet UIView *coloredBand;
 - (void)highlightNearestStop:(NSString *)stopId;
 - (void)createFloatingGrid;
 - (void)clearGrid;

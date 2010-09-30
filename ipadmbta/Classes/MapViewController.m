@@ -42,7 +42,7 @@
     if ([sender isEqual:self])
         return;
     NSString *stopName = [[notification userInfo] objectForKey:@"stopName"];
-    NSLog(@"sender %@", sender);
+//    NSLog(@"sender %@", sender);
     [self highlightStopNamed:stopName];
     
 }

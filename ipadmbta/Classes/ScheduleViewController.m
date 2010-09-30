@@ -25,7 +25,7 @@ const int kCellWidth = 45;
 
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
 @synthesize tableView, scrollView, gridTimes, gridID, detailViewController, selectedColumn, selectedRow;
-@synthesize coveringScrollView;
+@synthesize coveringScrollView, coloredBand;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -65,6 +65,8 @@ const int kCellWidth = 45;
 - (void)viewDidUnload {
     [super viewDidUnload];
     self.coveringScrollView = nil;
+    [coloredBand removeFromSuperview];
+    self.coloredBand = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -107,6 +109,7 @@ const int kCellWidth = 45;
 // FLOATING GRID
 
 - (void)clearGrid {
+    [coloredBand removeFromSuperview];
     self.stops = [NSArray array];
     self.selectedStopName = nil;
     self.selectedColumn = -1;
@@ -174,11 +177,6 @@ const int kCellWidth = 45;
             //view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
             label.textColor = [UIColor grayColor];
         }        
-
-        if (row == self.selectedRow) {
-            label.textColor = [UIColor blueColor];
-            label.font = period == -1 ? [UIFont systemFontOfSize:11.0] : [UIFont boldSystemFontOfSize:11.0];
-        }
         
     }
         
@@ -267,7 +265,7 @@ const int kCellWidth = 45;
         cell.accessoryType =  UITableViewCellAccessoryNone; 
         cell.textLabel.textColor = [UIColor blackColor];     
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        cell.textAlignment = UITextAlignmentRight;
+        cell.textLabel.textAlignment = UITextAlignmentRight;
     
     }
     
@@ -276,12 +274,6 @@ const int kCellWidth = 45;
         return cell;
         
     }
-    if (indexPath.row == self.selectedRow) {
-        cell.textLabel.textColor = [UIColor blueColor];            
-    } else {
-        cell.textLabel.textColor = [UIColor blackColor];            
-    }
-
                           
     NSDictionary *stopRow = [self.stops objectAtIndex:indexPath.row];
     NSDictionary *stopDict = [stopRow objectForKey:@"stop"];
@@ -326,20 +318,30 @@ const int kCellWidth = 45;
     }
     float maxX = self.scrollView.contentSize.width - 320;
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.detailViewController.scheduleViewController).view.frame.size.height;
+
     float newY = row *kRowHeight;
     float y = self.scrollView.contentOffset.y;
     if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
-            y = MIN(newY, maxY);
+        y = MIN(newY, maxY);
     }
-
-    
     float x = MIN(newX, maxX);
     if (self.scrollView.contentSize.width < self.view.frame.size.width) {
         x = 0;
     }    
 
-    CGPoint contentOffset = CGPointMake(x , y);
-    [self.coveringScrollView setContentOffset:contentOffset animated:YES];        
+    if (coloredBand) 
+        [coloredBand removeFromSuperview];
+    
+    // put a colored banded in coveringScrollView
+    CGRect bandFrame = CGRectMake(0, newY, coveringScrollView.contentSize.width, kRowHeight);
+    self.coloredBand = [[[UIView alloc] initWithFrame:bandFrame] autorelease];
+    coloredBand.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.11];
+
+    [coveringScrollView addSubview:coloredBand];
+
+    CGPoint contentOffset = CGPointMake(x, y);
+    [self.coveringScrollView setContentOffset:contentOffset animated:YES];   
+
     [scrollView reloadData];
     [tableView reloadData];
     

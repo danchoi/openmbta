@@ -56,7 +56,7 @@
         return;
     }
     NSString *stopName = [[notification userInfo] objectForKey:@"stopName"];
-    NSLog(@"%@: sender %@", self, sender);
+//    NSLog(@"%@: sender %@", self, sender);
     [self selectStopNamed:stopName];
     
 }
