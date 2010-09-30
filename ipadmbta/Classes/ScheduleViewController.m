@@ -13,8 +13,8 @@
 #import "GetRemoteDataOperation.h"
 #import "JSON.h"
 
-const int kRowHeight = 50;
-const int kCellWidth = 44;
+const int kRowHeight = 36.0;
+const int kCellWidth = 45;
 
 @interface ScheduleViewController (Private)
 
@@ -25,6 +25,7 @@ const int kCellWidth = 44;
 
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
 @synthesize tableView, scrollView, gridTimes, gridID, detailViewController, selectedColumn;
+@synthesize coveringScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -63,6 +64,7 @@ const int kCellWidth = 44;
 
 - (void)viewDidUnload {
     [super viewDidUnload];
+    self.coveringScrollView = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -128,6 +130,8 @@ const int kCellWidth = 44;
     int gridWidth = (numColumns * kCellWidth) + 12;
     int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
+    [coveringScrollView setContentSize:CGSizeMake(gridWidth + 320, gridHeight)];
+    
     [self adjustScrollViewFrame];
     scrollView.stops = self.stops;
     [self.view bringSubviewToFront:scrollView];
@@ -135,8 +139,10 @@ const int kCellWidth = 44;
 }
 
 - (void)adjustScrollViewFrame {
-    scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height); 
-    [self.view bringSubviewToFront:self.scrollView];
+    scrollView.frame = CGRectMake(320, 0, self.view.frame.size.width - 320, self.view.frame.size.height); 
+    coveringScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height); 
+    
+    [self.view bringSubviewToFront:self.coveringScrollView];
     
 }
 
@@ -190,12 +196,11 @@ const int kCellWidth = 44;
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
 
-    if ([aScrollView isEqual:tableView]) {
-        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, tableView.contentOffset.y);
-    } else if ([aScrollView isEqual:scrollView]) {
-        tableView.contentOffset = CGPointMake(0, scrollView.contentOffset.y); 
-    }
-    self.scrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
+    if ([aScrollView isEqual:coveringScrollView]) {
+        scrollView.contentOffset = CGPointMake(coveringScrollView.contentOffset.x, coveringScrollView.contentOffset.y);
+        tableView.contentOffset = CGPointMake(0, coveringScrollView.contentOffset.y);
+    } 
+    self.coveringScrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)sScrollView {
@@ -213,22 +218,10 @@ const int kCellWidth = 44;
 - (void)alignGridAnimated:(BOOL)animated {
     float x = self.scrollView.contentOffset.x;
     float y = self.scrollView.contentOffset.y;
-    float maxY = self.scrollView.contentSize.height - self.scrollView.frame.size.height - (kRowHeight / 2);
-
-    if (y == self.scrollView.contentSize.height - self.scrollView.frame.size.height) {
-        return;
-        
-    }
-    // when at bottom, align toward bottom, except when too few rows
-    float newY;
-    if ( (y > maxY ) &&  (maxY >= self.scrollView.frame.size.height) )   {
-        newY = self.scrollView.contentSize.height - self.scrollView.frame.size.height + 10;
-    } else {
-        newY = round(y/kRowHeight) * kRowHeight;
-    }
-    CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth), newY);
+    CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth), y);
 
     [self.scrollView setContentOffset:contentOffset animated:animated];        
+    [self.coveringScrollView setContentOffset:contentOffset animated:animated];        
 }
 
 
@@ -255,10 +248,8 @@ const int kCellWidth = 44;
     if (cell == nil) {
 
         //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GridCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];         
         cell.accessoryType =  UITableViewCellAccessoryNone; 
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
@@ -267,23 +258,17 @@ const int kCellWidth = 44;
     
     if (indexPath.row >= [self.stops count]) {
         cell.textLabel.text = @"missing";
-        cell.detailTextLabel.text = @"missing";
         return cell;
         
     }
                           
     NSDictionary *stopRow = [self.stops objectAtIndex:indexPath.row];
     NSDictionary *stopDict = [stopRow objectForKey:@"stop"];
-    
-    
     NSString *stopName =  [stopDict objectForKey:@"name"];
     
     if (indexPath.row == selectedRow)  {
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:13.0];
         cell.textLabel.textColor = [UIColor blackColor];        
     } else {
-        cell.textLabel.font = [UIFont systemFontOfSize:12.0];
-
         cell.textLabel.textColor = [UIColor blackColor];        
     }
     
@@ -340,7 +325,7 @@ const int kCellWidth = 44;
         x = 0;
     }    
     CGPoint contentOffset = CGPointMake(x , y);
-    [self.scrollView setContentOffset:contentOffset animated:YES];        
+    [self.coveringScrollView setContentOffset:contentOffset animated:YES];        
     [scrollView reloadData];
     [tableView reloadData];
     

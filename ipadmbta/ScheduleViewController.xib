@@ -37,16 +37,16 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUIView" id="857587257">
+			<object class="IBUIView" id="918073555">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUITableView" id="367430444">
-						<reference key="NSNextResponder" ref="857587257"/>
+						<reference key="NSNextResponder" ref="918073555"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{703, 616}</string>
-						<reference key="NSSuperview" ref="857587257"/>
+						<string key="NSFrameSize">{616, 703}</string>
+						<reference key="NSSuperview" ref="918073555"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -63,10 +63,10 @@
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
 					<object class="IBUIScrollView" id="194625766">
-						<reference key="NSNextResponder" ref="857587257"/>
+						<reference key="NSNextResponder" ref="918073555"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{-5, 0}, {708, 616}}</string>
-						<reference key="NSSuperview" ref="857587257"/>
+						<string key="NSFrame">{{288, 0}, {328, 703}}</string>
+						<reference key="NSSuperview" ref="918073555"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -74,8 +74,17 @@
 						<int key="IBUIIndicatorStyle">1</int>
 						<bool key="IBUIBouncesZoom">NO</bool>
 					</object>
+					<object class="IBUIScrollView" id="547143940">
+						<reference key="NSNextResponder" ref="918073555"/>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrame">{{0, -5}, {616, 708}}</string>
+						<reference key="NSSuperview" ref="918073555"/>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
 				</object>
-				<string key="NSFrameSize">{703, 616}</string>
+				<string key="NSFrameSize">{616, 703}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -83,6 +92,9 @@
 					<object class="NSColorSpace" key="NSCustomColorSpace">
 						<int key="NSID">2</int>
 					</object>
+				</object>
+				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
+					<int key="interfaceOrientation">3</int>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
@@ -142,9 +154,25 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">view</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="857587257"/>
+						<reference key="destination" ref="918073555"/>
 					</object>
 					<int key="connectionID">18</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">coveringScrollView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="547143940"/>
+					</object>
+					<int key="connectionID">20</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="547143940"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">21</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -169,11 +197,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">16</int>
-						<reference key="object" ref="857587257"/>
+						<reference key="object" ref="918073555"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="194625766"/>
 							<reference ref="367430444"/>
+							<reference ref="194625766"/>
+							<reference ref="547143940"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -183,12 +212,17 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 						</object>
-						<reference key="parent" ref="857587257"/>
+						<reference key="parent" ref="918073555"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
 						<reference key="object" ref="194625766"/>
-						<reference key="parent" ref="857587257"/>
+						<reference key="parent" ref="918073555"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">19</int>
+						<reference key="object" ref="547143940"/>
+						<reference key="parent" ref="918073555"/>
 					</object>
 				</object>
 			</object>
@@ -202,6 +236,7 @@
 					<string>11.IBViewBoundsToFrameTransform</string>
 					<string>16.IBEditorWindowLastContentRect</string>
 					<string>16.IBPluginDependency</string>
+					<string>19.IBPluginDependency</string>
 					<string>8.CustomClassName</string>
 					<string>8.IBPluginDependency</string>
 					<string>8.IBViewBoundsToFrameTransform</string>
@@ -214,12 +249,13 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxBmAAA</bytes>
 					</object>
-					<string>{{315, 306}, {703, 616}}</string>
+					<string>{{315, 219}, {616, 703}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GridScrollView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAxBmAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAADByAAAxBmAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -239,7 +275,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">18</int>
+			<int key="maxID">21</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -284,11 +320,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>coveringScrollView</string>
 							<string>scrollView</string>
 							<string>tableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIScrollView</string>
 							<string>GridScrollView</string>
 							<string>UITableView</string>
 						</object>
@@ -297,11 +335,16 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>coveringScrollView</string>
 							<string>scrollView</string>
 							<string>tableView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">coveringScrollView</string>
+								<string key="candidateClassName">UIScrollView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">scrollView</string>
 								<string key="candidateClassName">GridScrollView</string>
@@ -434,7 +477,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="351055048">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="557004038">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UIResponder.h</string>
 					</object>
@@ -442,7 +485,7 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">UIResponder</string>
 					<string key="superclassName">NSObject</string>
-					<reference key="sourceIdentifier" ref="351055048"/>
+					<reference key="sourceIdentifier" ref="557004038"/>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UIScrollView</string>

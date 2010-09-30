@@ -9,7 +9,6 @@
 
 #import "GridScrollView.h"
 #import "ScheduleViewController.h"
-#import "TripsViewController.h"
 @interface GridScrollView ()
 
 @end

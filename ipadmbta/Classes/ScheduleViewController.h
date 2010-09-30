@@ -16,6 +16,9 @@
 @interface ScheduleViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, GridScrollViewDataSource> {
 	GridScrollView *scrollView;	// holds floating grid
     UITableView *tableView;
+    
+    UIScrollView *coveringScrollView;
+    
     NSMutableArray *gridTimes;
     BOOL stopAddingLabels;
     NSNumber *gridID;
@@ -31,6 +34,7 @@
 }
 @property (nonatomic, copy) NSString *nearestStopId;
 @property (nonatomic, retain) IBOutlet GridScrollView *scrollView;	// holds floating grid
+@property (nonatomic, retain) IBOutlet UIScrollView *coveringScrollView;
 @property (nonatomic, retain) NSMutableArray *gridTimes;
 @property (nonatomic, copy) NSNumber *gridID;
 @property (nonatomic, retain) NSArray *stops;
