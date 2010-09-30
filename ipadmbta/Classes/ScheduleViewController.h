@@ -43,7 +43,7 @@
 @property (nonatomic, retain) NSArray *orderedStopNames;
 @property (nonatomic, retain) DetailViewController *detailViewController;
 @property int selectedColumn;
-
+@property int selectedRow;
 - (void)highlightNearestStop:(NSString *)stopId;
 - (void)createFloatingGrid;
 - (void)clearGrid;

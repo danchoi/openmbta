@@ -72,7 +72,7 @@
 }
 
 - (void)prepareMap:(NSDictionary *)regionInfo {
-    NSLog(@"prepareMap: %@", regionInfo);
+    //NSLog(@"prepareMap: %@", regionInfo);
     [mapView removeAnnotations:self.stopAnnotations];
     [self.stopAnnotations removeAllObjects];
     

@@ -24,7 +24,7 @@ const int kCellWidth = 45;
 @implementation ScheduleViewController
 
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
-@synthesize tableView, scrollView, gridTimes, gridID, detailViewController, selectedColumn;
+@synthesize tableView, scrollView, gridTimes, gridID, detailViewController, selectedColumn, selectedRow;
 @synthesize coveringScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -80,7 +80,8 @@ const int kCellWidth = 45;
 //   [self.tableView reloadData];
     [self.view bringSubviewToFront:self.scrollView];
     self.scrollView.scrollEnabled = YES;
-    self.scrollView.directionalLockEnabled = YES;    
+    self.scrollView.directionalLockEnabled = YES;
+    [self adjustScrollViewFrame];
     [super viewWillAppear:animated];
 
 
@@ -152,39 +153,39 @@ const int kCellWidth = 45;
     if ((row >= [self.stops count])  || (column >= [[[self.stops objectAtIndex:row] objectForKey:@"times"] count])) {
         return nil;
     }
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
+    
     UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont boldSystemFontOfSize:11.0];
+    label.font = [UIFont systemFontOfSize:11.0];
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
     
     if (arrayOrNull == [NSNull null]) {
         label.text = @" ";
+        view.backgroundColor = [UIColor clearColor];
     } else {
         
         NSString *time = [(NSArray *)arrayOrNull objectAtIndex:0];
-        int period = [(NSNumber *)[(NSArray *)arrayOrNull objectAtIndex:1] intValue];   
         label.text = time;
-            
+        int period = [(NSNumber *)[(NSArray *)arrayOrNull objectAtIndex:1] intValue];   
+
         if (period == -1) {
-            label.textColor = [UIColor colorWithRed: (214/255.0) green: (191/255.0) blue: (191/255.0) alpha: 1.0];   
-        } else {
-            if (column % 2 == 0) {
-                label.textColor = [UIColor grayColor];
-            } else {
-                label.textColor = [UIColor colorWithRed: (122/255.0) green: (122/255.0) blue: (251/255.0) alpha: 1.0];
-            }
-        }
+            //view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
+            label.textColor = [UIColor grayColor];
+        }        
         
     }
     label.backgroundColor = [UIColor clearColor];
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
+    
+    if (column % 2 == 0) {
+        view.backgroundColor = [UIColor clearColor];
+    } else {
+        view.backgroundColor = [UIColor colorWithRed: (214/255.0) green: (214/255.0) blue: (255/255.0) alpha: 0.3];
+    }
     
     if (selectedColumn == column) {
-        view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
-    } else {
-        view.backgroundColor = [UIColor clearColor];
-    }
+    } 
 
-    label.frame = CGRectMake(7, 7, kCellWidth, kRowHeight - 15);
+    label.frame = CGRectMake(6, 7, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
 
@@ -217,7 +218,7 @@ const int kCellWidth = 45;
 
 - (void)alignGridAnimated:(BOOL)animated {
     
-    if (self.coveringScrollView.dragging || self.coveringScrollView.tracking || self.coveringScrollView.decelerating) {
+    if (self.coveringScrollView.dragging || self.coveringScrollView.decelerating) {
         return;
     }
     float x = self.scrollView.contentOffset.x;
@@ -246,18 +247,18 @@ const int kCellWidth = 45;
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"GridCell";
+    static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 
-        //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];         
         cell.accessoryType =  UITableViewCellAccessoryNone; 
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor clearColor];
-        
+        cell.textLabel.textColor = [UIColor blackColor];     
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+
+    
     }
     
     if (indexPath.row >= [self.stops count]) {
@@ -265,20 +266,18 @@ const int kCellWidth = 45;
         return cell;
         
     }
+    if (indexPath.row == self.selectedRow) {
+        cell.textLabel.textColor = [UIColor blueColor];            
+    } else {
+        cell.textLabel.textColor = [UIColor blackColor];            
+    }
+
                           
     NSDictionary *stopRow = [self.stops objectAtIndex:indexPath.row];
     NSDictionary *stopDict = [stopRow objectForKey:@"stop"];
     NSString *stopName =  [stopDict objectForKey:@"name"];
-    
-    if (indexPath.row == selectedRow)  {
-        cell.textLabel.textColor = [UIColor blackColor];        
-    } else {
-        cell.textLabel.textColor = [UIColor blackColor];        
-    }
-    
+    cell.textLabel.text = stopName;    
      
-    cell.textLabel.text = stopName;
-    cell.detailTextLabel.text =  @" ";
     return cell;
 }
 
@@ -293,7 +292,7 @@ const int kCellWidth = 45;
     if ([self.stops count] == 0) return;
     if (row >= [self.stops count]) return;
 
-    selectedRow = row;
+    self.selectedRow = row;
     
     float newX;
     if (showCurrentColumn) {
@@ -310,6 +309,8 @@ const int kCellWidth = 45;
              }
             col++;
         }
+        if (col > 0)
+            col = col - 1; // show one outdated column
         newX = kCellWidth * col;        
         self.selectedColumn = col;
     } else {
@@ -318,16 +319,17 @@ const int kCellWidth = 45;
     float maxX = self.scrollView.contentSize.width - 320;
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.detailViewController.scheduleViewController).view.frame.size.height;
     float newY = row *kRowHeight;
-
     float y = self.scrollView.contentOffset.y;
     if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
-        y = MIN(newY, maxY);
+            y = MIN(newY, maxY);
     }
 
+    
     float x = MIN(newX, maxX);
     if (self.scrollView.contentSize.width < self.view.frame.size.width) {
         x = 0;
     }    
+
     CGPoint contentOffset = CGPointMake(x , y);
     [self.coveringScrollView setContentOffset:contentOffset animated:YES];        
     [scrollView reloadData];
