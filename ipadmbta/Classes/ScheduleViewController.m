@@ -142,6 +142,7 @@ const int kCellWidth = 45;
 - (void)adjustScrollViewFrame {
     scrollView.frame = CGRectMake(320, 0, self.view.frame.size.width - 320, self.view.frame.size.height); 
     coveringScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height); 
+    tableView.frame = CGRectMake(0, 0, 319, self.view.frame.size.height); 
     
     [self.view bringSubviewToFront:self.coveringScrollView];
     

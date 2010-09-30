@@ -45,11 +45,11 @@
 					<object class="IBUITableView" id="367430444">
 						<reference key="NSNextResponder" ref="918073555"/>
 						<int key="NSvFlags">276</int>
-						<string key="NSFrameSize">{320, 703}</string>
+						<string key="NSFrame">{{0.5, 0}, {319, 703}}</string>
 						<reference key="NSSuperview" ref="918073555"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
+						<object class="NSColor" key="IBUIBackgroundColor" id="928015819">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
+							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -66,6 +66,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{288, 0}, {328, 703}}</string>
 						<reference key="NSSuperview" ref="918073555"/>
+						<reference key="IBUIBackgroundColor" ref="928015819"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -86,11 +87,8 @@
 				<string key="NSFrameSize">{616, 703}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC40MDAwMDAwMDYgMC40MDAwMDAwMDYgMC40MDAwMDAwMDYAA</bytes>
 				</object>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="interfaceOrientation">3</int>
