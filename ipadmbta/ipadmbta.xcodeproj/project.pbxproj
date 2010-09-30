@@ -55,6 +55,10 @@
 		DEE0E1A0125424C400DB99DA /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E19F125424C400DB99DA /* ProgressView.xib */; };
 		DEE0E3A61254D23C00DB99DA /* CoveringScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0E3A41254D23C00DB99DA /* CoveringScrollView.m */; };
 		DEE0E4961254E61100DB99DA /* AfterLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E4951254E61100DB99DA /* AfterLaunchScreen.png */; };
+		DEE0E50C1254FA9900DB99DA /* icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E50A1254FA9900DB99DA /* icon-50.png */; };
+		DEE0E50D1254FA9900DB99DA /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E50B1254FA9900DB99DA /* icon-72.png */; };
+		DEE0E5121254FDB500DB99DA /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E5101254FDB500DB99DA /* Default-Landscape.png */; };
+		DEE0E5131254FDB500DB99DA /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E5111254FDB500DB99DA /* Default-Portrait.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +140,10 @@
 		DEE0E3A41254D23C00DB99DA /* CoveringScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoveringScrollView.m; sourceTree = "<group>"; };
 		DEE0E3A51254D23C00DB99DA /* CoveringScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoveringScrollView.h; sourceTree = "<group>"; };
 		DEE0E4951254E61100DB99DA /* AfterLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AfterLaunchScreen.png; sourceTree = "<group>"; };
+		DEE0E50A1254FA9900DB99DA /* icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-50.png"; sourceTree = "<group>"; };
+		DEE0E50B1254FA9900DB99DA /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		DEE0E5101254FDB500DB99DA /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		DEE0E5111254FDB500DB99DA /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +232,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEE0E5101254FDB500DB99DA /* Default-Landscape.png */,
+				DEE0E5111254FDB500DB99DA /* Default-Portrait.png */,
+				DEE0E50A1254FA9900DB99DA /* icon-50.png */,
+				DEE0E50B1254FA9900DB99DA /* icon-72.png */,
 				DEE0E4951254E61100DB99DA /* AfterLaunchScreen.png */,
 				DEE0E19F125424C400DB99DA /* ProgressView.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
@@ -378,6 +390,10 @@
 				DE8DA01512538431008867B5 /* RoutesViewController.xib in Resources */,
 				DEE0E1A0125424C400DB99DA /* ProgressView.xib in Resources */,
 				DEE0E4961254E61100DB99DA /* AfterLaunchScreen.png in Resources */,
+				DEE0E50C1254FA9900DB99DA /* icon-50.png in Resources */,
+				DEE0E50D1254FA9900DB99DA /* icon-72.png in Resources */,
+				DEE0E5121254FDB500DB99DA /* Default-Landscape.png in Resources */,
+				DEE0E5131254FDB500DB99DA /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
