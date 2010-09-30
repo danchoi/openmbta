@@ -184,7 +184,7 @@ const int kCellWidth = 45;
         view.backgroundColor = [UIColor clearColor];
     }
 
-    label.frame = CGRectMake(5, 15, kCellWidth, kRowHeight - 15);
+    label.frame = CGRectMake(7, 7, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
 
