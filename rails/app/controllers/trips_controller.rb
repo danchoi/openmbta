@@ -29,7 +29,14 @@ class TripsController < ApplicationController
        
           if params[:version] == '3'
             logger.debug("ADDING GRID")
-            grid = Grid.new(@transport_type.to_s, @route, @headsign, @first_stop).grid
+
+            cache_key = URI.escape("#{@transport_type}:#{@route}:#{@headsign}:#{@first_stop}")
+            # cache this
+            grid = cache(cache_key, :expires => 1.hour) do
+              logger.debug "CACHING: #{cache_key}"
+              Grid.new(@transport_type.to_s, @route, @headsign, @first_stop).grid
+            end
+
             # make sure grid has same order as result
             if @result[:ordered_stop_ids]
               final_grid = []
@@ -39,7 +46,27 @@ class TripsController < ApplicationController
             else
               final_grid = grid
             end
-            logger.debug final_grid.inspect
+            
+            # mark times that are past
+            grid.each do |stop|
+              stop[:times] = stop[:times].map do |time|
+                next if time.nil?
+                time = time.split(':')[0,2].join(':')
+                hour, min = time.split(':')[0,2]
+                now_hour = Time.now.hour
+                if now_hour < 3 # 24 hour clock, 1 am
+                  now_hour = now_hour + 24
+                end
+                now_string = [ "%.2d" % now_hour, "%.2d" % Time.now.min].join(":")
+
+                if time < now_string 
+                  time = [format_time(time), -1]
+                else
+                  time = [format_time(time), 1]
+                end
+              end
+            end
+#            logger.debug final_grid.inspect
             @result.merge!(:grid => final_grid.compact)
           end
           @result.merge!(:ads => "iAds") # controls whether iAds are shown
