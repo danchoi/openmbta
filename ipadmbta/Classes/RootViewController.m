@@ -299,13 +299,22 @@
 - (void)loadLastViewedTrip {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *lastViewedTrip = [userDefaults objectForKey:@"lastViewedTrip"];
+
     if (![lastViewedTrip isEqual:[NSNull null]] ) {
+
         NSString *headsign = [lastViewedTrip objectForKey:@"headsign"];
         NSString *routeShortName = [lastViewedTrip objectForKey:@"routeShortName"];
         NSString *transportType = [lastViewedTrip objectForKey:@"transportType"];;
         NSString *firstStop = [lastViewedTrip objectForKey:@"firstStop"];
         NSNumber *startOnSegmentIndex = [lastViewedTrip objectForKey:@"selectedSegmentIndex"];
         
+        if (!transportType || !routeShortName || !headsign) {
+            routeShortName = @"1";
+            headsign = @"Dudley Station via Mass. Ave.";
+            transportType = @"Bus";
+            firstStop = nil;
+        } 
+
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], @"shouldReloadMapRegion", transportType, @"transportType", routeShortName, @"routeShortName", headsign, @"headsign", startOnSegmentIndex, @"startOnSegmentIndex", firstStop, @"firstStop", nil];
         NSNotification *notification = [NSNotification notificationWithName:@"loadMBTATrips"  object:nil userInfo:userInfo];
         [[NSNotificationCenter defaultCenter] postNotification:notification];

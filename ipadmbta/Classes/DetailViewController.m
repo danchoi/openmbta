@@ -100,6 +100,10 @@
     self.firstStop = [[notification userInfo] objectForKey:@"firstStop"];    
     NSNumber *startOnSegmentIndex = [[notification userInfo] objectForKey:@"startOnSegmentIndex"];
     
+    if (!transportType || !routeShortName || !headsign) {
+        return;
+    }
+
     shouldReloadRegion = [[[notification userInfo] objectForKey:@"shouldReloadMapRegion"] boolValue];    
     self.stops = [NSArray array];
     self.mapViewController.selectedStopAnnotation = nil;
@@ -194,8 +198,6 @@
 - (void)startLoadingData {    
 
     [self showNetworkActivity];
-
-    
     self.findStopButton.enabled = NO;
     gridCreated = NO;
     [self.scheduleViewController clearGrid];
@@ -204,14 +206,19 @@
     // headsign because Rails splits parameters on ampersands, even escaped
     // ones.
     NSString *headsignAmpersandEscaped = [self.headsign stringByReplacingOccurrencesOfString:@"&" withString:@"^"];
-    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?version=3&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@&first_stop=%@",
+    UIDevice *myDevice = [UIDevice currentDevice];
+    NSString *deviceUDID = [[myDevice uniqueIdentifier] retain];
+
+    NSString *apiUrl = [NSString stringWithFormat:@"%@/trips?version=3&udid=%@&route_short_name=%@&headsign=%@&transport_type=%@&base_time=%@&first_stop=%@",
                         ServerURL, 
+                        deviceUDID,
                         self.routeShortName, 
                         headsignAmpersandEscaped, 
                         self.transportType, 
                         [NSDate date],
                         self.firstStop];
     NSString *apiUrlEscaped = [apiUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"loading form API: %@", apiUrlEscaped);
     GetRemoteDataOperation *operation = [[GetRemoteDataOperation alloc] initWithURL:apiUrlEscaped target:self action:@selector(didFinishLoadingData:)];
     [operationQueue addOperation:operation];
     [operation release];
@@ -427,6 +434,13 @@
 
 }
 
+#pragma mark -
+#pragma mark Launch Website
+- (IBAction)launchWebsite:(id)sender {
+    NSURL *launchURL =  [NSURL URLWithString:@"http://openmbta.org"];
+    if (![[UIApplication sharedApplication] openURL:launchURL])
+          NSLog(@"%@%@",@"Failed to open url:",[launchURL description]);
+}
  
 #pragma mark -
 #pragma mark View lifecycle

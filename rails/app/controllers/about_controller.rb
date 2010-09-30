@@ -2,7 +2,7 @@ class AboutController < ApplicationController
   layout 'iphone_layout'
 
   def index
-    layout => 'mobile'
+    render :layout => 'mobile'
   end
 
   def mobile_version

@@ -1,23 +1,22 @@
 <% content_for :head do %>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <% end %>
+<div style="padding: 5px 10px;">
 
-<fieldset>
-  <div class="row">
-    <%= render :partial => 'faq' %>
-    <h3>Mission</h3>
+  <%= render :partial => 'faq' %>
+  <h3>Mission</h3>
 
-    <p>This app is free and open source. It was created to promote public
-    transportation in order to help fight global warming and reduce our
-    dependency on oil. 
-    </p>
+  <p>This app is free and open source. It was created to promote public
+  transportation in order to help fight global warming and reduce our
+  dependency on oil. 
+  </p>
 
-    <%= render :partial => 'home/credits' %>
+  <%= render :partial => 'home/credits' %>
 
-    <p>
-    For more information, and to submit bug reports and feedback, please visit
-    <a href="http://openmbta.org">http://openmbta.org</a>.
-    </p>
+  <p>
+  For more information, and to submit bug reports and feedback, please visit
+  <a href="http://openmbta.org">http://openmbta.org</a>.
+  </p>
 
-  </div>
-</fieldset>
+
+</div>

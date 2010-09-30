@@ -103,5 +103,5 @@
 - (void)showFindingIndicators;
 - (void)hideFindingIndicators;
 
-
+- (IBAction)launchWebsite:(id)sender;
 @end
