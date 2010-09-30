@@ -330,7 +330,7 @@ const int kCellWidth = 45;
                     break;
                 }
             } else {
-                NSLog(@"time is null");
+              //  NSLog(@"time is null");
             }
             col++;
         }

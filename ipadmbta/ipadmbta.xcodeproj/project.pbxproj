@@ -436,7 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Daniel Choi";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -444,7 +444,7 @@
 				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
 				INFOPLIST_FILE = "ipadmbta-Info.plist";
 				PRODUCT_NAME = ipadmbta;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23156A42-0214-4AC2-9EDD-CB756FB2F91E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};
