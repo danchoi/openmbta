@@ -332,7 +332,6 @@
 
 - (void)showFindingIndicators {
     self.findingProgressView.center = self.contentView.center;
-    NSLog(@"showFindingIndicators");
     [self.view addSubview:self.findingProgressView];
 }
 
@@ -472,6 +471,7 @@
     scheduleViewController.detailViewController = nil;
     self.findStopButton = nil;
     self.findingProgressView = nil;    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
     
 

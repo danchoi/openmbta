@@ -60,6 +60,7 @@
     [self.stopAnnotations removeAllObjects];
     self.detailViewController = nil;
     self.stopAnnotations = nil; 
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -182,7 +183,8 @@
                                    userInfo: nil
                                     repeats: NO];
     
-    [self.detailViewController.scheduleViewController highlightStopNamed:self.selectedStopName showCurrentColumn:YES];    
+     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self.selectedStopName forKey:@"stopName"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MBTAShouldHighlightStop" object:self userInfo:userInfo];
 }
 
 - (void)triggerCallout:(NSDictionary *)userInfo {
@@ -250,7 +252,6 @@
 //    [self.detailViewController.stopsViewController selectStopNamed:stopName]; // CHANGEME for iPad
     
     [self.detailViewController.scheduleViewController highlightStopNamed:stopName showCurrentColumn:YES];
-    
     [self.detailViewController hideFindingIndicators];
     
     

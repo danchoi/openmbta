@@ -41,9 +41,14 @@
         self.scrollEnabled = YES;
         self.directionalLockEnabled = YES;
         //self.pagingEnabled = YES;
+        NSLog(@"initWithFrame");
         
     }
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 - (void)dealloc {

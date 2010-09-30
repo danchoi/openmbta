@@ -112,6 +112,7 @@
 
 
 - (void)selectStopNamed:(NSString *)stopName {
+    if ([self.orderedStopNames count] == 0) return;
     self.selectedStopName = stopName;
     int row = [self.orderedStopNames indexOfObject:stopName];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];

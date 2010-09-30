@@ -17,7 +17,7 @@ const int kRowHeight = 36.0;
 const int kCellWidth = 45;
 
 @interface ScheduleViewController (Private)
-
+- (void)scheduleViewShouldHighlightStop:(NSNotification *)notification;
 @end
 
 
@@ -29,15 +29,16 @@ const int kCellWidth = 45;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        self.stops = [NSArray array];
-        self.orderedStopNames = [NSArray array];
 
+        NSLog(@"init sched");
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.stops = [NSArray array];
+    self.orderedStopNames = [NSArray array];    
     self.gridTimes = [NSMutableArray array];
     self.scrollView.tileWidth  = kCellWidth;
     self.scrollView.tileHeight = kRowHeight;
@@ -45,15 +46,20 @@ const int kCellWidth = 45;
     self.tableView.scrollEnabled = YES;
     
     selectedColumn = -1;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(scheduleViewShouldHighlightStop:)
+                                                 name:@"MBTAShouldHighlightStop" object:nil];    
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (void)scheduleViewShouldHighlightStop:(NSNotification *)notification {
+    id sender = [notification object];
+    if ([sender isEqual:self])
+        return;
+    NSString *stopName = [[notification userInfo] objectForKey:@"stopName"];
+    [self highlightStopNamed:stopName showCurrentColumn:YES];
 }
-*/
+
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -67,6 +73,7 @@ const int kCellWidth = 45;
     self.coveringScrollView = nil;
     [coloredBand removeFromSuperview];
     self.coloredBand = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
