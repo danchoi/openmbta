@@ -16,6 +16,7 @@
 @implementation ipadmbtaAppDelegate
 
 @synthesize window, splitViewController, rootViewController, detailViewController;
+@synthesize reachabilityAlert;
 
 
 #pragma mark -
@@ -29,6 +30,7 @@
     [window addSubview:splitViewController.view];
     [window makeKeyAndVisible];
     [rootViewController loadLastViewedTrip];
+    [self testReachability];
 
     return YES;
 }
@@ -67,9 +69,48 @@
 
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self]; 
     [splitViewController release];
     [window release];
+    self.reachabilityAlert = nil;
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Reachability Alert
+
+- (void) testReachability {
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+	hostReach = [[Reachability reachabilityWithHostName: @"iphonembta.org"] retain];
+	[hostReach startNotifer];
+}
+
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	Reachability* curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+
+    if(curReach == hostReach) {
+        NetworkStatus netStatus = [curReach currentReachabilityStatus];
+
+        if (netStatus == NotReachable) {
+            [self showReachabilityAlert];
+        }
+    }
+}
+
+- (void) showReachabilityAlert {
+    if (self.reachabilityAlert == nil) {
+        self.reachabilityAlert = [[UIAlertView alloc] 
+            initWithTitle:@"Network not reachable" 
+                  message:@"This application needs access to the Internet to fetch data. Please turn WiFi or cellular reception on before proceeding."
+                 delegate:nil 
+        cancelButtonTitle:@"OK" 
+        otherButtonTitles:nil]; 
+        [reachabilityAlert show]; 
+        self.reachabilityAlert = nil;
+    }
 }
 
 

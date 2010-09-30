@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Reachability.h"
 
 @class RootViewController;
 @class DetailViewController;
@@ -20,6 +20,9 @@
     
     RootViewController *rootViewController;
     DetailViewController *detailViewController;
+
+    Reachability *hostReach;
+    UIAlertView *reachabilityAlert; 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -27,5 +30,10 @@
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 @property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
+
+@property (nonatomic, retain) UIAlertView *reachabilityAlert;
+- (void) showReachabilityAlert;
+- (void) testReachability;
+
 
 @end
