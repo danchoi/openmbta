@@ -19,7 +19,6 @@
 #import "Preferences.h"
 #import "HelpViewController.h"
 
-
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
 - (void)configureView;
@@ -43,6 +42,7 @@
 @synthesize stopsViewController;
 @synthesize orderedStopNames;
 @synthesize findStopButton, findingProgressView; 
+@synthesize hvc;
 
 - (void)viewDidLoad {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -323,13 +323,26 @@
 }
 
 
-- (IBAction)infoButtonPressed:(id)sender {
-    HelpViewController *vc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
-    vc.viewName = self.segmentedControl.selectedSegmentIndex == 0 ? @"map" : @"schedule";
-    vc.transportType = self.transportType;
-    [self presentModalViewController:vc animated:YES];
-    [vc release];
+- (IBAction)helpButtonPressed:(id)sender {
+    if (!self.hvc)
+        self.hvc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
+
+    hvc.viewName = self.segmentedControl.selectedSegmentIndex == 0 ? @"map" : @"schedule";
+    hvc.transportType = self.transportType;
+    if (!self.popoverController)
+        self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:hvc] autorelease];
+    self.popoverController.delegate = self;
+    hvc.container = self.popoverController;
+    [self.popoverController presentPopoverFromBarButtonItem:sender
+                                   permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                   animated:YES];
     
+}
+
+- (void)handleDismissedPopoverController:(UIPopoverController*)aPopoverController {
+  if ([aPopoverController.contentViewController isMemberOfClass: [HelpViewController class]]) {
+  }
+  self.popoverController = nil;
 }
 
 #pragma mark -

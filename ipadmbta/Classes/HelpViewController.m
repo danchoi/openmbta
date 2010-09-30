@@ -14,7 +14,7 @@
 @end
 
 @implementation HelpViewController
-@synthesize viewName, transportType, webView, request, progressView;
+@synthesize viewName, transportType, webView, request, progressView, container;
 
 - (void)viewDidLoad {
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProgressView" owner:self options:nil];
@@ -43,11 +43,13 @@
     self.webView = nil;
     self.request = nil;
     self.progressView = nil;
+    self.container = nil;
     [super dealloc];
 }
 
 - (void)loadWebView {
     NSString *urlString = [NSString stringWithFormat:@"%@/help/%@/%@?version=3", ServerURL, self.viewName, self.transportType];
+    NSLog(@"loading web view %@", urlString);
     NSString *urlStringEscaped = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];    
     NSURL *url = [[NSURL alloc] initWithString: urlStringEscaped];
     self.request = [[NSURLRequest alloc] initWithURL: url]; 

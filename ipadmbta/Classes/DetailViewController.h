@@ -52,8 +52,7 @@
     BOOL gridCreated;
     UIBarButtonItem *bookmarkButton; 
     UIView *findingProgressView;
-
-    
+    HelpViewController *hvc;
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
@@ -85,8 +84,7 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *bookmarkButton; 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *findStopButton;
 @property (nonatomic, retain)   UIView *findingProgressView;
-
-
+@property (nonatomic, retain) HelpViewController *hvc;
 - (void)loadTrips:(NSNotification *)notification;
 - (void)styleBookmarkButton;
 - (void)toggleView:(id)sender;
@@ -98,7 +96,7 @@
 - (void)toggleBookmark:(id)sender;
 - (BOOL)isBookmarked;
 - (void)toggleBookmark:(id)sender;
-- (IBAction)infoButtonPressed:(id)sender;
+- (IBAction)helpButtonPressed:(id)sender;
 
 - (void)showFindingIndicators;
 - (void)hideFindingIndicators;

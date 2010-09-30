@@ -16,9 +16,9 @@
     NSString *transportType;
     
     
-        UIView *progressView;
-    
-    
+    UIView *progressView;
+    UIPopoverController *container;
+
     
 }
 @property (retain, nonatomic) UIView *progressView;
@@ -26,6 +26,7 @@
 @property (nonatomic, copy) NSString *transportType;
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSURLRequest *request;
+@property (nonatomic, assign) UIPopoverController *container;
 - (IBAction)doneButtonPressed:(id)sender;
 - (void)showLoadingIndicators;
 - (void)hideLoadingIndicators;

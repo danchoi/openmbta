@@ -1,5 +1,5 @@
 class HelpController < ApplicationController
-  layout 'iphone_layout'
+  layout 'mobile'
 
   def show
     @transport_type = params[:transport_type] || "bus"
