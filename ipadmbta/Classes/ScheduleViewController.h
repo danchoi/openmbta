@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "GridScrollView.h"
+#import "CoveringScrollView.h"
 
 @protocol GridScrollViewDataSource;
-@class MyScrollView;
 @class DetailViewController;
 
-@interface ScheduleViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, GridScrollViewDataSource> {
+@interface ScheduleViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, GridScrollViewDataSource, CoveringScrollViewDelegate> {
 	GridScrollView *scrollView;	// holds floating grid
     UITableView *tableView;
     
-    UIScrollView *coveringScrollView;
+    CoveringScrollView *coveringScrollView;
     
     NSMutableArray *gridTimes;
     BOOL stopAddingLabels;

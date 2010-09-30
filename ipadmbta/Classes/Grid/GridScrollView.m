@@ -47,10 +47,6 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 - (void)dealloc {
     [reusableTiles release];
     self.stops = nil;

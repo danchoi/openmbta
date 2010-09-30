@@ -158,6 +158,14 @@ const int kCellWidth = 45;
     
 }
 
+#pragma mark CoveringScrollViewDelegate
+
+- (void)scrollView:(CoveringScrollView *)scrollView didTouchX:(float)x y:(float)y {
+    
+}
+
+
+
 #pragma mark color grid cell
 
 - (UIView *)gridScrollView:(GridScrollView *)scrollView tileForRow:(int)row column:(int)column {

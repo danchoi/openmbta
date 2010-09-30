@@ -53,6 +53,7 @@
 		DE8DA01312538426008867B5 /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8DA01212538426008867B5 /* RoutesViewController.m */; };
 		DE8DA01512538431008867B5 /* RoutesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8DA01412538431008867B5 /* RoutesViewController.xib */; };
 		DEE0E1A0125424C400DB99DA /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E19F125424C400DB99DA /* ProgressView.xib */; };
+		DEE0E3A61254D23C00DB99DA /* CoveringScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE0E3A41254D23C00DB99DA /* CoveringScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,8 @@
 		DE8DA01212538426008867B5 /* RoutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesViewController.m; sourceTree = "<group>"; };
 		DE8DA01412538431008867B5 /* RoutesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesViewController.xib; sourceTree = "<group>"; };
 		DEE0E19F125424C400DB99DA /* ProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
+		DEE0E3A41254D23C00DB99DA /* CoveringScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoveringScrollView.m; sourceTree = "<group>"; };
+		DEE0E3A51254D23C00DB99DA /* CoveringScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoveringScrollView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +290,8 @@
 		DE8D9F3F12537D6B008867B5 /* Grid */ = {
 			isa = PBXGroup;
 			children = (
+				DEE0E3A41254D23C00DB99DA /* CoveringScrollView.m */,
+				DEE0E3A51254D23C00DB99DA /* CoveringScrollView.h */,
 				DE8D9F4412537D90008867B5 /* GridScrollView.h */,
 				DE8D9F4512537D90008867B5 /* GridScrollView.m */,
 				DE8D9F4712537D98008867B5 /* GridCell.h */,
@@ -404,6 +409,7 @@
 				DE8D9F761253804F008867B5 /* StopsViewController.m in Sources */,
 				DE8D9FF812538289008867B5 /* MapViewController.m in Sources */,
 				DE8DA01312538426008867B5 /* RoutesViewController.m in Sources */,
+				DEE0E3A61254D23C00DB99DA /* CoveringScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
