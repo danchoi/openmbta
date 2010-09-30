@@ -52,6 +52,7 @@
 		DE8D9FF812538289008867B5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8D9FF712538289008867B5 /* MapViewController.m */; };
 		DE8DA01312538426008867B5 /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8DA01212538426008867B5 /* RoutesViewController.m */; };
 		DE8DA01512538431008867B5 /* RoutesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8DA01412538431008867B5 /* RoutesViewController.xib */; };
+		DEE0E1A0125424C400DB99DA /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE0E19F125424C400DB99DA /* ProgressView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +130,7 @@
 		DE8DA01112538426008867B5 /* RoutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesViewController.h; sourceTree = "<group>"; };
 		DE8DA01212538426008867B5 /* RoutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesViewController.m; sourceTree = "<group>"; };
 		DE8DA01412538431008867B5 /* RoutesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesViewController.xib; sourceTree = "<group>"; };
+		DEE0E19F125424C400DB99DA /* ProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEE0E19F125424C400DB99DA /* ProgressView.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				2804203B108E9BAB000629CD /* DetailView.xib */,
 				8D1107310486CEB800E47090 /* ipadmbta-Info.plist */,
@@ -365,6 +368,7 @@
 				DE8D9F7A12538076008867B5 /* loadingIndicator.png in Resources */,
 				DE8D9F7C1253809B008867B5 /* icon.png in Resources */,
 				DE8DA01512538431008867B5 /* RoutesViewController.xib in Resources */,
+				DEE0E1A0125424C400DB99DA /* ProgressView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

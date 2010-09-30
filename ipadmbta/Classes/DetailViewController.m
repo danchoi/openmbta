@@ -191,8 +191,10 @@
 
 // This calls the server
 - (void)startLoadingData {    
-    
+
     [self showNetworkActivity];
+    NSLog(@"self.contentView.frame: %@", NSStringFromCGRect(self.contentView.frame));
+    
     self.findStopButton.enabled = NO;
     gridCreated = NO;
     [self.scheduleViewController clearGrid];
@@ -339,10 +341,12 @@
 }
 
 - (void)showLoadingIndicators {
-    self.progressView.center = self.contentView.center;
-    [self.view addSubview:self.progressView];
+    self.progressView.hidden = NO;
 }
 
+- (void)hideLoadingIndicators {
+    self.progressView.hidden = YES;
+}
 
 
 

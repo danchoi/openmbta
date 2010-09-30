@@ -44,8 +44,8 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUITableView" id="367430444">
 						<reference key="NSNextResponder" ref="918073555"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{616, 703}</string>
+						<int key="NSvFlags">276</int>
+						<string key="NSFrameSize">{320, 703}</string>
 						<reference key="NSSuperview" ref="918073555"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -55,7 +55,6 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<int key="IBUIIndicatorStyle">2</int>
-						<int key="IBUISeparatorStyle">1</int>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 						<float key="IBUIRowHeight">44</float>

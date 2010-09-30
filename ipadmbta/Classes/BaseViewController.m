@@ -19,16 +19,19 @@
 @synthesize progressView;
 
 - (void)viewDidLoad {
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProgressView" owner:self options:nil];
     
-    NSEnumerator *enumerator = [nib objectEnumerator];
-    id object;
-    
-    while ((object = [enumerator nextObject])) {
-        if ([object isMemberOfClass:[UIView class]]) {
-            self.progressView =  (UIView *)object;
-        }
-    }    
+    if (!self.progressView) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ProgressView" owner:self options:nil];
+        
+        NSEnumerator *enumerator = [nib objectEnumerator];
+        id object;
+        
+        while ((object = [enumerator nextObject])) {
+            if ([object isMemberOfClass:[UIView class]]) {
+                self.progressView =  (UIView *)object;
+            }
+        }    
+    }
     [super viewDidLoad];
 }
 

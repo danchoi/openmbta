@@ -156,7 +156,8 @@ const int kCellWidth = 45;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
     
     UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont systemFontOfSize:11.0];
+    label.textAlignment =   UITextAlignmentCenter;
+    label.font = row == self.selectedRow ? [UIFont boldSystemFontOfSize:11.0] :  [UIFont systemFontOfSize:11.0];
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
     
     if (arrayOrNull == [NSNull null]) {
@@ -172,8 +173,15 @@ const int kCellWidth = 45;
             //view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
             label.textColor = [UIColor grayColor];
         }        
+
+        if (row == self.selectedRow) {
+            label.textColor = [UIColor blueColor];
+            label.font = period == -1 ? [UIFont systemFontOfSize:11.0] : [UIFont boldSystemFontOfSize:11.0];
+        }
         
     }
+        
+        
     label.backgroundColor = [UIColor clearColor];
     
     if (column % 2 == 0) {
@@ -185,7 +193,7 @@ const int kCellWidth = 45;
     if (selectedColumn == column) {
     } 
 
-    label.frame = CGRectMake(6, 7, kCellWidth, kRowHeight - 15);
+    label.frame = CGRectMake(0, 7, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
 
@@ -200,8 +208,9 @@ const int kCellWidth = 45;
     if ([aScrollView isEqual:coveringScrollView]) {
         scrollView.contentOffset = CGPointMake(coveringScrollView.contentOffset.x, coveringScrollView.contentOffset.y);
         tableView.contentOffset = CGPointMake(0, coveringScrollView.contentOffset.y);
+        self.coveringScrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
+        
     } 
-    self.coveringScrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)sScrollView {
@@ -218,7 +227,7 @@ const int kCellWidth = 45;
 
 - (void)alignGridAnimated:(BOOL)animated {
     
-    if (self.coveringScrollView.dragging || self.coveringScrollView.decelerating) {
+    if (self.coveringScrollView.dragging || self.coveringScrollView.decelerating || self.scrollView.dragging || self.scrollView.decelerating || self.tableView.dragging || self.tableView.decelerating) {
         return;
     }
     float x = self.scrollView.contentOffset.x;
@@ -257,7 +266,7 @@ const int kCellWidth = 45;
         cell.accessoryType =  UITableViewCellAccessoryNone; 
         cell.textLabel.textColor = [UIColor blackColor];     
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-
+        cell.textAlignment = UITextAlignmentRight;
     
     }
     

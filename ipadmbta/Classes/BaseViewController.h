@@ -13,7 +13,7 @@
     HelpViewController *helpViewController;
     UIView *progressView;
 }
-@property (retain, nonatomic) UIView *progressView;
+@property (retain, nonatomic) IBOutlet UIView *progressView;
 
 - (void)showNetworkActivity;
 - (void)hideNetworkActivity;
