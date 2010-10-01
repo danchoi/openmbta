@@ -58,8 +58,15 @@
             }
         }    
     }     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadOnBecomingActive:) name: UIApplicationDidBecomeActiveNotification object:nil];
 
  }
+
+- (void)reloadOnBecomingActive:(NSNotification *)n {
+    [self startLoadingData];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [self addBookmarkButton];

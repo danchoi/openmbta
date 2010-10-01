@@ -95,6 +95,7 @@
 
 - (void)showFindingIndicators;
 - (void)hideFindingIndicators;
+- (void)reloadOnBecomingActive:(NSNotification *)n;
 
 
 @end
