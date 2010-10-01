@@ -5,6 +5,7 @@
 
 @interface RoutesViewController (Private)
 - (TripsViewController *)tripsViewController;
+- (void)refresh:(id)sender;
 - (void)startLoadingData;
 - (void)didFinishLoadingData:(NSString *)rawData;
 @end
@@ -34,7 +35,23 @@
         self.title = ([self.transportType isEqualToString:@"Commuter Rail"] ? @"Rail Lines" : 
         ([self.transportType isEqualToString:@"Subway"] ? @"Subway Lines" : [NSString stringWithFormat:@"%@ Routes", self.transportType]));
     }
+
+        
+    
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc]
+                           initWithTitle:@"Refresh"
+                           style:UIBarButtonItemStylePlain
+                           target:self 
+                           action:@selector(refresh:)];
+    self.navigationItem.rightBarButtonItem = refreshButton;
     [super viewWillAppear:animated];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationItem.rightBarButtonItem = nil;
+    [super viewWillDisappear:animated];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -57,6 +74,9 @@
     [super dealloc];
 }
 
+- (void)refresh:(id)sender {
+    [self startLoadingData];
+}
 
 // This calls the server
 - (void)startLoadingData
