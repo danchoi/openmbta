@@ -69,7 +69,7 @@
 //            NSString *stopName = [scheduleViewController.orderedStopNames objectAtIndex:row];
  //           TripsViewController *tripViewController = scheduleViewController.tripsViewController;
 //            [tripViewController highlightStopNamed:stopName];
-            [scheduleViewController highlightColumn:col];
+            [scheduleViewController touchedColumn:col];
             
         }
         

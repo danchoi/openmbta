@@ -25,7 +25,6 @@
 
     NSString *selectedStopName;
     int selectedRow;
-    int selectedColumn;
     NSArray *orderedStopNames;
     TripsViewController *tripsViewController;
 }
@@ -38,7 +37,6 @@
 @property (nonatomic, retain) NSString *selectedStopName;
 @property (nonatomic, retain) NSArray *orderedStopNames;
 @property (nonatomic, retain) TripsViewController *tripsViewController;
-@property int selectedColumn;
 @property int selectedRow;
 
 - (void)highlightNearestStop:(NSString *)stopId;
@@ -46,7 +44,7 @@
 - (void)clearGrid;
 - (void)highlightRow:(int)row showCurrentColumn:(BOOL)s;
 - (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)s;
-- (void)highlightColumn:(int)col;
+- (void)touchedColumn:(int)col;
 - (void)adjustScrollViewFrame;
 - (void)alignGridAnimated:(BOOL)animated;
 @end

@@ -24,7 +24,7 @@ const int kCellWidth = 44;
 @implementation ScheduleViewController
 
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
-@synthesize tableView, scrollView, gridTimes, gridID, tripsViewController, selectedColumn, selectedRow;
+@synthesize tableView, scrollView, gridTimes, gridID, tripsViewController, selectedRow;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -43,7 +43,6 @@ const int kCellWidth = 44;
     self.view.clipsToBounds = YES;
     self.tableView.scrollEnabled = NO;
     
-    selectedColumn = -1;
 }
 
 /*
@@ -106,7 +105,6 @@ const int kCellWidth = 44;
 - (void)clearGrid {
     self.stops = [NSArray array];
     self.selectedStopName = nil;
-    self.selectedColumn = -1;
     self.tableView.hidden = YES;    
     self.scrollView.hidden = YES;
 }
@@ -178,8 +176,6 @@ const int kCellWidth = 44;
         view.backgroundColor = [UIColor colorWithRed: (214/255.0) green: (214/255.0) blue: (255/255.0) alpha: 0.2];
     }
     
-    if (selectedColumn == column) {
-    } 
     label.frame = CGRectMake(5, 15, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
@@ -283,7 +279,7 @@ const int kCellWidth = 44;
     if ([self.stops count] == 0) return;
     if (row >= [self.stops count]) return;
 
-    selectedRow = row;
+    self.selectedRow = row;
     
     float newX;
     if (showCurrentColumn) {
@@ -301,7 +297,6 @@ const int kCellWidth = 44;
             col++;
         }
         newX = kCellWidth * col;        
-        self.selectedColumn = col;
     } else {
         newX = self.scrollView.contentOffset.x; // keep the old value
     }
@@ -335,8 +330,30 @@ const int kCellWidth = 44;
     [self highlightRow:row showCurrentColumn:showCurrentColumn];
 }
 
-- (void)highlightColumn:(int)col {
-    selectedColumn = col;
+- (void)touchedColumn:(int)col {
+    // if user touched right most column, page right etc.
+    float currentX = self.scrollView.contentOffset.x;
+
+    float newX;
+    float rightEdge = self.scrollView.contentOffset.x + self.view.frame.size.width - (2 * kCellWidth);
+    float leftEdge = self.scrollView.contentOffset.x + kCellWidth;
+    if (col * kCellWidth >= rightEdge)  {
+        newX = currentX + (kCellWidth * 6);
+    } else if (col * kCellWidth < leftEdge)  {
+        newX = currentX - (kCellWidth * 6);
+    } else {
+        return;
+    }
+
+    float maxX = self.scrollView.contentSize.width - 320;
+    float x = MIN(newX, maxX);
+    if (self.scrollView.contentSize.width < self.view.frame.size.width) {
+        return;
+    } 
+    if (newX < 0)
+        x = 0;
+    CGPoint contentOffset = CGPointMake(x , self.scrollView.contentOffset.y);
+    [self.scrollView setContentOffset:contentOffset animated:YES];        
     [scrollView reloadData];
 }
 
