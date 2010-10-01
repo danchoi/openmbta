@@ -320,24 +320,27 @@
 
 
 - (IBAction)helpButtonPressed:(id)sender {
-    if (!self.hvc)
-        self.hvc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+        self.popoverController = nil;
+    } else {
+        if (!self.hvc)
+            self.hvc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
 
-    hvc.viewName = self.segmentedControl.selectedSegmentIndex == 0 ? @"map" : @"schedule";
-    hvc.transportType = self.transportType;
-    if (!self.popoverController)
-        self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:hvc] autorelease];
-    self.popoverController.delegate = self;
-    hvc.container = self.popoverController;
-    [self.popoverController presentPopoverFromBarButtonItem:sender
-                                   permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                   animated:YES];
-    
+        hvc.viewName = self.segmentedControl.selectedSegmentIndex == 0 ? @"map" : @"schedule";
+        hvc.transportType = self.transportType;
+        if (!self.popoverController)
+            self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:hvc] autorelease];
+        self.popoverController.delegate = self;
+        hvc.container = self.popoverController;
+        [self.popoverController presentPopoverFromBarButtonItem:sender
+                                       permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                       animated:YES];
+    }
+        
 }
 
 - (void)handleDismissedPopoverController:(UIPopoverController*)aPopoverController {
-  if ([aPopoverController.contentViewController isMemberOfClass: [HelpViewController class]]) {
-  }
   self.popoverController = nil;
 }
 
