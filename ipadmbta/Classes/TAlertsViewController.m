@@ -16,7 +16,7 @@
 
 
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc]
-            initWithTitle:@"Reload"
+            initWithTitle:@"Refresh"
                     style:UIBarButtonItemStyleBordered
                    target:self
                    action:@selector(reloadWebView:)];
