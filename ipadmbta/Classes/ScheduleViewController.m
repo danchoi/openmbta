@@ -25,7 +25,7 @@ const int kCellWidth = 45;
 
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
 @synthesize tableView, scrollView, gridTimes, gridID, detailViewController, selectedColumn, selectedRow;
-@synthesize coveringScrollView, coloredBand;
+@synthesize coveringScrollView, coloredBand, underScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -71,6 +71,7 @@ const int kCellWidth = 45;
 - (void)viewDidUnload {
     [super viewDidUnload];
     self.coveringScrollView = nil;
+    self.underScrollView = nil;
     [coloredBand removeFromSuperview];
     self.coloredBand = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -138,7 +139,7 @@ const int kCellWidth = 45;
     NSArray *timesForFirstRow = [firstRow objectForKey:@"times"];
     NSInteger numColumns = [timesForFirstRow count];
 
-    int gridWidth = (numColumns * kCellWidth) + 12;
+    int gridWidth = (numColumns * kCellWidth) + kCellWidth; // some padding on right
     int gridHeight = ([self.stops count] * kRowHeight);
     [scrollView setContentSize:CGSizeMake(gridWidth, gridHeight)];
     [coveringScrollView setContentSize:CGSizeMake(gridWidth + 320, gridHeight)];
@@ -152,6 +153,7 @@ const int kCellWidth = 45;
 - (void)adjustScrollViewFrame {
     scrollView.frame = CGRectMake(320, 0, self.view.frame.size.width - 320, self.view.frame.size.height); 
     coveringScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height); 
+    underScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height); 
     tableView.frame = CGRectMake(0, 0, 319, self.view.frame.size.height); 
     
     [self.view bringSubviewToFront:self.coveringScrollView];
@@ -229,6 +231,7 @@ const int kCellWidth = 45;
     if ([aScrollView isEqual:coveringScrollView]) {
         scrollView.contentOffset = CGPointMake(coveringScrollView.contentOffset.x, coveringScrollView.contentOffset.y);
         tableView.contentOffset = CGPointMake(0, coveringScrollView.contentOffset.y);
+        underScrollView.contentOffset = CGPointMake(0, coveringScrollView.contentOffset.y);
         self.coveringScrollView.directionalLockEnabled = YES; // I don't know why this keeps getting set to NO otherwise
         
     } 
@@ -363,9 +366,9 @@ const int kCellWidth = 45;
     // put a colored banded in coveringScrollView
     CGRect bandFrame = CGRectMake(0, kRowHeight * row, coveringScrollView.contentSize.width - 12, kRowHeight);
     self.coloredBand = [[[UIView alloc] initWithFrame:bandFrame] autorelease];
-    coloredBand.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.11];
+    coloredBand.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.18];
 
-    [coveringScrollView addSubview:coloredBand];
+    [underScrollView addSubview:coloredBand];
 
     CGPoint contentOffset = CGPointMake(x, y);
     [self.coveringScrollView setContentOffset:contentOffset animated:YES];   

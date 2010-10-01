@@ -235,6 +235,11 @@
         // do something in view to indicate
     }
     [self checkForMessage:data];
+    if (![data objectForKey:@"stops"]) {
+        [self hideNetworkActivity];
+        return;
+
+    }
     self.stops = [data objectForKey:@"stops"];
     
     // construct GRID

@@ -18,6 +18,7 @@
     UITableView *tableView;
     
     CoveringScrollView *coveringScrollView;
+    UIScrollView *underScrollView;
     
     NSMutableArray *gridTimes;
     BOOL stopAddingLabels;
@@ -35,7 +36,8 @@
 }
 @property (nonatomic, copy) NSString *nearestStopId;
 @property (nonatomic, retain) IBOutlet GridScrollView *scrollView;	// holds floating grid
-@property (nonatomic, retain) IBOutlet UIScrollView *coveringScrollView;
+@property (nonatomic, retain) IBOutlet CoveringScrollView *coveringScrollView;
+@property (nonatomic, retain) IBOutlet UIScrollView *underScrollView;
 @property (nonatomic, retain) NSMutableArray *gridTimes;
 @property (nonatomic, copy) NSNumber *gridID;
 @property (nonatomic, retain) NSArray *stops;

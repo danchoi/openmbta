@@ -42,12 +42,21 @@
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="IBUIScrollView" id="166270391">
+						<reference key="NSNextResponder" ref="918073555"/>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrame">{{-3, -3}, {622, 708}}</string>
+						<reference key="NSSuperview" ref="918073555"/>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
 					<object class="IBUITableView" id="367430444">
 						<reference key="NSNextResponder" ref="918073555"/>
 						<int key="NSvFlags">276</int>
 						<string key="NSFrameSize">{319, 703}</string>
 						<reference key="NSSuperview" ref="918073555"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="241528090">
+						<object class="NSColor" key="IBUIBackgroundColor" id="1041978354">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
@@ -66,7 +75,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{327, 0}, {289, 703}}</string>
 						<reference key="NSSuperview" ref="918073555"/>
-						<reference key="IBUIBackgroundColor" ref="241528090"/>
+						<reference key="IBUIBackgroundColor" ref="1041978354"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -171,6 +180,22 @@
 					</object>
 					<int key="connectionID">21</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="166270391"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">23</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">underScrollView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="166270391"/>
+					</object>
+					<int key="connectionID">24</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -200,6 +225,7 @@
 							<reference ref="367430444"/>
 							<reference ref="194625766"/>
 							<reference ref="547143940"/>
+							<reference ref="166270391"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -224,6 +250,11 @@
 						<reference key="object" ref="547143940"/>
 						<reference key="parent" ref="918073555"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="166270391"/>
+						<reference key="parent" ref="918073555"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -239,6 +270,8 @@
 					<string>19.CustomClassName</string>
 					<string>19.IBPluginDependency</string>
 					<string>19.IBViewBoundsToFrameTransform</string>
+					<string>22.IBPluginDependency</string>
+					<string>22.IBViewBoundsToFrameTransform</string>
 					<string>8.CustomClassName</string>
 					<string>8.IBPluginDependency</string>
 					<string>8.IBViewBoundsToFrameTransform</string>
@@ -256,7 +289,11 @@
 					<string>CoveringScrollView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAADDo4AAxDCAAA</bytes>
+						<bytes key="NSTransformStruct">AcBAAADAQAAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAADAQAAAxC/AAA</bytes>
 					</object>
 					<string>GridScrollView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -281,7 +318,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">24</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -338,13 +375,15 @@
 							<string>coveringScrollView</string>
 							<string>scrollView</string>
 							<string>tableView</string>
+							<string>underScrollView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIView</string>
-							<string>UIScrollView</string>
+							<string>CoveringScrollView</string>
 							<string>GridScrollView</string>
 							<string>UITableView</string>
+							<string>UIScrollView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -355,6 +394,7 @@
 							<string>coveringScrollView</string>
 							<string>scrollView</string>
 							<string>tableView</string>
+							<string>underScrollView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -364,7 +404,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">coveringScrollView</string>
-								<string key="candidateClassName">UIScrollView</string>
+								<string key="candidateClassName">CoveringScrollView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">scrollView</string>
@@ -373,6 +413,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">tableView</string>
 								<string key="candidateClassName">UITableView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">underScrollView</string>
+								<string key="candidateClassName">UIScrollView</string>
 							</object>
 						</object>
 					</object>
