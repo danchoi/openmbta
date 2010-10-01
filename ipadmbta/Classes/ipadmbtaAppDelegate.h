@@ -34,6 +34,6 @@
 @property (nonatomic, retain) UIAlertView *reachabilityAlert;
 - (void) showReachabilityAlert;
 - (void) testReachability;
-
+- (void)loadLastTrip;
 
 @end

@@ -176,7 +176,7 @@
         Preferences *prefs = [Preferences sharedInstance]; 
         NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", self.firstStop, @"firstStop", nil];
         [prefs addBookmark: bookmark];
-        NSLog(@"bookmarks %@", [prefs orderedBookmarks]);
+        //NSLog(@"bookmarks %@", [prefs orderedBookmarks]);
     }
     [self styleBookmarkButton];
 }
@@ -196,7 +196,7 @@
 
 // This calls the server
 - (void)startLoadingData {    
-
+    
     [self showNetworkActivity];
     self.findStopButton.enabled = NO;
     [self.scheduleViewController clearGrid];

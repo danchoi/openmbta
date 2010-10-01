@@ -173,7 +173,7 @@ const int kCellWidth = 44;
     if (column % 2 == 0) {
         view.backgroundColor = [UIColor clearColor];
     } else {
-        view.backgroundColor = [UIColor colorWithRed: (214/255.0) green: (214/255.0) blue: (255/255.0) alpha: 0.2];
+        view.backgroundColor = [UIColor colorWithRed: (214/255.0) green: (214/255.0) blue: (255/255.0) alpha: 0.3];
     }
     
     label.frame = CGRectMake(5, 15, kCellWidth, kRowHeight - 15);

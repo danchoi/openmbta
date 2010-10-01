@@ -13,6 +13,7 @@
 #import "DetailViewController.h"
 
 
+
 @implementation ipadmbtaAppDelegate
 
 @synthesize window, splitViewController, rootViewController, detailViewController;
@@ -29,12 +30,16 @@
     // Add the split view controller's view to the window and display.
     [window addSubview:splitViewController.view];
     [window makeKeyAndVisible];
-    [rootViewController loadLastViewedTrip];
+    [self performSelector:@selector(loadLastTrip) withObject:nil afterDelay:1.0];
+
     [self testReachability];
 
     return YES;
 }
 
+- (void)loadLastTrip {
+    [rootViewController loadLastViewedTrip];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
