@@ -256,15 +256,14 @@ const int kCellWidth = 44;
         cell.textLabel.text = @"missing";
         cell.detailTextLabel.text = @"missing";
         return cell;
-        
     }
                           
     NSDictionary *stopRow = [self.stops objectAtIndex:indexPath.row];
     NSDictionary *stopDict = [stopRow objectForKey:@"stop"];
     NSString *stopName =  [stopDict objectForKey:@"name"];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
-    cell.textLabel.textColor = [UIColor blackColor];        
-    cell.textLabel.text = stopName;
+    cell.textLabel.textColor = self.selectedRow == indexPath.row ? [UIColor purpleColor] : [UIColor blackColor];        
+    cell.textLabel.text =  stopName;
     cell.detailTextLabel.text =  @" ";
     return cell;
 }
