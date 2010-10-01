@@ -49,7 +49,6 @@
     ScheduleViewController *scheduleViewController;
     UIView *currentContentView;
     StopsViewController *stopsViewController;
-    BOOL gridCreated;
     UIBarButtonItem *bookmarkButton; 
     UIView *findingProgressView;
     HelpViewController *hvc;

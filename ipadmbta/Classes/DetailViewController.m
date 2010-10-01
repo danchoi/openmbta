@@ -199,7 +199,6 @@
 
     [self showNetworkActivity];
     self.findStopButton.enabled = NO;
-    gridCreated = NO;
     [self.scheduleViewController clearGrid];
     
     // We need to substitute a different character for the ampersand in the
@@ -235,11 +234,6 @@
         // do something in view to indicate
     }
     [self checkForMessage:data];
-    if (![data objectForKey:@"stops"]) {
-        [self hideNetworkActivity];
-        return;
-
-    }
     self.stops = [data objectForKey:@"stops"];
     
     // construct GRID
@@ -265,12 +259,9 @@
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 
     self.scheduleViewController.orderedStopNames = self.orderedStopNames;
-    
-    if (!gridCreated) {
-        [scheduleViewController createFloatingGrid];        
-        [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName showCurrentColumn:NO];
-        gridCreated = YES;
-    }
+    [scheduleViewController createFloatingGrid];        
+    [scheduleViewController highlightStopNamed:self.mapViewController.selectedStopName showCurrentColumn:NO];
+
     [self hideNetworkActivity];
     
     [scheduleViewController adjustScrollViewFrame];    
