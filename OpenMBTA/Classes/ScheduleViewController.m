@@ -297,12 +297,13 @@ const int kCellWidth = 44;
     }
     float maxX = self.scrollView.contentSize.width - 320;
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.tripsViewController.scheduleViewController).view.frame.size.height;
-    float newY = row *kRowHeight;
-
+//    float newY = row *kRowHeight;
+    float newY = MAX( row * kRowHeight + ( kRowHeight / 2) - self.scrollView.frame.size.height / 2, 0);
     float y = self.scrollView.contentOffset.y;
     if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
         y = MIN(newY, maxY);
     }
+
 
     float x = MIN(newX, maxX);
     if (self.scrollView.contentSize.width < self.view.frame.size.width) {
