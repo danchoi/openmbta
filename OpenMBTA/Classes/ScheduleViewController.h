@@ -48,4 +48,5 @@
 - (void)adjustScrollViewFrame;
 - (void)alignGridAnimated:(BOOL)animated;
 - (void)touchedColumn:(int)col;
+- (void)doubleTouchedColumn:(int)col;
 @end

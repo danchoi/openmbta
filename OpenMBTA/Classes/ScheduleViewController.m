@@ -354,6 +354,23 @@ const int kCellWidth = 44;
     [self alignGridAnimated:YES];
 }
 
-
+- (void)doubleTouchedColumn:(int)col {
+    // if user touched right most column, page right etc.
+    
+    float newX;
+    float rightEdge = self.scrollView.contentOffset.x + self.view.frame.size.width - (2 * kCellWidth);
+    float leftEdge = self.scrollView.contentOffset.x + kCellWidth;
+    if (col * kCellWidth >= rightEdge)  {
+        newX = self.scrollView.contentSize.width - 320;
+    } else if (col * kCellWidth < leftEdge)  {
+        newX = 0;
+    } else {
+        return;
+    }
+    CGPoint contentOffset = CGPointMake(newX , self.scrollView.contentOffset.y);
+    [self.scrollView setContentOffset:contentOffset animated:YES];        
+    [scrollView reloadData];
+    [self alignGridAnimated:YES];
+}
 
 @end
