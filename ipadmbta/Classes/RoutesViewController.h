@@ -29,4 +29,5 @@
 @property (nonatomic, getter=shouldReloadData) BOOL shouldReloadData;
 @property (nonatomic, retain) IBOutlet StopsViewController *stopsVC;
 - (void)reset;
+- (void)refresh:(id)sender;
 @end
