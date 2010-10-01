@@ -18,5 +18,7 @@
 - (void)removeBookmark:(NSDictionary *)bookmark;
 - (void)addBookmark:(NSDictionary *)bookmark;
 - (BOOL)isBookmarked:(NSDictionary *)bookmark;
+- (NSDictionary *)lastViewedRoute;
+- (void)saveLastViewedRoute:(NSDictionary *)route;
 - (NSArray *)orderedBookmarks;
 @end

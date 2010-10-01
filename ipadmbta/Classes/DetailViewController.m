@@ -143,9 +143,7 @@
     NSNumber *selectedSegmentAsNumber = [NSNumber numberWithInt:index]; 
     NSDictionary *lastViewedTrip = [NSDictionary dictionaryWithObjectsAndKeys: self.headsign, @"headsign", self.routeShortName, @"routeShortName", self.transportType, @"transportType", selectedSegmentAsNumber, @"selectedSegmentIndex", self.firstStop, @"firstStop", nil]; // subtle trick here since firstStop can be null and terminal the dictionary early, and properly
     
-    [[NSUserDefaults standardUserDefaults] setObject:lastViewedTrip
-                                              forKey:@"lastViewedTrip"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[Preferences sharedInstance] saveLastViewedRoute:lastViewedTrip]; 
     
 }
 

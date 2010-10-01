@@ -91,7 +91,7 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
     [bookmarks addObject:bookmark];
     
     if (![prefs writeToFile:[self prefsFilePath] atomically:YES]) {
-        NSLog(@"VRM failed to save preferences to file!");
+        NSLog(@"Prefs failed to save to file!");
     }
     //NSLog(@"added bookmark. new prefs: %@", [self preferences]);
 }
@@ -140,5 +140,21 @@ NSInteger bookmarkSort(NSDictionary *bookmark1, NSDictionary *bookmark2, void *c
     
     return false;
 }
+
+- (NSDictionary *)lastViewedRoute {
+    NSMutableDictionary *prefs = [self preferences];
+    NSDictionary *route = [prefs objectForKey:@"lastViewedRoute"];
+    return route;
+}
+
+- (void)saveLastViewedRoute:(NSDictionary *)route {
+    NSMutableDictionary *prefs = [self preferences];
+    [prefs setObject:route forKey:@"lastViewedRoute"];
+    if (![prefs writeToFile:[self prefsFilePath] atomically:YES]) {
+        NSLog(@"Prefs failed to save file!");
+    }
+    
+}
+
 
 @end

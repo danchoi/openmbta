@@ -297,8 +297,9 @@
 # pragma Restore Application State
 
 - (void)loadLastViewedTrip {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *lastViewedTrip = [userDefaults objectForKey:@"lastViewedTrip"];
+    NSDictionary *lastViewedTrip = [[Preferences sharedInstance] lastViewedRoute]; 
+
+    NSLog(@"%@", lastViewedTrip);
 
     if (![lastViewedTrip isEqual:[NSNull null]] ) {
 
