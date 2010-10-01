@@ -38,6 +38,10 @@
 }
 */
 
+- (void)didReceiveMemoryWarning {
+    // override this so we don't lose the view if not visible 
+}
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     [self.stopAnnotations removeAllObjects];
