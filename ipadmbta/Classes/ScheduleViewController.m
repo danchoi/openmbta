@@ -182,7 +182,8 @@ const int kCellWidth = 45;
     
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment =   UITextAlignmentCenter;
-    label.font = row == self.selectedRow ? [UIFont boldSystemFontOfSize:11.0] :  [UIFont systemFontOfSize:11.0];
+    //label.font = row == self.selectedRow ? [UIFont boldSystemFontOfSize:11.0] :  [UIFont systemFontOfSize:11.0];
+    label.font = [UIFont systemFontOfSize:11.0];
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
     
     if (arrayOrNull == [NSNull null]) {
@@ -196,7 +197,7 @@ const int kCellWidth = 45;
 
         if (period == -1) {
             //view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
-            label.textColor = [UIColor grayColor];
+            //label.textColor = [UIColor grayColor];
         }        
         
     }
@@ -251,8 +252,11 @@ const int kCellWidth = 45;
         return;
     }
     float x = self.scrollView.contentOffset.x;
+    float roundedX = round(x/kCellWidth) * kCellWidth;
+    if (roundedX + self.scrollView.frame.size.width > self.scrollView.contentSize.width)
+        return;
     float y = self.scrollView.contentOffset.y;
-    CGPoint contentOffset = CGPointMake( (round(x/kCellWidth) * kCellWidth), y);
+    CGPoint contentOffset = CGPointMake( roundedX, y);
 
     [self.scrollView setContentOffset:contentOffset animated:animated];        
     [self.coveringScrollView setContentOffset:contentOffset animated:animated];        
@@ -339,7 +343,8 @@ const int kCellWidth = 45;
     } else {
         newX = self.scrollView.contentOffset.x; // keep the old value
     }
-    float maxX = self.scrollView.contentSize.width - self.scrollView.frame.size.width;
+    float maxX = self.scrollView.contentSize.width - self.scrollView.frame.size.width; 
+
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.detailViewController.scheduleViewController).view.frame.size.height;
 
     float newY = row *kRowHeight;
@@ -356,7 +361,7 @@ const int kCellWidth = 45;
         [coloredBand removeFromSuperview];
     
     // put a colored banded in coveringScrollView
-    CGRect bandFrame = CGRectMake(0, newY, coveringScrollView.contentSize.width, kRowHeight);
+    CGRect bandFrame = CGRectMake(0, newY, coveringScrollView.contentSize.width - 12, kRowHeight);
     self.coloredBand = [[[UIView alloc] initWithFrame:bandFrame] autorelease];
     coloredBand.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.11];
 
@@ -367,6 +372,7 @@ const int kCellWidth = 45;
 
     [scrollView reloadData];
     [tableView reloadData];
+//    [self alignGridAnimated:YES];
     
 }
 
