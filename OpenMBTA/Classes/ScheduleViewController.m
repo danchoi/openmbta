@@ -24,7 +24,7 @@ const int kCellWidth = 44;
 @implementation ScheduleViewController
 
 @synthesize stops, nearestStopId, selectedStopName, orderedStopNames;
-@synthesize tableView, scrollView, gridTimes, gridID, tripsViewController, selectedColumn;
+@synthesize tableView, scrollView, gridTimes, gridID, tripsViewController, selectedColumn, selectedRow;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -149,38 +149,37 @@ const int kCellWidth = 44;
     if ((row >= [self.stops count])  || (column >= [[[self.stops objectAtIndex:row] objectForKey:@"times"] count])) {
         return nil;
     }
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
+    
     UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont boldSystemFontOfSize:11.0];
+    label.font = row == self.selectedRow ? [UIFont boldSystemFontOfSize:11.0] :  [UIFont systemFontOfSize:11.0];
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
     
     if (arrayOrNull == [NSNull null]) {
         label.text = @" ";
+        view.backgroundColor = [UIColor clearColor];
     } else {
         
         NSString *time = [(NSArray *)arrayOrNull objectAtIndex:0];
-        int period = [(NSNumber *)[(NSArray *)arrayOrNull objectAtIndex:1] intValue];   
         label.text = time;
-            
+        int period = [(NSNumber *)[(NSArray *)arrayOrNull objectAtIndex:1] intValue];   
+
         if (period == -1) {
-            label.textColor = [UIColor colorWithRed: (214/255.0) green: (191/255.0) blue: (191/255.0) alpha: 1.0];   
-        } else {
-            if (column % 2 == 0) {
-                label.textColor = [UIColor grayColor];
-            } else {
-                label.textColor = [UIColor colorWithRed: (122/255.0) green: (122/255.0) blue: (251/255.0) alpha: 1.0];
-            }
-        }
+            //view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
+            //label.textColor = [UIColor grayColor];
+        }        
         
     }
     label.backgroundColor = [UIColor clearColor];
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
+    
+    if (column % 2 == 0) {
+        view.backgroundColor = [UIColor clearColor];
+    } else {
+        view.backgroundColor = [UIColor colorWithRed: (214/255.0) green: (214/255.0) blue: (255/255.0) alpha: 0.2];
+    }
     
     if (selectedColumn == column) {
-        view.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.2];
-    } else {
-        view.backgroundColor = [UIColor clearColor];
-    }
-
+    } 
     label.frame = CGRectMake(5, 15, kCellWidth, kRowHeight - 15);
     [view addSubview:label];
     [label release];
@@ -270,20 +269,9 @@ const int kCellWidth = 44;
                           
     NSDictionary *stopRow = [self.stops objectAtIndex:indexPath.row];
     NSDictionary *stopDict = [stopRow objectForKey:@"stop"];
-    
-    
     NSString *stopName =  [stopDict objectForKey:@"name"];
-    
-    if (indexPath.row == selectedRow)  {
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:13.0];
-        cell.textLabel.textColor = [UIColor blackColor];        
-    } else {
-        cell.textLabel.font = [UIFont systemFontOfSize:12.0];
-
-        cell.textLabel.textColor = [UIColor blackColor];        
-    }
-    
-     
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:12.0];
+    cell.textLabel.textColor = [UIColor blackColor];        
     cell.textLabel.text = stopName;
     cell.detailTextLabel.text =  @" ";
     return cell;

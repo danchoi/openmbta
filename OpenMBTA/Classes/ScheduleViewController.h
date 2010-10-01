@@ -39,6 +39,7 @@
 @property (nonatomic, retain) NSArray *orderedStopNames;
 @property (nonatomic, retain) TripsViewController *tripsViewController;
 @property int selectedColumn;
+@property int selectedRow;
 
 - (void)highlightNearestStop:(NSString *)stopId;
 - (void)createFloatingGrid;
