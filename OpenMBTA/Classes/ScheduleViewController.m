@@ -150,7 +150,7 @@ const int kCellWidth = 44;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kCellWidth, kRowHeight)];
     
     UILabel *label = [[UILabel alloc] init];
-    label.font = row == self.selectedRow ? [UIFont boldSystemFontOfSize:11.0] :  [UIFont systemFontOfSize:11.0];
+    label.font = [UIFont systemFontOfSize:11.0];
     id arrayOrNull = [[[self.stops objectAtIndex:row] objectForKey:@"times"] objectAtIndex:column];
     
     if (arrayOrNull == [NSNull null]) {
@@ -253,7 +253,6 @@ const int kCellWidth = 44;
 
         cell.accessoryType =  UITableViewCellAccessoryNone; 
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
     }
     
     if (indexPath.row >= [self.stops count]) {
@@ -356,5 +355,10 @@ const int kCellWidth = 44;
     [self.scrollView setContentOffset:contentOffset animated:YES];        
     [scrollView reloadData];
 }
+
+- (void)touchedRow:(int)row {
+}
+
+
 
 @end
