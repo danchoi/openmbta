@@ -33,8 +33,12 @@
     self.mapView.hidden = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(mapViewShouldHighlightStop:)
-                                                 name:@"MBTAShouldHighlightStop" object:nil];    
+                                                 name:@"MBTAShouldHighlightStop" object:nil];  
 
+}
+
+- (void)didReceiveMemoryWarning {
+    // override this so we don't lose the view if not visible 
 }
 
 - (void)mapViewShouldHighlightStop:(NSNotification *)notification {
@@ -46,13 +50,6 @@
     
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -79,8 +76,7 @@
     
     if ([regionInfo objectForKey:@"center_lat"] == nil) 
         return;
-    
-    MKCoordinateRegion region;    
+    MKCoordinateRegion region;
     region.center.latitude = [[regionInfo objectForKey:@"center_lat"] floatValue];
     region.center.longitude = [[regionInfo objectForKey:@"center_lng"] floatValue];
     region.span.latitudeDelta = [[regionInfo objectForKey:@"lat_span"] floatValue] * 0.95;

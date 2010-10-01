@@ -52,6 +52,10 @@ const int kCellWidth = 45;
                                                  name:@"MBTAShouldHighlightStop" object:nil];    
 }
 
+- (void)didReceiveMemoryWarning {
+    // override this so we don't lose the view if not visible 
+}
+
 - (void)scheduleViewShouldHighlightStop:(NSNotification *)notification {
     id sender = [notification object];
     if ([sender isEqual:self])
@@ -60,13 +64,6 @@ const int kCellWidth = 45;
     [self highlightStopNamed:stopName showCurrentColumn:YES];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 - (void)viewDidUnload {
     [super viewDidUnload];
