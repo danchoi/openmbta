@@ -354,9 +354,7 @@ const int kCellWidth = 44;
     CGPoint contentOffset = CGPointMake(x , self.scrollView.contentOffset.y);
     [self.scrollView setContentOffset:contentOffset animated:YES];        
     [scrollView reloadData];
-}
-
-- (void)touchedRow:(int)row {
+    [self alignGridAnimated:YES];
 }
 
 
