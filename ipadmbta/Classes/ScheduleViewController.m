@@ -347,7 +347,7 @@ const int kCellWidth = 45;
 
     float maxY = self.scrollView.contentSize.height - ((ScheduleViewController *)self.detailViewController.scheduleViewController).view.frame.size.height;
 
-    float newY = row *kRowHeight;
+    float newY = MAX( row * kRowHeight + ( kRowHeight / 2) - self.scrollView.frame.size.height / 2, 0);
     float y = self.scrollView.contentOffset.y;
     if (self.scrollView.contentSize.height >= self.view.frame.size.height) {
         y = MIN(newY, maxY);
@@ -361,7 +361,7 @@ const int kCellWidth = 45;
         [coloredBand removeFromSuperview];
     
     // put a colored banded in coveringScrollView
-    CGRect bandFrame = CGRectMake(0, newY, coveringScrollView.contentSize.width - 12, kRowHeight);
+    CGRect bandFrame = CGRectMake(0, kRowHeight * row, coveringScrollView.contentSize.width - 12, kRowHeight);
     self.coloredBand = [[[UIView alloc] initWithFrame:bandFrame] autorelease];
     coloredBand.backgroundColor = [UIColor colorWithRed: (25/255.0 ) green: (255.0/255.0) blue: (76/255.0) alpha:0.11];
 
