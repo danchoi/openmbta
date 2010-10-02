@@ -78,14 +78,13 @@ class SubwayRealTime
       end
 
       # replace next_arrivals
+      fmt = "%m/%d/%Y %I:%M:%S %p %Z"
       data[:stops][stop_id][:next_arrivals] = stop_predictions.
         select {|q|
-          datetime = DateTime.parse(q[:time])
-          if RAILS_ENV == 'development'
-            true
-          else
-            datetime > Time.now
-          end
+          datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
+          puts "*" * 80
+          puts " #{q[:name]} #{datetime} > #{Time.now.to_datetime} #{ datetime > Time.now.to_datetime }"
+          datetime > Time.now.to_datetime
         }.map {|q| 
           datetime = DateTime.parse(q[:time])
           time = "%.2d:%.2d:%.2d" % [datetime.hour, datetime.min,datetime.sec] 
