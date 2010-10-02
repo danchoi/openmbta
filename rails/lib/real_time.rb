@@ -51,6 +51,11 @@ class RealTime
       predictions = YAML::load(File.read(predictions_file(route_short_name, headsign)))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
 
+      # special case
+      if route_short_name == '66'
+        direction = predictions['directions'].select {|d| d['headsign'] == headsign}.last
+      end
+
       if direction.nil? || data[:stops].nil? || direction['stops'].nil?
         return data # abort
       end
@@ -63,9 +68,22 @@ class RealTime
         stop_predictions = direction['stops'].
           detect {|s| 
             #s['title'] == stop_data[:name]
-            s['tag'].split("_").first == stop_data[:mbta_id].to_s
+            s['tag'].split("_").first == stop_data[:mbta_id].to_s || s['title'] == stop_data[:name]
           } 
 
+        if RAILS_ENV == 'development'
+          if stop_predictions.nil?
+            puts "=" * 80
+            puts stop_data.inspect
+            puts "MTBA ID"
+            puts stop_data[:mbta_id]
+            puts "name"
+            puts stop_data[:name]
+            puts "TAGS"
+            puts direction['stops'].map {|s| s['tag']}.inspect
+            puts direction['stops'].map {|s| s['title']}.inspect
+          end
+        end
         if stop_predictions.nil? || stop_predictions['predictions'].empty?
           data[:stops][stop_id][:next_arrivals] = [["real time data missing", nil]]
           next
