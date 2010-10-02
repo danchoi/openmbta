@@ -64,6 +64,10 @@ class RealTime
         return data # abort
       end
 
+      if data[:stops].nil?
+        return data
+      end
+
       data[:stops].each do |stop_id, stop_data|
         stop_predictions = direction['stops'].
           detect {|s| 
@@ -113,10 +117,6 @@ class RealTime
           vehicles[vehicle] ||= []
           vehicles[vehicle] << [time, vehicle, stop_id]
           
-          #if vehicle != last_vehicle
-          #  imminent_stop_ids << stop_id.to_s
-          #end
-          #last_vehicle = vehicle
         end
 
         imminent_stop_ids = []

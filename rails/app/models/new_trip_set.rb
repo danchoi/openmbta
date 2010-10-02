@@ -41,6 +41,7 @@ class NewTripSet
     result = { 
       :stops => (stops.inject({}) do |memo, stop|
         memo[stop.id] = {:name => stop.name, 
+          :parent_stop_mbta_id => stop.parent_stop_mbta_id,
           :mbta_id => stop.mbta_id,
           :lat => stop.lat, 
           :lng => stop.lng, 
