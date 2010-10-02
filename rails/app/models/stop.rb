@@ -58,4 +58,15 @@ class Stop < ActiveRecord::Base
         :lng => row[5]
     end
   end
+
+  def self.add_parent_stop_ids
+    Generator.generate('stops.txt') do |row|
+      next if row[9].blank?
+      parent_stop_id = row[9]
+      mbta_id = row[0]
+      stop = Stop.find_by_mbta_id mbta_id
+      puts "#{stop.inspect} -> #{parent_stop_id}"
+      stop.update_attributes :parent_stop_mbta_id => parent_stop_id
+    end
+  end
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101002044602) do
+ActiveRecord::Schema.define(:version => 20101002045556) do
 
   create_table "alerts", :force => true do |t|
     t.string   "title"
@@ -70,11 +70,11 @@ ActiveRecord::Schema.define(:version => 20101002044602) do
     t.string "name"
     t.float  "lat"
     t.float  "lng"
-    t.string "parent_stop_id"
+    t.string "parent_stop_mbta_id"
   end
 
   add_index "stops", ["mbta_id"], :name => "index_stops_on_mbta_id"
-  add_index "stops", ["parent_stop_id"], :name => "index_stops_on_parent_stop_id"
+  add_index "stops", ["parent_stop_mbta_id"], :name => "index_stops_on_parent_stop_id"
 
   create_table "trips", :force => true do |t|
     t.string  "mbta_id"
