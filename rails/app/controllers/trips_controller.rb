@@ -71,9 +71,9 @@ class TripsController < ApplicationController
 #            logger.debug final_grid.inspect
             @result.merge!(:grid => final_grid.compact)
           end
-          if rand(2) == 0
-            @result.merge!(:ads => "iAds") # controls whether iAds are shown
-          end
+          
+          @result.merge!(:ads => "iAds") # controls whether iAds are shown
+         
 
         else # first version
           @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
