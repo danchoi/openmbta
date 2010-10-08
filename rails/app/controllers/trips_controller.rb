@@ -71,7 +71,9 @@ class TripsController < ApplicationController
 #            logger.debug final_grid.inspect
             @result.merge!(:grid => final_grid.compact)
           end
-          @result.merge!(:ads => "iAds") # controls whether iAds are shown
+          if rand(2) == 0
+            @result.merge!(:ads => "iAds") # controls whether iAds are shown
+          end
 
         else # first version
           @result = TripSet.new(:headsign => (@headsign = params[:headsign].gsub(/\^/, "&")) , 
@@ -80,6 +82,9 @@ class TripsController < ApplicationController
                                :now => Now.new(base_time)).result
         end
         
+        if params[:version] == "2" && rand(3) == 0
+          @result.merge!({:message => {:title => "New Version Available", :body => "Please upgrade to OpenMBTA 1.3 when you get the chance"}})
+        end
         render :json => @result.to_json
       }
 
