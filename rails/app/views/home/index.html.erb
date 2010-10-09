@@ -53,7 +53,11 @@ also see the number of trips left for today.</p>
 
 <%= image_tag "screens/bus-routes-annotated.jpg", :class => "screenshot" %>
 
-<p>The next screen is the heart of the application. It is actually two views. By default, you'll see the <b>map view</b>. But if you tap on the "Table" button on the top, you'll see a <b>table view</b> version of the same information.</p>
+<p>The next screen is the heart of the application. It is actually two views.
+By default, you'll see the map view. If you tap on the "Schedule"
+button, you'll see a scrollable schedule. The map view will show real-time information when a real-time data
+feed for that route is available; otherwise, it shows next scheduled arrival
+times. The schedule view always presents scheduled arrival times.</p>
 
 <%= image_tag "screens1.3/IMG_0004.jpg", :class => 'screenshot' %>
 <%= image_tag "screens1.3/IMG_0008.jpg", :class => 'screenshot' %>
