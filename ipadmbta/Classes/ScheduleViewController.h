@@ -56,4 +56,6 @@
 - (void)highlightColumn:(int)col;
 - (void)adjustScrollViewFrame;
 - (void)alignGridAnimated:(BOOL)animated;
+- (void)doubleTouchedColumn:(int)col;
+
 @end

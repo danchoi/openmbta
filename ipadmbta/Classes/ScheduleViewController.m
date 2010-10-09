@@ -376,6 +376,10 @@ const int kCellWidth = 45;
     
 }
 
+- (void)doubleTouchedColumn:(int)col {
+
+}
+
 - (void)highlightStopNamed:(NSString *)stopName showCurrentColumn:(BOOL)showCurrentColumn {
     if (stopName == nil)
         return;
@@ -389,6 +393,7 @@ const int kCellWidth = 45;
     selectedColumn = col;
     [scrollView reloadData];
 }
+
 
 
 #pragma mark -

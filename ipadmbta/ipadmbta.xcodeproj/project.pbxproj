@@ -64,7 +64,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* ipadmbtaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ipadmbtaAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* ipadmbtaAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ipadmbtaAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* ipadmbta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipadmbta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* OpenMBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28042007108E984D000629CD /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		28042008108E984D000629CD /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* ipadmbta.app */,
+				1D6058910D05DD3D006BFB54 /* OpenMBTA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 			);
 			name = ipadmbta;
 			productName = ipadmbta;
-			productReference = 1D6058910D05DD3D006BFB54 /* ipadmbta.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* OpenMBTA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -443,7 +443,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
 				INFOPLIST_FILE = "ipadmbta-Info.plist";
-				PRODUCT_NAME = ipadmbta;
+				PRODUCT_NAME = OpenMBTA;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
@@ -457,7 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
 				INFOPLIST_FILE = "ipadmbta-Info.plist";
-				PRODUCT_NAME = ipadmbta;
+				PRODUCT_NAME = OpenMBTA;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23156A42-0214-4AC2-9EDD-CB756FB2F91E";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -517,7 +517,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ipadmbta_Prefix.pch;
 				INFOPLIST_FILE = "ipadmbta-Info.plist";
-				PRODUCT_NAME = ipadmbta;
+				PRODUCT_NAME = OpenMBTA;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23156A42-0214-4AC2-9EDD-CB756FB2F91E";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -58,10 +58,12 @@
     CGPoint location = [touch locationInView:self];
     float y = location.y; 
     float x = location.x;
+    
+    int row = (int)(y / self.tileHeight);        
+    int col = x / self.tileWidth;
+    
     if(touch.tapCount == 1) { 
 
-        int row = (int)(y / self.tileHeight);        
-        int col = x / self.tileWidth;
         
         // yeah this is poor encapsulation, but life is short
         ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.dataSource;
@@ -75,8 +77,14 @@
         
     } 
     if(touch.tapCount == 2) { 
-        //NSLog(@"2 taps: %@", coord);
-    } 
+        ScheduleViewController *scheduleViewController = (ScheduleViewController *)self.dataSource;
+        if  (row < [scheduleViewController.orderedStopNames count]) {
+            //            NSString *stopName = [scheduleViewController.orderedStopNames objectAtIndex:row];
+            //           TripsViewController *tripViewController = scheduleViewController.tripsViewController;
+            //            [tripViewController highlightStopNamed:stopName];
+            [scheduleViewController doubleTouchedColumn:col];
+            
+        }    } 
     [super touchesEnded:touches withEvent:event];
 } 
 
