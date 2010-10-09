@@ -11,17 +11,21 @@ warming and reduce our dependency on oil.  </p>
 <p>
  You can get the OpenMBTA iPhone app from the iTunes App Store for free <%= link_to "by
 clicking here", "itms://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=336082252&mt=8&s=143441" %>. 
-The current version is <strong>1.2</strong>. The new version introduces bookmarks, a new schedule grid view, a new T-Alerts view, and a Twitter #mbta feed viewer.
+The current version is <strong>1.3</strong>. The new version introduces a new
+scrolling schedule view and multitasking support.
 </p>
 
-<p>OpenMBTA will show you today's remaining scheduled arrival times for MBTA
-buses, subway trains, commuter rail lines, and ferries. It also has a section that shows you the latest <b>T Alerts</b>, which are service delay announcements from the MBTA.</p>
+<p>OpenMBTA will show you today's scheduled and real-time arrival times for
+MBTA buses, subway trains, commuter rail lines, and ferries. (Real-time information is available
+for certain buses and subway lines.) It also shows you the latest service delay
+announcements from the MBTA.</p> 
 
-<%= image_tag "screens1.2/IMG_0013.jpg", :class => 'screenshot' %>
-<%= image_tag "screens1.2/IMG_0009.PNG", :class => 'screenshot' %>
+<%= image_tag "screens1.3/IMG_0004.jpg", :class => 'screenshot' %>
+<%= image_tag "screens1.3/IMG_0002.jpg", :class => 'screenshot' %>
 
-<p>Please note that the application is a <b>public beta</b>.  This means that it has not been fully tested and that the user interface could use a lot of refinement. If you find any bugs or have a good feature or user interface suggestion, please let us know on the <%= link_to "Support & Feedback Page", "/support" %>.  </p>
-
+<p>This application is under continuous development. If you
+find any bugs or have a good feature or user interface suggestion, please let
+us know on the <%= link_to "Support & Feedback Page", "/support" %>.  </p>
 
 <a name="how-to"></a>
 
@@ -43,9 +47,7 @@ this means that there is one headsign for each direction, but some routes are
 more complicated and have more than two headsigns. For each headsign, you'll
 also see the number of trips left for today.</p>
 
-<p> Please note that if a bus route isn't
-in service today, it won't show up at all on this list. This is a potential
-source of confusion that might be remedied in the next version of the app.  </p>
+<p> Please note that if a bus route isn't in service today, it won't show up at all on this list. </p>
 
 <p>We've found Bus 1 going toward Boston, so let's tap that. </p>
 
@@ -53,16 +55,16 @@ source of confusion that might be remedied in the next version of the app.  </p>
 
 <p>The next screen is the heart of the application. It is actually two views. By default, you'll see the <b>map view</b>. But if you tap on the "Table" button on the top, you'll see a <b>table view</b> version of the same information.</p>
 
-<%= image_tag "screens1.2/IMG_0013.jpg", :class => 'screenshot' %>
-<%= image_tag "screens1.2/IMG_0008.PNG", :class => "screenshot" %>
+<%= image_tag "screens1.3/IMG_0004.jpg", :class => 'screenshot' %>
+<%= image_tag "screens1.3/IMG_0008.jpg", :class => 'screenshot' %>
 
 <%= render :partial => 'help/guide' %>
 
-<%= image_tag "screens/IMG_0127.jpg", :class => "screenshot" %>
 
 <p>
-You can also bookmark routes using the star button the top of the map or schedule grid screens. Bookmarked
-routes will show up at the top of the main menu.
+You can also bookmark routes using the bookmark button the top of the map or
+schedule screens. Bookmarked routes will show up at the top of the main
+menu.
 </p>
 
 <p>
@@ -96,7 +98,6 @@ Visit this URL on your mobile browser to use it:
 </p>
 
 
-
 <hr/>
 
 <a name='developers'></a>
@@ -123,12 +124,8 @@ Ruby on Rails.</p>
 
 <h3>Goals for the next release</h3>
 
-<p>The first goal is to start implementing some <strong>real-time
-  tracking</strong> of actual bus, train, and boat locations. </p>
-
-<p>Other goals will be determined through user feedback. Please leave your
+<p>You can help determine next features through user feedback. Please leave your
 suggestions on the <%= link_to 'Support & Feedback Page', '/support' %>.</p>
-
 
 <hr/>
 <a name='credits'></a>
