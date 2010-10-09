@@ -318,10 +318,10 @@
 
 
 - (IBAction)helpButtonPressed:(id)sender {
-    if (self.popoverController) {
+    NSLog(@"%@", [self.popoverController.contentViewController class]);
+    if (![self.popoverController.contentViewController isMemberOfClass:[HelpViewController class]]) {
         [self.popoverController dismissPopoverAnimated:YES];
-        self.popoverController = nil;
-    } else {
+        self.popoverController = nil;             
         if (!self.hvc)
             self.hvc = [[HelpViewController alloc] initWithNibName:@"HelpViewController" bundle:nil];
 
@@ -334,6 +334,9 @@
         [self.popoverController presentPopoverFromBarButtonItem:sender
                                        permittedArrowDirections:UIPopoverArrowDirectionAny
                                                        animated:YES];
+    } else {
+        [self.popoverController dismissPopoverAnimated:YES];
+        self.popoverController = nil;          
     }
         
 }
@@ -418,6 +421,7 @@
     [items insertObject:barButtonItem atIndex:0];
     [toolbar setItems:items animated:YES];
     [items release];
+    [self.popoverController dismissPopoverAnimated:YES];    
     self.popoverController = pc;
 }
 
@@ -429,7 +433,15 @@
     [items removeObjectAtIndex:0];
     [toolbar setItems:items animated:YES];
     [items release];
+    [self.popoverController dismissPopoverAnimated:YES];    
     self.popoverController = nil;
+}
+
+- (void)splitViewController:(UISplitViewController*)svc popoverController:(UIPopoverController*)pc willPresentViewController:(UIViewController *)aViewController {
+    [self.popoverController dismissPopoverAnimated:YES];    
+    self.popoverController = pc;
+    
+    
 }
 
 
