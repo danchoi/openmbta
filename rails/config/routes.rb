@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/trips', :controller => 'trips'
   map.connect '/trips.:format', :controller => 'trips'
+  map.connect '/trips/realtime.html', :controller => 'trips', :action => "realtime"
   map.connect '/trips/:id', :controller => 'trips', :action => "show"
 
   map.connect '/stop_arrivals', :controller => 'stop_arrivals', :action => 'index'

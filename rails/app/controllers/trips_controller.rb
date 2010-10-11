@@ -101,7 +101,7 @@ class TripsController < ApplicationController
 
         @result = NewTripSet.new(:offset => params[:offset], 
                                  :headsign => (@headsign ||= params[:headsign]).gsub(/\^/, "&"), 
-                                 :first_stop => params[:first_stop],
+                                 :first_stop => (@first_stop = params[:first_stop]),
                            :route_short_name => (@route = params[:route_short_name]),
                            :now => Now.new(base_time),
                            :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
@@ -128,10 +128,53 @@ class TripsController < ApplicationController
         @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
 
         if params[:version] == "3"
-
           render :action => "index3"
         end
       }
     end
+  end
+
+
+  def realtime
+  
+        chunks = CGI.unescape(request.query_string).gsub(/ & /, " ^ ").split("&")
+        headsign_param = chunks.detect {|x| x =~ /^headsign=/}
+        if headsign_param
+          @headsign = headsign_param.split(/=/)[1]
+          logger.debug("@headsign: #@headsign")
+        end
+
+        @result = NewTripSet.new(:offset => params[:offset], 
+                                 :headsign => (@headsign ||= params[:headsign]).gsub(/\^/, "&"), 
+                                 :first_stop => (@first_stop = params[:first_stop]),
+                           :route_short_name => (@route = params[:route_short_name]),
+                           :now => Now.new,
+                           :transport_type => (@transport_type = params[:transport_type].downcase.gsub(" ", "_").to_sym)).result
+
+        if @result[:message]
+          render :text => @result[:message][:body]
+          return
+        end
+        @current_offset = params[:offset] ? params[:offset].to_i : 0
+        @trip_ids = @result[:ordered_trip_ids]
+
+        @cols = 6
+
+
+
+        @region = @result[:region]
+        @center_lat = @region[:center_lat]
+        @center_lng = @region[:center_lng]
+        lat_span = @region[:lat_span] * 0.3
+        lng_span = @region[:lng_span] * 0.3
+        @sw = [@region[:center_lat] - lat_span, @region[:center_lng] - lng_span]
+        @ne = [@region[:center_lat] + lat_span, @region[:center_lng] + lng_span]
+        @stops = @result[:stops].map {|k,v| v[:stop_id] = k; v}
+
+          if @transport_type == :bus 
+            @result = RealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route)
+          elsif @transport_type == :subway && params[:version] == '3'
+            @result = SubwayRealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route, :first_stop => @first_stop)
+          end
   end
 end

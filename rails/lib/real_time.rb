@@ -43,6 +43,7 @@ class RealTime
   end
 
   def self.add_data(data, params)
+    data = data.dup
     headsign = params[:headsign]
     route_short_name = params[:route_short_name]
 

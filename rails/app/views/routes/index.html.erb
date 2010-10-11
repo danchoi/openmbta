@@ -56,14 +56,22 @@ tomorrow (or Monday) morning, and chances are that you'll see it. If not, please
       <% route[:headsigns].each do |headsign, trips_left, first_stop| %>
         </tr>
           <td colspan="3">
-            <%= link_to headsign, "/trips.html?" + URI.escape("transport_type=#{@transport_type}&route_short_name=#{route[:route_short_name]}&headsign=#{headsign.gsub("&", "^")}&first_stop=#{first_stop}") %> 
-            <% if first_stop %>
+            <strong><%= link_to headsign, "/trips.html?" + URI.escape("transport_type=#{@transport_type}&route_short_name=#{route[:route_short_name]}&headsign=#{headsign.gsub("&", "^")}&first_stop=#{first_stop =~ /realtime/ ? nil : first_stop}") %></strong>
+            <% if !first_stop.blank? && first_stop != "+ realtime data" %>
               <br/>from <span class="trips-left"><%=first_stop %></span>
             <% end %>
             <br/><span class="trips-left"><%=pluralize(trips_left, "trip")%> left</span>
+            <% if first_stop == "+ realtime data" %>
+              <br/><%= link_to "realtime data",  "/trips/realtime.html?" + URI.escape("transport_type=#{@transport_type}&route_short_name=#{route[:route_short_name]}&headsign=#{headsign.gsub("&", "^")}&first_stop=#{first_stop =~ /realtime/ ? nil : first_stop}") %>
+            <% end %>
+            <br/>
+
+
           </td>
         </tr>
       <% end %>
   <% end %>
 </table>
+
+
 

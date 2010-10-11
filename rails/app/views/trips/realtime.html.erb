@@ -1,0 +1,60 @@
+
+<% unless params[:from_iphone_app] %>
+  <div class="nav"
+    <%= link_to "main", "/mobile" %> &gt; <%= link_to "routes", url_for(:controller => "routes", :transport_type => params[:transport_type]) %> &gt; trips
+  </div>
+
+  <div class="note">
+    Bookmark this page if this is one of your regular routes.
+  </div>
+<% end %>
+
+  <div class="note">
+    iPhone iOS 4 users: if scrolling doesn't work, try using two fingers to scroll. 
+  </div>
+
+<div class="info">
+  <span style="font-weight:bold"><%= @headsign.gsub(' ^ ', " & ") %></span><br/>
+  <% if params[:first_stop] && !params[:first_stop].blank? && params[:first_stop] != "(null)" %>
+    <span style="font-weight:bold"><%= params[:first_stop] %></span><br/>
+  <% end %>
+  <%= route_s @route, @transport_type.to_s %>
+</div>
+
+<p>
+If your device allows geo-location, the closest stop will be <span class="example-blue">highlighted in blue</span>.
+</p>
+
+<p id="closestStopFound"></p>
+
+
+
+<table class='mbta'>
+  <% @result[:ordered_stop_ids].each do |stop_id| %>
+    <tr  class='row-header stop-name'>
+      <td id="<%=stop_id%>" colspan="<%= @cols %>" class="stop-name-header">
+        <span class="stop-name-span">
+          <%= @result[:stops][stop_id][:name] %>
+        </span>
+
+      </td>
+    </tr>
+
+      <tr>
+
+
+
+        <td style="font-size:normal;padding: 5px">
+          next arrivals: <%= @result[:stops][stop_id][:next_arrivals].map {|x| x[0]}.join(' ')   %>
+        </td>
+
+      </tr>
+
+
+
+  <% end %>
+</table>
+
+
+<%# @result.inspect %> 
+
