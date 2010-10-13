@@ -36,9 +36,16 @@ select a.mbta_id, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining 
     now = options[:now] || Now.new
     route_short_name = "CR-#{options[:route_short_name]}"
     headsign = options[:headsign].sub(/^To /, '')
-
+    service_ids = Service.ids_active_on(now.date)
+    conditions = if headsign == 'North Station' && route_short_name == 'Lowell'
+                   route_short_names = ["CR-Lowell", "CR-Haverhill-CR-Weekday-212", "CR-Haverhill-CR-Weekday-208"]
+                   ["routes.mbta_id in (?) and headsign LIKE ? and service_id in (?) and end_time > '#{now.time}'", route_short_names, "#{headsign}%", service_ids]
+                 else
+                   ["routes.mbta_id = ? and headsign LIKE ? and service_id in (?) and end_time > '#{now.time}'", route_short_name, "#{headsign}%", service_ids]
+                 end
+ 
     Trip.all(:joins => :route,
-             :conditions => ["routes.mbta_id = ? and headsign LIKE ? and service_id in (?) and end_time > '#{now.time}'", route_short_name, "#{headsign}%", Service.ids_active_on(now.date)], 
+             :conditions => conditions,
              :order => "start_time asc", 
              :limit => options[:limit])
   end
