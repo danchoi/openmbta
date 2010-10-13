@@ -72,7 +72,7 @@ class TripsController < ApplicationController
             @result.merge!(:grid => final_grid.compact)
           end
           
-          @result.merge!(:ads => "iAds") # controls whether iAds are shown
+          # @result.merge!(:ads => "iAds") # controls whether iAds are shown
          
 
         else # first version
