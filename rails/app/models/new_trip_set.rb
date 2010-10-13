@@ -15,6 +15,10 @@ class NewTripSet
     #@options.merge!(:limit => 10)
     trips = @options[:transport_type].to_s.camelize.constantize.trips(@options)
 
+    if trips.nil?
+      return {:message => {:title => "Attention", :body => "Commuter Rail routes have changed, making old bookmarks invalid. Please update your Commuter Rail bookmarks."}}
+    end
+
     if trips.empty?
       # send back a message 
       # NOTE that sending any message with cause the app to show an alert

@@ -26,19 +26,18 @@ class Grid
                        :order => "start_time asc")
 
              when 'commuter_rail'
-              route_short_name = "CR-#{route_short_name}"
-              headsign = headsign.sub(/^To /, '')
-              conditions = if headsign == 'North Station' && route_short_name == 'Lowell'
-                             route_short_names = ["CR-Lowell", "CR-Haverhill-CR-Weekday-212", "CR-Haverhill-CR-Weekday-208"]
-                             ["routes.mbta_id in (?) and headsign LIKE ? and service_id in (?) ", route_short_names, "#{headsign}%", service_ids]
-                           else
-                             ["routes.mbta_id = ? and headsign LIKE ? and service_id in (?) ", route_short_name, "#{headsign}%", service_ids]
-                           end
-               
-              Trip.all(:joins => :route,
-                       :conditions => conditions,
-                       :order => "end_time asc")
 
+              line =  CommuterRail::Lines.detect {|x| x[:line] == route_short_name}
+              if line.nil?
+                []
+              else
+                trains = line[headsign.downcase.to_sym]
+                mbta_id_conditions = trains.map {|num| "trips.mbta_id like 'CR-%-#{num}'"}.join(' OR ')
+                conditions = ["(#{mbta_id_conditions}) and trips.route_type = 2 and service_id in (?)", service_ids]
+                Trip.all(:conditions => conditions,
+                         :order => "end_time asc")
+
+              end
              when 'boat'
               route_mbta_id = Boat::NAME_TO_MBTA_ID[route_short_name]
               first_stop, last_stop = headsign.split(' to ')

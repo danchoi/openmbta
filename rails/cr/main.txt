@@ -1,0 +1,12 @@
+/schedules_and_maps/rail/lines/?route=FAIRMNT Fairmount Line
+/schedules_and_maps/rail/lines/?route=FITCHBRG Fitchburg Line
+/schedules_and_maps/rail/lines/?route=WORCSTER Framingham/Worcester Line
+/schedules_and_maps/rail/lines/?route=FRANKLIN Franklin Line
+/schedules_and_maps/rail/lines/?route=GREENBSH Greenbush Line
+/schedules_and_maps/rail/lines/?route=HAVRHILL Haverhill Line
+/schedules_and_maps/rail/lines/?route=OLCOLONY Kingston/Plymouth Line
+/schedules_and_maps/rail/lines/?route=LOWELL Lowell Line
+/schedules_and_maps/rail/lines/?route=OLCOLONY Middleborough/Lakeville Line
+/schedules_and_maps/rail/lines/?route=NEEDHAM Needham Line
+/schedules_and_maps/rail/lines/?route=NBRYROCK Newburyport/Rockport Line
+/schedules_and_maps/rail/lines/?route=PROVSTOU Providence/Stoughton Line
