@@ -93,7 +93,7 @@ select a.route_id, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining
     Trip.all(:joins => :route,
              :conditions => conditions, 
              :order => "end_time asc", 
-             :limit => 20) # limit needs to be much higher with merged branches
+             :limit => 90) # limit needs to be much higher with merged branches
   end
 
   def self.arrivals(stopping_id, options)
