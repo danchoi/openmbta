@@ -86,7 +86,12 @@ class SubwayRealTime
           puts " #{q[:name]} #{datetime} > #{Time.now.to_datetime} #{ datetime > Time.now.to_datetime }"
           datetime > Time.now.to_datetime
         }.map {|q| 
-          datetime = DateTime.parse(q[:time])
+          begin
+            datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
+            #datetime = DateTime.parse(q[:time])
+          rescue
+            raise "Failed to parse #{q[:time]}"
+          end
           time = "%.2d:%.2d:%.2d" % [datetime.hour, datetime.min,datetime.sec] 
           [format_time(time), q[:trip_id]]
         }[0,3]
