@@ -92,7 +92,7 @@ select a.route_id, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining
     conditions = ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids]
     Trip.all(:joins => :route,
              :conditions => conditions, 
-             :order => "start_time asc", 
+             :order => "end_time asc", 
              :limit => 20) # limit needs to be much higher with merged branches
   end
 

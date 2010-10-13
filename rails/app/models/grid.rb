@@ -23,7 +23,7 @@ class Grid
                            end
               Trip.all(:joins => :route,
                        :conditions => conditions, 
-                       :order => "start_time asc")
+                       :order => "end_time asc")
 
              when 'commuter_rail'
 
