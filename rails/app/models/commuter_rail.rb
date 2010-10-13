@@ -30,7 +30,7 @@ module CommuterRail
     return nil if line.nil?
     puts line.inspect
     trains = line[headsign.downcase.to_sym]
-    puts trains.inspect
+    return nil if trains.nil?
     mbta_id_conditions = trains.map {|num| "trips.mbta_id like 'CR-%-#{num}'"}.join(' OR ')
     conditions = ["(#{mbta_id_conditions}) and trips.route_type = 2 and service_id in (?) and end_time > '#{now.time}'", service_ids]
     Trip.all(:conditions => conditions,
