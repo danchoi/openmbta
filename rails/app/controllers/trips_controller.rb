@@ -25,8 +25,11 @@ class TripsController < ApplicationController
 
           if @transport_type == :bus && (base_time < 2.minutes.from_now && base_time > 2.minutes.ago)
             @result = RealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route)
-          elsif @transport_type == :subway && params[:version] == '3'
+          elsif @transport_type == :subway && params[:version] == '3' && @route !~ /Green/
             @result = SubwayRealTime.add_data(@result, :headsign => @headsign, :route_short_name => @route, :first_stop => @first_stop)
+          end
+          if @transport_type == :subway
+            @first_stop = nil
           end
        
           if params[:version] == '3'

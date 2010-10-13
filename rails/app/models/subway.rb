@@ -60,7 +60,7 @@ select a.route_id, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining
   # subway headsigns are often too ambiguous; so we need to group by first_stop
   def self.new_routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
-    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.first_stop, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where routes.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign, trips.first_stop").
+    results = ActiveRecord::Base.connection.select_all("select routes.id as route_id, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on routes.id = trips.route_id where routes.route_type in (0,1) and trips.end_time > '#{now.time}' and trips.service_id in (#{service_ids.join(',')}) group by trips.headsign").
       group_by {|r| 
         puts r.inspect
         puts ROUTE_ID_TO_NAME[r["route_id"].to_i]
@@ -89,15 +89,11 @@ select a.route_id, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining
     service_ids = Service.active_on(date).map(&:id)
     now = now.time
 
-    conditions = if first_stop 
-                   ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}' and first_stop = ? ", route_ids, headsign, service_ids, first_stop]
-                 else
-                   ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids]
-                 end
+    conditions = ["routes.id in (?) and headsign = ? and service_id in (?) and end_time > '#{now}'", route_ids, headsign, service_ids]
     Trip.all(:joins => :route,
              :conditions => conditions, 
              :order => "start_time asc", 
-             :limit => options[:limit])
+             :limit => 20) # limit needs to be much higher with merged branches
   end
 
   def self.arrivals(stopping_id, options)
@@ -119,7 +115,8 @@ select a.route_id, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining
   end
 
   def self.generate_new_headsigns(values)
-    values.map {|x| [x["headsign"],  x["trips_remaining"].to_i, x["first_stop"]] }
+    #values.map {|x| [x["headsign"],  x["trips_remaining"].to_i, x["first_stop"]] }
+    values.map {|x| [x["headsign"],  x["trips_remaining"].to_i, 'all points'] }
   end
 
 end
