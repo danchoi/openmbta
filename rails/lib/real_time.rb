@@ -15,7 +15,7 @@ class RealTime
                  when /Ruggles via Kendall/ # south
                    '747'
                  when /Sullivan Station via Kendall/
-                   '748'
+                   '747' # also 748?
                  end
                when 'SL'
                  case headsign
