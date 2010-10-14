@@ -10,9 +10,14 @@ class Grid
 
     @trips = case transport_type 
              when 'bus' 
-               Trip.all(:joins => :route,
+
+               trips = Trip.all(:joins => :route,
                  :conditions => ["routes.short_name = ? and headsign = ? and service_id in (?)", route_short_name, headsign, service_ids], 
                  :order => "start_time asc")
+               if route_short_name == "CT2"
+                 trips = trips.sort_by {|t| [t.stoppings.detect {|stopping| stopping.stop.name =~ /Main St @ Kendall Station - Red Line/}.arrival_time, t.mbta_id]  }
+               end
+               trips
 
              when 'subway'
               route_ids = Subway::ROUTE_NAME_TO_ID[route_short_name]
