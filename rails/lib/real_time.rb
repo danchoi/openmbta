@@ -13,9 +13,10 @@ class RealTime
                when 'CT2'
                  case headsign
                  when /Ruggles via Kendall/ # south
-                   '747'
+                   #'747'
+                   'ct2'
                  when /Sullivan Station via Kendall/
-                   '747' # also 748?
+                   'ct2' # also 748?
                  end
                when 'SL'
                  case headsign
