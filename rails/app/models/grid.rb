@@ -37,10 +37,14 @@ class Grid
                 []
               else
                 trains = line[headsign.downcase.to_sym]
-                mbta_id_conditions = trains.map {|num| "trips.mbta_id like 'CR-%-#{num}'"}.join(' OR ')
-                conditions = ["(#{mbta_id_conditions}) and trips.route_type = 2 and service_id in (?)", service_ids]
-                Trip.all(:conditions => conditions,
-                         :order => "end_time asc")
+                if trains.nil?
+                  []
+                else
+                  mbta_id_conditions = trains.map {|num| "trips.mbta_id like 'CR-%-#{num}'"}.join(' OR ')
+                  conditions = ["(#{mbta_id_conditions}) and trips.route_type = 2 and service_id in (?)", service_ids]
+                  Trip.all(:conditions => conditions,
+                           :order => "end_time asc")
+                end
 
               end
              when 'boat'
