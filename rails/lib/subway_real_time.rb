@@ -82,9 +82,9 @@ class SubwayRealTime
       data[:stops][stop_id][:next_arrivals] = stop_predictions.
         select {|q|
           datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
-          puts "*" * 80
-          puts " #{q[:name]} #{datetime} > #{Time.now.to_datetime} #{ datetime > Time.now.to_datetime }"
           datetime > Time.now.to_datetime
+        }.sort_by {|x|
+          DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
         }.map {|q| 
           begin
             datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
@@ -92,7 +92,7 @@ class SubwayRealTime
           rescue
             raise "Failed to parse #{q[:time]}"
           end
-          time = "%.2d:%.2d:%.2d" % [datetime.hour, datetime.min,datetime.sec] 
+          time = "%.2d:%.2d:%.2d" % [datetime.hour, datetime.min, datetime.sec] 
           [format_time(time), q[:trip_id]]
         }[0,3]
 
