@@ -76,10 +76,10 @@ class TripsController < ApplicationController
           end
           
           # @result.merge!(:ads => "iAds") # controls whether iAds are shown
-          if rand(8) == 0 && request.headers['User-Agent'] !~ /OpenMBTA\/1\.0/
-            logger.info "Adding support message"
-            @result.merge!({:message => {:title => "Please Support OpenMBTA", :body => "By tweeting about OpenMBTA or giving it a good review in the App Store, you will encourage us to keep making this free app better."}})
-          end
+#          if rand(8) == 0 && request.headers['User-Agent'] !~ /OpenMBTA\/1\.0/
+#            logger.info "Adding support message"
+#            @result.merge!({:message => {:title => "Please Support OpenMBTA", :body => "By tweeting about OpenMBTA or giving it a good review in the App Store, you will encourage us to keep making this free app better."}})
+#          end
           logger.info "USER AGENT: #{request.headers['User-Agent']}"
  
 
