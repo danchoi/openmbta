@@ -84,7 +84,7 @@ class SubwayRealTime
           datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
           datetime > Time.now.to_datetime
         }.sort_by {|x|
-          DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
+          DateTime.strptime(x[:time] + " -0400", fmt)  # HACK. CHANGME later
         }.map {|q| 
           begin
             datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later

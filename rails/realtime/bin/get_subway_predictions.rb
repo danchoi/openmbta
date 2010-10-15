@@ -30,10 +30,11 @@ def stop_keys
   @stop_keys
 end
 
-%W{ predictions/red predictions/blue predictions/orange}.each do |x|
-  line = x.split('/').last
-  res = compile(File.readlines("#{x}.csv"), line)
-  File.open("#{x}.yml", 'w') {|f| f.puts res.to_yaml}
+11.times do 
+  %W{ predictions/red predictions/blue predictions/orange}.each do |x|
+    line = x.split('/').last
+    res = compile(File.readlines("#{x}.csv"), line)
+    File.open("#{x}.yml", 'w') {|f| f.puts res.to_yaml}
+  end
+  sleep 5
 end
-
-
