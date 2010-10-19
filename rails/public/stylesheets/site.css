@@ -17,6 +17,10 @@ img.screenshot {
   margin-bottom: 20px;
   width: 260px; 
 }
+img.ipad-screenshot {
+  margin-bottom: 20px;
+  width: 500px; 
+}
 .sidebar {
   width: 100%;
   padding: 0 10px;
