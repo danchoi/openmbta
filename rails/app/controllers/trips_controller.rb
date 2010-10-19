@@ -76,10 +76,10 @@ class TripsController < ApplicationController
           end
           
           # @result.merge!(:ads => "iAds") # controls whether iAds are shown
-          if rand(5) == 0 
-            logger.info "Adding ipad available message"
-            @result.merge!({:message => {:title => "OpenMBTA is now available on the iPad", :body => "Download the 1.0 iPad version today."}})
-          end
+#          if rand(5) == 0 
+#            logger.info "Adding ipad available message"
+#            @result.merge!({:message => {:title => "OpenMBTA is now available on the iPad", :body => "Download the 1.0 iPad version today."}})
+#          end
           logger.info "USER AGENT: #{request.headers['User-Agent']}"
  
 
