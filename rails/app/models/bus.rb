@@ -69,12 +69,12 @@ select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_r
 
     if headsign == 'All Inbound'
       Trip.all(:joins => :route,
-               :conditions => ["routes.short_name = ? and direction_id= ? and service_id in (?) and end_time > '#{now}'", route_short_name, 1, service_ids], 
+               :conditions => ["routes.short_name = ? and direction_id = ? and service_id in (?) and end_time > '#{now}'", route_short_name, 1, service_ids], 
                :order => "start_time asc", 
                :limit => options[:limit])
     elsif headsign == 'All Outbound'
       Trip.all(:joins => :route,
-               :conditions => ["routes.short_name = ? and direction_id= ? and service_id in (?) and end_time > '#{now}'", route_short_name, 0, service_ids], 
+               :conditions => ["routes.short_name = ? and direction_id = ? and service_id in (?) and end_time > '#{now}'", route_short_name, 0, service_ids], 
                :order => "start_time asc", 
                :limit => options[:limit])
     else

@@ -48,7 +48,7 @@ def get_predictions(route_tag)
 
     stops = []
     route_config['directions'].
-      select {|d| d['direction_name'] == 'Inbound'}.
+      select {|d| d['direction_name'] == x}.
       each {|d| 
         d['stops'].each do |stop|
           if (seen_stop = stops.detect {|s| s['tag'] == stop['tag']})
