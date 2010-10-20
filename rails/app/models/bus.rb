@@ -22,7 +22,7 @@ select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_r
 
         route = {:route_short_name => short_name, 
           :headsigns => values.
-            sort_by {|a| [a['direction_id'], a['headsign']]}.
+            sort_by {|a| [ -(a['direction_id'].to_i), a['headsign']]}.
             map {|x| 
               #headsign = "#{x['headsign'] } #{x['direction_id']}"
               headsign = x['headsign'] 
