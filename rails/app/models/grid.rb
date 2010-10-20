@@ -11,9 +11,20 @@ class Grid
     @trips = case transport_type 
              when 'bus' 
 
-               trips = Trip.all(:joins => :route,
-                 :conditions => ["routes.short_name = ? and headsign = ? and service_id in (?)", route_short_name, headsign, service_ids], 
-                 :order => "start_time asc")
+               trips = if headsign == 'All Inbound'
+                         Trip.all(:joins => :route,
+                         :conditions => ["routes.short_name = ? and direction_id = ? and service_id in (?)", route_short_name, 1, service_ids], 
+                         :order => "start_time asc")
+                 
+                       elsif headsign == 'All Outbound'
+                         Trip.all(:joins => :route,
+                         :conditions => ["routes.short_name = ? and direction_id = ? and service_id in (?)", route_short_name, 0, service_ids], 
+                         :order => "start_time asc")
+                       else
+                         Trip.all(:joins => :route,
+                         :conditions => ["routes.short_name = ? and headsign = ? and service_id in (?)", route_short_name, headsign, service_ids], 
+                         :order => "start_time asc")
+                       end
                if route_short_name == "CT2"
                  trips = trips.sort_by {|t| [t.stoppings.detect {|stopping| stopping.stop.name =~ /Main St @ Kendall Station - Red Line/}.arrival_time, t.mbta_id]  }
                end

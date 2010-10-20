@@ -3,25 +3,40 @@ module Bus
   def self.routes(now = Now.new)
     service_ids = Service.active_on(now.date).map(&:id)
     query = <<-END
-select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining from 
-(select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) group by routes.short_name, trips.headsign) a
+select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_remaining, a.direction_id from 
+(select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining, trips.direction_id from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) group by routes.short_name, trips.headsign) a
     left outer join 
-    (select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) and trips.end_time > '#{now.time}' group by routes.short_name, trips.headsign) b
+    (select case when routes.short_name = ' ' then 'Other' else routes.short_name end route_short_name, trips.headsign, count(trips.id) as trips_remaining, trips.direction_id from routes inner join trips on trips.route_id = routes.id where routes.route_type in (3) and trips.service_id in (#{service_ids.join(',')}) and trips.end_time > '#{now.time}' group by routes.short_name, trips.headsign) b
     on a.route_short_name = b.route_short_name and a.headsign = b.headsign;
 
     END
     ActiveRecord::Base.connection.select_all(query).
       group_by {|r| r["route_short_name"]}.
       select {|short_name, value|  short_name != "Shuttle" && short_name != "Other"}.
-      map {|short_name, values| {:route_short_name => short_name, 
-          :headsigns => values.map {|x| 
-            if RealTime.available?(short_name, x['headsign'])
-              [x["headsign"], x["trips_remaining"].to_i, "+ realtime data" ] 
-            else
-              [x["headsign"], x["trips_remaining"].to_i ] 
-            end
-          }
-        } 
+      map {|short_name, values| 
+
+        inbound_count = values.select {|x| x['direction_id'] == '0'}.size
+        outbound_count = values.select {|x| x['direction_id'] == '1'}.size
+
+        route = {:route_short_name => short_name, 
+          :headsigns => values.
+            sort_by {|a| [a['direction_id'], a['headsign']]}.
+            map {|x| 
+              #headsign = "#{x['headsign'] } #{x['direction_id']}"
+              headsign = x['headsign'] 
+              if RealTime.available?(short_name, x['headsign'])
+                [headsign, x["trips_remaining"].to_i, "+ realtime data"]
+              else
+                [headsign, x["trips_remaining"].to_i] 
+              end
+              }} 
+        if values.size > 2
+          trips_remaining = values.select {|x| x['direction_id'] == '0'}.inject(0) {|sum, n| sum + n['trips_remaining'].to_i}
+          route[:headsigns].unshift( ["All Outbound", trips_remaining] )
+          trips_remaining = values.select {|x| x['direction_id'] == '1'}.inject(0) {|sum, n| sum + n['trips_remaining'].to_i}
+          route[:headsigns].unshift(["All Inbound", trips_remaining])
+        end
+        route
       }.
       sort_by {|x| 
         if x[:route_short_name].to_i == 0 
@@ -42,10 +57,22 @@ select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_r
     service_ids = Service.active_on(date).map(&:id)
     now = now.time
 
-    Trip.all(:joins => :route,
-             :conditions => ["routes.short_name = ? and headsign = ? and service_id in (?) and end_time > '#{now}'", route_short_name, headsign, service_ids], 
-             :order => "start_time asc", 
-             :limit => options[:limit])
+    if headsign == 'All Inbound'
+      Trip.all(:joins => :route,
+               :conditions => ["routes.short_name = ? and direction_id= ? and service_id in (?) and end_time > '#{now}'", route_short_name, 1, service_ids], 
+               :order => "start_time asc", 
+               :limit => options[:limit])
+    elsif headsign == 'All Outbound'
+      Trip.all(:joins => :route,
+               :conditions => ["routes.short_name = ? and direction_id= ? and service_id in (?) and end_time > '#{now}'", route_short_name, 0, service_ids], 
+               :order => "start_time asc", 
+               :limit => options[:limit])
+    else
+      Trip.all(:joins => :route,
+               :conditions => ["routes.short_name = ? and headsign = ? and service_id in (?) and end_time > '#{now}'", route_short_name, headsign, service_ids], 
+               :order => "start_time asc", 
+               :limit => options[:limit])
+    end
   end
 
   def self.arrivals(stopping_id, options)
