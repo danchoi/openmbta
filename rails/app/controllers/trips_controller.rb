@@ -43,6 +43,7 @@ class TripsController < ApplicationController
             end
 
             # make sure grid has same order as result
+=begin
             if @result[:ordered_stop_ids]
               final_grid = []
               @result[:ordered_stop_ids].each do |x|
@@ -51,7 +52,8 @@ class TripsController < ApplicationController
             else
               final_grid = grid
             end
-            
+=end       
+            final_grid = grid
             # mark times that are past
             grid.each do |stop|
               stop[:times] = stop[:times].map do |time|

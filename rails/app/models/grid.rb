@@ -71,16 +71,6 @@ class Grid
   def grid
     trips = @trips
     trip_ids = @trips.map(&:id)
-    stops = if @trips.size == 1
-              @trips[0].stops
-            else
-              Stop.all(:select => "stops.*, count(*) as num_stoppings", 
-                   :joins => :stoppings, 
-                   :conditions => ["stoppings.trip_id in (?)", trip_ids], 
-                   :group => "stoppings.stop_id")
-                   
-            end
-
     @grid = [] 
     @first_stops = []
     @trips.each_with_index do |trip, col|
@@ -91,6 +81,8 @@ class Grid
         pos = stopping.position
         if i == 0 && !@first_stops.include?(stop)
           @first_stops << stop
+          #puts "FIRST STOPS"
+          #puts @first_stops.inspect
         end
         stop_row = @grid.detect {|x| x.is_a?(Hash) && x[:stop] && x[:stop][:stop_id] == stop.id}
         if stop_row
@@ -110,7 +102,7 @@ class Grid
         end
       end
     end
-
+    puts @grid.inspect
     @grid
   end
 
