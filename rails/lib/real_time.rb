@@ -52,7 +52,7 @@ class RealTime
       
       predictions = YAML::load(File.read(predictions_file(route_short_name, headsign)))
 
-      direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
+      direction = predictions['directions'].detect {|d| d['headsign'] == headsign} rescue nil
 
       # special case
       if route_short_name == '66'
