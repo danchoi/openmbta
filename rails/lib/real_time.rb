@@ -51,7 +51,15 @@ class RealTime
     if available?(route_short_name, headsign)
       
       predictions = YAML::load(File.read(predictions_file(route_short_name, headsign)))
-      direction = predictions['directions'].detect {|d| d['headsign'] == headsign}
+
+      direction = case headsign 
+                  when /Inbound/
+                    predictions['directions'].detect {|d| d['direction_name'] == 'Inbound'}
+                  when /Outbound/
+                    predictions['directions'].detect {|d| d['direction_name'] == 'Outbound'}
+                  else
+                    predictions['directions'].detect {|d| d['headsign'] == headsign}
+                  end
 
       # special case
       if route_short_name == '66'

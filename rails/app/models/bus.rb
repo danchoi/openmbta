@@ -18,13 +18,15 @@ select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_r
         inbound_count = values.select {|x| x['direction_id'] == '0'}.size
         outbound_count = values.select {|x| x['direction_id'] == '1'}.size
 
+        realtime_available = nil
+
         route = {:route_short_name => short_name, 
           :headsigns => values.
             sort_by {|a| [a['direction_id'], a['headsign']]}.
             map {|x| 
               #headsign = "#{x['headsign'] } #{x['direction_id']}"
               headsign = x['headsign'] 
-              if RealTime.available?(short_name, x['headsign'])
+              if (realtime_available = RealTime.available?(short_name, x['headsign']))
                 [headsign, x["trips_remaining"].to_i, "+ realtime data"]
               else
                 [headsign, x["trips_remaining"].to_i] 
@@ -32,9 +34,17 @@ select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_r
               }} 
         if values.size > 2
           trips_remaining = values.select {|x| x['direction_id'] == '0'}.inject(0) {|sum, n| sum + n['trips_remaining'].to_i}
-          route[:headsigns].unshift( ["All Outbound", trips_remaining] )
+          x = ["All Outbound", trips_remaining]
+          if realtime_available
+            x << "+ realtime data"
+          end
+          route[:headsigns].unshift( x )
           trips_remaining = values.select {|x| x['direction_id'] == '1'}.inject(0) {|sum, n| sum + n['trips_remaining'].to_i}
-          route[:headsigns].unshift(["All Inbound", trips_remaining])
+          x = ["All Inbound", trips_remaining]
+          if realtime_available
+            x << "+ realtime data"
+          end
+          route[:headsigns].unshift( x )
         end
         route
       }.
