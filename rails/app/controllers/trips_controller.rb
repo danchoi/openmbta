@@ -58,6 +58,8 @@ class TripsController < ApplicationController
             # sync up stops between grid and stops dictionary
             @result[:ordered_stop_ids] = grid.compact.map {|row| row[:stop][:stop_id]}
             grid.compact.each {|stop| 
+              next if @result[:stops].nil?
+              next if stop[:stop].nil?
               next if @result[:stops][stop[:stop][:stop_id]] 
               x  = Stop.find(stop[:stop][:stop_id])
               # TODO add next arrivals from grid! 
