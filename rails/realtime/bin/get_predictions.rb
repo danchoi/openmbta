@@ -43,6 +43,25 @@ def get_predictions(route_tag)
       
     end
   end
+  # aggregate all inbound and all outbound
+  ['Inbound', "Outbound"].each do |x|
+
+    stops = []
+    route_config['directions'].
+      select {|d| d['direction_name'] == 'Inbound'}.
+      each {|d| 
+        d['stops'].each do |stop|
+          if (seen_stop = stops.detect {|s| s['tag'] == stop['tag']})
+            seen_stop['predictions'] += stop['predictions'].dup
+          else
+            stops << stop.dup
+          end
+        end
+    }
+
+    route_config['directions'] << {'headsign' => "All #{x}", 'stops' => stops}
+
+  end
   route_config.delete('stops')
 
   save_path = "#{File.dirname(__FILE__)}/../predictions/#{route_tag}.yml"
