@@ -53,6 +53,7 @@ def get_predictions(route_tag)
         d['stops'].each do |stop|
           if (seen_stop = stops.detect {|s| s['tag'] == stop['tag']})
             seen_stop['predictions'] += stop['predictions'].dup
+            seen_stop['predictions'].uniq!
           else
             stops << stop.dup
           end
