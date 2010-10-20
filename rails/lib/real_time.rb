@@ -41,7 +41,7 @@ class RealTime
   def self.available?(route_short_name, headsign)
     file = predictions_file(route_short_name, headsign)
     if ( File.exist?(file) && (File.mtime(file) > 45.minutes.ago) )
-      predictions = YAML::load(File.read(file)
+      predictions = YAML::load(File.read(file))
       direction = predictions['directions'].detect {|d| d['headsign'] == headsign} rescue nil
 
       direction ? true : false
