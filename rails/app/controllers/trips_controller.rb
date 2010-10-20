@@ -52,8 +52,20 @@ class TripsController < ApplicationController
             else
               final_grid = grid
             end
-=end       
-            final_grid = grid
+=end
+
+
+            # sync up stops between grid and stops dictionary
+            @result[:ordered_stop_ids] = grid.compact.map {|row| row[:stop][:stop_id]}
+            grid.compact.each {|stop| 
+              next if @result[:stops][stop[:stop][:stop_id]] 
+              x  = Stop.find(stop[:stop][:stop_id])
+              additional_stop = {:name => stop[:stop][:name], :lat => x.lat, :lng => x.lng}
+              @result[:stops][stop[:stop][:stop_id]] = additional_stop
+            }
+
+
+
             # mark times that are past
             grid.each do |stop|
               stop[:times] = stop[:times].map do |time|
@@ -74,7 +86,7 @@ class TripsController < ApplicationController
               end
             end
 #            logger.debug final_grid.inspect
-            @result.merge!(:grid => final_grid.compact)
+            @result.merge!(:grid => grid.compact)
           end
           
           # @result.merge!(:ads => "iAds") # controls whether iAds are shown
