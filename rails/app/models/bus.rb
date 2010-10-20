@@ -32,7 +32,7 @@ select a.route_short_name, a.headsign, coalesce(b.trips_remaining, 0) as trips_r
                 [headsign, x["trips_remaining"].to_i] 
               end
               }} 
-        if values.size > 2
+        if values.size > 2 && short_name != "SL"
           trips_remaining = values.select {|x| x['direction_id'] == '0'}.inject(0) {|sum, n| sum + n['trips_remaining'].to_i}
           x = ["All Outbound", trips_remaining]
           if realtime_available
