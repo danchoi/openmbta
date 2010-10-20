@@ -60,6 +60,7 @@ class TripsController < ApplicationController
             grid.compact.each {|stop| 
               next if @result[:stops][stop[:stop][:stop_id]] 
               x  = Stop.find(stop[:stop][:stop_id])
+              # TODO add next arrivals from grid! 
               additional_stop = {:name => stop[:stop][:name], :lat => x.lat, :lng => x.lng}
               @result[:stops][stop[:stop][:stop_id]] = additional_stop
             }
