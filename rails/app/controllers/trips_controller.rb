@@ -37,7 +37,7 @@ class TripsController < ApplicationController
 
             cache_key = URI.escape("#{@transport_type}:#{@route}:#{@headsign}:#{@first_stop}")
             # cache this
-            grid = cache(cache_key, :expires => 1.hour) do
+            grid = cache(cache_key, :expires_in => 3.hours) do
               logger.debug "CACHING: #{cache_key}"
               Grid.new(@transport_type.to_s, @route, @headsign, @first_stop).grid
             end
