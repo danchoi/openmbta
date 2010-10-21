@@ -76,14 +76,6 @@ iPhone, you should be able to figure things out. If you have any questions, just
 ask them in the [OpenMBTA Google
 Group](http://groups.google.com/group/openmbta).
 
-One thing to note about the iPhone client code is the `USE_DEMO_LOCATION` macro
-definition at the top `Classes/TripsMapViewController.m`. Because the iPhone
-Simulator always calculates the iPhone's location as Cupertino, California, I
-had to fake a user location in Cambridge, MA to test some of the location-aware
-features of OpenMBTA in the Simulator. `USE_DEMO_LOCATION` is set to 1 by by
-default. This should be set to 0 whenever the app is built for deployment on an
-actual iPhone or iPod touch device.
-
 Currently, there are no unit or integration tests for this codebase. This is
 definitely one area where volunteers can contribute. The first version of
 OpenMBTA was written quickly and not with the best code hygiene.  We plan on improving this in 
