@@ -50,6 +50,14 @@ class RealTime
     end
   end
 
+  def self.no_realtime_data(data)
+    data[:stops].each do |stop_id, stop_data|
+      data[:stops][stop_id][:next_arrivals] = data[:stops][stop_id][:next_arrivals][0,3]
+      data[:stops][stop_id][:next_arrivals] << ["(sched)", nil]
+    end
+    return data
+  end
+
   def self.add_data(data, params)
     data = data.dup
     headsign = params[:headsign]
@@ -67,15 +75,15 @@ class RealTime
       end
 
       if direction.nil? || data[:stops].nil? || direction['stops'].nil?
-        return data # abort
+        return no_realtime_data(data) # abort
       end
 
       if direction['stops'].all? {|x| x['predictions'].empty?}
-        return data # abort
+        return no_realtime_data(data) # abort
       end
 
       if data[:stops].nil?
-        return data
+        return no_realtime_data(data) # abort
       end
 
       data[:stops].each do |stop_id, stop_data|
