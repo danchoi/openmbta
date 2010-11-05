@@ -51,6 +51,9 @@ class RealTime
   end
 
   def self.no_realtime_data(data)
+    if data[:stops].nil?
+      return nil
+    end
     data[:stops].each do |stop_id, stop_data|
       data[:stops][stop_id][:next_arrivals] = data[:stops][stop_id][:next_arrivals][0,3]
       data[:stops][stop_id][:next_arrivals] << ["(sched)", nil]
