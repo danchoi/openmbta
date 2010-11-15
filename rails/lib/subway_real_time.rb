@@ -69,7 +69,10 @@ class SubwayRealTime
                          'S'
                        when /Oak Grove/
                          'N'
+                       end
+     
       stop_predictions = stop_predictions.select {|p| p[:direction] == direction_code}
+      
 
       if stop_predictions.empty?
         data[:stops][stop_id][:next_arrivals] = [["real time data missing", nil]]
@@ -85,7 +88,7 @@ class SubwayRealTime
 
           datetime > Time.now.to_datetime
         }.sort_by {|x|
-          puts "TEST: #{x.inspect}"
+      
           DateTime.strptime(x[:time] + " #{offset}", fmt)  # HACK. CHANGME later
         }.map {|q| 
           begin
@@ -98,6 +101,7 @@ class SubwayRealTime
           [format_time(time), q[:trip_id]]
         }[0,3]
 
+        
 
       if data[:stops][stop_id][:next_arrivals].empty?
         data[:stops][stop_id][:next_arrivals] << ["real time data missing", nil]
