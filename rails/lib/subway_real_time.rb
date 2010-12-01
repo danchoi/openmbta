@@ -70,7 +70,9 @@ class SubwayRealTime
                        when /Oak Grove/
                          'N'
                        end
+     
       stop_predictions = stop_predictions.select {|p| p[:direction] == direction_code}
+      
 
       if stop_predictions.empty?
         data[:stops][stop_id][:next_arrivals] = [["real time data missing", nil]]
@@ -79,15 +81,18 @@ class SubwayRealTime
 
       # replace next_arrivals
       fmt = "%m/%d/%Y %I:%M:%S %p %Z"
+      offset = Time.now.to_s.split(' ')[-1]
       data[:stops][stop_id][:next_arrivals] = stop_predictions.
         select {|q|
-          datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
+          datetime = DateTime.strptime(q[:time] + " #{offset}", fmt)  # HACK. CHANGME later
+
           datetime > Time.now.to_datetime
         }.sort_by {|x|
-          DateTime.strptime(x[:time] + " -0400", fmt)  # HACK. CHANGME later
+      
+          DateTime.strptime(x[:time] + " #{offset}", fmt)  # HACK. CHANGME later
         }.map {|q| 
           begin
-            datetime = DateTime.strptime(q[:time] + " -0400", fmt)  # HACK. CHANGME later
+            datetime = DateTime.strptime(q[:time] + " #{offset}", fmt)  # HACK. CHANGME later
             #datetime = DateTime.parse(q[:time])
           rescue
             raise "Failed to parse #{q[:time]}"
@@ -95,6 +100,8 @@ class SubwayRealTime
           time = "%.2d:%.2d:%.2d" % [datetime.hour, datetime.min, datetime.sec] 
           [format_time(time), q[:trip_id]]
         }[0,3]
+
+        
 
       if data[:stops][stop_id][:next_arrivals].empty?
         data[:stops][stop_id][:next_arrivals] << ["real time data missing", nil]
