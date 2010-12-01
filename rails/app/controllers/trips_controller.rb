@@ -5,6 +5,9 @@ class TripsController < ApplicationController
   layout 'mobile'
   include TimeFormatting
   def index
+    if params[:base_time] =~ / 0000$/
+      params[:base_time].gsub!(/ 0000$/, "+0000")
+    end
     base_time = params[:base_time] ? Time.parse(params[:base_time]) : Time.now
 
     respond_to do |format|
