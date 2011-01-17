@@ -102,6 +102,7 @@
 - (void)didFinishLoadingData:(NSString *)rawData 
 {
     [self hideNetworkActivity];
+    NSLog(@"raw Data: %@", rawData);
     NSDictionary *rawDict = [rawData JSONValue];
     self.data = [rawDict objectForKey:@"data"];
     [self checkForMessage:rawDict];
