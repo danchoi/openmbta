@@ -40,12 +40,17 @@ class SubwayRealTime
     stopsdict = YAML::load(File.read(predictions_file(route_short_name, headsign)))
     puts "=" * 80
 
-    #puts stopsdict
+    # puts "STOPDICT"
+    # puts stopsdict
     if data[:stops].nil?
       return data
     end
     data[:stops].each do |stop_id, stop_data|
-      stop_predictions = stopsdict[stop_data[:parent_stop_mbta_id]]
+      # stop_predictions = stopsdict[stop_data[:parent_stop_mbta_id]]
+      # changed for 2011
+      key = stop_data[:name].split(/\s/)[0] # first work
+      target_key = stopsdict.keys.detect {|k| k =~ /^#{key}/}
+      stop_predictions = stopsdict[target_key]
       if stop_predictions.nil? 
         data[:stops][stop_id][:next_arrivals] = [["real time data missing", nil]]
         next

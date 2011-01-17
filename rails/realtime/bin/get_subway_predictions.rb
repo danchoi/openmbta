@@ -5,7 +5,7 @@ require 'csv'
 require 'yaml'
 
 def compile(lines, line)
-  lines.map {|x| translate(CSV.parse_line(x), line)}.group_by {|x| x[:stop_id]}
+  lines.map {|x| translate(CSV.parse_line(x), line)}.group_by {|x| x[:name]}
 end
 
 def translate(line_data, line)
