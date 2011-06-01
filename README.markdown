@@ -1,5 +1,12 @@
 # OpenMBTA 
 
+## Notice
+
+I've rewritten the backend of OpenMBTA to use PostgreSQL instead of MySQL. The 
+code for the new backend is at <http://github.com/danchoi/openmbta2>.
+
+## Old README
+
 [OpenMBTA](http://openmbta.org) gives users current schedule information for
 MBTA buses, commuter rail lines, subway, and ferries.  MBTA is the public transit
 system of the Boston metropolitan area.
